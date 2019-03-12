@@ -1,0 +1,22 @@
+// Buttons
+// ==========================================================================
+
+.btn, 
+button, 
+input[type="submit"] {
+	padding: 0 20px;
+	color: $light-color;
+	text-align: center;
+	line-height: 30px;
+	font-weight: 300;
+	line-height: 30px;
+	text-decoration: none;
+	background-color: $primary-color;
+	border: 0px;
+	transition: .3s ease-out;
+	cursor: pointer;
+	@extend .shadow;
+	&:hover {
+		background-color: $primary-color-dark;
+	}
+}

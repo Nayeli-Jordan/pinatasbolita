@@ -1,0 +1,68 @@
+// Typography
+// ==========================================================================
+
+a {
+  text-decoration: none;
+  color: $dark-color;
+  cursor: pointer;
+  // Gets rid of tap active state
+  -webkit-tap-highlight-color: transparent;
+}
+
+html{
+  line-height: 1.5;
+  font-family: $font-default;
+  font-weight: normal;
+  color: $dark-color;
+}
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.3;
+  margin: 0px;
+  font-weight: 400;
+}
+
+// Header Styles
+h1 { font-size: $h1-fontsize;}
+h2 { font-size: $h2-fontsize;}
+h3 { font-size: $h3-fontsize;}
+h4 { font-size: $h4-fontsize;}
+h5 { font-size: $h5-fontsize;}
+h6 { font-size: $h6-fontsize;}
+
+p { 
+  margin: 0px; 
+  font-size: 12px;
+  line-height: 20px;
+}
+
+// Text Styles
+em                            { font-style: italic; }
+small                         { font-size: 75%; }
+
+.font-thin                    { font-weight: 200; }
+.font-normal                  { font-weight: 300; }
+.font-strong, strong          { font-weight: 500; }
+
+.uppercase                    { text-transform: uppercase; }
+.lowercase                    { text-transform: lowercase; }
+.capitalize                   { text-transform: capitalize; }
+
+.text-underline               { text-decoration: underline; }
+.text-underline-hover:hover   { text-decoration: underline; }
+.text-line-through            { text-decoration: line-through; }
+
+.text-center                  { text-align: center; } 
+.text-left                    { text-align: left; }
+.text-right                   { text-align: right; }
+.text-justify                 { text-align: justify; }
+
+.text-last-center             { text-align-last: center; }
+.text-last-left               { text-align-last: left; }
+.text-last-right              { text-align-last: right; }
+.text-last-justify            { text-align-last: justify; }
+
+.line-text-overflow {
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

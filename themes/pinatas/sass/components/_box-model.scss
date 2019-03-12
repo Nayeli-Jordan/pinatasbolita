@@ -1,0 +1,45 @@
+// Margin & Padding (0 a 100)
+// ==========================================================================
+
+$i: 0;
+@while $i <= 50 {
+	.margin-top-#{$i} 			{ margin-top: #{$i}#{"px"}; }
+	.margin-bottom-#{$i} 		{ margin-bottom: #{$i}#{"px"}; }
+	.margin-left-#{$i} 			{ margin-left: #{$i}#{"px"}; }
+	.margin-right-#{$i} 		{ margin-right: #{$i}#{"px"}; }
+	.margin-top-bottom-#{$i} 	{ margin-top: #{$i}#{"px"}; margin-bottom: #{$i}#{"px"}; }
+	.margin-left-right-#{$i} 	{ margin-left: #{$i}#{"px"}; margin-right: #{$i}#{"px"}; }
+
+	.padding-top-#{$i} 			{ padding-top: #{$i}#{"px"}; }
+	.padding-bottom-#{$i} 		{ padding-bottom: #{$i}#{"px"}; }
+	.padding-left-#{$i} 		{ padding-left: #{$i}#{"px"}; }
+	.padding-right-#{$i} 		{ padding-right: #{$i}#{"px"}; }
+	.padding-top-bottom-#{$i} 	{ padding-top: #{$i}#{"px"}; padding-bottom: #{$i}#{"px"}; }
+	.padding-left-right-#{$i} 	{ padding-left: #{$i}#{"px"}; padding-right: #{$i}#{"px"}; }
+
+	$i: $i + 10;
+}
+
+.margin-auto 				{ margin-left: auto; margin-right: auto; }
+
+
+// Padding bottom 1% to 100%
+// ==========================================================================
+$i: 1;
+@while $i <= $size-percent {
+	.padding-bottom-#{$i}#{"p"} {
+		padding-bottom: #{$i}#{"%"};
+	}
+	$i: $i + 1; 
+}
+
+
+// Size
+// ==========================================================================
+
+$i: 1;
+@while $i <= $size-percent {
+	.width-#{$i}#{"p"} 	{ width: #{$i}#{"%"}; }
+	.height-#{$i}#{"p"} { height: #{$i}#{"%"}; }
+	$i: $i + 1; 
+}

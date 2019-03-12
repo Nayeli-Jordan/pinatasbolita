@@ -1,0 +1,32 @@
+// Effects
+// ==========================================================================
+
+.rotate-180 { 
+	-webkit-transform: rotate(180deg); 
+	-moz-transform: rotate(180deg); 
+	transform: rotate(180deg); 
+}
+
+
+.shadow 		{ box-shadow: 4px 4px 13px 0 rgba(84, 84, 84, 0.37); }
+@mixin shadow 	{ box-shadow: 4px 4px 13px 0 rgba(84, 84, 84, 0.37); } /* For @media */
+.shadow-small {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+              0 3px 1px -2px rgba(0,0,0,0.12),
+              0 1px 5px 0 rgba(0,0,0,0.2);
+}
+/* use */
+/* @extend .shadow; */
+/* %shadow {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+              0 3px 1px -2px rgba(0,0,0,0.12),
+              0 1px 5px 0 rgba(0,0,0,0.2);
+} */
+
+.text-shadow { text-shadow: 2px 2px #33333345; }
+
+.transition { 
+	-webkit-transition: .3s ease-out; 
+	-moz-transition: .3s ease-out; 
+	transition: .3s ease-out; 
+}

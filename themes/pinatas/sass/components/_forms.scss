@@ -1,0 +1,40 @@
+// Forms
+// ==========================================================================
+
+input:not([type="submit"]),
+select,
+textarea {
+	margin-bottom: 10px;
+	padding: 0 10px;
+	width: 100%;	
+	max-width: 100%;
+	line-height: 30px;
+	background-color: $light-color;
+	border-radius: 10px;
+	border: 0px;
+	outline: none;
+}
+textarea {
+	height: 100px;
+	line-height: 22px;
+	resize: none;
+}
+input[type="submit"] {
+    display: block;
+}
+
+//Hide button input date
+::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+}
+
+/* Validación Parsley */
+.parsley-errors-list {
+	padding: 0px!important;
+	font-size: 12px;
+	li { 
+		color: $danger-color; 
+		list-style-type: none!important;
+	}
+}

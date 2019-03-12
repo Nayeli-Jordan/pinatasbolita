@@ -1,0 +1,36 @@
+// Image
+// ==========================================================================
+
+img.responsive-img,
+video.responsive-video {
+  max-width: 100%;
+  height: auto;
+}
+
+.centerfull-image {
+	position: absolute;
+	top: 0px; bottom: 0px;
+	left: 0px; right: 0px;
+	margin: auto;
+}
+
+
+// Bg Image
+// ==========================================================================
+.bg-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  &.bg-contain { background-size: contain; }
+  &.bg-repeat { background-repeat: repeat; }
+}
+
+.bg-responsive {
+	max-width: 100%;
+}
+
+.bg-absolute { 
+	position: absolute;
+	top: 0; bottom: 0; 
+	left: 0; right: 0;
+}
