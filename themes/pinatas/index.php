@@ -16,6 +16,8 @@
 				<a id="ruleta_link_9" href="<?php echo SITEURL; ?>"></a>
 				<a id="ruleta_link_10" href="<?php echo SITEURL; ?>"></a>
 			</div>
+			<a id="ruleta_pinatas" href="<?php echo SITEURL; ?>"></a>
+			<a id="ruleta_pedidos" href="<?php echo SITEURL; ?>"></a>
 		</span>
 	</section>
 <?php get_footer(); ?>

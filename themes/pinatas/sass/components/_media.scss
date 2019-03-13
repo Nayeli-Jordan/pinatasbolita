@@ -73,27 +73,4 @@ video.responsive-video {
 	-ms-animation: rotation 3s ease-in-out;
 	-o-animation: rotation 3s ease-in-out;
 	animation: rotation 3s ease-in-out;
-	a {
-		position: absolute;
-		display: block;
-	    width: 17%;
-	    padding-bottom: 17%;
-		border-radius: 50%;
-		@extend .transition;
-		//background-color: rgba(0,0,0,0.3);
-		&#ruleta_link_1 { top: 18%; right: 30%; }
-		&#ruleta_link_2 { top: 26%; right: 14%; }
-		&#ruleta_link_3 { top: 44%; right: 8%; }
-		&#ruleta_link_4 { bottom: 26%; right: 14%; }
-		&#ruleta_link_5 { bottom: 18%; right: 32%; }
-
-		&#ruleta_link_6 { bottom: 18%; left: 32%; }
-		&#ruleta_link_7 { bottom: 26%; left: 14%; }
-		&#ruleta_link_8 { top: 44%; left: 8%; }
-		&#ruleta_link_9 { top: 26%; left: 14%; }
-		&#ruleta_link_10 { top: 18%; left: 30%; }
-		&:hover {
-			background-image: radial-gradient(circle, rgba(255,255,255,0.15), rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0) 80%);
-		}
-	}
 }
