@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Importante agregar el prefijo para cuando dice que og no se está usando -->
 <html prefix="og: http://ogp.me/ns#" lang="es">
 	<head>
 		<meta charset="utf-8">
@@ -15,8 +14,8 @@
 		<meta name="googlebot" content="index, follow" />
 
 		<!-- Favicon -->
-		<!-- <link rel="icon" type="image/png" href="<?php echo THEMEPATH; ?>favicon/favicon-32x32.png" sizes="32x32" />
-		<link rel="icon" type="image/png" href="<?php echo THEMEPATH; ?>favicon/favicon-16x16.png" sizes="16x16" /> -->
+		<link rel="icon" type="image/png" href="<?php echo THEMEPATH; ?>favicon/favicon-32x32.png" sizes="32x32" />
+		<link rel="icon" type="image/png" href="<?php echo THEMEPATH; ?>favicon/favicon-16x16.png" sizes="16x16" />
 
 		<!-- Facebook, Twitter metas -->
 		<meta property="og:title" content="<?php bloginfo('name'); ?>" />
@@ -56,7 +55,7 @@
 		<noscript>Tu navegador no soporta JavaScript!</noscript>
 		<?php wp_head(); ?>
 	</head>
-	<body>
+	<body class="<?php if(is_home()): echo 'pageHome'; endif; ?>">
 		<header class="js-header">			
 			<nav>
 				<ul class="mb-nav" itemscope>

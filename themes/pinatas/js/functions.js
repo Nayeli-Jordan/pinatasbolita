@@ -45,7 +45,6 @@ var $=jQuery.noConflict();
 /**
  * Fija el footer abajo
  */
-/*
 function footerBottom(){
 	var alturaFooter = getFooterHeight();
 	$('.main-body').css('padding-bottom', alturaFooter );
@@ -56,4 +55,4 @@ function getHeaderHeight(){
 function getFooterHeight(){
 	return $('footer').outerHeight();
 }// getFooterHeight
-*/
+

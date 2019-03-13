@@ -383,8 +383,328 @@
   padding-right: 50px;
 }
 
+/* line 6, ../sass/components/_box-model.scss */
+.margin-top-60 {
+  margin-top: 60px;
+}
+
+/* line 7, ../sass/components/_box-model.scss */
+.margin-bottom-60 {
+  margin-bottom: 60px;
+}
+
+/* line 8, ../sass/components/_box-model.scss */
+.margin-left-60 {
+  margin-left: 60px;
+}
+
+/* line 9, ../sass/components/_box-model.scss */
+.margin-right-60 {
+  margin-right: 60px;
+}
+
+/* line 10, ../sass/components/_box-model.scss */
+.margin-top-bottom-60 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+/* line 11, ../sass/components/_box-model.scss */
+.margin-left-right-60 {
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+/* line 13, ../sass/components/_box-model.scss */
+.padding-top-60 {
+  padding-top: 60px;
+}
+
+/* line 14, ../sass/components/_box-model.scss */
+.padding-bottom-60 {
+  padding-bottom: 60px;
+}
+
+/* line 15, ../sass/components/_box-model.scss */
+.padding-left-60 {
+  padding-left: 60px;
+}
+
+/* line 16, ../sass/components/_box-model.scss */
+.padding-right-60 {
+  padding-right: 60px;
+}
+
+/* line 17, ../sass/components/_box-model.scss */
+.padding-top-bottom-60 {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* line 18, ../sass/components/_box-model.scss */
+.padding-left-right-60 {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* line 6, ../sass/components/_box-model.scss */
+.margin-top-70 {
+  margin-top: 70px;
+}
+
+/* line 7, ../sass/components/_box-model.scss */
+.margin-bottom-70 {
+  margin-bottom: 70px;
+}
+
+/* line 8, ../sass/components/_box-model.scss */
+.margin-left-70 {
+  margin-left: 70px;
+}
+
+/* line 9, ../sass/components/_box-model.scss */
+.margin-right-70 {
+  margin-right: 70px;
+}
+
+/* line 10, ../sass/components/_box-model.scss */
+.margin-top-bottom-70 {
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+/* line 11, ../sass/components/_box-model.scss */
+.margin-left-right-70 {
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+/* line 13, ../sass/components/_box-model.scss */
+.padding-top-70 {
+  padding-top: 70px;
+}
+
+/* line 14, ../sass/components/_box-model.scss */
+.padding-bottom-70 {
+  padding-bottom: 70px;
+}
+
+/* line 15, ../sass/components/_box-model.scss */
+.padding-left-70 {
+  padding-left: 70px;
+}
+
+/* line 16, ../sass/components/_box-model.scss */
+.padding-right-70 {
+  padding-right: 70px;
+}
+
+/* line 17, ../sass/components/_box-model.scss */
+.padding-top-bottom-70 {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+/* line 18, ../sass/components/_box-model.scss */
+.padding-left-right-70 {
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+/* line 6, ../sass/components/_box-model.scss */
+.margin-top-80 {
+  margin-top: 80px;
+}
+
+/* line 7, ../sass/components/_box-model.scss */
+.margin-bottom-80 {
+  margin-bottom: 80px;
+}
+
+/* line 8, ../sass/components/_box-model.scss */
+.margin-left-80 {
+  margin-left: 80px;
+}
+
+/* line 9, ../sass/components/_box-model.scss */
+.margin-right-80 {
+  margin-right: 80px;
+}
+
+/* line 10, ../sass/components/_box-model.scss */
+.margin-top-bottom-80 {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+/* line 11, ../sass/components/_box-model.scss */
+.margin-left-right-80 {
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+/* line 13, ../sass/components/_box-model.scss */
+.padding-top-80 {
+  padding-top: 80px;
+}
+
+/* line 14, ../sass/components/_box-model.scss */
+.padding-bottom-80 {
+  padding-bottom: 80px;
+}
+
+/* line 15, ../sass/components/_box-model.scss */
+.padding-left-80 {
+  padding-left: 80px;
+}
+
+/* line 16, ../sass/components/_box-model.scss */
+.padding-right-80 {
+  padding-right: 80px;
+}
+
+/* line 17, ../sass/components/_box-model.scss */
+.padding-top-bottom-80 {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* line 18, ../sass/components/_box-model.scss */
+.padding-left-right-80 {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+/* line 6, ../sass/components/_box-model.scss */
+.margin-top-90 {
+  margin-top: 90px;
+}
+
+/* line 7, ../sass/components/_box-model.scss */
+.margin-bottom-90 {
+  margin-bottom: 90px;
+}
+
+/* line 8, ../sass/components/_box-model.scss */
+.margin-left-90 {
+  margin-left: 90px;
+}
+
+/* line 9, ../sass/components/_box-model.scss */
+.margin-right-90 {
+  margin-right: 90px;
+}
+
+/* line 10, ../sass/components/_box-model.scss */
+.margin-top-bottom-90 {
+  margin-top: 90px;
+  margin-bottom: 90px;
+}
+
+/* line 11, ../sass/components/_box-model.scss */
+.margin-left-right-90 {
+  margin-left: 90px;
+  margin-right: 90px;
+}
+
+/* line 13, ../sass/components/_box-model.scss */
+.padding-top-90 {
+  padding-top: 90px;
+}
+
+/* line 14, ../sass/components/_box-model.scss */
+.padding-bottom-90 {
+  padding-bottom: 90px;
+}
+
+/* line 15, ../sass/components/_box-model.scss */
+.padding-left-90 {
+  padding-left: 90px;
+}
+
+/* line 16, ../sass/components/_box-model.scss */
+.padding-right-90 {
+  padding-right: 90px;
+}
+
+/* line 17, ../sass/components/_box-model.scss */
+.padding-top-bottom-90 {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+/* line 18, ../sass/components/_box-model.scss */
+.padding-left-right-90 {
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+/* line 6, ../sass/components/_box-model.scss */
+.margin-top-100 {
+  margin-top: 100px;
+}
+
+/* line 7, ../sass/components/_box-model.scss */
+.margin-bottom-100 {
+  margin-bottom: 100px;
+}
+
+/* line 8, ../sass/components/_box-model.scss */
+.margin-left-100 {
+  margin-left: 100px;
+}
+
+/* line 9, ../sass/components/_box-model.scss */
+.margin-right-100 {
+  margin-right: 100px;
+}
+
+/* line 10, ../sass/components/_box-model.scss */
+.margin-top-bottom-100 {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+/* line 11, ../sass/components/_box-model.scss */
+.margin-left-right-100 {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+/* line 13, ../sass/components/_box-model.scss */
+.padding-top-100 {
+  padding-top: 100px;
+}
+
+/* line 14, ../sass/components/_box-model.scss */
+.padding-bottom-100 {
+  padding-bottom: 100px;
+}
+
+/* line 15, ../sass/components/_box-model.scss */
+.padding-left-100 {
+  padding-left: 100px;
+}
+
+/* line 16, ../sass/components/_box-model.scss */
+.padding-right-100 {
+  padding-right: 100px;
+}
+
+/* line 17, ../sass/components/_box-model.scss */
+.padding-top-bottom-100 {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+/* line 18, ../sass/components/_box-model.scss */
+.padding-left-right-100 {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
 /* line 23, ../sass/components/_box-model.scss */
-.margin-auto {
+.margin-auto, .img-ruleta_base, .bg-ruleta_indicador {
   margin-left: auto;
   margin-right: auto;
 }
@@ -1965,12 +2285,20 @@ input[type="submit"] {
 }
 
 /* line 28, ../sass/components/_effects.scss */
-.transition {
+.transition, .bg-ruleta_opciones a {
   -webkit-transition: .3s ease-out;
   -moz-transition: .3s ease-out;
   transition: .3s ease-out;
 }
 
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
 /* line 4, ../sass/components/_forms.scss */
 input:not([type="submit"]),
 select,
@@ -2036,22 +2364,33 @@ html body {
 /* line 16, ../sass/components/_global.scss */
 .main-body {
   position: relative;
+  min-height: 100vh;
 }
 
-/* line 20, ../sass/components/_global.scss */
+/* line 21, ../sass/components/_global.scss */
+.pageHome .main-body {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../images/fondo.jpg);
+}
+
+/* line 29, ../sass/components/_global.scss */
 section {
   margin: 0;
 }
-/* line 22, ../sass/components/_global.scss */
+/* line 31, ../sass/components/_global.scss */
 section + section {
   margin-top: 50px;
 }
 
-/* line 25, ../sass/components/_global.scss */
+/* line 34, ../sass/components/_global.scss */
 ul {
   padding: 0px;
+  margin: 0px;
 }
-/* line 27, ../sass/components/_global.scss */
+/* line 37, ../sass/components/_global.scss */
 ul li {
   margin: 0px;
   font-size: 12px;
@@ -2059,12 +2398,12 @@ ul li {
   list-style-type: none;
 }
 
-/* line 35, ../sass/components/_global.scss */
+/* line 45, ../sass/components/_global.scss */
 .clearfix {
   clear: both;
 }
 
-/* line 37, ../sass/components/_global.scss */
+/* line 47, ../sass/components/_global.scss */
 .hr, hr {
   width: 100%;
   height: 1px;
@@ -2072,18 +2411,18 @@ ul li {
   background-color: #fff;
 }
 
-/* line 47, ../sass/components/_global.scss */
+/* line 57, ../sass/components/_global.scss */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* line 50, ../sass/components/_global.scss */
+/* line 60, ../sass/components/_global.scss */
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-/* line 54, ../sass/components/_global.scss */
+/* line 64, ../sass/components/_global.scss */
 ::-webkit-scrollbar-thumb {
   border-radius: 0px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
@@ -3305,17 +3644,17 @@ video.responsive-video {
 }
 
 /* line 20, ../sass/components/_media.scss */
-.bg-image {
+.bg-image, .bg-ruleta_centro, .bg-ruleta_indicador, .bg-ruleta_opciones {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 /* line 24, ../sass/components/_media.scss */
-.bg-image.bg-contain {
+.bg-image.bg-contain, .bg-ruleta_centro, .bg-ruleta_indicador, .bg-ruleta_opciones {
   background-size: contain;
 }
 /* line 25, ../sass/components/_media.scss */
-.bg-image.bg-repeat {
+.bg-image.bg-repeat, .bg-repeat.bg-ruleta_centro, .bg-repeat.bg-ruleta_indicador, .bg-repeat.bg-ruleta_opciones {
   background-repeat: repeat;
 }
 
@@ -3331,6 +3670,108 @@ video.responsive-video {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+/* RULETA */
+/* line 39, ../sass/components/_media.scss */
+.img-ruleta_base {
+  display: block;
+  max-width: 98%;
+}
+
+/* line 49, ../sass/components/_media.scss */
+.bg-ruleta_centro {
+  width: 18%;
+  height: 28%;
+  background-image: url(../images/ruleta-centro.png);
+  z-index: 1;
+}
+
+/* line 56, ../sass/components/_media.scss */
+.bg-ruleta_indicador {
+  position: relative;
+  margin-bottom: -18%;
+  padding-bottom: 24%;
+  width: 17%;
+  max-width: 100px;
+  background-image: url(../images/ruleta-indicador.png);
+  z-index: 1;
+}
+
+/* line 65, ../sass/components/_media.scss */
+.bg-ruleta_opciones {
+  position: absolute;
+  top: -1%;
+  left: 9%;
+  width: 83%;
+  padding-bottom: 100%;
+  background-image: url(../images/ruleta-opciones.png);
+  -webkit-animation: rotation 3s ease-in-out;
+  -ms-animation: rotation 3s ease-in-out;
+  -o-animation: rotation 3s ease-in-out;
+  animation: rotation 3s ease-in-out;
+}
+/* line 76, ../sass/components/_media.scss */
+.bg-ruleta_opciones a {
+  position: absolute;
+  display: block;
+  width: 17%;
+  padding-bottom: 17%;
+  border-radius: 50%;
+}
+/* line 84, ../sass/components/_media.scss */
+.bg-ruleta_opciones a#ruleta_link_1 {
+  top: 18%;
+  right: 30%;
+}
+/* line 85, ../sass/components/_media.scss */
+.bg-ruleta_opciones a#ruleta_link_2 {
+  top: 26%;
+  right: 14%;
+}
+/* line 86, ../sass/components/_media.scss */
+.bg-ruleta_opciones a#ruleta_link_3 {
+  top: 44%;
+  right: 8%;
+}
+/* line 87, ../sass/components/_media.scss */
+.bg-ruleta_opciones a#ruleta_link_4 {
+  bottom: 26%;
+  right: 14%;
+}
+/* line 88, ../sass/components/_media.scss */
+.bg-ruleta_opciones a#ruleta_link_5 {
+  bottom: 18%;
+  right: 32%;
+}
+/* line 90, ../sass/components/_media.scss */
+.bg-ruleta_opciones a#ruleta_link_6 {
+  bottom: 18%;
+  left: 32%;
+}
+/* line 91, ../sass/components/_media.scss */
+.bg-ruleta_opciones a#ruleta_link_7 {
+  bottom: 26%;
+  left: 14%;
+}
+/* line 92, ../sass/components/_media.scss */
+.bg-ruleta_opciones a#ruleta_link_8 {
+  top: 44%;
+  left: 8%;
+}
+/* line 93, ../sass/components/_media.scss */
+.bg-ruleta_opciones a#ruleta_link_9 {
+  top: 26%;
+  left: 14%;
+}
+/* line 94, ../sass/components/_media.scss */
+.bg-ruleta_opciones a#ruleta_link_10 {
+  top: 18%;
+  left: 30%;
+}
+/* line 95, ../sass/components/_media.scss */
+.bg-ruleta_opciones a:hover {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 80%);
 }
 
 /* line 4, ../sass/components/_modal.scss */
@@ -7695,8 +8136,7 @@ video.responsive-video {
 }
 
 /* line 103, ../sass/components/_position.scss */
-.content-center {
-  width: 100%;
+.content-center, .bg-ruleta_centro {
   position: absolute;
   top: 50%;
   left: 50%;

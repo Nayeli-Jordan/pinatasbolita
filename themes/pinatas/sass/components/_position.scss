@@ -100,7 +100,4 @@ $i: -100;
 	transform:translate(-50%, -50%)
 }
 
-.content-center { 
-	width: 100%;
-	@include center-full(); 
-}
+.content-center { @include center-full(); }

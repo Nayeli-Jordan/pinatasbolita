@@ -2,7 +2,7 @@
 // ==========================================================================
 
 $i: 0;
-@while $i <= 50 {
+@while $i <= 100 {
 	.margin-top-#{$i} 			{ margin-top: #{$i}#{"px"}; }
 	.margin-bottom-#{$i} 		{ margin-bottom: #{$i}#{"px"}; }
 	.margin-left-#{$i} 			{ margin-left: #{$i}#{"px"}; }

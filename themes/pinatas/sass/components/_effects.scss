@@ -30,3 +30,8 @@
 	-moz-transition: .3s ease-out; 
 	transition: .3s ease-out; 
 }
+
+@-webkit-keyframes rotation {
+	from { -webkit-transform: rotate(0deg); }
+	to { -webkit-transform: rotate(360deg); }
+}
