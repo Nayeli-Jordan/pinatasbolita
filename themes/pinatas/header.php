@@ -57,8 +57,11 @@
 	</head>
 	<body class="<?php if(is_home()): echo 'pageHome'; endif; ?>">
 		<?php if (!is_home()) : ?>
-			<header class="js-header">			
-				<nav>
+			<header class="js-header relative">
+				<div class="bg-fondo-azul"></div>
+				<img src="<?php echo THEMEPATH; ?>/images/paisaje.png" class="img-paisaje responsive-img">	
+				<nav class="container padding-top-20">
+					<a href="<?php echo SITEURL; ?>" class="inline-block"><div class="logo-pb"></div></a>
 					<ul class="mb-nav" itemscope>
 						<?php
 							$menu_name = 'top_menu';
@@ -73,15 +76,32 @@
 									$title 				= $menu_item->title;
 									$class 				= esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $menu_item->classes ), $menu_item) ) );
 
-									//$menu_item_parent	= $menu_item->menu_item_parent;		id del padre
-									//$id 				= $menu_item->ID;
-									//$attr_title 		= $menu_item->attr_title;
-									//$description		= $menu_item->description;
-									//$xfn 				= $menu_item->xfn;
-									//$type 			= $menu_item->type;		taxonomy, page...
-									//$type_label		= $menu_item->type_label;		página, categoría...
+									$menu_list .='<li itemprop="actionOption" class="' . $class .'"><p>' . $title . '</p>';
 
-									$menu_list .='<li itemprop="actionOption" class="' . $class .'"><a href="' . $url . '">' . $title . '</a></li>';
+										/* Lista de productos en categoría */
+										$products_args = array(
+											'post_type' 		=> 'product',
+											'posts_per_page' 	=> -11,
+											'product_cat'		=> $title,
+										);
+										$products_query = new WP_Query( $products_args );
+										if ( $products_query->have_posts() ) : 
+											$menu_list .='<ul>';
+											$i = 1;
+											while ( $products_query->have_posts() ) : $products_query->the_post();
+												global $product; 
+												$idProduct 		= $product->get_id();
+												$titleProduct	= $post->post_title;
+
+												$menu_list .='<li><a href="' . get_permalink( $idProduct ) . '">' . $titleProduct . '</a></li>';
+
+										$i ++; endwhile; 
+											$menu_list .='</ul>';
+										wp_reset_postdata();
+										endif;
+
+									$menu_list .='</li>';
+
 								}
 							}
 							echo $menu_list;
@@ -90,4 +110,4 @@
 				</nav>
 			</header>
 		<?php endif; ?>
-		<div class="[ main-body ]">
+		<div class="[ main-body ] <?php if(!is_home()): echo 'bg-body'; endif; ?>">

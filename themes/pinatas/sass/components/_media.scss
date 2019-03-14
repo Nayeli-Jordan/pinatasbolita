@@ -74,3 +74,10 @@ video.responsive-video {
 	-o-animation: rotation 3s ease-in-out;
 	animation: rotation 3s ease-in-out;
 }
+
+/* Body */
+.bg-body {
+	background-image: url(../images/body.png);
+	background-position: top center;
+	@extend .bg-image;
+}

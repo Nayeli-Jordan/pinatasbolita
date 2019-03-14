@@ -12,8 +12,9 @@ a {
 html{
   line-height: 1.5;
   font-family: $font-default;
-  font-weight: normal;
+  font-weight: bold;
   color: $dark-color;
+  letter-spacing: 1px;
 }
 h1, h2, h3, h4, h5, h6 {
 	line-height: 1.3;

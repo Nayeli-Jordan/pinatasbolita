@@ -1,10 +1,137 @@
 header {
-	ul {
-		li {
-			display: inline-block;
-			a {
-				
+	height: 75vh;
+	min-height: 750px;
+	.bg-fondo-azul {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-image: url(../images/fondo-azul.png);
+		@extend .bg-image;
+		z-index: -1;
+	}
+	.img-paisaje {
+		position: absolute;
+	    bottom: -25%;
+	    z-index: -1;
+	    width: 100%;
+	}
+	nav {
+		text-align: center;
+		a {
+			.logo-pb {
+				display: inline-block;
+				width: 369px;
+				height: 207px;
+				background-image: url(../images/identidad/logo.png);
+				@extend .bg-image;
+				@extend .bg-contain;
+
+			}
+			@media #{$sm-and-down} {
+				float: left;
+				.logo-pb {
+					width: 150px;
+					height: 80px;					
+				}
+			}					
+		}
+
+		ul.mb-nav {
+			& > li {
+				position: relative;
+				display: inline-block;
+				padding-top: 90px;
+				padding-bottom: 10px;
+				&:not(:last-child) p { border-right: 2px solid $light-color; }
+				p {
+					display: inline-block;
+					line-height: 30px;
+					padding: 0 10px;
+					text-transform: uppercase;
+					color: $light-color;
+					@extend .transition;
+					/* Indicador */
+					&:before {
+						content: '';
+						position: absolute;
+						top: 20px;
+						display: block;
+						width: 50px;
+						height: 70px;
+						margin: auto;
+						cursor: auto;
+						background-image: url(../images/active-nav.png);
+						opacity: 0;
+						-webkit-transition: opacity .3s ease-in-out;
+						-moz-transition: opacity .3s ease-in-out;
+						-ms-transition: opacity .3s ease-in-out;
+						-o-transition: opacity .3s ease-in-out;
+						transition: opacity .3s ease-in-out;
+						@extend .bg-image;
+						@extend .bg-contain;
+						@extend .center-absolute;
+					}
+
+				}			
+				ul {
+					position: absolute;
+					left: 50%;
+					margin-top: 10px;
+					min-width: 160px;
+					display: none;
+					-webkit-transform:translateX(-50%);
+					-ms-transform:translateX(-50%);
+					-o-transform:translateX(-50%);
+					transform:translateX(-50%);
+					li {
+						a {
+							display: block;
+							padding: 0 5px;
+							color: $light-color;
+							font-size: 12px;
+							border-radius: 10px;
+							background-color: rgba(255, 255, 255, 0.2);
+							&:hover {
+								color: $primary-color;
+							}
+						}
+					}
+				}
+				&:hover, &.active {
+					z-index: 99;
+					p { /* to do - li es el active */
+						color: $primary-color;
+						&:before { opacity: 1; }
+					}
+					ul { display: block; }						
+				}
+			}
+			@media #{$sm-and-down}{
+			& > li {
+				p {
+					/* Indicador */
+					&:before {
+						display: none!important;
+					}
+
+				}			
+				ul {
+					li {
+						a {
+							&:hover {
+							}
+						}
+					}
+				}
+				&:hover, &.active {
+					p {
+
+					}
+					ul {  }						
+				}
+			}
 			}
 		}		
 	}
+
 }

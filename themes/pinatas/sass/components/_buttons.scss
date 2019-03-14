@@ -4,20 +4,32 @@
 .btn, 
 button, 
 input[type="submit"] {
-	padding: 0 20px;
+	display: inline-block;
+	padding: 0 40px;
 	color: $light-color;
 	text-align: center;
 	line-height: 30px;
-	font-weight: 300;
-	line-height: 30px;
+	font-size: 22px;
+	line-height: 70px;
 	text-decoration: none;
-	background-color: $primary-color;
+	text-transform: uppercase;
+	background-image: radial-gradient(circle, $blue-color-xlight, $blue-color-light, $blue-color);
 	border: 0px;
+	border-radius: 20px;
 	transition: .3s ease-out;
 	cursor: pointer;
 	@extend .shadow;
 	&:hover {
-		background-color: $primary-color-dark;
+		background-image: radial-gradient(circle, $blue-color-light, $blue-color, $blue-color-dark);
+	}
+	&.btn-caracteristicas { 
+		border-top-left-radius: 0px; 
+		border-bottom-left-radius: 0px; 
+	}
+	&.btn-ubicacion { 
+		float: right;
+		border-top-right-radius: 0px;
+		border-bottom-right-radius: 0px;
 	}
 }
 

@@ -5,7 +5,7 @@
 // Colors
 // ==========================================================================
 
-$primary-color: 		#de0d88 !default;
+$primary-color: 		#993c8c !default;
 $primary-color-light: 	lighten($primary-color, 15%) !default;
 $primary-color-dark: 	darken($primary-color, 15%) !default;
 
@@ -14,6 +14,11 @@ $dark-color: 			#000 !default;
 $danger-color: 			#c30008 !default;
 $notice-color: 			#007bd4 !default;
 $succes-color: 			#3fa944 !default;
+
+$blue-color:			#8bb2b5 !default;
+$blue-color-xlight: 	lighten($blue-color, 10%) !default;
+$blue-color-light: 		lighten($blue-color, 5%) !default;
+$blue-color-dark: 		darken($blue-color, 5%) !default;
 
 
 // Global
@@ -59,7 +64,18 @@ $size-percent:			100 !default;
 
 // Typography
 // ==========================================================================
-$font-default: 			"Helvetica Neue", sans-serif !default;
+@font-face {
+    font-family: "myriad_proregular";
+    src: url("../fonts/myriad_pro_regular-webfont.eot");
+    src: url("../fonts/myriad_pro_regular-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/myriad_pro_regular-webfont.woff") format("woff"),
+         url("../fonts/myriad_pro_regular-webfont.ttf") format("truetype"),
+         url("../fonts/myriad_pro_regular-webfont.svg#myriad_proregular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+$font-default: 			"myriad_proregular", sans-serif !default;
+$font-size-default: 	14px;
 
 // Header Styles
 $h1-fontsize: 			24px !default;
