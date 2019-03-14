@@ -56,36 +56,38 @@
 		<?php wp_head(); ?>
 	</head>
 	<body class="<?php if(is_home()): echo 'pageHome'; endif; ?>">
-		<header class="js-header">			
-			<nav>
-				<ul class="mb-nav" itemscope>
-					<!-- <?php
-						$menu_name = 'top_menu';
+		<?php if (!is_home()) : ?>
+			<header class="js-header">			
+				<nav>
+					<ul class="mb-nav" itemscope>
+						<?php
+							$menu_name = 'top_menu';
 
-						if (( $locations = get_nav_menu_locations()) && isset( $locations[ $menu_name ])) {
-							$menu = wp_get_nav_menu_object( $locations[ $menu_name ]);
-							$menu_items = wp_get_nav_menu_items( $menu->term_id );
-							$menu_list = '';
-							foreach ( (array) $menu_items as $key => $menu_item) {
+							if (( $locations = get_nav_menu_locations()) && isset( $locations[ $menu_name ])) {
+								$menu = wp_get_nav_menu_object( $locations[ $menu_name ]);
+								$menu_items = wp_get_nav_menu_items( $menu->term_id );
+								$menu_list = '';
+								foreach ( (array) $menu_items as $key => $menu_item) {
 
-								$url 				= $menu_item->url;
-								$title 				= $menu_item->title;
-								$class 				= esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $menu_item->classes ), $menu_item) ) );
+									$url 				= $menu_item->url;
+									$title 				= $menu_item->title;
+									$class 				= esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $menu_item->classes ), $menu_item) ) );
 
-								//$menu_item_parent	= $menu_item->menu_item_parent;		id del padre
-								//$id 				= $menu_item->ID;
-								//$attr_title 		= $menu_item->attr_title;
-								//$description		= $menu_item->description;
-								//$xfn 				= $menu_item->xfn;
-								//$type 			= $menu_item->type;		taxonomy, page...
-								//$type_label		= $menu_item->type_label;		página, categoría...
+									//$menu_item_parent	= $menu_item->menu_item_parent;		id del padre
+									//$id 				= $menu_item->ID;
+									//$attr_title 		= $menu_item->attr_title;
+									//$description		= $menu_item->description;
+									//$xfn 				= $menu_item->xfn;
+									//$type 			= $menu_item->type;		taxonomy, page...
+									//$type_label		= $menu_item->type_label;		página, categoría...
 
-								$menu_list .='<li itemprop="actionOption" class="' . $class .'"><a href="' . $url . '">' . $title . '</a></li>';
+									$menu_list .='<li itemprop="actionOption" class="' . $class .'"><a href="' . $url . '">' . $title . '</a></li>';
+								}
 							}
-						}
-						echo $menu_list;
-					?>	 -->					
-				</ul>
-			</nav>
-		</header>
+							echo $menu_list;
+						?>				
+					</ul>
+				</nav>
+			</header>
+		<?php endif; ?>
 		<div class="[ main-body ]">

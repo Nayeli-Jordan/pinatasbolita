@@ -2233,7 +2233,7 @@ input[type="submit"]:hover {
 }
 
 /* line 24, ../sass/components/_buttons.scss */
-a {
+.bg-ruleta_opciones a {
   position: absolute;
   display: block;
   width: 17%;
@@ -2241,57 +2241,57 @@ a {
   border-radius: 50%;
 }
 /* line 32, ../sass/components/_buttons.scss */
-a#ruleta_link_1 {
+.bg-ruleta_opciones a#ruleta_link_1 {
   top: 18%;
   right: 30%;
 }
 /* line 33, ../sass/components/_buttons.scss */
-a#ruleta_link_2 {
+.bg-ruleta_opciones a#ruleta_link_2 {
   top: 26%;
   right: 14%;
 }
 /* line 34, ../sass/components/_buttons.scss */
-a#ruleta_link_3 {
+.bg-ruleta_opciones a#ruleta_link_3 {
   top: 44%;
   right: 8%;
 }
 /* line 35, ../sass/components/_buttons.scss */
-a#ruleta_link_4 {
+.bg-ruleta_opciones a#ruleta_link_4 {
   bottom: 26%;
   right: 14%;
 }
 /* line 36, ../sass/components/_buttons.scss */
-a#ruleta_link_5 {
+.bg-ruleta_opciones a#ruleta_link_5 {
   bottom: 18%;
   right: 32%;
 }
 /* line 38, ../sass/components/_buttons.scss */
-a#ruleta_link_6 {
+.bg-ruleta_opciones a#ruleta_link_6 {
   bottom: 18%;
   left: 32%;
 }
 /* line 39, ../sass/components/_buttons.scss */
-a#ruleta_link_7 {
+.bg-ruleta_opciones a#ruleta_link_7 {
   bottom: 26%;
   left: 14%;
 }
 /* line 40, ../sass/components/_buttons.scss */
-a#ruleta_link_8 {
+.bg-ruleta_opciones a#ruleta_link_8 {
   top: 44%;
   left: 8%;
 }
 /* line 41, ../sass/components/_buttons.scss */
-a#ruleta_link_9 {
+.bg-ruleta_opciones a#ruleta_link_9 {
   top: 26%;
   left: 14%;
 }
 /* line 42, ../sass/components/_buttons.scss */
-a#ruleta_link_10 {
+.bg-ruleta_opciones a#ruleta_link_10 {
   top: 18%;
   left: 30%;
 }
 /* line 43, ../sass/components/_buttons.scss */
-a:hover {
+.bg-ruleta_opciones a:hover {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 80%);
 }
 
@@ -2381,7 +2381,7 @@ input[type="submit"] {
 }
 
 /* line 28, ../sass/components/_effects.scss */
-.transition, a, #ruleta_pinatas,
+.transition, .bg-ruleta_opciones a, #ruleta_pinatas,
 #ruleta_pedidos {
   -webkit-transition: .3s ease-out;
   -moz-transition: .3s ease-out;
@@ -3787,8 +3787,8 @@ video.responsive-video {
 /* line 56, ../sass/components/_media.scss */
 .bg-ruleta_indicador {
   position: relative;
-  margin-bottom: -18%;
-  padding-bottom: 24%;
+  margin-bottom: -10%;
+  padding-bottom: 12%;
   width: 17%;
   max-width: 100px;
   background-image: url(../images/ruleta-indicador.png);
