@@ -100,9 +100,9 @@ header {
 					p { /* to do - li es el active */
 						color: $primary-color;
 						&:before { opacity: 1; }
-					}
-					@media #{$medium-and-up}{ ul { display: block; } } 						
+					}					
 				}
+				@media #{$medium-and-up}{ &:hover ul { display: block; } } 
 			}
 		}		
 	}

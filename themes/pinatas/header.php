@@ -56,7 +56,7 @@
 		<?php wp_head(); ?>
 	</head>
 	<body class="<?php if(is_home()): echo 'pageHome'; endif; ?>">
-		<?php if (!is_home()) : ?>
+		<?php if (!is_home()) :  ?>
 			<header class="js-header relative">
 				<div class="bg-fondo-azul"></div>
 				<img src="<?php echo THEMEPATH; ?>/images/paisaje.png" class="img-paisaje responsive-img">	
@@ -77,9 +77,17 @@
 									$url 				= $menu_item->url;
 									$title 				= $menu_item->title;
 									$class 				= esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $menu_item->classes ), $menu_item) ) );
-									$slug 				= $menu_item->post_name;
+									$slug 				= sanitize_title( $menu_item->title );
 
-									$menu_list .='<li id="item_' . $slug . '" itemprop="actionOption" class="' . $class .'"><p>' . $title . '</p>';
+									/* Si el url tiene el slug */
+									$url 				= $_SERVER["REQUEST_URI"];
+									$categoryProduct 	= strpos($url, $slug);
+									$estatusCategory 	= '';
+									if ($categoryProduct !== false) {
+										$estatusCategory 	= 'active';
+									}
+
+									$menu_list .='<li id="item_' . $slug . '" itemprop="actionOption" class="' . $class .' ' . $estatusCategory . '"><p>' . $title . '</p>';
 
 										/* Lista de productos en categoría */
 										$products_args = array(
