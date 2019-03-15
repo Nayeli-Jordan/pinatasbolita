@@ -31,6 +31,19 @@ input[type="submit"] {
 		border-top-right-radius: 0px;
 		border-bottom-right-radius: 0px;
 	}
+	@media #{$sm-and-down} {
+		&.btn-caracteristicas,
+		&.btn-ubicacion {
+			display: block;
+			float: none;
+			width: 240px;
+			margin: 0 auto 20px;
+			padding: 0 20px;
+			line-height: 50px;
+			font-size: 18px;
+			border-radius: 15px!important;
+		}
+	}
 }
 
 .bg-ruleta_opciones a {

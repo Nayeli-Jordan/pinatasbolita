@@ -2256,8 +2256,25 @@ input[type="submit"].btn-ubicacion {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
+@media only screen and (max-width: 600px) {
+  /* line 35, ../sass/components/_buttons.scss */
+  .btn.btn-caracteristicas, .btn.btn-ubicacion,
+  button.btn-caracteristicas,
+  button.btn-ubicacion,
+  input[type="submit"].btn-caracteristicas,
+  input[type="submit"].btn-ubicacion {
+    display: block;
+    float: none;
+    width: 240px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    line-height: 50px;
+    font-size: 18px;
+    border-radius: 15px !important;
+  }
+}
 
-/* line 36, ../sass/components/_buttons.scss */
+/* line 49, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a {
   position: absolute;
   display: block;
@@ -2265,62 +2282,62 @@ input[type="submit"].btn-ubicacion {
   padding-bottom: 17%;
   border-radius: 50%;
 }
-/* line 44, ../sass/components/_buttons.scss */
+/* line 57, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_1 {
   top: 18%;
   right: 30%;
 }
-/* line 45, ../sass/components/_buttons.scss */
+/* line 58, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_2 {
   top: 26%;
   right: 14%;
 }
-/* line 46, ../sass/components/_buttons.scss */
+/* line 59, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_3 {
   top: 44%;
   right: 8%;
 }
-/* line 47, ../sass/components/_buttons.scss */
+/* line 60, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_4 {
   bottom: 26%;
   right: 14%;
 }
-/* line 48, ../sass/components/_buttons.scss */
+/* line 61, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_5 {
   bottom: 18%;
   right: 32%;
 }
-/* line 50, ../sass/components/_buttons.scss */
+/* line 63, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_6 {
   bottom: 18%;
   left: 32%;
 }
-/* line 51, ../sass/components/_buttons.scss */
+/* line 64, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_7 {
   bottom: 26%;
   left: 14%;
 }
-/* line 52, ../sass/components/_buttons.scss */
+/* line 65, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_8 {
   top: 44%;
   left: 8%;
 }
-/* line 53, ../sass/components/_buttons.scss */
+/* line 66, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_9 {
   top: 26%;
   left: 14%;
 }
-/* line 54, ../sass/components/_buttons.scss */
+/* line 67, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_10 {
   top: 18%;
   left: 30%;
 }
-/* line 55, ../sass/components/_buttons.scss */
+/* line 68, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a:hover {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 80%);
 }
 
-/* line 60, ../sass/components/_buttons.scss */
+/* line 73, ../sass/components/_buttons.scss */
 #ruleta_pinatas,
 #ruleta_pedidos {
   position: absolute;
@@ -2331,13 +2348,13 @@ input[type="submit"].btn-ubicacion {
   border-top-left-radius: 60%;
   border-top-right-radius: 60%;
 }
-/* line 71, ../sass/components/_buttons.scss */
+/* line 84, ../sass/components/_buttons.scss */
 #ruleta_pinatas:hover,
 #ruleta_pedidos:hover {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 80%);
 }
 
-/* line 73, ../sass/components/_buttons.scss */
+/* line 86, ../sass/components/_buttons.scss */
 #ruleta_pinatas {
   left: 1%;
   -webkit-transform: rotate(-45deg);
@@ -2345,7 +2362,7 @@ input[type="submit"].btn-ubicacion {
   transform: rotate(-45deg);
 }
 
-/* line 79, ../sass/components/_buttons.scss */
+/* line 92, ../sass/components/_buttons.scss */
 #ruleta_pedidos {
   right: 1%;
   -webkit-transform: rotate(45deg);
@@ -2559,14 +2576,14 @@ ul li {
       background-color: black;
 } */
 /* line 1, ../sass/components/_grid.scss */
-.container {
+.container, .site-main {
   margin: 0 auto;
   max-width: 1280px;
   width: 90%;
 }
 @media only screen and (max-width: 430px) {
   /* line 1, ../sass/components/_grid.scss */
-  .container {
+  .container, .site-main {
     width: 85%;
   }
 }
@@ -8649,6 +8666,13 @@ footer .bg-distribuidor {
   width: 100%;
   height: 260px;
   background-image: url(../images/distribuidor.png);
+}
+@media only screen and (max-width: 600px) {
+  /* line 6, ../sass/components/_footer.scss */
+  footer .bg-distribuidor {
+    background-size: contain;
+    background-image: url(../images/distribuidor-sm.png);
+  }
 }
 
 @media print {

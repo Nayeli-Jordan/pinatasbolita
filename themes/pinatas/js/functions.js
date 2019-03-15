@@ -9,11 +9,11 @@ var $=jQuery.noConflict();
 		\*------------------------------------*/
 
 		$(document).ready(function() {
-			//footerBottom();
+			footerBottom();
 		});
  
 		$(window).on('resize', function(){
-			//footerBottom();
+			footerBottom();
 		});
  
 		$(document).scroll(function() {
