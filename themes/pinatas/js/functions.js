@@ -28,16 +28,28 @@ var $=jQuery.noConflict();
 
 		// } 
 
-		// Modal
-		$(".open-modal").click(function() {
-			var idModal = $(this).attr('id');
-			$('#modal-' + idModal).show();
+		// Nav Mobile
+		$("#openNav").click(function() {
+			$('.js-header nav ul.pb-nav').addClass('open');
 			$('body').addClass('overflow-hide');
 		});
-		$(".close-modal, .exit-modal").click(function() {
-			$('.modal').hide();
+		$("#closeNav").click(function() {
+			$('.js-header nav ul.pb-nav').removeClass('open');
 			$('body').removeClass('overflow-hide');
 		});
+
+		//Products category
+		$(".pb-nav li > p").click(function() {
+			console.log('click');
+			var idCategory = $(this).parent().attr('id');
+			console.log('#' + idCategory + ' p');
+			if($('#' + idCategory + ' p').hasClass('active')){
+				$('#' + idCategory + ' p').removeClass('active');
+			} else {
+				$('#' + idCategory + ' p').addClass('active');
+			}
+			
+		});		
 
 	});
 })(jQuery);

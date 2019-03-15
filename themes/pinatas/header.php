@@ -62,7 +62,9 @@
 				<img src="<?php echo THEMEPATH; ?>/images/paisaje.png" class="img-paisaje responsive-img">	
 				<nav class="container padding-top-20">
 					<a href="<?php echo SITEURL; ?>" class="inline-block"><div class="logo-pb"></div></a>
-					<ul class="mb-nav" itemscope>
+					<div id="openNav" class="hide-on-med-and-up">Open</div>
+					<ul class="pb-nav" itemscope>
+						<div id="closeNav" class="hide-on-med-and-up">Close</div>
 						<?php
 							$menu_name = 'top_menu';
 
@@ -75,8 +77,9 @@
 									$url 				= $menu_item->url;
 									$title 				= $menu_item->title;
 									$class 				= esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $menu_item->classes ), $menu_item) ) );
+									$slug 				= $menu_item->post_name;
 
-									$menu_list .='<li itemprop="actionOption" class="' . $class .'"><p>' . $title . '</p>';
+									$menu_list .='<li id="item_' . $slug . '" itemprop="actionOption" class="' . $class .'"><p>' . $title . '</p>';
 
 										/* Lista de productos en categoría */
 										$products_args = array(

@@ -26,13 +26,13 @@ add_action( 'wp_enqueue_scripts', function(){
  
 	wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.2.1.min.js', array(''), '2.1.1', true );
 	// wp_enqueue_script( 'masonry_js', JSPATH.'packery.pkgd.min.js', array(), '', true );
-	/*wp_enqueue_script( 'mqt_functions', JSPATH.'functions.js', array('materialize_js'), '1.0', true );*/
+	wp_enqueue_script( 'pb_functions', JSPATH.'functions.js', array(), '1.0', true );
  
-	wp_localize_script( 'mqt_functions', 'siteUrl', SITEURL );
-	wp_localize_script( 'mqt_functions', 'theme_path', THEMEPATH );
+	wp_localize_script( 'pb_functions', 'siteUrl', SITEURL );
+	wp_localize_script( 'pb_functions', 'theme_path', THEMEPATH );
 	
 	// $is_home = is_front_page() ? "1" : "0";
-	// wp_localize_script( 'rcc_functions', 'isHome', $is_home );
+	// wp_localize_script( 'pb_functions', 'isHome', $is_home );
  
 });
 
@@ -42,11 +42,11 @@ add_action( 'wp_enqueue_scripts', function(){
 
 // Agregar css y js al administrador
 function load_custom_files_wp_admin() {
-        wp_register_style( 'rcc_wp_admin_css', THEMEPATH . '/admin/admin-style.css', false, '1.0.0' );
-        wp_enqueue_style( 'rcc_wp_admin_css' );
+        wp_register_style( 'pb_wp_admin_css', THEMEPATH . '/admin/admin-style.css', false, '1.0.0' );
+        wp_enqueue_style( 'pb_wp_admin_css' );
 
-        wp_register_script( 'rcc_wp_admin_js', THEMEPATH . 'admin/admin-script.js', false, '1.0.0' );
-        wp_enqueue_script( 'rcc_wp_admin_js' );        
+        wp_register_script( 'pb_wp_admin_js', THEMEPATH . 'admin/admin-script.js', false, '1.0.0' );
+        wp_enqueue_script( 'pb_wp_admin_js' );        
 }
 add_action( 'admin_enqueue_scripts', 'load_custom_files_wp_admin' );
 

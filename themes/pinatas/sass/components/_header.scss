@@ -1,6 +1,7 @@
 header {
 	height: 75vh;
 	min-height: 750px;
+	margin-bottom: -25vh;
 	.bg-fondo-azul {
 		position: absolute;
 		width: 100%;
@@ -17,7 +18,7 @@ header {
 	}
 	nav {
 		text-align: center;
-		a {
+		a.inline-block {
 			.logo-pb {
 				display: inline-block;
 				width: 369px;
@@ -25,18 +26,9 @@ header {
 				background-image: url(../images/identidad/logo.png);
 				@extend .bg-image;
 				@extend .bg-contain;
-
-			}
-			@media #{$sm-and-down} {
-				float: left;
-				.logo-pb {
-					width: 150px;
-					height: 80px;					
-				}
-			}					
+			}				
 		}
-
-		ul.mb-nav {
+		ul.pb-nav {
 			& > li {
 				position: relative;
 				display: inline-block;
@@ -71,31 +63,37 @@ header {
 						@extend .bg-contain;
 						@extend .center-absolute;
 					}
-
-				}			
-				ul {
-					position: absolute;
-					left: 50%;
-					margin-top: 10px;
-					min-width: 160px;
-					display: none;
-					-webkit-transform:translateX(-50%);
-					-ms-transform:translateX(-50%);
-					-o-transform:translateX(-50%);
-					transform:translateX(-50%);
-					li {
-						a {
-							display: block;
-							padding: 0 5px;
-							color: $light-color;
-							font-size: 12px;
-							border-radius: 10px;
-							background-color: rgba(255, 255, 255, 0.2);
-							&:hover {
-								color: $primary-color;
+				}
+				@media #{$medium-and-up}{
+					ul {
+						position: absolute;
+						left: 50%;
+						margin-top: 10px;
+						max-height: 230px;
+						min-width: 160px;
+						display: none;
+						-webkit-transform:translateX(-50%);
+						-ms-transform:translateX(-50%);
+						-o-transform:translateX(-50%);
+						transform:translateX(-50%);
+						box-shadow: 5px 5px 20px 0 rgba(84, 84, 84, 0.25);
+						overflow: auto;
+						li {
+							margin-bottom: 4px;
+							a {
+								display: block;
+								padding: 0 5px;
+								color: $light-color;
+								font-size: 12px;
+								border-radius: 10px;
+								background-color: rgba(255, 255, 255, 0.2);
+								&:hover {
+									color: $primary-color;
+									background-color: rgba(255, 255, 255, 0.7);
+								}
 							}
 						}
-					}
+					}					
 				}
 				&:hover, &.active {
 					z-index: 99;
@@ -103,35 +101,106 @@ header {
 						color: $primary-color;
 						&:before { opacity: 1; }
 					}
-					ul { display: block; }						
+					@media #{$medium-and-up}{ ul { display: block; } } 						
 				}
-			}
-			@media #{$sm-and-down}{
-			& > li {
-				p {
-					/* Indicador */
-					&:before {
-						display: none!important;
-					}
-
-				}			
-				ul {
-					li {
-						a {
-							&:hover {
-							}
-						}
-					}
-				}
-				&:hover, &.active {
-					p {
-
-					}
-					ul {  }						
-				}
-			}
 			}
 		}		
 	}
+	@media #{$medium-only}{
+		min-height: 600px;
+		margin-bottom: -10vh;
+		.img-paisaje { bottom: -15%; }
+		nav {
+			ul.pb-nav {
+				& > li {
+					padding-top: 10px;
+					p {
+						/* Indicador */
+						&:before {
+							display: none!important;
+						}
+					}
+				}				
+			}
+		}
+	}
+	@media #{$sm-and-down}{
+		height: 300px;
+		min-height: 300px;
+		margin-bottom: -10vh;
+		.img-paisaje { bottom: -15%; }
+		nav {
+			position: relative;
+			a.inline-block .logo-pb {
+				width: 190px;
+				height: 110px;					
+			}
+			#openNav {
+				position: absolute;
+			    top: 20px;
+			    right: 0px;
+				color: $light-color;
+				cursor: pointer;
+			}
+			ul.pb-nav {
+				position: fixed;
+				top: 0px;
+				right: -400px;
+				width: 300px;
+				max-width: 100vw;
+				height: 100vh;
+				text-align: left;
+				background-color: $light-color;
+				-webkit-transition: .4s ease-out; 
+				-moz-transition: .4s ease-out; 
+				transition: .4s ease-out; 
+				overflow: auto;
+				z-index: 99;
+				box-shadow: -3px 3px 20px 0 rgba(84, 84, 84, 0.25);
+				#closeNav {
+					padding: 10px 20px;
+					text-align: right;
+					color: $primary-color;
+				}
+				& > li {
+					display: block;
+					padding: 0px;
+					p {
+						display: block;
+						padding: 0 30px;
+						color: $primary-color;
+						cursor: pointer;
+						&:before { display: none; }
+						&.active + ul { display: block; }
+					}	
+					ul {
+						display: none;
+						li {
+							a {
+								display: block;
+							    padding: 0 20px 0 40px;
+							    line-height: 40px;
+							    font-size: 13px;
+							    color: $blue-color;
+							    cursor: pointer;
+								&:hover {
+									color: $primary-color;
+								}
+							}
+						}
+					}
+					&:hover, &.active {
+						p {
 
+						}
+						ul {  }						
+					}
+				}
+				&.open { right: 0px; }			
+			}
+		}
+	}
+	@media #{$small-and-down} {
+		.img-paisaje { bottom: 0px; }
+	}
 }
