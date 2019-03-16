@@ -79,5 +79,6 @@ video.responsive-video {
 .bg-body {
 	background-image: url(../images/body.png);
 	background-position: top center;
+	padding-top: 25%; /* Espacio bg disparejo */
 	@extend .bg-image;
 }
