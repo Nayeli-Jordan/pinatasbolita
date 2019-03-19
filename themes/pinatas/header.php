@@ -92,7 +92,7 @@
 										/* Lista de productos en categoría */
 										$products_args = array(
 											'post_type' 		=> 'product',
-											'posts_per_page' 	=> -11,
+											'posts_per_page' 	=> -1,
 											'product_cat'		=> $title,
 										);
 										$products_query = new WP_Query( $products_args );
@@ -122,60 +122,3 @@
 			</header>
 		<?php endif; ?>
 		<div class="[ main-body ] <?php if(!is_home()): echo 'bg-body'; endif; ?>">
-
-
-
-
-
-
-
-
-						<?php
-
-  $taxonomy     = 'product_cat';
-  $orderby      = 'name';  
-  $show_count   = 0;      // 1 for yes, 0 for no
-  $pad_counts   = 0;      // 1 for yes, 0 for no
-  $hierarchical = 1;      // 1 for yes, 0 for no  
-  $title        = '';  
-  $empty        = 0;
-
-  $args = array(
-         'taxonomy'     => $taxonomy,
-         'orderby'      => $orderby,
-         'show_count'   => $show_count,
-         'pad_counts'   => $pad_counts,
-         'hierarchical' => $hierarchical,
-         'title_li'     => $title,
-         'hide_empty'   => $empty
-  );
- $all_categories = get_categories( $args );
- foreach ($all_categories as $cat) {
- 	echo "<li>";
-	    if($cat->category_parent == 0) {
-	        $category_id = $cat->term_id;       
-	        echo '<a href="'. get_term_link($cat->slug, 'product_cat') .'">'. $cat->name .'</a>';
-
-	        $args2 = array(
-	                'taxonomy'     => $taxonomy,
-	                'child_of'     => 0,
-	                'parent'       => $category_id,
-	                'orderby'      => $orderby,
-	                'show_count'   => $show_count,
-	                'pad_counts'   => $pad_counts,
-	                'hierarchical' => $hierarchical,
-	                'title_li'     => $title,
-	                'hide_empty'   => $empty
-	        );
-	        $sub_cats = get_categories( $args2 );
-	        if($sub_cats) {
-	        	echo "<ul>";
-		            foreach($sub_cats as $sub_category) {
-		                echo "<li>" . $sub_category->name . "</li>";
-		            }
-		        echo "</ul>"; 
-	        }
-	    }
-	echo "</li>";       
-}
-?>
