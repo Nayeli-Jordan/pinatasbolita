@@ -3861,6 +3861,50 @@ video.responsive-video {
   /* Espacio bg disparejo */
 }
 
+/* Slider product */
+/* line 89, ../sass/components/_media.scss */
+.sliderProduct section article {
+  width: 100%;
+  text-align: center;
+  border: 1px solid gray;
+  /* & div:nth-last-child(1) {
+  	background-color: gray;
+  }
+  & div:nth-last-child(2) {
+  	background-color: red;
+  }
+  & div:nth-last-child(3) {
+  	background-color: pink;
+  } */
+}
+/* line 93, ../sass/components/_media.scss */
+.sliderProduct section article div {
+  display: inline-block;
+}
+/* line 95, ../sass/components/_media.scss */
+.sliderProduct section article div h2 {
+  color: #fff;
+  text-align: right;
+  text-shadow: 2px 2px #7c7c7c45;
+}
+/* line 99, ../sass/components/_media.scss */
+.sliderProduct section article div h2 em {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-style: italic;
+}
+/* line 104, ../sass/components/_media.scss */
+.sliderProduct section article div h2 span {
+  display: block;
+  margin-top: -5px;
+  font-size: 18px;
+}
+/* line 122, ../sass/components/_media.scss */
+.sliderProduct #prevProducts,
+.sliderProduct #nextProducts {
+  color: #fff;
+}
+
 /* line 4, ../sass/components/_modal.scss */
 .modal {
   display: none;

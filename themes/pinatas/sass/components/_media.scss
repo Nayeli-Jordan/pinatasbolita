@@ -82,3 +82,49 @@ video.responsive-video {
 	padding-top: 25%; /* Espacio bg disparejo */
 	@extend .bg-image;
 }
+
+/* Slider product */
+.sliderProduct {
+	section {
+		article {
+			width: 100%;
+			text-align: center;
+			border: 1px solid gray;
+			div {
+				display: inline-block;
+				h2 {
+					color: $light-color;
+					text-align: right;
+					text-shadow: 2px 2px #7c7c7c45;
+					em {
+						text-transform: uppercase;
+						font-weight: 700;
+						font-style: italic;					
+					}
+					span {
+						display: block;
+						margin-top: -5px;
+						font-size: 18px;
+					}
+				}
+			}
+			/* & div:nth-last-child(1) {
+				background-color: gray;
+			}
+			& div:nth-last-child(2) {
+				background-color: red;
+			}
+			& div:nth-last-child(3) {
+				background-color: pink;
+			} */
+		}		
+	}
+	#prevProducts,
+	#nextProducts {
+		color: $light-color;
+	}
+
+	#nextProducts {
+
+	}
+}

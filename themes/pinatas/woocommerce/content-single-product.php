@@ -95,79 +95,25 @@ echo 'Hijo final: ' . $finalHijoId . ' - ' . $finalHijo . '</br></br>';
 // Declarar array con categorías que se excluirán para productos sueltos
 $excludeCats = array(); ?>
 
-<section id="product-<?php the_ID(); ?>" class="" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-slides="> article" data-cycle-prev="#prevGallery" data-cycle-next="#nextGallery">
-	
-	<?php
-	if ($finalHijoId != 0) {
-		/* Si producto tiene categoría hijo */
-		echo "<article>";
-			// Img producto principal
-			the_post_thumbnail();
-			echo "<h2>" . $post->post_title . "</h2>";
-			// Img´s productos de la misma categoría hijo
-		    $args = array(
-		        'post_type' 		=> 'product',
-		        'posts_per_page' 	=> 4,
-		        'post__not_in' 		=> array($productID),
-		        'tax_query' 		=> array(
-	                array(
-	                    'taxonomy' => 'product_cat',
-	                    'field'    => 'term_id',
-	                    'terms'    => $finalHijoId,
-	                    'operator' => 'IN'
-	                ),	                    
-	            ),
-	        );
-		    $loop = new WP_Query( $args );
-		    $i = 1;
-		    if ( $loop->have_posts() ) {
-		        while ( $loop->have_posts() ) : $loop->the_post(); 
-
-		        	the_post_thumbnail(); 
-
-		        $i ++; endwhile;
-		    } wp_reset_postdata();
-		echo "</article>";
-
-		//Agregar categoría a excluir
-		array_push($excludeCats, $finalHijo);
-	} else {
-		echo "<article>";
-			/* Si producto NO tiene categoría hijo */
-			// Img producto principal
-			the_post_thumbnail();
-			echo "<h2>" . $post->post_title . "</h2>";
-		echo "</article>";
-	}
-
-	/* Obtener las demás subcategorías del padre ($finalCatParent) */
-	$args = array(
-	        'taxonomy'     		=> 'product_cat',
-	        'child_of'     		=> 0,
-	        'parent'       		=> $finalCatParentId,
-	        'hide_empty'   		=> 0,
-	        'exclude'    		=> $finalHijoId,
-	);
-	$sub_cats = get_categories( $args );
-	if($sub_cats) {
-	    foreach($sub_cats as $sub_category) {
-	        $subCategory = $sub_category->slug;
-
-			//Excluir categoría para productos sueltos
-			//Agregar categoría a excluir
-			array_push($excludeCats, $subCategory);
-
-	        /* Obtener slide con hasta 4 productos por subcategoría extra */
-	        echo "<article>";
-		        $args = array(
+<div id="product-<?php the_ID(); ?>" class="sliderProduct">	
+	<section class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-slides="> article" data-cycle-prev="#prevGallery" data-cycle-next="#nextGallery">
+		
+		<?php
+		if ($finalHijoId != 0) {
+			/* Si producto tiene categoría hijo */
+			echo "<article>";
+				// Img producto principal
+				include (TEMPLATEPATH . '/template/content-product.php');
+				// Img´s productos de la misma categoría hijo
+			    $args = array(
 			        'post_type' 		=> 'product',
 			        'posts_per_page' 	=> 4,
-		        	/* 'post__not_in' 		=> array($productID), No mostrar principal si esta en más de una subcategoría */
+			        'post__not_in' 		=> array($productID),
 			        'tax_query' 		=> array(
 		                array(
 		                    'taxonomy' => 'product_cat',
-		                    'field'    => 'slug',
-		                    'terms'    => $subCategory,
+		                    'field'    => 'term_id',
+		                    'terms'    => $finalHijoId,
 		                    'operator' => 'IN'
 		                ),	                    
 		            ),
@@ -176,49 +122,102 @@ $excludeCats = array(); ?>
 			    $i = 1;
 			    if ( $loop->have_posts() ) {
 			        while ( $loop->have_posts() ) : $loop->the_post(); 
-			        	
-			        	the_post_thumbnail();
-			        	echo "<h2>" . $post->post_title . "</h2>";
+
+			        	include (TEMPLATEPATH . '/template/content-product.php');
 
 			        $i ++; endwhile;
 			    } wp_reset_postdata();
-		    echo "</article>";
-	    }
-	} 
+			echo "</article>";
 
-	/* Obtener productos que no tienen subcategoría (sueltos), excluirlas */
-	// print_r($excludeCats);
-	$args = array(
-	    'post_type' 		=> 'product',
-	    'posts_per_page' 	=> -1,
-	    'post__not_in' 		=> array($productID), /* Excluir producto principal*/
-	    'tax_query' 		=> array(
-	        array(
-	            'taxonomy' => 'product_cat',
-	            'field'    => 'term_id',
-	            'terms'    => $finalCatParentId,
-	            'operator' => 'IN'
-	        ),
-	        array(
-	            'taxonomy' => 'product_cat',
-	            'field'    => 'slug',
-	            'terms'    => $excludeCats,
-	            'operator' => 'NOT IN'
-	        ),	
-	    ),
-	);
-	$loop = new WP_Query( $args );
-	$i = 1;
-	if ( $loop->have_posts() ) {
-	    while ( $loop->have_posts() ) : $loop->the_post(); ?>
-			
-			<article class="prueba"><?php the_post_thumbnail(); ?><h2><?php echo $post->post_title ?></h2></article>
+			//Agregar categoría a excluir
+			array_push($excludeCats, $finalHijo);
+		} else {
+			echo "<article>";
+				/* Si producto NO tiene categoría hijo */
+				// Img producto principal
+				include (TEMPLATEPATH . '/template/content-product.php');
+			echo "</article>";
+		}
 
-	    <?php $i ++; endwhile;
-	} wp_reset_postdata(); ?>
+		/* Obtener las demás subcategorías del padre ($finalCatParent) */
+		$args = array(
+		        'taxonomy'     		=> 'product_cat',
+		        'child_of'     		=> 0,
+		        'parent'       		=> $finalCatParentId,
+		        'hide_empty'   		=> 0,
+		        'exclude'    		=> $finalHijoId,
+		);
+		$sub_cats = get_categories( $args );
+		if($sub_cats) {
+		    foreach($sub_cats as $sub_category) {
+		        $subCategory = $sub_category->slug;
 
-</section> <!-- end cycle-slideshow -->
-<a href=# id="prevGallery" class=""><em class="icon-left-open">left</em></a> 
-<a href=# id="nextGallery" class=""><em class="icon-right-open">right</em></a>	
+				//Excluir categoría para productos sueltos
+				//Agregar categoría a excluir
+				array_push($excludeCats, $subCategory);
+
+		        /* Obtener slide con hasta 4 productos por subcategoría extra */
+		        echo "<article>";
+			        $args = array(
+				        'post_type' 		=> 'product',
+				        'posts_per_page' 	=> 4,
+			        	/* 'post__not_in' 		=> array($productID), No mostrar principal si esta en más de una subcategoría */
+				        'tax_query' 		=> array(
+			                array(
+			                    'taxonomy' => 'product_cat',
+			                    'field'    => 'slug',
+			                    'terms'    => $subCategory,
+			                    'operator' => 'IN'
+			                ),	                    
+			            ),
+			        );
+				    $loop = new WP_Query( $args );
+				    $i = 1;
+				    if ( $loop->have_posts() ) {
+				        while ( $loop->have_posts() ) : $loop->the_post(); 
+				        	
+				        	include (TEMPLATEPATH . '/template/content-product.php');
+
+				        $i ++; endwhile;
+				    } wp_reset_postdata();
+			    echo "</article>";
+		    }
+		} 
+
+		/* Obtener productos que no tienen subcategoría (sueltos), excluirlas */
+		// print_r($excludeCats);
+		$args = array(
+		    'post_type' 		=> 'product',
+		    'posts_per_page' 	=> -1,
+		    'post__not_in' 		=> array($productID), /* Excluir producto principal*/
+		    'tax_query' 		=> array(
+		        array(
+		            'taxonomy' => 'product_cat',
+		            'field'    => 'term_id',
+		            'terms'    => $finalCatParentId,
+		            'operator' => 'IN'
+		        ),
+		        array(
+		            'taxonomy' => 'product_cat',
+		            'field'    => 'slug',
+		            'terms'    => $excludeCats,
+		            'operator' => 'NOT IN'
+		        ),	
+		    ),
+		);
+		$loop = new WP_Query( $args );
+		$i = 1;
+		if ( $loop->have_posts() ) {
+		    while ( $loop->have_posts() ) : $loop->the_post(); ?>
+				
+				<article ><?php include (TEMPLATEPATH . '/template/content-product.php'); ?></article>
+
+		    <?php $i ++; endwhile;
+		} wp_reset_postdata(); ?>
+
+	</section> <!-- end cycle-slideshow -->
+	<a href=# id="prevProducts" class=""><em class="icon-left-open">left</em></a> 
+	<a href=# id="nextProducts" class=""><em class="icon-right-open">right</em></a>	
+</div>
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>
