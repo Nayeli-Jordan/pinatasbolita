@@ -87,7 +87,7 @@
 										$estatusCategory 	= 'active';
 									}
 
-									$menu_list .='<li id="item_' . $slug . '" itemprop="actionOption" class="' . $class .' ' . $estatusCategory . '"><p>' . $title . '</p>';
+									//$menu_list .='<li id="item_' . $slug . '" itemprop="actionOption" class="' . $class .' ' . $estatusCategory . '"><p>' . $title . '</p>';
 
 										/* Lista de productos en categoría */
 										$products_args = array(
@@ -97,17 +97,24 @@
 										);
 										$products_query = new WP_Query( $products_args );
 										if ( $products_query->have_posts() ) : 
-											$menu_list .='<ul>';
+											
 											$i = 1;
 											while ( $products_query->have_posts() ) : $products_query->the_post();
 												global $product; 
 												$idProduct 		= $product->get_id();
 												$titleProduct	= $post->post_title;
 
+												if ($i === 1) {
+													$menu_list .='<li id="item_' . $slug . '" itemprop="actionOption" class="' . $class .' ' . $estatusCategory . '"><a href="' . get_permalink( $idProduct ) . '">' . $title . '</a>';
+													$menu_list .='<ul>';
+												}
+
 												$menu_list .='<li><a href="' . get_permalink( $idProduct ) . '">' . $titleProduct . '</a></li>';
 
 										$i ++; endwhile; 
+										if ($i != 0) {
 											$menu_list .='</ul>';
+										}
 										wp_reset_postdata();
 										endif;
 

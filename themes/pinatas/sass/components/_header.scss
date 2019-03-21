@@ -34,8 +34,8 @@ header {
 				display: inline-block;
 				padding-top: 90px;
 				padding-bottom: 10px;
-				&:not(:last-child) p { border-right: 2px solid $light-color; }
-				p {
+				&:not(:last-child) > a { border-right: 2px solid $light-color; }
+				& > a {
 					display: inline-block;
 					line-height: 30px;
 					padding: 0 10px;
@@ -97,7 +97,7 @@ header {
 				}
 				&:hover, &.active {
 					z-index: 99;
-					p { /* to do - li es el active */
+					& > a { /* to do - li es el active */
 						color: $primary-color;
 						&:before { opacity: 1; }
 					}					
@@ -114,7 +114,7 @@ header {
 			ul.pb-nav {
 				& > li {
 					padding-top: 10px;
-					p {
+					& > a {
 						/* Indicador */
 						&:before {
 							display: none!important;
@@ -166,7 +166,7 @@ header {
 				& > li {
 					display: block;
 					padding: 0px;
-					p {
+					& > a {
 						display: block;
 						padding: 0 30px;
 						color: $primary-color;
@@ -189,12 +189,6 @@ header {
 								}
 							}
 						}
-					}
-					&:hover, &.active {
-						p {
-
-						}
-						ul {  }						
 					}
 				}
 				&.open { right: 0px; }			

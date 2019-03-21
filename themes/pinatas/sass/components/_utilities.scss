@@ -2,6 +2,7 @@
 // Utilities
 // ==========================================================================
 
-#content-caracteristicas {
-	@include transition(.3s ease-out);
+#content-caracteristicas,
+#content-ubicacion {
+	@extend .text-shadow-light;
 }

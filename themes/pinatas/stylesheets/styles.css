@@ -2421,9 +2421,15 @@ input[type="submit"], .content-map {
   text-shadow: 2px 2px #33333345;
 }
 
-/* line 35, ../sass/components/_effects.scss */
+/* line 34, ../sass/components/_effects.scss */
+.text-shadow-light, #content-caracteristicas,
+#content-ubicacion {
+  text-shadow: 2px 2px #afafaf45, -1px -1px #aeaeae45;
+}
+
+/* line 36, ../sass/components/_effects.scss */
 .transition, .bg-ruleta_opciones a, #ruleta_pinatas,
-#ruleta_pedidos, header nav ul.pb-nav > li p {
+#ruleta_pedidos, header nav ul.pb-nav > li > a {
   -webkit-transition: .3s ease-out;
   -moz-transition: .3s ease-out;
   transition: .3s ease-out;
@@ -3866,17 +3872,17 @@ video.responsive-video {
 }
 
 /* line 20, ../sass/components/_media.scss */
-.bg-image, .bg-ruleta_centro, .bg-ruleta_indicador, .bg-ruleta_opciones, .bg-body, header .bg-fondo-azul, header nav a.inline-block .logo-pb, header nav ul.pb-nav > li p:before, footer .bg-distribuidor {
+.bg-image, .bg-ruleta_centro, .bg-ruleta_indicador, .bg-ruleta_opciones, .bg-body, header .bg-fondo-azul, header nav a.inline-block .logo-pb, header nav ul.pb-nav > li > a:before, footer .bg-distribuidor {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 /* line 24, ../sass/components/_media.scss */
-.bg-image.bg-contain, .bg-ruleta_centro, .bg-ruleta_indicador, .bg-ruleta_opciones, .bg-contain.bg-body, header .bg-contain.bg-fondo-azul, header .bg-fondo-azul.bg-ruleta_centro, header .bg-fondo-azul.bg-ruleta_indicador, header .bg-fondo-azul.bg-ruleta_opciones, header nav a.inline-block .logo-pb, header nav ul.pb-nav > li p:before, footer .bg-contain.bg-distribuidor, footer .bg-distribuidor.bg-ruleta_centro, footer .bg-distribuidor.bg-ruleta_indicador, footer .bg-distribuidor.bg-ruleta_opciones {
+.bg-image.bg-contain, .bg-ruleta_centro, .bg-ruleta_indicador, .bg-ruleta_opciones, .bg-contain.bg-body, header .bg-contain.bg-fondo-azul, header .bg-fondo-azul.bg-ruleta_centro, header .bg-fondo-azul.bg-ruleta_indicador, header .bg-fondo-azul.bg-ruleta_opciones, header nav a.inline-block .logo-pb, header nav ul.pb-nav > li > a:before, footer .bg-contain.bg-distribuidor, footer .bg-distribuidor.bg-ruleta_centro, footer .bg-distribuidor.bg-ruleta_indicador, footer .bg-distribuidor.bg-ruleta_opciones {
   background-size: contain;
 }
 /* line 25, ../sass/components/_media.scss */
-.bg-image.bg-repeat, .bg-repeat.bg-ruleta_centro, .bg-repeat.bg-ruleta_indicador, .bg-repeat.bg-ruleta_opciones, .bg-repeat.bg-body, header .bg-repeat.bg-fondo-azul, header nav a.inline-block .bg-repeat.logo-pb, header nav ul.pb-nav > li p.bg-repeat:before, footer .bg-repeat.bg-distribuidor {
+.bg-image.bg-repeat, .bg-repeat.bg-ruleta_centro, .bg-repeat.bg-ruleta_indicador, .bg-repeat.bg-ruleta_opciones, .bg-repeat.bg-body, header .bg-repeat.bg-fondo-azul, header nav a.inline-block .bg-repeat.logo-pb, header nav ul.pb-nav > li > a.bg-repeat:before, footer .bg-repeat.bg-distribuidor {
   background-repeat: repeat;
 }
 
@@ -4261,7 +4267,7 @@ video.responsive-video {
 }
 
 /* line 12, ../sass/components/_position.scss */
-.center-absolute, header nav ul.pb-nav > li p:before {
+.center-absolute, header nav ul.pb-nav > li > a:before {
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -8754,13 +8760,6 @@ small {
   text-overflow: ellipsis;
 }
 
-/* line 5, ../sass/components/_utilities.scss */
-#content-caracteristicas {
-  -webkit-transition: 0.3s ease-out;
-  -ms-transition: 0.3s ease-out;
-  transition: 0.3s ease-out;
-}
-
 /* line 1, ../sass/components/_header.scss */
 header {
   height: 75vh;
@@ -8801,11 +8800,11 @@ header nav ul.pb-nav > li {
   padding-bottom: 10px;
 }
 /* line 37, ../sass/components/_header.scss */
-header nav ul.pb-nav > li:not(:last-child) p {
+header nav ul.pb-nav > li:not(:last-child) > a {
   border-right: 2px solid #fff;
 }
 /* line 38, ../sass/components/_header.scss */
-header nav ul.pb-nav > li p {
+header nav ul.pb-nav > li > a {
   display: inline-block;
   line-height: 30px;
   padding: 0 10px;
@@ -8814,7 +8813,7 @@ header nav ul.pb-nav > li p {
   /* Indicador */
 }
 /* line 46, ../sass/components/_header.scss */
-header nav ul.pb-nav > li p:before {
+header nav ul.pb-nav > li > a:before {
   content: '';
   position: absolute;
   top: 20px;
@@ -8871,12 +8870,12 @@ header nav ul.pb-nav > li:hover, header nav ul.pb-nav > li.active {
   z-index: 99;
 }
 /* line 100, ../sass/components/_header.scss */
-header nav ul.pb-nav > li:hover p, header nav ul.pb-nav > li.active p {
+header nav ul.pb-nav > li:hover > a, header nav ul.pb-nav > li.active > a {
   /* to do - li es el active */
   color: #993c8c;
 }
 /* line 102, ../sass/components/_header.scss */
-header nav ul.pb-nav > li:hover p:before, header nav ul.pb-nav > li.active p:before {
+header nav ul.pb-nav > li:hover > a:before, header nav ul.pb-nav > li.active > a:before {
   opacity: 1;
 }
 @media only screen and (min-width: 601px) {
@@ -8900,11 +8899,11 @@ header nav ul.pb-nav > li:hover p:before, header nav ul.pb-nav > li.active p:bef
     padding-top: 10px;
   }
   /* line 117, ../sass/components/_header.scss */
-  header nav ul.pb-nav > li p {
+  header nav ul.pb-nav > li > a {
     /* Indicador */
   }
   /* line 119, ../sass/components/_header.scss */
-  header nav ul.pb-nav > li p:before {
+  header nav ul.pb-nav > li > a:before {
     display: none !important;
   }
 }
@@ -8966,18 +8965,18 @@ header nav ul.pb-nav > li:hover p:before, header nav ul.pb-nav > li.active p:bef
     padding: 0px;
   }
   /* line 169, ../sass/components/_header.scss */
-  header nav ul.pb-nav > li p {
+  header nav ul.pb-nav > li > a {
     display: block;
     padding: 0 30px;
     color: #993c8c;
     cursor: pointer;
   }
   /* line 174, ../sass/components/_header.scss */
-  header nav ul.pb-nav > li p:before {
+  header nav ul.pb-nav > li > a:before {
     display: none;
   }
   /* line 175, ../sass/components/_header.scss */
-  header nav ul.pb-nav > li p.active + ul {
+  header nav ul.pb-nav > li > a.active + ul {
     display: block;
   }
   /* line 177, ../sass/components/_header.scss */
@@ -8997,13 +8996,13 @@ header nav ul.pb-nav > li:hover p:before, header nav ul.pb-nav > li.active p:bef
   header nav ul.pb-nav > li ul li a:hover {
     color: #993c8c;
   }
-  /* line 200, ../sass/components/_header.scss */
+  /* line 194, ../sass/components/_header.scss */
   header nav ul.pb-nav.open {
     right: 0px;
   }
 }
 @media only screen and (max-width: 430px) {
-  /* line 205, ../sass/components/_header.scss */
+  /* line 199, ../sass/components/_header.scss */
   header .img-paisaje {
     bottom: 0px;
   }
@@ -9014,7 +9013,7 @@ footer {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  padding: 50px 0;
+  padding-top: 50px;
 }
 /* line 6, ../sass/components/_footer.scss */
 footer .bg-distribuidor {
