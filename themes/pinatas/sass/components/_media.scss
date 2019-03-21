@@ -87,6 +87,8 @@ video.responsive-video {
 /* Slider product */
 .sliderProduct {
 	position: relative;
+	max-width: 800px;
+	margin: auto;
 	section {
 		article {
 			width: 100%;

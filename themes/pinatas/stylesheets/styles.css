@@ -3869,26 +3869,28 @@ video.responsive-video {
 /* line 88, ../sass/components/_media.scss */
 .sliderProduct {
   position: relative;
+  max-width: 800px;
+  margin: auto;
 }
-/* line 91, ../sass/components/_media.scss */
+/* line 93, ../sass/components/_media.scss */
 .sliderProduct section article {
   width: 100%;
   min-height: 600px;
   text-align: center;
   border: 1px solid gray;
 }
-/* line 96, ../sass/components/_media.scss */
+/* line 98, ../sass/components/_media.scss */
 .sliderProduct section article .itemPinata {
   display: inline-block;
   width: 280px;
   max-width: 100%;
   /* Alineación por número de piñatas */
 }
-/* line 100, ../sass/components/_media.scss */
+/* line 102, ../sass/components/_media.scss */
 .sliderProduct section article .itemPinata img {
   display: block;
 }
-/* line 104, ../sass/components/_media.scss */
+/* line 106, ../sass/components/_media.scss */
 .sliderProduct section article .itemPinata h2 {
   max-width: 200px;
   color: #fff;
@@ -3896,24 +3898,24 @@ video.responsive-video {
   text-align: right;
   text-shadow: 2px 2px #7c7c7c45;
 }
-/* line 110, ../sass/components/_media.scss */
+/* line 112, ../sass/components/_media.scss */
 .sliderProduct section article .itemPinata h2 em {
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 700;
   font-style: italic;
 }
-/* line 116, ../sass/components/_media.scss */
+/* line 118, ../sass/components/_media.scss */
 .sliderProduct section article .itemPinata h2 span {
   display: block;
   margin-top: -5px;
   font-size: 18px;
 }
-/* line 125, ../sass/components/_media.scss */
+/* line 127, ../sass/components/_media.scss */
 .sliderProduct section article .itemPinata:first-child:nth-last-child(1) h2 {
   float: right;
 }
-/* line 142, ../sass/components/_media.scss */
+/* line 144, ../sass/components/_media.scss */
 .sliderProduct #prevProducts,
 .sliderProduct #nextProducts {
   position: absolute;
@@ -3922,22 +3924,22 @@ video.responsive-video {
   z-index: 101;
   text-transform: uppercase;
 }
-/* line 149, ../sass/components/_media.scss */
+/* line 151, ../sass/components/_media.scss */
 .sliderProduct #prevProducts span,
 .sliderProduct #nextProducts span {
   display: block;
   font-size: 10px;
   text-shadow: 2px 2px #a7a7a745;
 }
-/* line 155, ../sass/components/_media.scss */
+/* line 157, ../sass/components/_media.scss */
 .sliderProduct #prevProducts {
   left: 0px;
 }
-/* line 156, ../sass/components/_media.scss */
+/* line 158, ../sass/components/_media.scss */
 .sliderProduct #nextProducts {
   right: 0px;
 }
-/* line 158, ../sass/components/_media.scss */
+/* line 160, ../sass/components/_media.scss */
 .sliderProduct #nextProducts img {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
