@@ -1,7 +1,7 @@
 header {
 	height: 75vh;
 	min-height: 750px;
-	margin-bottom: -25vh;
+	margin-bottom: -200px;
 	.bg-fondo-azul {
 		position: absolute;
 		width: 100%;
@@ -12,7 +12,7 @@ header {
 	}
 	.img-paisaje {
 		position: absolute;
-	    bottom: -25%;
+	    bottom: -20%;
 	    z-index: -1;
 	    width: 100%;
 	}
@@ -108,7 +108,7 @@ header {
 	}
 	@media #{$medium-only}{
 		min-height: 600px;
-		margin-bottom: -10vh;
+		margin-bottom: -100px;
 		.img-paisaje { bottom: -15%; }
 		nav {
 			ul.pb-nav {
@@ -127,7 +127,7 @@ header {
 	@media #{$sm-and-down}{
 		height: 300px;
 		min-height: 300px;
-		margin-bottom: -10vh;
+		margin-bottom: -150px;
 		.img-paisaje { bottom: -15%; }
 		nav {
 			position: relative;

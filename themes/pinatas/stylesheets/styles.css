@@ -2390,14 +2390,12 @@ input[type="submit"].btn-ubicacion {
   background-color: #fff;
 }
 
-/* line 4, ../sass/components/_effects.scss */
-.rotate-180 {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-/* line 11, ../sass/components/_effects.scss */
+/* .rotate-180 { 
+	-webkit-transform: rotate(180deg); 
+	-moz-transform: rotate(180deg); 
+	transform: rotate(180deg); 
+} */
+/* line 16, ../sass/components/_effects.scss */
 .shadow, .btn,
 button,
 input[type="submit"] {
@@ -2405,7 +2403,7 @@ input[type="submit"] {
 }
 
 /* For @media */
-/* line 13, ../sass/components/_effects.scss */
+/* line 18, ../sass/components/_effects.scss */
 .shadow-small {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
@@ -2417,12 +2415,12 @@ input[type="submit"] {
               0 3px 1px -2px rgba(0,0,0,0.12),
               0 1px 5px 0 rgba(0,0,0,0.2);
 } */
-/* line 26, ../sass/components/_effects.scss */
+/* line 31, ../sass/components/_effects.scss */
 .text-shadow {
   text-shadow: 2px 2px #33333345;
 }
 
-/* line 28, ../sass/components/_effects.scss */
+/* line 33, ../sass/components/_effects.scss */
 .transition, .bg-ruleta_opciones a, #ruleta_pinatas,
 #ruleta_pedidos, header nav ul.pb-nav > li p {
   -webkit-transition: .3s ease-out;
@@ -3767,7 +3765,7 @@ ul li {
 }
 
 /* line 4, ../sass/components/_media.scss */
-img.responsive-img,
+img.responsive-img, .sliderProduct section article .itemPinata img,
 video.responsive-video {
   max-width: 100%;
   height: auto;
@@ -3857,52 +3855,93 @@ video.responsive-video {
 .bg-body {
   background-image: url(../images/body.png);
   background-position: top center;
-  padding-top: 25%;
+  padding-top: 200px;
   /* Espacio bg disparejo */
+}
+@media only screen and (max-width: 600px) {
+  /* line 79, ../sass/components/_media.scss */
+  .bg-body {
+    padding-top: 150px;
+  }
 }
 
 /* Slider product */
-/* line 89, ../sass/components/_media.scss */
+/* line 88, ../sass/components/_media.scss */
+.sliderProduct {
+  position: relative;
+}
+/* line 91, ../sass/components/_media.scss */
 .sliderProduct section article {
   width: 100%;
+  min-height: 600px;
   text-align: center;
   border: 1px solid gray;
-  /* & div:nth-last-child(1) {
-  	background-color: gray;
-  }
-  & div:nth-last-child(2) {
-  	background-color: red;
-  }
-  & div:nth-last-child(3) {
-  	background-color: pink;
-  } */
 }
-/* line 93, ../sass/components/_media.scss */
-.sliderProduct section article div {
+/* line 96, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata {
   display: inline-block;
+  width: 280px;
+  max-width: 100%;
+  /* Alineación por número de piñatas */
 }
-/* line 95, ../sass/components/_media.scss */
-.sliderProduct section article div h2 {
+/* line 100, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata img {
+  display: block;
+}
+/* line 104, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata h2 {
+  max-width: 200px;
   color: #fff;
+  line-height: 30px;
   text-align: right;
   text-shadow: 2px 2px #7c7c7c45;
 }
-/* line 99, ../sass/components/_media.scss */
-.sliderProduct section article div h2 em {
+/* line 110, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata h2 em {
+  font-size: 32px;
   text-transform: uppercase;
   font-weight: 700;
   font-style: italic;
 }
-/* line 104, ../sass/components/_media.scss */
-.sliderProduct section article div h2 span {
+/* line 116, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata h2 span {
   display: block;
   margin-top: -5px;
   font-size: 18px;
 }
-/* line 122, ../sass/components/_media.scss */
+/* line 125, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(1) h2 {
+  float: right;
+}
+/* line 142, ../sass/components/_media.scss */
 .sliderProduct #prevProducts,
 .sliderProduct #nextProducts {
+  position: absolute;
+  top: calc(50% - 35px);
   color: #fff;
+  z-index: 101;
+  text-transform: uppercase;
+}
+/* line 149, ../sass/components/_media.scss */
+.sliderProduct #prevProducts span,
+.sliderProduct #nextProducts span {
+  display: block;
+  font-size: 10px;
+  text-shadow: 2px 2px #a7a7a745;
+}
+/* line 155, ../sass/components/_media.scss */
+.sliderProduct #prevProducts {
+  left: 0px;
+}
+/* line 156, ../sass/components/_media.scss */
+.sliderProduct #nextProducts {
+  right: 0px;
+}
+/* line 158, ../sass/components/_media.scss */
+.sliderProduct #nextProducts img {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 /* line 4, ../sass/components/_modal.scss */
@@ -8275,7 +8314,7 @@ video.responsive-video {
 }
 
 /* line 110, ../sass/components/_position.scss */
-.content-center, .bg-ruleta_centro {
+.content-center, .bg-ruleta_centro, .sliderProduct section article .itemPinata:first-child:nth-last-child(1) {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -8457,7 +8496,7 @@ small {
 header {
   height: 75vh;
   min-height: 750px;
-  margin-bottom: -25vh;
+  margin-bottom: -200px;
 }
 /* line 5, ../sass/components/_header.scss */
 header .bg-fondo-azul {
@@ -8470,7 +8509,7 @@ header .bg-fondo-azul {
 /* line 13, ../sass/components/_header.scss */
 header .img-paisaje {
   position: absolute;
-  bottom: -25%;
+  bottom: -20%;
   z-index: -1;
   width: 100%;
 }
@@ -8581,7 +8620,7 @@ header nav ul.pb-nav > li:hover p:before, header nav ul.pb-nav > li.active p:bef
   /* line 1, ../sass/components/_header.scss */
   header {
     min-height: 600px;
-    margin-bottom: -10vh;
+    margin-bottom: -100px;
   }
   /* line 112, ../sass/components/_header.scss */
   header .img-paisaje {
@@ -8605,7 +8644,7 @@ header nav ul.pb-nav > li:hover p:before, header nav ul.pb-nav > li.active p:bef
   header {
     height: 300px;
     min-height: 300px;
-    margin-bottom: -10vh;
+    margin-bottom: -150px;
   }
   /* line 131, ../sass/components/_header.scss */
   header .img-paisaje {

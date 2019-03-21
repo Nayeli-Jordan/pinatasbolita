@@ -79,24 +79,36 @@ video.responsive-video {
 .bg-body {
 	background-image: url(../images/body.png);
 	background-position: top center;
-	padding-top: 25%; /* Espacio bg disparejo */
+	padding-top: 200px; /* Espacio bg disparejo */
 	@extend .bg-image;
+	@media #{$sm-and-down} { padding-top: 150px; }
 }
 
 /* Slider product */
 .sliderProduct {
+	position: relative;
 	section {
 		article {
 			width: 100%;
+			min-height: 600px;
 			text-align: center;
 			border: 1px solid gray;
-			div {
+			.itemPinata {
 				display: inline-block;
+				width: 280px;
+				max-width: 100%;
+				img {
+					display: block;
+					@extend .responsive-img;
+				}
 				h2 {
+					max-width: 200px;
 					color: $light-color;
+					line-height: 30px;
 					text-align: right;
 					text-shadow: 2px 2px #7c7c7c45;
 					em {
+						font-size: 32px;
 						text-transform: uppercase;
 						font-weight: 700;
 						font-style: italic;					
@@ -107,24 +119,42 @@ video.responsive-video {
 						font-size: 18px;
 					}
 				}
+				/* Alineación por número de piñatas */
+				&:first-child:nth-last-child(1) {
+				    @extend .content-center;
+				    h2 { float: right; }
+				}
+				&:first-child:nth-last-child(2),
+				&:first-child:nth-last-child(2) ~ .itemPinata {
+				    //width: 50%;
+				}
+				&:first-child:nth-last-child(3),
+				&:first-child:nth-last-child(3) ~ .itemPinata {
+				    //width: 33.3333%;
+				}
+				&:first-child:nth-last-child(4),
+				&:first-child:nth-last-child(4) ~ .itemPinata {
+				    //width: 25%;
+				}
 			}
-			/* & div:nth-last-child(1) {
-				background-color: gray;
-			}
-			& div:nth-last-child(2) {
-				background-color: red;
-			}
-			& div:nth-last-child(3) {
-				background-color: pink;
-			} */
 		}		
 	}
 	#prevProducts,
 	#nextProducts {
+		position: absolute;
+		top: calc(50% - 35px);
 		color: $light-color;
+		z-index: 101;
+		text-transform: uppercase;
+		span {
+			display: block;
+			font-size: 10px;
+			text-shadow: 2px 2px #a7a7a745;
+		}
 	}
-
+	#prevProducts { left: 0px; }
 	#nextProducts {
-
+		right: 0px;
+		img { @include transform(rotate(180deg)); }
 	}
 }
