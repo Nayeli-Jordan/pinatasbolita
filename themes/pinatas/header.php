@@ -62,9 +62,9 @@
 				<img src="<?php echo THEMEPATH; ?>/images/paisaje.png" class="img-paisaje responsive-img">	
 				<nav class="container padding-top-20">
 					<a href="<?php echo SITEURL; ?>" class="inline-block"><div class="logo-pb"></div></a>
-					<div id="openNav" class="hide-on-med-and-up">Open</div>
+					<div id="openNav" class="hide-on-med-and-up"><em class="icon-menu"></em></div>
 					<ul class="pb-nav" itemscope>
-						<div id="closeNav" class="hide-on-med-and-up">Close</div>
+						<div id="closeNav" class="hide-on-med-and-up"><em class="icon-close"></em></div>
 						<?php
 							$menu_name = 'top_menu';
 

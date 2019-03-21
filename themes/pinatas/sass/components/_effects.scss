@@ -1,16 +1,18 @@
 // Effects
 // ==========================================================================
 
-/* .rotate-180 { 
-	-webkit-transform: rotate(180deg); 
-	-moz-transform: rotate(180deg); 
-	transform: rotate(180deg); 
-} */
 @mixin transform($property) {
   -webkit-transform: $property;
   -ms-transform: $property;
   transform: $property;
 }
+//@include transform(rotate(-5deg));
+@mixin transition($property) {
+  -webkit-transition: $property;
+  -ms-transition: $property;
+  transition: $property;
+}
+//@include transition(.3s ease-out);
 
 
 .shadow 		{ box-shadow: 6px 6px 20px 0 rgba(84, 84, 84, 0.25); }

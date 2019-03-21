@@ -108,3 +108,9 @@ $i: -100;
 }
 
 .content-center { @include center-full(); }
+
+.center-sides {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}

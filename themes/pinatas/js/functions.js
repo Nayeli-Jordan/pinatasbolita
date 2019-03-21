@@ -40,16 +40,40 @@ var $=jQuery.noConflict();
 
 		//Products category
 		$(".pb-nav li > p").click(function() {
-			console.log('click');
 			var idCategory = $(this).parent().attr('id');
 			console.log('#' + idCategory + ' p');
+			$('.pb-nav li > p').removeClass('active');
 			if($('#' + idCategory + ' p').hasClass('active')){
 				$('#' + idCategory + ' p').removeClass('active');
 			} else {
 				$('#' + idCategory + ' p').addClass('active');
 			}
-			
 		});		
+
+		$(".btn-caracteristicas").click(function() {
+			$('#content-ubicacion').addClass('hide');
+			$('.btn-ubicacion').removeClass('active');
+			if($('#content-caracteristicas').hasClass('hide')){
+				$('#content-caracteristicas').removeClass('hide');
+				$('.btn-caracteristicas').addClass('active');
+			} else {
+				$('#content-caracteristicas').addClass('hide');
+				$('.btn-caracteristicas').removeClass('active');
+			}
+			footerBottom();
+		});	
+		$(".btn-ubicacion").click(function() {
+			$('#content-caracteristicas').addClass('hide');
+			$('.btn-caracteristicas').removeClass('active');
+			if($('#content-ubicacion').hasClass('hide')){
+				$('#content-ubicacion').removeClass('hide');
+				$('.btn-ubicacion').addClass('active');
+			} else {
+				$('#content-ubicacion').addClass('hide');
+				$('.btn-ubicacion').removeClass('active');
+			}
+			footerBottom();
+		});				
 
 	});
 })(jQuery);

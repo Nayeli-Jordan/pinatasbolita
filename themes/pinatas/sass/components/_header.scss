@@ -1,6 +1,6 @@
 header {
 	height: 75vh;
-	min-height: 750px;
+	min-height: 700px;
 	margin-bottom: -200px;
 	.bg-fondo-azul {
 		position: absolute;
@@ -107,7 +107,7 @@ header {
 		}		
 	}
 	@media #{$medium-only}{
-		min-height: 600px;
+		min-height: 500px;
 		margin-bottom: -100px;
 		.img-paisaje { bottom: -15%; }
 		nav {
@@ -155,12 +155,13 @@ header {
 				-moz-transition: .4s ease-out; 
 				transition: .4s ease-out; 
 				overflow: auto;
-				z-index: 99;
+				z-index: 109;
 				box-shadow: -3px 3px 20px 0 rgba(84, 84, 84, 0.25);
 				#closeNav {
 					padding: 10px 20px;
 					text-align: right;
 					color: $primary-color;
+					cursor: pointer;
 				}
 				& > li {
 					display: block;

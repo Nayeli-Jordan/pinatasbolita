@@ -19,6 +19,7 @@ $blue-color:			#8bb2b5 !default;
 $blue-color-xlight: 	lighten($blue-color, 10%) !default;
 $blue-color-light: 		lighten($blue-color, 5%) !default;
 $blue-color-dark: 		darken($blue-color, 5%) !default;
+$blue-color-xdark: 		darken($blue-color, 10%) !default;
 
 
 // Global
@@ -79,8 +80,8 @@ $font-size-default: 	14px;
 
 // Header Styles
 $h1-fontsize: 			24px !default;
-$h2-fontsize: 			22px !default;
-$h3-fontsize: 			20px !default;
+$h2-fontsize: 			32px !default;
+$h3-fontsize: 			26px !default;
 $h4-fontsize: 			18px !default;
 $h5-fontsize: 			16px !default;
 $h6-fontsize: 			14px !default;

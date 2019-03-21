@@ -22,6 +22,9 @@ input[type="submit"] {
 	&:hover {
 		background-image: radial-gradient(circle, $blue-color-light, $blue-color, $blue-color-dark);
 	}
+	&.active {
+		background-image: radial-gradient(circle, $blue-color, $blue-color-dark, $blue-color-xdark);
+	}
 	&.btn-caracteristicas { 
 		border-top-left-radius: 0px; 
 		border-bottom-left-radius: 0px; 

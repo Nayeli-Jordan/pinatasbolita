@@ -107,7 +107,7 @@ $excludeCats = array(); ?>
 				// Img´s productos de la misma categoría hijo
 			    $args = array(
 			        'post_type' 		=> 'product',
-			        'posts_per_page' 	=> 4,
+			        'posts_per_page' 	=> 3,
 			        'post__not_in' 		=> array($productID),
 			        'tax_query' 		=> array(
 		                array(
@@ -156,10 +156,10 @@ $excludeCats = array(); ?>
 				//Agregar categoría a excluir
 				array_push($excludeCats, $subCategory);
 
-		        /* Obtener slide con hasta 4 productos por subcategoría extra */
+		        /* Obtener slide con hasta 3 productos por subcategoría extra */
 		        $args = array(
 			        'post_type' 		=> 'product',
-			        'posts_per_page' 	=> 4,
+			        'posts_per_page' 	=> 3,
 		        	/* 'post__not_in' 		=> array($productID), No mostrar principal si esta en más de una subcategoría */
 			        'tax_query' 		=> array(
 		                array(

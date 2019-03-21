@@ -2242,13 +2242,19 @@ input[type="submit"]:hover {
   background-image: radial-gradient(circle, #9bbcbf, #8bb2b5, #7ba8ab);
 }
 /* line 25, ../sass/components/_buttons.scss */
+.btn.active,
+button.active,
+input[type="submit"].active {
+  background-image: radial-gradient(circle, #8bb2b5, #7ba8ab, #6c9da1);
+}
+/* line 28, ../sass/components/_buttons.scss */
 .btn.btn-caracteristicas,
 button.btn-caracteristicas,
 input[type="submit"].btn-caracteristicas {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
-/* line 29, ../sass/components/_buttons.scss */
+/* line 32, ../sass/components/_buttons.scss */
 .btn.btn-ubicacion,
 button.btn-ubicacion,
 input[type="submit"].btn-ubicacion {
@@ -2257,7 +2263,7 @@ input[type="submit"].btn-ubicacion {
   border-bottom-right-radius: 0px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 35, ../sass/components/_buttons.scss */
+  /* line 38, ../sass/components/_buttons.scss */
   .btn.btn-caracteristicas, .btn.btn-ubicacion,
   button.btn-caracteristicas,
   button.btn-ubicacion,
@@ -2274,7 +2280,7 @@ input[type="submit"].btn-ubicacion {
   }
 }
 
-/* line 49, ../sass/components/_buttons.scss */
+/* line 52, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a {
   position: absolute;
   display: block;
@@ -2282,62 +2288,62 @@ input[type="submit"].btn-ubicacion {
   padding-bottom: 17%;
   border-radius: 50%;
 }
-/* line 57, ../sass/components/_buttons.scss */
+/* line 60, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_1 {
   top: 18%;
   right: 30%;
 }
-/* line 58, ../sass/components/_buttons.scss */
+/* line 61, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_2 {
   top: 26%;
   right: 14%;
 }
-/* line 59, ../sass/components/_buttons.scss */
+/* line 62, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_3 {
   top: 44%;
   right: 8%;
 }
-/* line 60, ../sass/components/_buttons.scss */
+/* line 63, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_4 {
   bottom: 26%;
   right: 14%;
 }
-/* line 61, ../sass/components/_buttons.scss */
+/* line 64, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_5 {
   bottom: 18%;
   right: 32%;
 }
-/* line 63, ../sass/components/_buttons.scss */
+/* line 66, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_6 {
   bottom: 18%;
   left: 32%;
 }
-/* line 64, ../sass/components/_buttons.scss */
+/* line 67, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_7 {
   bottom: 26%;
   left: 14%;
 }
-/* line 65, ../sass/components/_buttons.scss */
+/* line 68, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_8 {
   top: 44%;
   left: 8%;
 }
-/* line 66, ../sass/components/_buttons.scss */
+/* line 69, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_9 {
   top: 26%;
   left: 14%;
 }
-/* line 67, ../sass/components/_buttons.scss */
+/* line 70, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_10 {
   top: 18%;
   left: 30%;
 }
-/* line 68, ../sass/components/_buttons.scss */
+/* line 71, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a:hover {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 80%);
 }
 
-/* line 73, ../sass/components/_buttons.scss */
+/* line 76, ../sass/components/_buttons.scss */
 #ruleta_pinatas,
 #ruleta_pedidos {
   position: absolute;
@@ -2348,13 +2354,13 @@ input[type="submit"].btn-ubicacion {
   border-top-left-radius: 60%;
   border-top-right-radius: 60%;
 }
-/* line 84, ../sass/components/_buttons.scss */
+/* line 87, ../sass/components/_buttons.scss */
 #ruleta_pinatas:hover,
 #ruleta_pedidos:hover {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 80%);
 }
 
-/* line 86, ../sass/components/_buttons.scss */
+/* line 89, ../sass/components/_buttons.scss */
 #ruleta_pinatas {
   left: 1%;
   -webkit-transform: rotate(-45deg);
@@ -2362,7 +2368,7 @@ input[type="submit"].btn-ubicacion {
   transform: rotate(-45deg);
 }
 
-/* line 92, ../sass/components/_buttons.scss */
+/* line 95, ../sass/components/_buttons.scss */
 #ruleta_pedidos {
   right: 1%;
   -webkit-transform: rotate(45deg);
@@ -2390,20 +2396,15 @@ input[type="submit"].btn-ubicacion {
   background-color: #fff;
 }
 
-/* .rotate-180 { 
-	-webkit-transform: rotate(180deg); 
-	-moz-transform: rotate(180deg); 
-	transform: rotate(180deg); 
-} */
-/* line 16, ../sass/components/_effects.scss */
+/* line 18, ../sass/components/_effects.scss */
 .shadow, .btn,
 button,
-input[type="submit"] {
+input[type="submit"], .content-map {
   box-shadow: 6px 6px 20px 0 rgba(84, 84, 84, 0.25);
 }
 
 /* For @media */
-/* line 18, ../sass/components/_effects.scss */
+/* line 20, ../sass/components/_effects.scss */
 .shadow-small {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
@@ -2415,12 +2416,12 @@ input[type="submit"] {
               0 3px 1px -2px rgba(0,0,0,0.12),
               0 1px 5px 0 rgba(0,0,0,0.2);
 } */
-/* line 31, ../sass/components/_effects.scss */
+/* line 33, ../sass/components/_effects.scss */
 .text-shadow {
   text-shadow: 2px 2px #33333345;
 }
 
-/* line 33, ../sass/components/_effects.scss */
+/* line 35, ../sass/components/_effects.scss */
 .transition, .bg-ruleta_opciones a, #ruleta_pinatas,
 #ruleta_pedidos, header nav ul.pb-nav > li p {
   -webkit-transition: .3s ease-out;
@@ -3764,6 +3765,89 @@ ul li {
   }
 }
 
+@font-face {
+  font-family: 'fontello';
+  src: url("../fonts/fontello/fontello.eot?3116811");
+  src: url("../fonts/fontello/fontello.eot?3116811#iefix") format("embedded-opentype"), url("../fonts/fontello/fontello.svg?3116811#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'fontello';
+  src: url("data:application/octet-stream;base64,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") format("woff"), url("data:application/octet-stream;base64,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") format("truetype");
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../fonts/fontello/fontello.svg?3116811#fontello') format('svg');
+  }
+}
+*/
+/* line 25, ../sass/components/_icons.scss */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+/* line 55, ../sass/components/_icons.scss */
+.icon-pinterest:before {
+  content: '\e800';
+}
+
+/* '' */
+/* line 56, ../sass/components/_icons.scss */
+.icon-menu:before {
+  content: '\e801';
+}
+
+/* '' */
+/* line 57, ../sass/components/_icons.scss */
+.icon-close:before {
+  content: '\e805';
+}
+
+/* '' */
+/* line 58, ../sass/components/_icons.scss */
+.icon-instagram:before {
+  content: '\f16d';
+}
+
+/* '' */
+/* line 59, ../sass/components/_icons.scss */
+.icon-whatsapp:before {
+  content: '\f232';
+}
+
+/* '' */
+/* line 60, ../sass/components/_icons.scss */
+.icon-facebook:before {
+  content: '\f30c';
+}
+
+/* '' */
 /* line 4, ../sass/components/_media.scss */
 img.responsive-img, .sliderProduct section article .itemPinata img,
 video.responsive-video {
@@ -3855,13 +3939,13 @@ video.responsive-video {
 .bg-body {
   background-image: url(../images/body.png);
   background-position: top center;
-  padding-top: 200px;
+  padding-top: 150px;
   /* Espacio bg disparejo */
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 1200px) {
   /* line 79, ../sass/components/_media.scss */
   .bg-body {
-    padding-top: 150px;
+    padding-top: 200px;
   }
 }
 
@@ -3875,47 +3959,162 @@ video.responsive-video {
 /* line 93, ../sass/components/_media.scss */
 .sliderProduct section article {
   width: 100%;
-  min-height: 600px;
   text-align: center;
-  border: 1px solid gray;
 }
 /* line 98, ../sass/components/_media.scss */
 .sliderProduct section article .itemPinata {
+  position: relative;
   display: inline-block;
   width: 280px;
   max-width: 100%;
+  vertical-align: middle;
   /* Alineación por número de piñatas */
 }
-/* line 102, ../sass/components/_media.scss */
+/* line 105, ../sass/components/_media.scss */
 .sliderProduct section article .itemPinata img {
   display: block;
+  width: auto;
+  max-height: 350px;
+  margin-left: auto;
+  margin-right: auto;
 }
-/* line 106, ../sass/components/_media.scss */
+/* line 113, ../sass/components/_media.scss */
 .sliderProduct section article .itemPinata h2 {
-  max-width: 200px;
   color: #fff;
   line-height: 30px;
   text-align: right;
   text-shadow: 2px 2px #7c7c7c45;
+  max-width: 220px;
 }
-/* line 112, ../sass/components/_media.scss */
+/* line 119, ../sass/components/_media.scss */
 .sliderProduct section article .itemPinata h2 em {
-  font-size: 32px;
   text-transform: uppercase;
   font-weight: 700;
   font-style: italic;
 }
-/* line 118, ../sass/components/_media.scss */
+/* line 124, ../sass/components/_media.scss */
 .sliderProduct section article .itemPinata h2 span {
   display: block;
   margin-top: -5px;
   font-size: 18px;
 }
-/* line 127, ../sass/components/_media.scss */
-.sliderProduct section article .itemPinata:first-child:nth-last-child(1) h2 {
-  float: right;
+/* line 131, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(1) {
+  margin-top: 70px;
+  margin-bottom: 70px;
 }
-/* line 144, ../sass/components/_media.scss */
+/* line 135, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(1) img {
+  -webkit-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
+/* line 138, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(2), .sliderProduct section article .itemPinata:first-child:nth-last-child(2) ~ .itemPinata:nth-last-child(1) {
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+/* line 142, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(2) {
+  padding-top: 58px;
+  margin-right: -50px;
+  z-index: 1;
+}
+/* line 146, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(2) img {
+  -webkit-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
+/* line 147, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(2) h2 {
+  position: absolute;
+  top: 0px;
+  float: left;
+}
+/* line 154, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(2) ~ .itemPinata:nth-last-child(1) img {
+  -webkit-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  transform: rotate(5deg);
+}
+/* line 158, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(3), .sliderProduct section article .itemPinata:first-child:nth-last-child(3) ~ .itemPinata:nth-last-child(2) {
+  margin-bottom: 190px;
+}
+/* line 160, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(3) h2, .sliderProduct section article .itemPinata:first-child:nth-last-child(3) ~ .itemPinata:nth-last-child(2) h2 {
+  position: absolute;
+  top: 0px;
+}
+/* line 162, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(3) {
+  margin-right: -50px;
+  z-index: 1;
+}
+/* line 165, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(3) img {
+  -webkit-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+}
+/* line 166, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(3) h2 {
+  text-align: left;
+  left: 0px;
+}
+/* line 172, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(3) ~ .itemPinata:nth-last-child(2) img {
+  -webkit-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+  transform: rotate(15deg);
+}
+/* line 173, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(3) ~ .itemPinata:nth-last-child(2) h2 {
+  right: 0px;
+}
+/* line 175, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(3) ~ .itemPinata:nth-last-child(1) {
+  top: 190px;
+  z-index: 2;
+}
+/* line 179, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(3) ~ .itemPinata:nth-last-child(1) img {
+  -webkit-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  transform: rotate(5deg);
+}
+/* line 180, ../sass/components/_media.scss */
+.sliderProduct section article .itemPinata:first-child:nth-last-child(3) ~ .itemPinata:nth-last-child(1) h2 {
+  position: absolute;
+  top: 50%;
+  left: -130px;
+}
+@media only screen and (max-width: 600px) {
+  /* line 98, ../sass/components/_media.scss */
+  .sliderProduct section article .itemPinata {
+    width: 200px;
+  }
+  /* line 190, ../sass/components/_media.scss */
+  .sliderProduct section article .itemPinata h2 em {
+    font-size: 20px;
+  }
+  /* line 193, ../sass/components/_media.scss */
+  .sliderProduct section article .itemPinata:first-child:nth-last-child(3) ~ .itemPinata:nth-last-child(1) {
+    top: 170px;
+  }
+  /* line 195, ../sass/components/_media.scss */
+  .sliderProduct section article .itemPinata:first-child:nth-last-child(3) ~ .itemPinata:nth-last-child(1) h2 {
+    left: -50px;
+  }
+}
+@media only screen and (max-width: 430px) {
+  /* line 98, ../sass/components/_media.scss */
+  .sliderProduct section article .itemPinata {
+    width: 160px;
+  }
+}
+/* line 205, ../sass/components/_media.scss */
 .sliderProduct #prevProducts,
 .sliderProduct #nextProducts {
   position: absolute;
@@ -3924,26 +4123,58 @@ video.responsive-video {
   z-index: 101;
   text-transform: uppercase;
 }
-/* line 151, ../sass/components/_media.scss */
+/* line 212, ../sass/components/_media.scss */
 .sliderProduct #prevProducts span,
 .sliderProduct #nextProducts span {
   display: block;
   font-size: 10px;
   text-shadow: 2px 2px #a7a7a745;
 }
-/* line 157, ../sass/components/_media.scss */
+@media only screen and (max-width: 600px) {
+  /* line 212, ../sass/components/_media.scss */
+  .sliderProduct #prevProducts span,
+  .sliderProduct #nextProducts span {
+    display: none;
+  }
+}
+/* line 219, ../sass/components/_media.scss */
 .sliderProduct #prevProducts {
   left: 0px;
 }
-/* line 158, ../sass/components/_media.scss */
+@media only screen and (max-width: 600px) {
+  /* line 219, ../sass/components/_media.scss */
+  .sliderProduct #prevProducts {
+    left: -7%;
+  }
+}
+/* line 223, ../sass/components/_media.scss */
 .sliderProduct #nextProducts {
   right: 0px;
 }
-/* line 160, ../sass/components/_media.scss */
+/* line 225, ../sass/components/_media.scss */
 .sliderProduct #nextProducts img {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
+}
+@media only screen and (max-width: 600px) {
+  /* line 223, ../sass/components/_media.scss */
+  .sliderProduct #nextProducts {
+    right: -7%;
+  }
+}
+
+/* line 230, ../sass/components/_media.scss */
+.content-map {
+  height: 190px;
+  max-width: 190px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+/* line 236, ../sass/components/_media.scss */
+.content-map iframe {
+  width: 100%;
+  height: 100%;
 }
 
 /* line 4, ../sass/components/_modal.scss */
@@ -8316,7 +8547,7 @@ video.responsive-video {
 }
 
 /* line 110, ../sass/components/_position.scss */
-.content-center, .bg-ruleta_centro, .sliderProduct section article .itemPinata:first-child:nth-last-child(1) {
+.content-center, .bg-ruleta_centro {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -8324,6 +8555,13 @@ video.responsive-video {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+/* line 112, ../sass/components/_position.scss */
+.center-sides, .sliderProduct section article .itemPinata:first-child:nth-last-child(3) ~ .itemPinata:nth-last-child(1) {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* line 4, ../sass/components/_shape.scss */
@@ -8352,7 +8590,7 @@ html {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.3;
   margin: 0px;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 /* line 26, ../sass/components/_typography.scss */
@@ -8362,12 +8600,12 @@ h1 {
 
 /* line 27, ../sass/components/_typography.scss */
 h2 {
-  font-size: 22px;
+  font-size: 32px;
 }
 
 /* line 28, ../sass/components/_typography.scss */
 h3 {
-  font-size: 20px;
+  font-size: 26px;
 }
 
 /* line 29, ../sass/components/_typography.scss */
@@ -8402,102 +8640,131 @@ small {
   font-size: 75%;
 }
 
+/* line 42, ../sass/components/_typography.scss */
+.fz-20 {
+  font-size: 20px;
+}
+
 /* line 43, ../sass/components/_typography.scss */
+.fz-16 {
+  font-size: 16px;
+}
+
+/* line 45, ../sass/components/_typography.scss */
 .font-thin {
   font-weight: 200;
 }
 
-/* line 44, ../sass/components/_typography.scss */
+/* line 46, ../sass/components/_typography.scss */
 .font-normal {
   font-weight: 300;
 }
 
-/* line 45, ../sass/components/_typography.scss */
+/* line 47, ../sass/components/_typography.scss */
 .font-strong, strong {
   font-weight: 500;
 }
 
-/* line 47, ../sass/components/_typography.scss */
+/* line 49, ../sass/components/_typography.scss */
 .uppercase {
   text-transform: uppercase;
 }
 
-/* line 48, ../sass/components/_typography.scss */
+/* line 50, ../sass/components/_typography.scss */
 .lowercase {
   text-transform: lowercase;
 }
 
-/* line 49, ../sass/components/_typography.scss */
+/* line 51, ../sass/components/_typography.scss */
 .capitalize {
   text-transform: capitalize;
 }
 
-/* line 51, ../sass/components/_typography.scss */
+/* line 53, ../sass/components/_typography.scss */
 .text-underline {
   text-decoration: underline;
 }
 
-/* line 52, ../sass/components/_typography.scss */
+/* line 54, ../sass/components/_typography.scss */
 .text-underline-hover:hover {
   text-decoration: underline;
 }
 
-/* line 53, ../sass/components/_typography.scss */
+/* line 55, ../sass/components/_typography.scss */
 .text-line-through {
   text-decoration: line-through;
 }
 
-/* line 55, ../sass/components/_typography.scss */
+/* line 57, ../sass/components/_typography.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 56, ../sass/components/_typography.scss */
+/* line 58, ../sass/components/_typography.scss */
 .text-left {
   text-align: left;
 }
 
-/* line 57, ../sass/components/_typography.scss */
+/* line 59, ../sass/components/_typography.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 58, ../sass/components/_typography.scss */
+/* line 60, ../sass/components/_typography.scss */
 .text-justify {
   text-align: justify;
 }
 
-/* line 60, ../sass/components/_typography.scss */
+@media only screen and (min-width: 601px) {
+  /* line 62, ../sass/components/_typography.scss */
+  .text-right-medium-and-up {
+    text-align: right;
+  }
+}
+@media only screen and (max-width: 600px) {
+  /* line 65, ../sass/components/_typography.scss */
+  .text-center-sm-and-down {
+    text-align: center;
+  }
+}
+/* line 68, ../sass/components/_typography.scss */
 .text-last-center {
   text-align-last: center;
 }
 
-/* line 61, ../sass/components/_typography.scss */
+/* line 69, ../sass/components/_typography.scss */
 .text-last-left {
   text-align-last: left;
 }
 
-/* line 62, ../sass/components/_typography.scss */
+/* line 70, ../sass/components/_typography.scss */
 .text-last-right {
   text-align-last: right;
 }
 
-/* line 63, ../sass/components/_typography.scss */
+/* line 71, ../sass/components/_typography.scss */
 .text-last-justify {
   text-align-last: justify;
 }
 
-/* line 65, ../sass/components/_typography.scss */
+/* line 73, ../sass/components/_typography.scss */
 .line-text-overflow {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+/* line 5, ../sass/components/_utilities.scss */
+#content-caracteristicas {
+  -webkit-transition: 0.3s ease-out;
+  -ms-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+}
+
 /* line 1, ../sass/components/_header.scss */
 header {
   height: 75vh;
-  min-height: 750px;
+  min-height: 700px;
   margin-bottom: -200px;
 }
 /* line 5, ../sass/components/_header.scss */
@@ -8621,7 +8888,7 @@ header nav ul.pb-nav > li:hover p:before, header nav ul.pb-nav > li.active p:bef
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   /* line 1, ../sass/components/_header.scss */
   header {
-    min-height: 600px;
+    min-height: 500px;
     margin-bottom: -100px;
   }
   /* line 112, ../sass/components/_header.scss */
@@ -8683,7 +8950,7 @@ header nav ul.pb-nav > li:hover p:before, header nav ul.pb-nav > li.active p:bef
     -moz-transition: .4s ease-out;
     transition: .4s ease-out;
     overflow: auto;
-    z-index: 99;
+    z-index: 109;
     box-shadow: -3px 3px 20px 0 rgba(84, 84, 84, 0.25);
   }
   /* line 160, ../sass/components/_header.scss */
@@ -8691,32 +8958,33 @@ header nav ul.pb-nav > li:hover p:before, header nav ul.pb-nav > li.active p:bef
     padding: 10px 20px;
     text-align: right;
     color: #993c8c;
+    cursor: pointer;
   }
-  /* line 165, ../sass/components/_header.scss */
+  /* line 166, ../sass/components/_header.scss */
   header nav ul.pb-nav > li {
     display: block;
     padding: 0px;
   }
-  /* line 168, ../sass/components/_header.scss */
+  /* line 169, ../sass/components/_header.scss */
   header nav ul.pb-nav > li p {
     display: block;
     padding: 0 30px;
     color: #993c8c;
     cursor: pointer;
   }
-  /* line 173, ../sass/components/_header.scss */
+  /* line 174, ../sass/components/_header.scss */
   header nav ul.pb-nav > li p:before {
     display: none;
   }
-  /* line 174, ../sass/components/_header.scss */
+  /* line 175, ../sass/components/_header.scss */
   header nav ul.pb-nav > li p.active + ul {
     display: block;
   }
-  /* line 176, ../sass/components/_header.scss */
+  /* line 177, ../sass/components/_header.scss */
   header nav ul.pb-nav > li ul {
     display: none;
   }
-  /* line 179, ../sass/components/_header.scss */
+  /* line 180, ../sass/components/_header.scss */
   header nav ul.pb-nav > li ul li a {
     display: block;
     padding: 0 20px 0 40px;
@@ -8725,17 +8993,17 @@ header nav ul.pb-nav > li:hover p:before, header nav ul.pb-nav > li.active p:bef
     color: #8bb2b5;
     cursor: pointer;
   }
-  /* line 186, ../sass/components/_header.scss */
+  /* line 187, ../sass/components/_header.scss */
   header nav ul.pb-nav > li ul li a:hover {
     color: #993c8c;
   }
-  /* line 199, ../sass/components/_header.scss */
+  /* line 200, ../sass/components/_header.scss */
   header nav ul.pb-nav.open {
     right: 0px;
   }
 }
 @media only screen and (max-width: 430px) {
-  /* line 204, ../sass/components/_header.scss */
+  /* line 205, ../sass/components/_header.scss */
   header .img-paisaje {
     bottom: 0px;
   }
