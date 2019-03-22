@@ -43,3 +43,50 @@
 	from { -webkit-transform: rotate(0deg); }
 	to { -webkit-transform: rotate(360deg); }
 }
+
+.animation-tada-10Less    { animation: tadaDiezLess 1.5s linear 1s infinite; }
+.animation-tada-5Less     { animation: tadaCincoLess 1.5s linear 1s infinite; }
+.animation-tada15         { animation: tadaQuince 1.5s linear 1s infinite; }
+.animation-tada5          { animation: tadaCinco 1.5s linear 1s infinite; }
+
+@keyframes tadaDiezLess {
+  0%   {transform: rotate(-10deg); }
+  25%  {transform: rotate(-5deg);}
+  50%  {transform: rotate(0deg);}
+  75% {transform: rotate(-5deg);}
+  100% {transform: rotate(-10deg);}
+}
+@keyframes tadaCincoLess {
+  0%   {transform: rotate(-5deg); }
+  25%  {transform: rotate(-10deg);}
+  50%  {transform: rotate(-15deg);}
+  75% {transform: rotate(-10deg);}
+  100% {transform: rotate(-5deg);}
+}
+
+@keyframes tadaQuince {
+  0%   {transform: rotate(15deg); }
+  25%  {transform: rotate(10deg);}
+  50%  {transform: rotate(5deg);}
+  75% {transform: rotate(10deg);}
+  100% {transform: rotate(15deg);}
+}
+
+@keyframes tadaCinco {
+  0%   {transform: rotate(5deg); }
+  25%  {transform: rotate(10deg);}
+  50%  {transform: rotate(15deg);}
+  75% {transform: rotate(10deg);}
+  100% {transform: rotate(5deg);}
+}
+
+
+@keyframes paisajeDesk {
+  0%   { bottom: -120%; }
+  100% { bottom: -20%; }
+}
+
+@keyframes distribuidor {
+  0%   { bottom: -200px; }
+  100% { bottom: 0px; }
+}

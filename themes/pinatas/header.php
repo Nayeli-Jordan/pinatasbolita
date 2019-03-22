@@ -109,7 +109,7 @@
 													$menu_list .='<ul>';
 												}
 
-												$menu_list .='<li><a href="' . get_permalink( $idProduct ) . '">' . $titleProduct . '</a></li>';
+												$menu_list .='<li><a href="' . get_permalink( $idProduct ) . '">' . $titleProduct . ' Bolita</a></li>';
 
 										$i ++; endwhile; 
 										if ($i != 0) {

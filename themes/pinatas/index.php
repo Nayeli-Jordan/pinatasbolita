@@ -65,8 +65,6 @@
 				    <a id="ruleta_link_10" href="<?php echo get_permalink( $loop->post->ID ) ?>"  title="Enlace a Navidad"><span class="hide">Navidad</span></a>
 				<?php endwhile;  wp_reset_query(); ?>
 			</div>
-			<a id="ruleta_pinatas" href="<?php echo SITEURL; ?>"></a>
-			<a id="ruleta_pedidos" href="<?php echo SITEURL; ?>"></a>
 		</span>
 	</section>
 <?php get_footer(); ?>

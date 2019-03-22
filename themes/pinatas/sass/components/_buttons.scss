@@ -72,29 +72,3 @@ input[type="submit"] {
 		background-image: radial-gradient(circle, rgba(255,255,255,0.15), rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0) 80%);
 	}
 }
-
-#ruleta_pinatas,
-#ruleta_pedidos {
-	position: absolute;
-	top: 14%;
-	display: block;
-    width: 35%;
-    padding-bottom: 7%;
-    border-top-left-radius: 60%;
-    border-top-right-radius: 60%;
-	@extend .transition;
-	//background-color: rgba(0,0,0,0.3);
-	&:hover { background-image: radial-gradient(circle, rgba(255,255,255,0.15), rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0) 80%); }
-}
-#ruleta_pinatas {
-	left: 1%;
-	-webkit-transform: rotate(-45deg); 
-	-moz-transform: rotate(-45deg); 
-	transform: rotate(-45deg); 
-}
-#ruleta_pedidos {
-	right: 1%;
-	-webkit-transform: rotate(45deg); 
-	-moz-transform: rotate(45deg); 
-	transform: rotate(45deg); 
-}
