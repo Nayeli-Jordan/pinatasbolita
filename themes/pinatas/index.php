@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-	<section class="padding-top-60 padding-bottom-80 text-center">
+	<section class="padding-top-20 padding-bottom-40 text-center">
 		<div class="bg-ruleta_indicador"></div>
 		<span class="content-ruleta inline-block relative">
 			<div class="bg-ruleta_centro"></div>
