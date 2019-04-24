@@ -1,8 +1,9 @@
 			<?php if (!is_home()) : ?>
 				<footer>
-					<div>
+					<div class="text-center">
 						<div class="btn btn-caracteristicas">Características</div>
 						<div class="btn btn-ubicacion">Ubicación</div>
+						<div class="btn btn-proveedores">Proveedores</div>
 					</div>
 					<div id="content-caracteristicas" class="container text-center padding-top-50 hide">
 						<h3 class="uppercase color-light margin-bottom-30">Características</h3>
@@ -27,7 +28,7 @@
 							</div>
 						</div>
 					</div>
-					<div id="content-ubicacion" class="container padding-top-50 color-light text-center-sm-and-down hide">
+					<div id="content-ubicacion" class="container padding-top-50 color-light hide text-center-sm-and-down">
 						<h3 class="uppercase margin-bottom-30 text-center">Ubicación</h3>
 						<div class="row">
 							<div class="col s12 m4 margin-bottom-30 text-right-medium-and-up">
@@ -43,6 +44,26 @@
 							</div>
 						</div>
 					</div>
+					<div id="content-proveedores" class="container padding-top-50 color-light hide">
+						<h3 class="uppercase margin-bottom-30 text-center">Proveedores</h3>
+						<div class="row text-center">
+						<?php
+							$proveedor_args = array(
+								'post_type' 		=> 'pb_proveedor',
+								'posts_per_page' 	=> -1,
+							);
+							$proveedor_query = new WP_Query( $proveedor_args );
+							if ( $proveedor_query->have_posts() ) : 
+								$i = 1;
+								while ( $proveedor_query->have_posts() ) : $proveedor_query->the_post(); ?>
+									<div class="col s12 m4 margin-bottom-30">
+										<h4><?php the_title(); ?></h4>
+										<p><?php the_content(); ?></p>
+									</div>	
+							<?php $i ++; endwhile; wp_reset_postdata();
+							endif; ?>
+						</div>
+					</div>					
 					<div class="bg-distribuidor"><h4 class="hide">¿Deseas ser distribuidor? Contáctanos: 5558683573</h4></div>
 				</footer>
 			<?php endif; ?>

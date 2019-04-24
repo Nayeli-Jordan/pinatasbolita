@@ -2251,10 +2251,11 @@ input[type="submit"].active {
 .btn.btn-caracteristicas,
 button.btn-caracteristicas,
 input[type="submit"].btn-caracteristicas {
+  float: left;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
-/* line 32, ../sass/components/_buttons.scss */
+/* line 33, ../sass/components/_buttons.scss */
 .btn.btn-ubicacion,
 button.btn-ubicacion,
 input[type="submit"].btn-ubicacion {
@@ -2262,25 +2263,51 @@ input[type="submit"].btn-ubicacion {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-@media only screen and (max-width: 600px) {
-  /* line 38, ../sass/components/_buttons.scss */
-  .btn.btn-caracteristicas, .btn.btn-ubicacion,
+@media only screen and (min-width: 993px) {
+  /* line 39, ../sass/components/_buttons.scss */
+  .btn.btn-caracteristicas, .btn.btn-ubicacion, .btn.btn-proveedores,
   button.btn-caracteristicas,
   button.btn-ubicacion,
+  button.btn-proveedores,
   input[type="submit"].btn-caracteristicas,
-  input[type="submit"].btn-ubicacion {
-    display: block;
-    float: none;
-    width: 240px;
-    margin: 0 auto 20px;
-    padding: 0 20px;
+  input[type="submit"].btn-ubicacion,
+  input[type="submit"].btn-proveedores {
+    min-width: 260px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  /* line 46, ../sass/components/_buttons.scss */
+  .btn.btn-caracteristicas, .btn.btn-ubicacion, .btn.btn-proveedores,
+  button.btn-caracteristicas,
+  button.btn-ubicacion,
+  button.btn-proveedores,
+  input[type="submit"].btn-caracteristicas,
+  input[type="submit"].btn-ubicacion,
+  input[type="submit"].btn-proveedores {
+    padding: 0 25px;
+    min-width: 195px;
     line-height: 50px;
     font-size: 18px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  /* line 56, ../sass/components/_buttons.scss */
+  .btn.btn-caracteristicas, .btn.btn-ubicacion, .btn.btn-proveedores,
+  button.btn-caracteristicas,
+  button.btn-ubicacion,
+  button.btn-proveedores,
+  input[type="submit"].btn-caracteristicas,
+  input[type="submit"].btn-ubicacion,
+  input[type="submit"].btn-proveedores {
+    display: block;
+    float: none !important;
+    width: 240px;
+    margin: 0 auto 20px;
     border-radius: 15px !important;
   }
 }
 
-/* line 52, ../sass/components/_buttons.scss */
+/* line 68, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a {
   position: absolute;
   display: block;
@@ -2288,57 +2315,57 @@ input[type="submit"].btn-ubicacion {
   padding-bottom: 17%;
   border-radius: 50%;
 }
-/* line 60, ../sass/components/_buttons.scss */
+/* line 76, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_1 {
   top: 18%;
   right: 30%;
 }
-/* line 61, ../sass/components/_buttons.scss */
+/* line 77, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_2 {
   top: 26%;
   right: 14%;
 }
-/* line 62, ../sass/components/_buttons.scss */
+/* line 78, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_3 {
   top: 44%;
   right: 8%;
 }
-/* line 63, ../sass/components/_buttons.scss */
+/* line 79, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_4 {
   bottom: 26%;
   right: 14%;
 }
-/* line 64, ../sass/components/_buttons.scss */
+/* line 80, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_5 {
   bottom: 18%;
   right: 32%;
 }
-/* line 66, ../sass/components/_buttons.scss */
+/* line 82, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_6 {
   bottom: 18%;
   left: 32%;
 }
-/* line 67, ../sass/components/_buttons.scss */
+/* line 83, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_7 {
   bottom: 26%;
   left: 14%;
 }
-/* line 68, ../sass/components/_buttons.scss */
+/* line 84, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_8 {
   top: 44%;
   left: 8%;
 }
-/* line 69, ../sass/components/_buttons.scss */
+/* line 85, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_9 {
   top: 26%;
   left: 14%;
 }
-/* line 70, ../sass/components/_buttons.scss */
+/* line 86, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_10 {
   top: 18%;
   left: 30%;
 }
-/* line 71, ../sass/components/_buttons.scss */
+/* line 87, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a:hover {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 80%);
 }
@@ -2502,7 +2529,31 @@ input[type="submit"], .content-map {
     bottom: -120%;
   }
   100% {
-    bottom: -20%;
+    bottom: -80%;
+  }
+}
+@keyframes paisajeDeskLar {
+  0% {
+    bottom: -120%;
+  }
+  100% {
+    bottom: -70%;
+  }
+}
+@keyframes paisajeDeskMed {
+  0% {
+    bottom: -120%;
+  }
+  100% {
+    bottom: -40%;
+  }
+}
+@keyframes paisajeDeskSmall {
+  0% {
+    bottom: -120%;
+  }
+  100% {
+    bottom: -10%;
   }
 }
 @keyframes distribuidor {
@@ -4015,7 +4066,7 @@ video.responsive-video {
 .bg-body {
   background-image: url(../images/body.png);
   background-position: top center;
-  padding-top: 150px;
+  padding-top: 130px;
   /* Espacio bg disparejo */
 }
 @media only screen and (min-width: 1200px) {
@@ -8830,11 +8881,21 @@ small {
   text-overflow: ellipsis;
 }
 
+/* line 10, ../sass/components/_utilities.scss */
+#content-proveedores .row .col:nth-child(3n+1) {
+  clear: both;
+}
+
 /* line 1, ../sass/components/_header.scss */
 header {
-  height: 75vh;
-  min-height: 700px;
-  margin-bottom: -200px;
+  min-height: 400px;
+  margin-bottom: -150px;
+}
+@media only screen and (max-width: 600px) {
+  /* line 1, ../sass/components/_header.scss */
+  header {
+    min-height: 200px;
+  }
 }
 /* line 5, ../sass/components/_header.scss */
 header .bg-fondo-azul {
@@ -8847,43 +8908,74 @@ header .bg-fondo-azul {
 /* line 13, ../sass/components/_header.scss */
 header .img-paisaje {
   position: absolute;
-  bottom: -20%;
+  bottom: -80%;
   z-index: -1;
   width: 100%;
   animation: paisajeDesk 1.5s ease-in-out;
 }
-/* line 20, ../sass/components/_header.scss */
+@media only screen and (max-width: 1200px) {
+  /* line 13, ../sass/components/_header.scss */
+  header .img-paisaje {
+    bottom: -70%;
+    animation: paisajeDeskLar 1.5s ease-in-out;
+  }
+}
+@media only screen and (max-width: 992px) {
+  /* line 13, ../sass/components/_header.scss */
+  header .img-paisaje {
+    bottom: -40%;
+    animation: paisajeDeskMed 1.5s ease-in-out;
+  }
+}
+@media only screen and (max-width: 430px) {
+  /* line 13, ../sass/components/_header.scss */
+  header .img-paisaje {
+    bottom: -10%;
+    animation: paisajeDeskSmall 1.5s ease-in-out;
+  }
+}
+/* line 32, ../sass/components/_header.scss */
 header nav {
+  position: relative;
+  z-index: 999;
   text-align: center;
 }
-/* line 23, ../sass/components/_header.scss */
+/* line 37, ../sass/components/_header.scss */
 header nav a.inline-block .logo-pb {
   display: inline-block;
-  width: 369px;
-  height: 207px;
+  width: 280px;
+  height: 160px;
   background-image: url(../images/identidad/logo.png);
 }
-/* line 33, ../sass/components/_header.scss */
+/* line 47, ../sass/components/_header.scss */
 header nav ul.pb-nav > li {
   position: relative;
   display: inline-block;
   padding-top: 90px;
   padding-bottom: 10px;
 }
-/* line 38, ../sass/components/_header.scss */
+/* line 52, ../sass/components/_header.scss */
 header nav ul.pb-nav > li:not(:last-child) > a {
   border-right: 2px solid #fff;
 }
-/* line 39, ../sass/components/_header.scss */
+/* line 53, ../sass/components/_header.scss */
+header nav ul.pb-nav > li:nth-child(2) > a {
+  padding-left: 0px;
+}
+/* line 54, ../sass/components/_header.scss */
+header nav ul.pb-nav > li:last-child > a {
+  padding-right: 0px;
+}
+/* line 55, ../sass/components/_header.scss */
 header nav ul.pb-nav > li > a {
   display: inline-block;
   line-height: 30px;
-  padding: 0 10px;
+  padding: 0 8.5px;
   text-transform: uppercase;
   color: #fff;
   /* Indicador */
 }
-/* line 47, ../sass/components/_header.scss */
+/* line 63, ../sass/components/_header.scss */
 header nav ul.pb-nav > li > a:before {
   content: '';
   position: absolute;
@@ -8901,13 +8993,23 @@ header nav ul.pb-nav > li > a:before {
   -o-transition: opacity .3s ease-in-out;
   transition: opacity .3s ease-in-out;
 }
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  /* line 47, ../sass/components/_header.scss */
+  header nav ul.pb-nav > li {
+    padding-top: 10px;
+  }
+  /* line 86, ../sass/components/_header.scss */
+  header nav ul.pb-nav > li > a:before {
+    display: none !important;
+  }
+}
 @media only screen and (min-width: 601px) {
-  /* line 69, ../sass/components/_header.scss */
+  /* line 89, ../sass/components/_header.scss */
   header nav ul.pb-nav > li ul {
     position: absolute;
     left: 50%;
     margin-top: 10px;
-    max-height: 230px;
+    max-height: 130px;
     min-width: 160px;
     display: none;
     -webkit-transform: translateX(-50%);
@@ -8917,11 +9019,11 @@ header nav ul.pb-nav > li > a:before {
     box-shadow: 5px 5px 20px 0 rgba(84, 84, 84, 0.25);
     overflow: auto;
   }
-  /* line 82, ../sass/components/_header.scss */
+  /* line 102, ../sass/components/_header.scss */
   header nav ul.pb-nav > li ul li {
     margin-bottom: 4px;
   }
-  /* line 84, ../sass/components/_header.scss */
+  /* line 104, ../sass/components/_header.scss */
   header nav ul.pb-nav > li ul li a {
     display: block;
     padding: 0 5px;
@@ -8930,75 +9032,42 @@ header nav ul.pb-nav > li > a:before {
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.2);
   }
-  /* line 91, ../sass/components/_header.scss */
+  /* line 111, ../sass/components/_header.scss */
   header nav ul.pb-nav > li ul li a:hover {
     color: #993c8c;
     background-color: rgba(255, 255, 255, 0.7);
   }
 }
-/* line 99, ../sass/components/_header.scss */
+/* line 119, ../sass/components/_header.scss */
 header nav ul.pb-nav > li:hover, header nav ul.pb-nav > li.active {
   z-index: 99;
 }
-/* line 101, ../sass/components/_header.scss */
+/* line 121, ../sass/components/_header.scss */
 header nav ul.pb-nav > li:hover > a, header nav ul.pb-nav > li.active > a {
   /* to do - li es el active */
   color: #993c8c;
 }
-/* line 103, ../sass/components/_header.scss */
+/* line 123, ../sass/components/_header.scss */
 header nav ul.pb-nav > li:hover > a:before, header nav ul.pb-nav > li.active > a:before {
   opacity: 1;
 }
 @media only screen and (min-width: 601px) {
-  /* line 106, ../sass/components/_header.scss */
+  /* line 126, ../sass/components/_header.scss */
   header nav ul.pb-nav > li:hover ul {
     display: block;
   }
 }
-@media only screen and (min-width: 601px) and (max-width: 992px) {
-  /* line 1, ../sass/components/_header.scss */
-  header {
-    min-height: 500px;
-    margin-bottom: -100px;
-  }
-  /* line 113, ../sass/components/_header.scss */
-  header .img-paisaje {
-    bottom: -15%;
-  }
-  /* line 116, ../sass/components/_header.scss */
-  header nav ul.pb-nav > li {
-    padding-top: 10px;
-  }
-  /* line 118, ../sass/components/_header.scss */
-  header nav ul.pb-nav > li > a {
-    /* Indicador */
-  }
-  /* line 120, ../sass/components/_header.scss */
-  header nav ul.pb-nav > li > a:before {
-    display: none !important;
-  }
-}
 @media only screen and (max-width: 600px) {
-  /* line 1, ../sass/components/_header.scss */
-  header {
-    height: 300px;
-    min-height: 300px;
-    margin-bottom: -150px;
-  }
-  /* line 132, ../sass/components/_header.scss */
-  header .img-paisaje {
-    bottom: -15%;
-  }
-  /* line 133, ../sass/components/_header.scss */
+  /* line 32, ../sass/components/_header.scss */
   header nav {
     position: relative;
   }
-  /* line 135, ../sass/components/_header.scss */
+  /* line 131, ../sass/components/_header.scss */
   header nav a.inline-block .logo-pb {
     width: 190px;
     height: 110px;
   }
-  /* line 139, ../sass/components/_header.scss */
+  /* line 135, ../sass/components/_header.scss */
   header nav #openNav {
     position: absolute;
     top: 20px;
@@ -9006,7 +9075,7 @@ header nav ul.pb-nav > li:hover > a:before, header nav ul.pb-nav > li.active > a
     color: #fff;
     cursor: pointer;
   }
-  /* line 146, ../sass/components/_header.scss */
+  /* line 142, ../sass/components/_header.scss */
   header nav ul.pb-nav {
     position: fixed;
     top: 0px;
@@ -9023,38 +9092,38 @@ header nav ul.pb-nav > li:hover > a:before, header nav ul.pb-nav > li.active > a
     z-index: 109;
     box-shadow: -3px 3px 20px 0 rgba(84, 84, 84, 0.25);
   }
-  /* line 161, ../sass/components/_header.scss */
+  /* line 157, ../sass/components/_header.scss */
   header nav ul.pb-nav #closeNav {
     padding: 10px 20px;
     text-align: right;
     color: #993c8c;
     cursor: pointer;
   }
-  /* line 167, ../sass/components/_header.scss */
+  /* line 163, ../sass/components/_header.scss */
   header nav ul.pb-nav > li {
     display: block;
     padding: 0px;
   }
-  /* line 170, ../sass/components/_header.scss */
+  /* line 166, ../sass/components/_header.scss */
   header nav ul.pb-nav > li > a {
     display: block;
     padding: 0 30px;
     color: #993c8c;
     cursor: pointer;
   }
-  /* line 175, ../sass/components/_header.scss */
+  /* line 171, ../sass/components/_header.scss */
   header nav ul.pb-nav > li > a:before {
     display: none;
   }
-  /* line 176, ../sass/components/_header.scss */
+  /* line 172, ../sass/components/_header.scss */
   header nav ul.pb-nav > li > a.active + ul {
     display: block;
   }
-  /* line 178, ../sass/components/_header.scss */
+  /* line 174, ../sass/components/_header.scss */
   header nav ul.pb-nav > li ul {
     display: none;
   }
-  /* line 181, ../sass/components/_header.scss */
+  /* line 177, ../sass/components/_header.scss */
   header nav ul.pb-nav > li ul li a {
     display: block;
     padding: 0 20px 0 40px;
@@ -9063,19 +9132,13 @@ header nav ul.pb-nav > li:hover > a:before, header nav ul.pb-nav > li.active > a
     color: #8bb2b5;
     cursor: pointer;
   }
-  /* line 188, ../sass/components/_header.scss */
+  /* line 184, ../sass/components/_header.scss */
   header nav ul.pb-nav > li ul li a:hover {
     color: #993c8c;
   }
-  /* line 195, ../sass/components/_header.scss */
+  /* line 191, ../sass/components/_header.scss */
   header nav ul.pb-nav.open {
     right: 0px;
-  }
-}
-@media only screen and (max-width: 430px) {
-  /* line 200, ../sass/components/_header.scss */
-  header .img-paisaje {
-    bottom: 0px;
   }
 }
 

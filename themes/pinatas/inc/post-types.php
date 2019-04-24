@@ -5,36 +5,36 @@
 
 add_action('init', function(){
 
-	// 
-	// $labels = array(
-	// 	'name'          => 'Servicio',
-	// 	'singular_name' => 'Servicio',
-	// 	'add_new'       => 'Nuevo servicio',
-	// 	'add_new_item'  => 'Nuevo servicio',
-	// 	'edit_item'     => 'Editar servicio',
-	// 	'new_item'      => 'Nuevo servicio',
-	// 	'all_items'     => 'Todo',
-	// 	'view_item'     => 'Ver servicio',
-	// 	'search_items'  => 'Buscar servicio',
-	// 	'not_found'     => 'No hay servicio.',
-	// 	'menu_name'     => 'Servicio'
-	// );
+	// Proveedores
+	$labels = array(
+		'name'          => 'Proveedor',
+		'singular_name' => 'Proveedor',
+		'add_new'       => 'Nuevo proveedor',
+		'add_new_item'  => 'Nuevo proveedor',
+		'edit_item'     => 'Editar proveedor',
+		'new_item'      => 'Nuevo proveedor',
+		'all_items'     => 'Todo',
+		'view_item'     => 'Ver proveedor',
+		'search_items'  => 'Buscar proveedor',
+		'not_found'     => 'No hay proveedor.',
+		'menu_name'     => 'Proveedor'
+	);
 
-	// $args = array(
-	// 	'labels'             => $labels,
-	// 	'public'             => true,
-	// 	'publicly_queryable' => true,
-	// 	'show_ui'            => true,
-	// 	'show_in_menu'       => true,
-	// 	'query_var'          => true,
-	// 	'rewrite'            => array( 'slug' => 'servicio' ),
-	// 	'capability_type'    => 'post',
-	// 	'has_archive'        => true,
-	// 	'hierarchical'       => false,
-	// 	'menu_position'      => 6,
-	// 	'supports'           => array( 'title', 'thumbnail' ),
-	// 	'menu_icon' 		 => 'dashicons-admin-users'
-	// );
-	// register_post_type( 'servicio', $args );	
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'pb_proveedor' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => 6,
+		'supports'           => array( 'title', 'editor' ),
+		'menu_icon' 		 => 'dashicons-admin-users'
+	);
+	register_post_type( 'pb_proveedor', $args );	
 
 });

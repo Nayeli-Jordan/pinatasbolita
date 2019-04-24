@@ -25,7 +25,8 @@ input[type="submit"] {
 	&.active {
 		background-image: radial-gradient(circle, $blue-color, $blue-color-dark, $blue-color-xdark);
 	}
-	&.btn-caracteristicas { 
+	&.btn-caracteristicas {
+		float: left;
 		border-top-left-radius: 0px; 
 		border-bottom-left-radius: 0px; 
 	}
@@ -34,16 +35,31 @@ input[type="submit"] {
 		border-top-right-radius: 0px;
 		border-bottom-right-radius: 0px;
 	}
-	@media #{$sm-and-down} {
+	@media #{$large-and-up} {
 		&.btn-caracteristicas,
-		&.btn-ubicacion {
-			display: block;
-			float: none;
-			width: 240px;
-			margin: 0 auto 20px;
-			padding: 0 20px;
+		&.btn-ubicacion,
+		&.btn-proveedores {
+			min-width: 260px;
+		}
+	}
+	@media #{$medium-and-down} {
+		&.btn-caracteristicas,
+		&.btn-ubicacion,
+		&.btn-proveedores {
+			padding: 0 25px;
+			min-width: 195px;
 			line-height: 50px;
 			font-size: 18px;
+		}
+	}
+	@media #{$sm-and-down} {
+		&.btn-caracteristicas,
+		&.btn-ubicacion,
+		&.btn-proveedores {
+			display: block;
+			float: none!important;
+			width: 240px;
+			margin: 0 auto 20px;
 			border-radius: 15px!important;
 		}
 	}

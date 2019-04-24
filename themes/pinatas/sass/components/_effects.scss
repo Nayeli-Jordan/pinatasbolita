@@ -83,7 +83,19 @@
 
 @keyframes paisajeDesk {
   0%   { bottom: -120%; }
-  100% { bottom: -20%; }
+  100% { bottom: -80%; }
+}
+@keyframes paisajeDeskLar {
+  0%   { bottom: -120%; }
+  100% { bottom: -70%; }
+}
+@keyframes paisajeDeskMed {
+  0%   { bottom: -120%; }
+  100% { bottom: -40%; }
+}
+@keyframes paisajeDeskSmall {
+  0%   { bottom: -120%; }
+  100% { bottom: -10%; }
 }
 
 @keyframes distribuidor {

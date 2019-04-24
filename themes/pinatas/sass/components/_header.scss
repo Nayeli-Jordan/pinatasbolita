@@ -1,7 +1,7 @@
 header {
-	height: 75vh;
-	min-height: 700px;
-	margin-bottom: -200px;
+	min-height: 400px;
+	margin-bottom: -150px;
+	@media #{$sm-and-down} { min-height: 200px; }
 	.bg-fondo-azul {
 		position: absolute;
 		width: 100%;
@@ -12,18 +12,32 @@ header {
 	}
 	.img-paisaje {
 		position: absolute;
-	    bottom: -20%;
+	    bottom: -80%;
 	    z-index: -1;
 	    width: 100%;
 	    animation: paisajeDesk 1.5s ease-in-out;
+	    @media #{$large-and-down} { 
+			bottom: -70%; 
+			animation: paisajeDeskLar 1.5s ease-in-out;
+		}
+		@media #{$medium-and-down} { 
+			bottom: -40%; 
+			animation: paisajeDeskMed 1.5s ease-in-out;
+		}
+		@media #{$small-and-down} { 
+			bottom: -10%; 
+			animation: paisajeDeskSmall 1.5s ease-in-out;
+		}
 	}
 	nav {
+		position: relative;
+		z-index: 999;
 		text-align: center;
 		a.inline-block {
 			.logo-pb {
 				display: inline-block;
-				width: 369px;
-				height: 207px;
+				width: 280px;
+				height: 160px;
 				background-image: url(../images/identidad/logo.png);
 				@extend .bg-image;
 				@extend .bg-contain;
@@ -36,10 +50,12 @@ header {
 				padding-top: 90px;
 				padding-bottom: 10px;
 				&:not(:last-child) > a { border-right: 2px solid $light-color; }
+				&:nth-child(2) > a { padding-left: 0px; }
+				&:last-child > a { padding-right: 0px; }
 				& > a {
 					display: inline-block;
 					line-height: 30px;
-					padding: 0 10px;
+					padding: 0 8.5px;
 					text-transform: uppercase;
 					color: $light-color;
 					@extend .transition;
@@ -65,12 +81,16 @@ header {
 						@extend .center-absolute;
 					}
 				}
+				@media #{$medium-only}{
+					padding-top: 10px;
+					& > a:before { display: none!important; }
+				}
 				@media #{$medium-and-up}{
 					ul {
 						position: absolute;
 						left: 50%;
 						margin-top: 10px;
-						max-height: 230px;
+						max-height: 130px;
 						min-width: 160px;
 						display: none;
 						-webkit-transform:translateX(-50%);
@@ -105,32 +125,8 @@ header {
 				}
 				@media #{$medium-and-up}{ &:hover ul { display: block; } } 
 			}
-		}		
-	}
-	@media #{$medium-only}{
-		min-height: 500px;
-		margin-bottom: -100px;
-		.img-paisaje { bottom: -15%; }
-		nav {
-			ul.pb-nav {
-				& > li {
-					padding-top: 10px;
-					& > a {
-						/* Indicador */
-						&:before {
-							display: none!important;
-						}
-					}
-				}				
-			}
 		}
-	}
-	@media #{$sm-and-down}{
-		height: 300px;
-		min-height: 300px;
-		margin-bottom: -150px;
-		.img-paisaje { bottom: -15%; }
-		nav {
+		@media #{$sm-and-down}{
 			position: relative;
 			a.inline-block .logo-pb {
 				width: 190px;
@@ -194,9 +190,6 @@ header {
 				}
 				&.open { right: 0px; }			
 			}
-		}
-	}
-	@media #{$small-and-down} {
-		.img-paisaje { bottom: 0px; }
+		}		
 	}
 }

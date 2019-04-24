@@ -95,7 +95,7 @@ echo 'Hijo final: ' . $finalHijoId . ' - ' . $finalHijo . '</br></br>';*/
 // Declarar array con categorías que se excluirán para productos sueltos
 $excludeCats = array(); ?>
 
-<div id="product-<?php the_ID(); ?>" class="sliderProduct">	
+<div id="product-<?php the_ID(); ?>" class="sliderProduct">
 	<section class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-timeout="0" data-cycle-slides="> article" data-cycle-prev="#prevProducts" data-cycle-next="#nextProducts">
 		
 		<?php

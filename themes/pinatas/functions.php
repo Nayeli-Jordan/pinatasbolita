@@ -11,8 +11,8 @@ define( 'SITEURL', get_site_url() . '/' );
 /*------------------------------------*\
 	#SNIPPETS
 \*------------------------------------*/
-/*require_once( 'inc/pages.php' );
 require_once( 'inc/post-types.php' );
+/*require_once( 'inc/pages.php' );
 require_once( 'inc/taxonomies.php' );*/
 
 /*------------------------------------*\

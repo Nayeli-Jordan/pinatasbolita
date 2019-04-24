@@ -6,3 +6,5 @@
 #content-ubicacion {
 	@extend .text-shadow-light;
 }
+
+#content-proveedores .row .col:nth-child(3n+1){ clear: both; }
