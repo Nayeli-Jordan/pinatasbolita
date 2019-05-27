@@ -85,7 +85,14 @@ var $=jQuery.noConflict();
 				$('.btn-proveedores').removeClass('active');
 			}
 			footerBottom();
-		});				
+		});	
+
+		//Scroll menú
+		$(".btn-scroll").click(function() { 
+			$('html, body').animate({		
+				scrollTop: $('.info-footer').offset().top // - 50
+			}, 1000);
+		});	
 
 	});
 })(jQuery);

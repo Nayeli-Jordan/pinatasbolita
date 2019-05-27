@@ -55,7 +55,7 @@
 		<noscript>Tu navegador no soporta JavaScript!</noscript>
 		<?php wp_head(); ?>
 	</head>
-	<body class="<?php if(is_home()): echo 'pageHome'; endif; ?>">
+	<body class="<?php if(is_home()): echo 'pageHome'; elseif(is_404()): echo 'pageError'; endif; ?>">
 		<?php if (!is_home()) :  ?>
 			<header class="js-header relative">
 				<div class="bg-fondo-azul"></div>
@@ -86,8 +86,6 @@
 									if ($categoryProduct !== false) {
 										$estatusCategory 	= 'active';
 									}
-
-									//$menu_list .='<li id="item_' . $slug . '" itemprop="actionOption" class="' . $class .' ' . $estatusCategory . '"><p>' . $title . '</p>';
 
 										/* Lista de productos en categoría */
 										$products_args = array(
@@ -122,6 +120,12 @@
 
 								}
 							}
+
+							/*Novedades */
+							if (is_page('novedades')) {
+								$estatusPage 	= 'active';
+							}
+							$menu_list .='<li itemprop="actionOption" class="' . $estatusPage . '"><a href="' . SITEURL . 'novedades">Novedades</a></li>';
 							echo $menu_list;
 						?>				
 					</ul>

@@ -2,7 +2,7 @@ footer {
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	padding-top: 50px;
+	padding: 50px 0 ;
 	animation: distribuidor 1.5s ease-in-out;
 	.bg-distribuidor {
 		width: 100%;
@@ -13,5 +13,11 @@ footer {
 			background-size: contain;
 			background-image: url(../images/distribuidor-sm.png);
 		}
+	}
+	.logo-qo {
+		display: inline-block;
+		vertical-align: middle;
+		width: 30px;
+		height: 14px;
 	}
 }

@@ -26,6 +26,10 @@ html {
   background-image: url(../images/fondo.jpg);
 }
 
+.pageError .main-body { 
+  min-height: auto;
+}
+
 section {
 	margin: 0;
   & + section { margin-top: 50px; }

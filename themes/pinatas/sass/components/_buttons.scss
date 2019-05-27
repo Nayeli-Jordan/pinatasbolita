@@ -35,6 +35,9 @@ input[type="submit"] {
 		border-top-right-radius: 0px;
 		border-bottom-right-radius: 0px;
 	}
+	&.btn-caracteristicas,
+	&.btn-ubicacion,
+	&.btn-proveedores { margin-bottom: 20px; }
 	@media #{$large-and-up} {
 		&.btn-caracteristicas,
 		&.btn-ubicacion,

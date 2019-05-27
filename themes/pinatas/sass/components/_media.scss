@@ -98,7 +98,7 @@ video.responsive-video {
 			.itemPinata {
 				position: relative;
 				display: inline-block;
-				width: 280px;
+				width: 275px;
 				max-width: 100%;
 				vertical-align: middle;
 				//border: 1px solid gray;
@@ -199,6 +199,65 @@ video.responsive-video {
 							position: absolute;
 							top: 50%;
 							left: -130px;
+						}
+				    }
+				}
+				&:first-child:nth-last-child(4) {
+				    & {
+				    	margin-bottom: 190px;
+				    	margin-right: -15px; //Cruce
+				    	z-index: 1;
+				    	img { 
+				    		@include transform(rotate(-10deg));
+							@extend .animation-tada-5Less;
+				    	}
+						h2 { 
+							position: absolute;
+							left: 0px; 
+							top: 0px;
+							text-align: left;
+						}
+				    }
+				    & ~ .itemPinata:nth-last-child(3) {
+				    	margin-bottom: 0px;
+				    	img { 
+				    		@include transform(rotate(15deg));
+							@extend .animation-tada15;
+				    	}
+						h2 { 
+							position: absolute;
+							right: 0px;
+							top: 75%;
+						}
+				    }
+				    & ~ .itemPinata:nth-last-child(2) {
+						@extend .center-sides;
+						top: 190px;
+						left: 45%!important;
+						z-index: 2;
+						img { 
+							@include transform(rotate(5deg));
+							@extend .animation-tada5;
+						}
+						h2 {
+							position: absolute;
+							top: 40%;
+							left: 0px;
+						}
+				    }
+				    & ~ .itemPinata:nth-last-child(1) {
+						@extend .center-sides;
+						top: 0px;
+						margin-left: 20px;
+						z-index: -1;
+						img { 
+							@include transform(rotate(5deg));
+							@extend .animation-tada15;
+						}
+						h2 {
+							position: absolute;
+							top: 10%;
+    						right: -20px;
 						}
 				    }
 				}

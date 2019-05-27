@@ -127,6 +127,8 @@ $excludeCats = array(); ?>
 
 			        $i ++; endwhile;
 			    } wp_reset_postdata();
+			    // Palazo
+			    include (TEMPLATEPATH . '/template/content-product_palazo.php');
 			echo "</article>";
 
 			//Agregar categoría a excluir

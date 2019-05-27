@@ -3,10 +3,12 @@
 
 a {
   text-decoration: none;
-  color: $dark-color;
+  color: $light-color;
   cursor: pointer;
   // Gets rid of tap active state
   -webkit-tap-highlight-color: transparent;
+  @include transition(.3s ease-out);
+  &:hover { color: $primary-color; }
 }
 
 html{
@@ -39,8 +41,9 @@ p {
 // Text Styles
 em                            { font-style: italic; }
 small                         { font-size: 75%; }
-.fz-20                        { font-size: 20px; }
+.fz-20                        { font-size: 20px; line-height: 26px; }
 .fz-16                        { font-size: 16px; }
+.text-error p                 { font-size: 30px; line-height: 34px; }
 
 .font-thin                    { font-weight: 200; }
 .font-normal                  { font-weight: 300; }
