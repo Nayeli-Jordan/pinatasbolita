@@ -17,5 +17,4 @@ add_action('init', function(){
 		wp_insert_post( $page, true );
 	}
 
-
 });

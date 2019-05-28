@@ -81,6 +81,15 @@ header {
 						@extend .center-absolute;
 					}
 				}
+				@media #{$large-only}{
+					& {
+						&:not(:last-child) > a { border-right: 1px solid $light-color; }
+						& > a {
+							padding: 0 8px;
+							font-size: 12px;
+						}
+					} 
+				}
 				@media #{$medium-only}{
 					padding-top: 10px;
 					& > a:before { display: none!important; }

@@ -56,6 +56,25 @@
 		<?php wp_head(); ?>
 	</head>
 	<body class="<?php if(is_home()): echo 'pageHome'; elseif(is_404()): echo 'pageError'; endif; ?>">
+
+		<?php if (is_product()) : 
+			/* Obtener categoría de producto (categoría hijo)*/
+			global $post;
+			$terms = get_the_terms( $post->ID, 'product_cat' );
+			foreach ($terms as $term) {
+				$Cat_id 	= $term->term_id; /*Category child*/
+				$Cat_slug 	= $term->slug;
+				$Cat_parent	= $term->parent;  /*Category parent id*/
+				echo 'Hijo: ' . $Cat_id . ' ' . $Cat_slug;
+				break;
+			}
+			/* Obtener el slug de la categoría de producto (categoría padre)*/
+			if( $parent = get_term_by( 'id', $Cat_parent, 'product_cat' ) ){
+				$catParent = $parent->slug;
+				echo ' <br>Padre: ' . $Cat_parent . ' - ' . $catParent;
+			}			
+		endif; ?>
+
 		<?php if (!is_home()) :  ?>
 			<header class="js-header relative">
 				<div class="bg-fondo-azul"></div>
@@ -65,6 +84,36 @@
 					<div id="openNav" class="hide-on-med-and-up"><em class="icon-menu"></em></div>
 					<ul class="pb-nav" itemscope>
 						<div id="closeNav" class="hide-on-med-and-up"><em class="icon-close"></em></div>
+
+						<?php 
+						$itemInicial = 'princesas';
+
+						/* Active en menú si es la misma categoría del producto*/
+						if ($catParent === $itemInicial) {
+							$statusItem = 'active';
+						} else {
+							$statusItem = 'inactive';
+						}
+
+						$args = array( 'post_type' => 'product', 'posts_per_page' => 1, 'product_cat' => $itemInicial, 'orderby' => 'rand' );
+						$loop = new WP_Query( $args );
+						while ( $loop->have_posts() ) : $loop->the_post(); global $product;
+							$url_princesas =  get_permalink( $loop->post->ID );
+						endwhile;  wp_reset_query();  ?>
+						<li id="item_princesas" itemprop="actionOption" class="<?php echo $statusItem; ?>">
+							<a href="<?php echo $url_princesas ?>" title="Enlace a Princesas">Princesas</a>
+							<ul>
+								<?php $args = array( 'post_type' => 'product', 'posts_per_page' => -1, 'product_cat' => $itemInicial );
+								$loop = new WP_Query( $args );
+								while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>
+									<li><a href="<?php echo get_permalink( $loop->post->ID ) ?>"><?php the_title(); ?> Bolita</a></li>
+								<?php endwhile;  wp_reset_query();  ?>
+							</ul>
+						</li>
+
+
+
+
 						<?php
 							$menu_name = 'top_menu';
 
@@ -79,53 +128,47 @@
 									$class 				= esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $menu_item->classes ), $menu_item) ) );
 									$slug 				= sanitize_title( $menu_item->title );
 
-									/* Si el url tiene el slug */
-									$url 				= $_SERVER["REQUEST_URI"];
-									$categoryProduct 	= strpos($url, $slug);
-									$estatusCategory 	= '';
-									if ($categoryProduct !== false) {
-										$estatusCategory 	= 'active';
+
+
+									/* Active en menú si es la misma categoría del producto*/
+									if ($catParent === $slug) {
+										$statusItem = 'active';
+									} else {
+										$statusItem = 'inactive';
 									}
+									/* Obtener Url item inicial (producto random) */
+									$args = array( 'post_type' => 'product', 'posts_per_page' => 1, 'product_cat' => $slug, 'orderby' => 'rand' );
+									$loop = new WP_Query( $args );
+									while ( $loop->have_posts() ) : $loop->the_post(); global $product;
+										$url_item =  get_permalink( $loop->post->ID );
+									endwhile;  wp_reset_query();
+									/* Obtener demás productos */
+									$subItems = '';
+									$args = array( 'post_type' => 'product', 'posts_per_page' => -1, 'product_cat' => $slug );
+									$loop = new WP_Query( $args );
+									while ( $loop->have_posts() ) : $loop->the_post(); 
+										global $product;
+										$subItem_name = $product->get_title();
+										$subItems .= '<li><a href="' . get_permalink( $loop->post->ID ) . '">' . $subItem_name . ' Bolita</a></li>';
+									endwhile;  wp_reset_query();
 
-										/* Lista de productos en categoría */
-										$products_args = array(
-											'post_type' 		=> 'product',
-											'posts_per_page' 	=> -1,
-											'product_cat'		=> $title,
-										);
-										$products_query = new WP_Query( $products_args );
-										if ( $products_query->have_posts() ) : 
-											
-											$i = 1;
-											while ( $products_query->have_posts() ) : $products_query->the_post();
-												global $product; 
-												$idProduct 		= $product->get_id();
-												$titleProduct	= $post->post_title;
+									$menu_list .= '<li id="item_' . $slug . '" itemprop="actionOption" class="' . $statusItem . '">
+										<a href="' . $url_item . '" title="Enlace a' . $slug . '">' . $title . '</a>
+										<ul>' . $subItems . '</ul>
+									</li>';
 
-												if ($i === 1) {
-													$menu_list .='<li id="item_' . $slug . '" itemprop="actionOption" class="' . $class .' ' . $estatusCategory . '"><a href="' . get_permalink( $idProduct ) . '">' . $title . '</a>';
-													$menu_list .='<ul>';
-												}
 
-												$menu_list .='<li><a href="' . get_permalink( $idProduct ) . '">' . $titleProduct . ' Bolita</a></li>';
 
-										$i ++; endwhile; 
-										if ($i != 0) {
-											$menu_list .='</ul>';
-										}
-										wp_reset_postdata();
-										endif;
 
-									$menu_list .='</li>';
 
 								}
 							}
 
 							/*Novedades */
-							if (is_page('novedades')) {
+							/*if (is_page('novedades')) {
 								$estatusPage 	= 'active';
 							}
-							$menu_list .='<li itemprop="actionOption" class="' . $estatusPage . '"><a href="' . SITEURL . 'novedades">Novedades</a></li>';
+							$menu_list .='<li itemprop="actionOption" class=""><a href="' . esc_url( get_permalink(774) ) . '">Novedades</a></li>';*/
 							echo $menu_list;
 						?>				
 					</ul>

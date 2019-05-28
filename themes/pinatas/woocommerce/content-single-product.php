@@ -59,7 +59,8 @@ if ( $categories && ! is_wp_error( $category ) ) :
 		}
 
 		// Saber si es la categoría del url actual
-		$urlSite 		= $_SERVER["REQUEST_URI"];
+		//$urlSite 		= '$_SERVER["REQUEST_URI"]';
+		$urlSite 		= 'video-juegos';
 		$currentCat 	= strpos($urlSite, $catParent);
 		if ($currentCat !== false) {
 			/* $catParent sí es la categoría actual (url) */
@@ -128,7 +129,7 @@ $excludeCats = array(); ?>
 			        $i ++; endwhile;
 			    } wp_reset_postdata();
 			    // Palazo
-			    include (TEMPLATEPATH . '/template/content-product_palazo.php');
+			    //include (TEMPLATEPATH . '/template/content-product_palazo.php');
 			echo "</article>";
 
 			//Agregar categoría a excluir
@@ -138,6 +139,8 @@ $excludeCats = array(); ?>
 				/* Si producto NO tiene categoría hijo */
 				// Img producto principal
 				include (TEMPLATEPATH . '/template/content-product.php');
+			    // Palazo
+			    //include (TEMPLATEPATH . '/template/content-product_palazo.php');
 			echo "</article>";
 		}
 
