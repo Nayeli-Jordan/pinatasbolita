@@ -5,6 +5,7 @@
 		    $args = array(
 		        'post_type' 		=> 'product',
 		        'posts_per_page' 	=> 15,
+		        'orderby'			=> 'rand',
 			    'date_query'    	=> array(
 			        'column'  	=> 'post_date',
 			        'after'   	=> '- 60 days'
