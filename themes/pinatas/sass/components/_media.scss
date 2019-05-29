@@ -37,6 +37,7 @@ video.responsive-video {
 
 /* RULETA */
 .img-ruleta_base {
+	position: relative;
 	display: block;
 	max-width: 98%;
 	@extend .margin-auto;
@@ -47,11 +48,18 @@ video.responsive-video {
 }
 .bg-ruleta_indicador { @extend .margin-auto; }
 .bg-ruleta_centro {
-	width: 18%;
-	height: 28%;
+	width: 30%;
+	height: 25%;
 	background-image: url(../images/ruleta-centro.png);
 	@extend .content-center; 
 	z-index: 1;
+}
+.bg-ruleta_nuevos {
+	bottom: -14%;
+	width: 28%;
+	height: 18%;
+	background-image: url(../images/nuevos.png);
+	@extend .center-sides;
 }
 .bg-ruleta_indicador {
 	position: relative;
@@ -64,8 +72,8 @@ video.responsive-video {
 }
 .bg-ruleta_opciones {
 	position: absolute;
-    top: -1%;
-    left: 9%;
+    top: -1.5%;
+    left: 8.5%;
     width: 83%;
     padding-bottom: 100%;
 	background-image: url(../images/ruleta-opciones.png);

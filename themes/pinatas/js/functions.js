@@ -10,6 +10,21 @@ var $=jQuery.noConflict();
 
 		$(document).ready(function() {
 			footerBottom();
+
+			/* #comprar */
+			if(window.location.href.indexOf("#comprar") > -1) {
+				$('html, body').animate({		
+					scrollTop: $('.btn-dcomprar').offset().top // - 50
+				}, 1000);
+				$( ".btn-dcomprar" ).click();
+			}
+			/* #distribuidores */
+			if(window.location.href.indexOf("#distribuidores") > -1) {
+				$('html, body').animate({		
+					scrollTop: $('.btn-distribuidores').offset().top // - 50
+				}, 1000);
+				$( ".btn-distribuidores" ).click();
+			}
 		});
  
 		$(window).on('resize', function(){
@@ -52,7 +67,7 @@ var $=jQuery.noConflict();
 
 		$(".btn-caracteristicas").click(function() {
 			$('#content-ubicacion, #content-proveedores').addClass('hide');
-			$('.btn-ubicacion, .btn-proveedores').removeClass('active');
+			$('.btn-dcomprar, .btn-distribuidores').removeClass('active');
 			if($('#content-caracteristicas').hasClass('hide')){
 				$('#content-caracteristicas').removeClass('hide');
 				$('.btn-caracteristicas').addClass('active');
@@ -62,27 +77,27 @@ var $=jQuery.noConflict();
 			}
 			footerBottom();
 		});	
-		$(".btn-ubicacion").click(function() {
+		$(".btn-dcomprar").click(function() {
 			$('#content-caracteristicas, #content-proveedores').addClass('hide');
-			$('.btn-caracteristicas, .btn-proveedores').removeClass('active');
+			$('.btn-caracteristicas, .btn-distribuidores').removeClass('active');
 			if($('#content-ubicacion').hasClass('hide')){
 				$('#content-ubicacion').removeClass('hide');
-				$('.btn-ubicacion').addClass('active');
+				$('.btn-dcomprar').addClass('active');
 			} else {
 				$('#content-ubicacion').addClass('hide');
-				$('.btn-ubicacion').removeClass('active');
+				$('.btn-dcomprar').removeClass('active');
 			}
 			footerBottom();
 		});	
-		$(".btn-proveedores").click(function() {
+		$(".btn-distribuidores").click(function() {
 			$('#content-caracteristicas, #content-ubicacion').addClass('hide');
-			$('.btn-caracteristicas, .btn-ubicacion').removeClass('active');
+			$('.btn-caracteristicas, .btn-dcomprar').removeClass('active');
 			if($('#content-proveedores').hasClass('hide')){
 				$('#content-proveedores').removeClass('hide');
-				$('.btn-proveedores').addClass('active');
+				$('.btn-distribuidores').addClass('active');
 			} else {
 				$('#content-proveedores').addClass('hide');
-				$('.btn-proveedores').removeClass('active');
+				$('.btn-distribuidores').removeClass('active');
 			}
 			footerBottom();
 		});	

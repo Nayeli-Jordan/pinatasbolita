@@ -6,7 +6,7 @@
 		<!-- Sets initial viewport load and disables zooming -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- SEO -->
-		<meta name="keywords" content="">
+		<meta name="keywords" content="piñatas, piñatas infantiles, piñatas creativas, piñatas de princesas, piñatas de superheroes, fiestas infantiles, decoración para fiestas, eventos sociales">
 		<meta name="description" content="<?php bloginfo('description'); ?>">
 
 		<!-- Meta robots -->

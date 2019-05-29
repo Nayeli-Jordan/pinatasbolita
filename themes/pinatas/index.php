@@ -1,8 +1,9 @@
 <?php get_header(); ?>
-	<section class="padding-top-20 padding-bottom-40 text-center">
+	<section class="padding-top-20 padding-bottom-15p text-center">
 		<div class="bg-ruleta_indicador"></div>
 		<span class="content-ruleta inline-block relative">
 			<div class="bg-ruleta_centro"></div>
+			<div class="bg-ruleta_nuevos bg-image bg-contain"><a href="<?php echo SITEURL; ?>novedades" class="bg-absolute"></a></div>
 			<img src="<?php echo THEMEPATH; ?>images/ruleta-base.png" class="img-ruleta_base">
 			<div class="bg-ruleta_opciones">
 				<?php $args = array( 'post_type' => 'product', 'posts_per_page' => 1, 'product_cat' => 'princesas', 'orderby' => 'rand' );
@@ -65,6 +66,8 @@
 				    <a id="ruleta_link_10" href="<?php echo get_permalink( $loop->post->ID ) ?>"  title="Enlace a Navidad"><span class="hide">Navidad</span></a>
 				<?php endwhile;  wp_reset_query(); ?>
 			</div>
+			<a id="ruleta_distribuidor" href="<?php echo SITEURL; ?>novedades#distribuidores"></a>
+			<a id="ruleta_comprar" href="<?php echo SITEURL; ?>novedades#comprar"></a>
 		</span>
 	</section>
 <?php get_footer(); ?>

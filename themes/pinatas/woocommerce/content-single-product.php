@@ -69,7 +69,7 @@ $productID = $post->ID;
 		        $i ++; endwhile;
 		    } wp_reset_postdata();
 		    // Palazo
-		    //include (TEMPLATEPATH . '/template/content-product_palazo.php');
+		    include (TEMPLATEPATH . '/template/content-product_palazo.php');
 		echo "</article>";
 
 		/* Obtener las demás subcategorías del padre ($finalCatParent) */

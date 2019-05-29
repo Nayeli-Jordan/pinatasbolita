@@ -2,8 +2,8 @@
 				<footer>
 					<div class="text-center">
 						<div class="btn btn-scroll btn-caracteristicas">Características</div>
-						<div class="btn btn-scroll btn-ubicacion">Dónde Comprar</div>
-						<div class="btn btn-scroll btn-proveedores">Quiero ser distribuidor</div>
+						<div class="btn btn-scroll btn-dcomprar">Dónde Comprar</div>
+						<div class="btn btn-scroll btn-distribuidores">Quiero ser distribuidor</div>
 					</div>
 					<div class="info-footer">
 						<div id="content-caracteristicas" class="container text-center padding-top-50 hide">
@@ -23,9 +23,25 @@
 									<p class="fz-20 margin-bottom-10 text-shadow-gray"><em><span class="color-primary">-</span> No exponer al fuego</em></p>
 									<p class="fz-20 margin-bottom-10 text-shadow-gray"><em><span class="color-primary">-</span> No exponer al agua</em></p>
 									<p class="fz-20 margin-bottom-10 text-shadow-gray"><em><span class="color-primary">-</span> No exponer al sol</em></p>
+									<div class="margin-top-50">
+										<p class="fz-16 margin-bottom-10 text-shadow-gray">PALAZO</p>
+										<p class="fz-16 margin-bottom-10 text-shadow-gray"><em><span class="color-primary">-</span> Incluye 7m de lazo</em></p>
+										<p class="fz-16 margin-bottom-10 text-shadow-gray"><em><span class="color-primary">-</span> Diferentes colores</em></p>
+										<p class="fz-16 margin-bottom-10 text-shadow-gray"><em><span class="color-primary">-</span> Hecho de madera</em></p>
+										<p class="fz-16 margin-bottom-10 text-shadow-gray"><em><span class="color-primary">-</span> Medida: 70 cm</em></p>
+										<img src="<?php echo THEMEPATH; ?>images/dibujo-palazo.png" class="responsive-img margin-top-20">
+									</div>
 								</div>
 								<div class="col s6 m4">
 									<img src="<?php echo THEMEPATH; ?>images/pinata-corta.png" class="responsive-img">
+								</div>
+								<div class="col s12 hide-on-med-and-up color-light margin-top-30">
+									<p class="fz-16 margin-bottom-10 text-shadow-gray">PALAZO</p>
+									<p class="fz-16 margin-bottom-10 text-shadow-gray"><em><span class="color-primary">-</span> Incluye 7m de lazo</em></p>
+									<p class="fz-16 margin-bottom-10 text-shadow-gray"><em><span class="color-primary">-</span> Diferentes colores</em></p>
+									<p class="fz-16 margin-bottom-10 text-shadow-gray"><em><span class="color-primary">-</span> Hecho de madera</em></p>
+									<p class="fz-16 margin-bottom-10 text-shadow-gray"><em><span class="color-primary">-</span> Medida: 70 cm</em></p>
+									<img src="<?php echo THEMEPATH; ?>images/dibujo-palazo.png" class="responsive-img margin-top-20">
 								</div>
 							</div>
 						</div>

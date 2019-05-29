@@ -30,25 +30,25 @@ input[type="submit"] {
 		border-top-left-radius: 0px; 
 		border-bottom-left-radius: 0px; 
 	}
-	&.btn-ubicacion { 
+	&.btn-dcomprar { 
 		float: right;
 		border-top-right-radius: 0px;
 		border-bottom-right-radius: 0px;
 	}
 	&.btn-caracteristicas,
-	&.btn-ubicacion,
-	&.btn-proveedores { margin-bottom: 20px; }
+	&.btn-dcomprar,
+	&.btn-distribuidores { margin-bottom: 20px; }
 	@media #{$large-and-up} {
 		&.btn-caracteristicas,
-		&.btn-ubicacion,
-		&.btn-proveedores {
+		&.btn-dcomprar,
+		&.btn-distribuidores {
 			min-width: 260px;
 		}
 	}
 	@media #{$medium-and-down} {
 		&.btn-caracteristicas,
-		&.btn-ubicacion,
-		&.btn-proveedores {
+		&.btn-dcomprar,
+		&.btn-distribuidores {
 			padding: 0 25px;
 			min-width: 195px;
 			line-height: 50px;
@@ -57,8 +57,8 @@ input[type="submit"] {
 	}
 	@media #{$sm-and-down} {
 		&.btn-caracteristicas,
-		&.btn-ubicacion,
-		&.btn-proveedores {
+		&.btn-dcomprar,
+		&.btn-distribuidores {
 			display: block;
 			float: none!important;
 			width: 240px;
@@ -91,3 +91,29 @@ input[type="submit"] {
 		background-image: radial-gradient(circle, rgba(255,255,255,0.15), rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0) 80%);
 	}
 }
+
+#ruleta_distribuidor,
+#ruleta_comprar {
+	position: absolute;
+	top: 14%;
+	display: block;
+    width: 35%;
+    padding-bottom: 7%;
+    border-top-left-radius: 60%;
+    border-top-right-radius: 60%;
+	@extend .transition;
+	//background-color: rgba(0,0,0,0.3);
+	&:hover { background-image: radial-gradient(circle, rgba(255,255,255,0.15), rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0) 80%); }
+}
+#ruleta_distribuidor {
+	left: 1%;
+	-webkit-transform: rotate(-45deg); 
+	-moz-transform: rotate(-45deg); 
+	transform: rotate(-45deg); 
+}
+#ruleta_comprar {
+	right: 1%;
+	-webkit-transform: rotate(45deg); 
+	-moz-transform: rotate(45deg); 
+	transform: rotate(45deg); 
+} 

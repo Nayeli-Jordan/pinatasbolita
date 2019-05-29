@@ -8,7 +8,7 @@
 		        'orderby'			=> 'rand',
 			    'date_query'    	=> array(
 			        'column'  	=> 'post_date',
-			        'after'   	=> '- 60 days'
+			        'after'   	=> '- 90 days'
 			    )
 	        );
 		    $loop = new WP_Query( $args );
