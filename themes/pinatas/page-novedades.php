@@ -20,6 +20,10 @@
 		        	}
 
 		        		include (TEMPLATEPATH . '/template/content-product.php');
+		        		if ($i === 1 ) {
+		        			// Palazo
+		    				include (TEMPLATEPATH . '/template/content-product_palazo.php');
+		        		}
 
 		        	if($i === 3 || $i === 6 || $i === 9 || $i === 12|| $i === 15){
 		        		echo "</article>";
