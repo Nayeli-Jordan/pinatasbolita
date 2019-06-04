@@ -69,7 +69,7 @@
 							<h3 class="uppercase margin-bottom-30 text-center text-shadow-purple">Quiero ser distribuidor</h3>
 							<div class="row text-center">							
 								<div class="col s12 m8 offset-m2 l6 offset-l3 color-light">
-									<p class="fz-20 margin-bottom-10 text-shadow-gray"><span class="color-primary">Contactanos</span> al <a class="color-primary" href="tel:525558683573">55-5868-35-73</a> o escríbenos por <span class="color-primary">Whatsapp</span> al <a class="color-primary" href="https://wa.me/5215551017159">5551017159</a></p>
+									<p class="fz-20 margin-bottom-10 text-shadow-gray"><span class="color-primary">Contáctanos</span> al <a class="color-primary" href="tel:525558683573">(55) 5868-3573</a> o escríbenos por <span class="color-primary">Whatsapp</span> al <a class="color-primary" href="https://wa.me/5215551017159">5551017159</a></p>
 								</div>
 							</div>
 						</div>						
