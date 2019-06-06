@@ -190,3 +190,16 @@ function clientes_save_metas( $idclientes, $clientes ){
         }
     }
 }
+
+
+/**
+* Redirecciones
+*/
+
+/* Nuevo cliente */
+add_action ('template_redirect', 'redirect_cliente');
+function redirect_cliente() {
+    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitCliente'] ) ) {
+        wp_redirect('stock-pinatas/#cliente_creado');
+    }
+}

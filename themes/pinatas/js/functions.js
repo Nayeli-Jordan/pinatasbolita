@@ -25,6 +25,14 @@ var $=jQuery.noConflict();
 				}, 1000);
 				$( ".btn-distribuidores" ).click();
 			}
+
+			/* Si se guardo el cliente */
+			if(window.location.href.indexOf("#cliente_creado") > -1) {
+				$('html, body').animate({		
+					scrollTop: $('.table-clientes').offset().top - 100
+				}, 1000);
+				$('#notice-nuevo-cliente').show();
+			}
 		});
  
 		$(window).on('resize', function(){
