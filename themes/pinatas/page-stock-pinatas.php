@@ -1,20 +1,21 @@
 <?php get_header(); 
 	/* Modals notice */
+	include (TEMPLATEPATH . '/template/sistema/notice/notice-nuevo-pedido.php');
 	include (TEMPLATEPATH . '/template/sistema/notice/notice-nuevo-cliente.php');
 	if (have_posts()) : while (have_posts()) : the_post();?>
 		<section class="[ container ] text-shadow-gray color-light padding-bottom-100">
 			<div class="text-right margin-bottom-20">
 				<p id="nuevo-pedido" class="btn btn-primary margin-left-right-10 open-modal">Nuevo pedido</p>
 			</div>
-			<?php include (TEMPLATEPATH . '/template/sistema/modal-nuevo-pedido.php'); ?>
+			<?php include (TEMPLATEPATH . '/template/sistema/pedido/modal-nuevo-pedido.php'); ?>
 			<table class="table-sistema table-head_desktop">
 				<!-- Large and up -->
-				<?php include (TEMPLATEPATH . '/template/sistema/stock-pinatas-thead.php'); ?>		
+				<?php include (TEMPLATEPATH . '/template/sistema/pedido/stock-pinatas-thead.php'); ?>		
 			</table>
 			<div id="content_table">
 				<table class="table-sistema table-head_mobile table-stock">
 					<!-- Medium and down -->
-					<?php include (TEMPLATEPATH . '/template/sistema/stock-pinatas-thead.php'); ?>
+					<?php include (TEMPLATEPATH . '/template/sistema/pedido/stock-pinatas-thead.php'); ?>
 					<tbody>
 					<?php
 				        $args = array(
@@ -62,12 +63,12 @@
 						} wp_reset_postdata(); ?>
 					</tbody>					
 					<!-- Medium and down -->
-					<?php include (TEMPLATEPATH . '/template/sistema/stock-pinatas-tfoot.php'); ?>
+					<?php include (TEMPLATEPATH . '/template/sistema/pedido/stock-pinatas-tfoot.php'); ?>
 				</table>				
 			</div>
 			<table class="table-sistema table-foot_desktop">
 				<!-- Lanrge and up -->
-				<?php include (TEMPLATEPATH . '/template/sistema/stock-pinatas-tfoot.php'); ?>		
+				<?php include (TEMPLATEPATH . '/template/sistema/pedido/stock-pinatas-tfoot.php'); ?>		
 			</table>
 		</section>
 		<section class="[ container ] text-shadow-gray color-light padding-bottom-100">

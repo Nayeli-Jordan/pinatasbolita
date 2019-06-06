@@ -67,6 +67,38 @@ add_action('init', function(){
 		'supports'           => array( 'title', 'editor' ),
 		'menu_icon' 		 => 'dashicons-admin-users'
 	);
-	register_post_type( 'clientes', $args );	
+	register_post_type( 'clientes', $args );
+
+	// Pedidos
+	$labels = array(
+		'name'          => 'Pedidos',
+		'singular_name' => 'Pedidos',
+		'add_new'       => 'Nuevo pedidos',
+		'add_new_item'  => 'Nuevo pedidos',
+		'edit_item'     => 'Editar pedidos',
+		'new_item'      => 'Nuevo pedidos',
+		'all_items'     => 'Todo',
+		'view_item'     => 'Ver pedidos',
+		'search_items'  => 'Buscar pedidos',
+		'not_found'     => 'No hay pedidos.',
+		'menu_name'     => 'Pedidos'
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'pedidos' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => 6,
+		'supports'           => array( 'title', 'editor' ),
+		'menu_icon' 		 => 'dashicons-admin-users'
+	);
+	register_post_type( 'pedidos', $args );	
 
 });

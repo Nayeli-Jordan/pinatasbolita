@@ -192,6 +192,51 @@ function clientes_save_metas( $idclientes, $clientes ){
 }
 
 
+/* Pedidos */
+add_action( 'add_meta_boxes', 'pedidos_custom_metabox' );
+function pedidos_custom_metabox(){
+    add_meta_box( 'pedidos_meta', 'Información pedido', 'display_pedidos_atributos', 'pedidos', 'advanced', 'default');
+}
+
+function display_pedidos_atributos( $pedidos ){
+    $piezas   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas', true ) );
+    $cliente  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_cliente', true ) );
+    $entrega  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_entrega', true ) );
+?>
+    <table class="pb-custom-fields">
+        <tr>
+            <th>
+                <label for="pedidos_piezas">Piezas:</label>
+                <input type="number" id="pedidos_piezas" name="pedidos_piezas" value="<?php echo $piezas; ?>">
+            </th>
+            <th>
+                <label for="pedidos_cliente">Cliente:</label>
+                <input type="text" id="pedidos_cliente" name="pedidos_cliente" value="<?php echo $cliente; ?>">
+            </th>
+            <th colspan="2">
+                <label for="pedidos_entrega">Fecha de entrega:</label>
+                <input type="date" id="pedidos_entrega" name="pedidos_entrega" value="<?php echo $entrega; ?>">
+            </th>
+        </tr>
+    </table>
+<?php }
+
+add_action( 'save_post', 'pedidos_save_metas', 10, 2 );
+function pedidos_save_metas( $idpedidos, $pedidos ){
+    if ( $pedidos->post_type == 'pedidos' ){
+        if ( isset( $_POST['pedidos_piezas'] ) ){
+            update_post_meta( $idpedidos, 'pedidos_piezas', $_POST['pedidos_piezas'] );
+        }
+        if ( isset( $_POST['pedidos_cliente'] ) ){
+            update_post_meta( $idpedidos, 'pedidos_cliente', $_POST['pedidos_cliente'] );
+        }
+        if ( isset( $_POST['pedidos_entrega'] ) ){
+            update_post_meta( $idpedidos, 'pedidos_entrega', $_POST['pedidos_entrega'] );
+        }
+    }
+}
+
+
 /**
 * Redirecciones
 */
@@ -201,5 +246,112 @@ add_action ('template_redirect', 'redirect_cliente');
 function redirect_cliente() {
     if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitCliente'] ) ) {
         wp_redirect('stock-pinatas/#cliente_creado');
+    }
+}
+
+/* Nuevo pedido */
+add_action ('template_redirect', 'redirect_pedido');
+function redirect_pedido() {
+    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitPedido'] ) ) {
+        wp_redirect('stock-pinatas/#pedido_creado');
+    }
+}
+
+
+/*
+** Columnas admin
+*/
+
+/* Cliente */
+add_filter( 'manage_clientes_posts_columns', 'set_custom_edit_clientes_columns' );
+function set_custom_edit_clientes_columns($columns) {
+    $columns['clientes_nivel']   = __( 'Nivel', 'pbolita' );
+    $columns['clientes_correo']  = __( 'Correo', 'pbolita' );
+    $columns['clientes_cel']     = __( 'Celular', 'pbolita' );
+    $columns['clientes_tel']     = __( 'Teléfono', 'pbolita' );
+    $columns['clientes_direccion'] = __( 'Dirección', 'pbolita' );
+
+    return $columns;
+}
+
+add_action( 'manage_clientes_posts_custom_column' , 'custom_clientes_column', 10, 2 );
+function custom_clientes_column( $column, $post_id ) {
+    switch ( $column ) {
+        case 'clientes_nivel' :
+            $nivel  = get_post_meta( $post_id, 'clientes_nivel', true );
+            if( $nivel != "")
+                echo $nivel;
+            else
+                echo "-";
+            break;
+        case 'clientes_correo' :
+            $correo  = get_post_meta( $post_id, 'clientes_correo', true );
+            if( $correo != "")
+                echo $correo;
+            else
+                echo "-";
+            break;
+        case 'clientes_cel' :
+            $cel  = get_post_meta( $post_id, 'clientes_cel', true );
+            if( $cel != "")
+                echo $cel;
+            else
+                echo "-";
+            break;
+        case 'clientes_tel' :
+            $tel  = get_post_meta( $post_id, 'clientes_tel', true );
+            if( $tel != "")
+                echo $tel;
+            else
+                echo "-";
+            break;
+        case 'clientes_direccion' :
+            $direccion  = get_post_meta( $post_id, 'clientes_direccion', true );
+            if( $direccion != "")
+                echo $direccion;
+            else
+                echo "-";
+            break;
+    }
+}
+
+/* Pedido */
+add_filter( 'manage_pedidos_posts_columns', 'set_custom_edit_pedidos_columns' );
+function set_custom_edit_pedidos_columns($columns) {
+    $columns['pedidos_piezas']  = __( 'Piezas', 'pbolita' );
+    $columns['pedidos_cliente'] = __( 'Cliente', 'pbolita' );
+    $columns['pedidos_entrega'] = __( 'Fecha de entrega', 'pbolita' );
+
+    return $columns;
+}
+
+add_action( 'manage_pedidos_posts_custom_column' , 'custom_pedidos_column', 10, 2 );
+function custom_pedidos_column( $column, $post_id ) {
+    switch ( $column ) {
+        case 'pedidos_piezas' :
+            $piezas  = get_post_meta( $post_id, 'pedidos_piezas', true );
+            if( $piezas != "")
+                echo $piezas;
+            else
+                echo "-";
+            break;
+        case 'pedidos_cliente' :
+            $cliente  = get_post_meta( $post_id, 'pedidos_cliente', true );
+            if( $cliente != "")
+                echo $cliente;
+            else
+                echo "-";
+            break;
+        case 'pedidos_entrega' :
+            $entrega  = get_post_meta( $post_id, 'pedidos_entrega', true );
+            /* Fecha en español */
+            setlocale(LC_ALL,"es_ES");
+            $entrega = strftime("%d/%B/%Y", strtotime($entrega));            
+            if( $entrega != "")
+
+                echo $entrega;
+            else
+                echo "-";
+            break;
     }
 }
