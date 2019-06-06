@@ -14,3 +14,45 @@
 	line-height: 22px;
 	letter-spacing: 0.5px;
 }
+
+// Stock
+// ==========================================================================
+.table-head_desktop,
+.table-foot_desktop {
+	padding-right: 10px; /* Espacio acorde a scrollbar */
+	@media #{$medium-and-down}{ display: none; }
+}
+#content_table {
+	overflow: auto;
+	max-height: 75vh;
+	@media #{$medium-and-down}{ max-height: 85vh; }
+	&::-webkit-scrollbar-track {
+		width: 7px;
+		height: 7px;
+	    background-color: rgba(255,255,255,0.5);
+	} 
+	.table-sistema {
+		min-width: 850px;
+		tbody {
+			tr {
+				&:nth-child(2n) { background-color: rgba(153, 46, 138, 0.4) }
+				&:nth-child(2n+1) { background-color: rgba(153, 46, 138, 0.5) }
+			}
+		}
+		tfoot {
+			@media #{$large-and-up} { display: none; }
+		}
+		&.table-stock {
+			@media #{$large-and-up} { margin-top: -62px } /* Ocultar thead en desktop */
+			.img-pinata {
+				max-height: 40px;
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 5px;
+			}					
+		}
+		&.table-clientes {
+			@media #{$large-and-up} { margin-top: -31px } /* Ocultar thead en desktop */			
+		}
+	}	
+}

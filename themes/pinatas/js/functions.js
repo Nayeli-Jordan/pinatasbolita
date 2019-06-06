@@ -109,6 +109,19 @@ var $=jQuery.noConflict();
 			}, 1000);
 		});	
 
+		
+		// Modal
+		$(".open-modal").click(function() {
+			var idModal = $(this).attr('id');
+			$('#modal-' + idModal).show();
+			$('body').addClass('overflow-hide');
+		});
+		$(".close-modal, .exit-modal").click(function() {
+			console.log('click');
+			$('.modal').hide();
+			$('body').removeClass('overflow-hide');
+		});
+
 	});
 })(jQuery);
  

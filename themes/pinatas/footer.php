@@ -1,4 +1,4 @@
-			<?php if (!is_home()) : ?>
+			<?php if (!is_home() && !is_page('stock-pinatas')) : ?>
 				<footer>
 					<div class="text-center">
 						<div class="btn btn-scroll btn-caracteristicas">Características</div>

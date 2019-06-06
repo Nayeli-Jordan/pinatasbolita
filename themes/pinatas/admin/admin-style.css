@@ -1,0 +1,15 @@
+.pb-custom-fields		{ width: 100%; }
+.pb-custom-fields label  { 
+	display: block; 
+	text-align: left;
+}
+.pb-custom-fields input[type="text"],
+.pb-custom-fields input[type="date"],
+.pb-custom-fields input[type="number"],
+.pb-custom-fields input[type="email"],
+.pb-custom-fields input[type="tel"],
+.pb-custom-fields textarea,
+.pb-custom-fields select  { 
+	width: 100%; 
+	margin-bottom: 5px;
+}

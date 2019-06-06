@@ -55,7 +55,7 @@
 		<noscript>Tu navegador no soporta JavaScript!</noscript>
 		<?php wp_head(); ?>
 	</head>
-	<body class="<?php if(is_home()): echo 'pageHome'; elseif(is_404()): echo 'pageError'; endif; ?>">
+	<body class="<?php if(is_home()): echo 'pageHome'; elseif(is_404()): echo 'pageError'; elseif(is_page('stock-pinatas')): echo 'pageSistema'; endif; ?>">
 
 		<?php if (is_product()) : 
 			/* Obtener categorías de producto */

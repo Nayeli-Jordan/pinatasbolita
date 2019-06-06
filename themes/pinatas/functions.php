@@ -122,3 +122,71 @@ add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_s
 /**
 * CUSTOM FUNCTIONS
 */
+
+/* Clientes */
+add_action( 'add_meta_boxes', 'clientes_custom_metabox' );
+function clientes_custom_metabox(){
+    add_meta_box( 'clientes_meta', 'Información cliente', 'display_clientes_atributos', 'clientes', 'advanced', 'default');
+}
+
+function display_clientes_atributos( $clientes ){
+    $nivel   	= esc_html( get_post_meta( $clientes->ID, 'clientes_nivel', true ) );
+    $correo   	= esc_html( get_post_meta( $clientes->ID, 'clientes_correo', true ) );
+    $cel   		= esc_html( get_post_meta( $clientes->ID, 'clientes_cel', true ) );
+    $tel   		= esc_html( get_post_meta( $clientes->ID, 'clientes_tel', true ) );
+    $direccion  = esc_html( get_post_meta( $clientes->ID, 'clientes_direccion', true ) );
+?>
+    <table class="pb-custom-fields">
+        <tr>
+            <th>
+                <label for="clientes_nivel">Nivel*:</label>
+                <select name="clientes_nivel" id="clientes_nivel" required>
+                    <option value="Normal" <?php selected($nivel, 'Normal'); ?>>Normal</option>
+                    <option value="Plata" <?php selected($nivel, 'Plata'); ?>>Plata</option>
+                    <option value="Oro" <?php selected($nivel, 'Oro'); ?>>Oro</option>
+                </select><br>
+            </th>
+            <th>
+                <label for="clientes_correo">Correo:</label>
+                <input type="email" id="clientes_correo" name="clientes_correo" value="<?php echo $correo; ?>">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <label for="clientes_cel">Celular:</label>
+                <input type="tel" id="clientes_cel" name="clientes_cel" value="<?php echo $cel; ?>">
+            </th>
+            <th>
+                <label for="clientes_tel">Teléfono:</label>
+                <input type="tel" id="clientes_tel" name="clientes_tel" value="<?php echo $tel; ?>">
+            </th>
+        </tr>
+        <tr>
+            <th colspan="2">
+                <label for="clientes_direccion">Dirección:</label>
+                <input type="text" id="clientes_direccion" name="clientes_direccion" value="<?php echo $direccion; ?>">
+            </th>
+        </tr>
+    </table>
+<?php }
+
+add_action( 'save_post', 'clientes_save_metas', 10, 2 );
+function clientes_save_metas( $idclientes, $clientes ){
+    if ( $clientes->post_type == 'clientes' ){
+        if ( isset( $_POST['clientes_nivel'] ) ){
+            update_post_meta( $idclientes, 'clientes_nivel', $_POST['clientes_nivel'] );
+        }
+        if ( isset( $_POST['clientes_correo'] ) ){
+            update_post_meta( $idclientes, 'clientes_correo', $_POST['clientes_correo'] );
+        }
+        if ( isset( $_POST['clientes_cel'] ) ){
+            update_post_meta( $idclientes, 'clientes_cel', $_POST['clientes_cel'] );
+        }
+        if ( isset( $_POST['clientes_tel'] ) ){
+            update_post_meta( $idclientes, 'clientes_tel', $_POST['clientes_tel'] );
+        }
+        if ( isset( $_POST['clientes_direccion'] ) ){
+            update_post_meta( $idclientes, 'clientes_direccion', $_POST['clientes_direccion'] );
+        }
+    }
+}

@@ -1,0 +1,22 @@
+// ==========================================================================
+// Table
+// ==========================================================================
+
+table {
+	width: 100%;
+	thead th, tfoot td{
+		padding: 5px 3px;
+		font-size: 12px;
+		text-align: center;
+		background-color: rgb(153, 46, 138);
+		&.tdInvisible {
+			color: transparent;
+			background-color: transparent;
+		}
+	}
+	tbody {
+		td {
+			padding: 3px;		
+		}
+	}
+}

@@ -1,4 +1,22 @@
 @media print {
 	@page{ margin: 0; }
-	
+	header,
+	footer,
+	.table-head_desktop,
+	.table-foot_desktop {
+		display: none;
+	}
+	body {
+		.bg-body {
+			background-image: none; 
+			#content_table-stock {
+				max-height: inherit;
+				table {
+					max-width: 700px;
+	    			min-width: inherit!important;
+				}
+			}			
+		}
+		&.pageSistema .bg-body { padding-top: 0px; }
+	}
 }

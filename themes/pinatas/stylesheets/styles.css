@@ -2316,8 +2316,25 @@ input[type="submit"].btn-distribuidores {
     border-radius: 15px !important;
   }
 }
+/* line 69, ../sass/components/_buttons.scss */
+.btn.btn-primary,
+button.btn-primary,
+input[type="submit"].btn-primary {
+  padding: 0 10px;
+  font-size: 16px;
+  line-height: 35px;
+  border-radius: 5px;
+  background-color: #993c8c;
+  background-image: none;
+}
+/* line 76, ../sass/components/_buttons.scss */
+.btn.btn-primary:hover,
+button.btn-primary:hover,
+input[type="submit"].btn-primary:hover {
+  background-color: #87357b;
+}
 
-/* line 71, ../sass/components/_buttons.scss */
+/* line 80, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a {
   position: absolute;
   display: block;
@@ -2325,62 +2342,62 @@ input[type="submit"].btn-distribuidores {
   padding-bottom: 17%;
   border-radius: 50%;
 }
-/* line 79, ../sass/components/_buttons.scss */
+/* line 88, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_1 {
   top: 18%;
   right: 30%;
 }
-/* line 80, ../sass/components/_buttons.scss */
+/* line 89, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_2 {
   top: 26%;
   right: 14%;
 }
-/* line 81, ../sass/components/_buttons.scss */
+/* line 90, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_3 {
   top: 44%;
   right: 8%;
 }
-/* line 82, ../sass/components/_buttons.scss */
+/* line 91, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_4 {
   bottom: 26%;
   right: 14%;
 }
-/* line 83, ../sass/components/_buttons.scss */
+/* line 92, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_5 {
   bottom: 18%;
   right: 32%;
 }
-/* line 85, ../sass/components/_buttons.scss */
+/* line 94, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_6 {
   bottom: 18%;
   left: 32%;
 }
-/* line 86, ../sass/components/_buttons.scss */
+/* line 95, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_7 {
   bottom: 26%;
   left: 14%;
 }
-/* line 87, ../sass/components/_buttons.scss */
+/* line 96, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_8 {
   top: 44%;
   left: 8%;
 }
-/* line 88, ../sass/components/_buttons.scss */
+/* line 97, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_9 {
   top: 26%;
   left: 14%;
 }
-/* line 89, ../sass/components/_buttons.scss */
+/* line 98, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_10 {
   top: 18%;
   left: 30%;
 }
-/* line 90, ../sass/components/_buttons.scss */
+/* line 99, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a:hover {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 80%);
 }
 
-/* line 95, ../sass/components/_buttons.scss */
+/* line 104, ../sass/components/_buttons.scss */
 #ruleta_distribuidor,
 #ruleta_comprar {
   position: absolute;
@@ -2391,13 +2408,13 @@ input[type="submit"].btn-distribuidores {
   border-top-left-radius: 60%;
   border-top-right-radius: 60%;
 }
-/* line 106, ../sass/components/_buttons.scss */
+/* line 115, ../sass/components/_buttons.scss */
 #ruleta_distribuidor:hover,
 #ruleta_comprar:hover {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 80%);
 }
 
-/* line 108, ../sass/components/_buttons.scss */
+/* line 117, ../sass/components/_buttons.scss */
 #ruleta_distribuidor {
   left: 1%;
   -webkit-transform: rotate(-45deg);
@@ -2405,7 +2422,7 @@ input[type="submit"].btn-distribuidores {
   transform: rotate(-45deg);
 }
 
-/* line 114, ../sass/components/_buttons.scss */
+/* line 123, ../sass/components/_buttons.scss */
 #ruleta_comprar {
   right: 1%;
   -webkit-transform: rotate(45deg);
@@ -2625,39 +2642,39 @@ textarea {
   margin-bottom: 10px;
   padding: 0 10px;
   width: 100%;
+  height: 30px;
   max-width: 100%;
   line-height: 30px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 0px;
   border: 0px;
+  border-bottom: 1px solid #993c8c;
   outline: none;
 }
 
-/* line 17, ../sass/components/_forms.scss */
+/* line 19, ../sass/components/_forms.scss */
 textarea {
   height: 100px;
   line-height: 22px;
   resize: none;
 }
 
-/* line 22, ../sass/components/_forms.scss */
-input[type="submit"] {
-  display: block;
-}
-
-/* line 27, ../sass/components/_forms.scss */
+/* input[type="submit"] {
+    display: block;
+} */
+/* line 29, ../sass/components/_forms.scss */
 ::-webkit-inner-spin-button {
   display: none;
   -webkit-appearance: none;
 }
 
 /* Validación Parsley */
-/* line 33, ../sass/components/_forms.scss */
+/* line 35, ../sass/components/_forms.scss */
 .parsley-errors-list {
   padding: 0px !important;
   font-size: 12px;
 }
-/* line 36, ../sass/components/_forms.scss */
+/* line 38, ../sass/components/_forms.scss */
 .parsley-errors-list li {
   color: #c30008;
   list-style-type: none !important;
@@ -2743,12 +2760,11 @@ ul li {
 /* line 64, ../sass/components/_global.scss */
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(165, 206, 223, 0.3);
-  background-color: rgba(165, 206, 223, 0.1);
+  background-color: #fff;
 }
 
 /* line 68, ../sass/components/_global.scss */
 ::-webkit-scrollbar-thumb {
-  border-radius: 0px;
   -webkit-box-shadow: inset 0 0 6px rgba(165, 206, 223, 0.5);
   background-color: #a5cedf;
   border-radius: 10px;
@@ -4443,6 +4459,13 @@ video.responsive-video {
   height: 100%;
 }
 
+/* Sistema */
+/* .pageSistema {
+	background-color: #e7ad71;
+	.bg-body {
+		background-size: 100%;
+	}
+} */
 /* line 4, ../sass/components/_modal.scss */
 .modal {
   display: none;
@@ -4451,10 +4474,11 @@ video.responsive-video {
   bottom: 0px;
   left: 0px;
   right: 0px;
+  color: #000;
   z-index: 1200;
   transition: .5s ease-out;
 }
-/* line 13, ../sass/components/_modal.scss */
+/* line 14, ../sass/components/_modal.scss */
 .modal .exit-modal, .modal .fondo-modal {
   position: absolute;
   top: 0px;
@@ -4463,22 +4487,18 @@ video.responsive-video {
   right: 0px;
   background-color: rgba(70, 64, 64, 0.62);
 }
-/* line 21, ../sass/components/_modal.scss */
-.modal .modal-header {
-  padding: 20px;
-  text-align: center;
-}
-/* line 25, ../sass/components/_modal.scss */
+/* line 22, ../sass/components/_modal.scss */
 .modal .modal-content {
   position: relative;
   width: 80vw;
   max-width: 600px;
   margin: 15vh auto 0;
+  padding: 20px;
   border-radius: 10px;
   background-color: #fff;
   overflow: hidden;
 }
-/* line 33, ../sass/components/_modal.scss */
+/* line 31, ../sass/components/_modal.scss */
 .modal .modal-content .close-modal {
   position: absolute;
   right: 15px;
@@ -4488,7 +4508,7 @@ video.responsive-video {
   z-index: 2;
   cursor: pointer;
 }
-/* line 42, ../sass/components/_modal.scss */
+/* line 40, ../sass/components/_modal.scss */
 .modal .modal-content .modal-body {
   padding: 30px;
   border-radius: 20px;
@@ -8835,6 +8855,27 @@ video.responsive-video {
   border-radius: 50%;
 }
 
+/* line 5, ../sass/components/_table.scss */
+table {
+  width: 100%;
+}
+/* line 7, ../sass/components/_table.scss */
+table thead th, table tfoot td {
+  padding: 5px 3px;
+  font-size: 12px;
+  text-align: center;
+  background-color: #992e8a;
+}
+/* line 12, ../sass/components/_table.scss */
+table thead th.tdInvisible, table tfoot td.tdInvisible {
+  color: transparent;
+  background-color: transparent;
+}
+/* line 18, ../sass/components/_table.scss */
+table tbody td {
+  padding: 3px;
+}
+
 /* line 4, ../sass/components/_typography.scss */
 a {
   text-decoration: none;
@@ -9044,6 +9085,83 @@ small {
   font-size: 16px;
   line-height: 22px;
   letter-spacing: 0.5px;
+}
+
+/* line 20, ../sass/components/_utilities.scss */
+.table-head_desktop,
+.table-foot_desktop {
+  padding-right: 10px;
+  /* Espacio acorde a scrollbar */
+}
+@media only screen and (max-width: 992px) {
+  /* line 20, ../sass/components/_utilities.scss */
+  .table-head_desktop,
+  .table-foot_desktop {
+    display: none;
+  }
+}
+
+/* line 25, ../sass/components/_utilities.scss */
+#content_table {
+  overflow: auto;
+  max-height: 75vh;
+}
+@media only screen and (max-width: 992px) {
+  /* line 25, ../sass/components/_utilities.scss */
+  #content_table {
+    max-height: 85vh;
+  }
+}
+/* line 29, ../sass/components/_utilities.scss */
+#content_table::-webkit-scrollbar-track {
+  width: 7px;
+  height: 7px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+/* line 34, ../sass/components/_utilities.scss */
+#content_table .table-sistema {
+  min-width: 850px;
+}
+/* line 38, ../sass/components/_utilities.scss */
+#content_table .table-sistema tbody tr:nth-child(2n) {
+  background-color: rgba(153, 46, 138, 0.4);
+}
+/* line 39, ../sass/components/_utilities.scss */
+#content_table .table-sistema tbody tr:nth-child(2n+1) {
+  background-color: rgba(153, 46, 138, 0.5);
+}
+@media only screen and (min-width: 993px) {
+  /* line 42, ../sass/components/_utilities.scss */
+  #content_table .table-sistema tfoot {
+    display: none;
+  }
+}
+/* line 45, ../sass/components/_utilities.scss */
+#content_table .table-sistema.table-stock {
+  /* Ocultar thead en desktop */
+}
+@media only screen and (min-width: 993px) {
+  /* line 45, ../sass/components/_utilities.scss */
+  #content_table .table-sistema.table-stock {
+    margin-top: -62px;
+  }
+}
+/* line 47, ../sass/components/_utilities.scss */
+#content_table .table-sistema.table-stock .img-pinata {
+  max-height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+/* line 54, ../sass/components/_utilities.scss */
+#content_table .table-sistema.table-clientes {
+  /* Ocultar thead en desktop */
+}
+@media only screen and (min-width: 993px) {
+  /* line 54, ../sass/components/_utilities.scss */
+  #content_table .table-sistema.table-clientes {
+    margin-top: -31px;
+  }
 }
 
 /* line 1, ../sass/components/_header.scss */
@@ -9345,5 +9463,30 @@ footer .logo-qo {
 @media print {
   @page {
     margin: 0;
+  }
+  /* line 3, ../sass/components/_print.scss */
+  header,
+  footer,
+  .table-head_desktop,
+  .table-foot_desktop {
+    display: none;
+  }
+
+  /* line 10, ../sass/components/_print.scss */
+  body .bg-body {
+    background-image: none;
+  }
+  /* line 12, ../sass/components/_print.scss */
+  body .bg-body #content_table-stock {
+    max-height: inherit;
+  }
+  /* line 14, ../sass/components/_print.scss */
+  body .bg-body #content_table-stock table {
+    max-width: 700px;
+    min-width: inherit !important;
+  }
+  /* line 20, ../sass/components/_print.scss */
+  body.pageSistema .bg-body {
+    padding-top: 0px;
   }
 }
