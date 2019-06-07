@@ -77,6 +77,12 @@ input[type="submit"] {
 	}
 }
 
+.enlace-primary {
+	color: $primary-color;
+	text-decoration: underline;
+	&:hover { color: $primary-color-dark; }
+}
+
 .bg-ruleta_opciones a {
 	position: absolute;
 	display: block;

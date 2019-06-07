@@ -1,6 +1,10 @@
 // Modal
 // ==========================================================================
-
+.open-modal:not(.btn) { 
+	@include transition(.3s ease-out);
+	cursor: pointer; 
+	&:hover { color: $primary-color; }
+}
 .modal {
 	display: none;
 	position: fixed;
@@ -23,25 +27,24 @@
 		position: relative;
 		width: 80vw;
 		max-width: 600px;
-		margin: 15vh auto 0;
+		max-height: 80vh;
+		margin: 10vh auto 0;
 		padding: 20px;
 		border-radius: 10px;
 		background-color: $light-color;
-		overflow: hidden;	
-		.close-modal {
+		overflow: auto;	
+		.modal-redirect em, .close-modal {
 			position: absolute;
 			right: 15px;
 			top: 10px;
+			color: $dark-color;
 			font-size: 20px;
 			line-height: 40px;
 			z-index: 2;
 			cursor: pointer;
-		}
-		.modal-body {
-			padding: 30px;
-    		border-radius: 20px;
-			overflow-y: auto;
-		    overflow-x: hidden;
+			@include transition(.3s ease-out);
+			&:hover { color: $primary-color; }
 		}
 	}
+	&.modal-pedidos p { font-size: 14px; }
 }

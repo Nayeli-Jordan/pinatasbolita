@@ -2335,6 +2335,16 @@ input[type="submit"].btn-primary:hover {
 }
 
 /* line 80, ../sass/components/_buttons.scss */
+.enlace-primary {
+  color: #993c8c;
+  text-decoration: underline;
+}
+/* line 83, ../sass/components/_buttons.scss */
+.enlace-primary:hover {
+  color: #87357b;
+}
+
+/* line 86, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a {
   position: absolute;
   display: block;
@@ -2342,62 +2352,62 @@ input[type="submit"].btn-primary:hover {
   padding-bottom: 17%;
   border-radius: 50%;
 }
-/* line 88, ../sass/components/_buttons.scss */
+/* line 94, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_1 {
   top: 18%;
   right: 30%;
 }
-/* line 89, ../sass/components/_buttons.scss */
+/* line 95, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_2 {
   top: 26%;
   right: 14%;
 }
-/* line 90, ../sass/components/_buttons.scss */
+/* line 96, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_3 {
   top: 44%;
   right: 8%;
 }
-/* line 91, ../sass/components/_buttons.scss */
+/* line 97, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_4 {
   bottom: 26%;
   right: 14%;
 }
-/* line 92, ../sass/components/_buttons.scss */
+/* line 98, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_5 {
   bottom: 18%;
   right: 32%;
 }
-/* line 94, ../sass/components/_buttons.scss */
+/* line 100, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_6 {
   bottom: 18%;
   left: 32%;
 }
-/* line 95, ../sass/components/_buttons.scss */
+/* line 101, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_7 {
   bottom: 26%;
   left: 14%;
 }
-/* line 96, ../sass/components/_buttons.scss */
+/* line 102, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_8 {
   top: 44%;
   left: 8%;
 }
-/* line 97, ../sass/components/_buttons.scss */
+/* line 103, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_9 {
   top: 26%;
   left: 14%;
 }
-/* line 98, ../sass/components/_buttons.scss */
+/* line 104, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a#ruleta_link_10 {
   top: 18%;
   left: 30%;
 }
-/* line 99, ../sass/components/_buttons.scss */
+/* line 105, ../sass/components/_buttons.scss */
 .bg-ruleta_opciones a:hover {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 80%);
 }
 
-/* line 104, ../sass/components/_buttons.scss */
+/* line 110, ../sass/components/_buttons.scss */
 #ruleta_distribuidor,
 #ruleta_comprar {
   position: absolute;
@@ -2408,13 +2418,13 @@ input[type="submit"].btn-primary:hover {
   border-top-left-radius: 60%;
   border-top-right-radius: 60%;
 }
-/* line 115, ../sass/components/_buttons.scss */
+/* line 121, ../sass/components/_buttons.scss */
 #ruleta_distribuidor:hover,
 #ruleta_comprar:hover {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 80%);
 }
 
-/* line 117, ../sass/components/_buttons.scss */
+/* line 123, ../sass/components/_buttons.scss */
 #ruleta_distribuidor {
   left: 1%;
   -webkit-transform: rotate(-45deg);
@@ -2422,7 +2432,7 @@ input[type="submit"].btn-primary:hover {
   transform: rotate(-45deg);
 }
 
-/* line 123, ../sass/components/_buttons.scss */
+/* line 129, ../sass/components/_buttons.scss */
 #ruleta_comprar {
   right: 1%;
   -webkit-transform: rotate(45deg);
@@ -4466,7 +4476,19 @@ video.responsive-video {
 		background-size: 100%;
 	}
 } */
-/* line 4, ../sass/components/_modal.scss */
+/* line 3, ../sass/components/_modal.scss */
+.open-modal:not(.btn) {
+  -webkit-transition: 0.3s ease-out;
+  -ms-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+/* line 6, ../sass/components/_modal.scss */
+.open-modal:not(.btn):hover {
+  color: #993c8c;
+}
+
+/* line 8, ../sass/components/_modal.scss */
 .modal {
   display: none;
   position: fixed;
@@ -4478,7 +4500,7 @@ video.responsive-video {
   z-index: 1200;
   transition: .5s ease-out;
 }
-/* line 14, ../sass/components/_modal.scss */
+/* line 18, ../sass/components/_modal.scss */
 .modal .exit-modal, .modal .fondo-modal {
   position: absolute;
   top: 0px;
@@ -4487,33 +4509,39 @@ video.responsive-video {
   right: 0px;
   background-color: rgba(52, 52, 52, 0.35);
 }
-/* line 22, ../sass/components/_modal.scss */
+/* line 26, ../sass/components/_modal.scss */
 .modal .modal-content {
   position: relative;
   width: 80vw;
   max-width: 600px;
-  margin: 15vh auto 0;
+  max-height: 80vh;
+  margin: 10vh auto 0;
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
-  overflow: hidden;
+  overflow: auto;
 }
-/* line 31, ../sass/components/_modal.scss */
-.modal .modal-content .close-modal {
+/* line 36, ../sass/components/_modal.scss */
+.modal .modal-content .modal-redirect em, .modal .modal-content .close-modal {
   position: absolute;
   right: 15px;
   top: 10px;
+  color: #000;
   font-size: 20px;
   line-height: 40px;
   z-index: 2;
   cursor: pointer;
+  -webkit-transition: 0.3s ease-out;
+  -ms-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
 }
-/* line 40, ../sass/components/_modal.scss */
-.modal .modal-content .modal-body {
-  padding: 30px;
-  border-radius: 20px;
-  overflow-y: auto;
-  overflow-x: hidden;
+/* line 46, ../sass/components/_modal.scss */
+.modal .modal-content .modal-redirect em:hover, .modal .modal-content .close-modal:hover {
+  color: #993c8c;
+}
+/* line 49, ../sass/components/_modal.scss */
+.modal.modal-pedidos p {
+  font-size: 14px;
 }
 
 /* line 4, ../sass/components/_position.scss */
@@ -8875,6 +8903,10 @@ table thead th.tdInvisible, table tfoot td.tdInvisible {
 table tbody td {
   padding: 3px;
 }
+/* line 20, ../sass/components/_table.scss */
+table tbody td p {
+  font-size: 16px;
+}
 
 /* line 4, ../sass/components/_typography.scss */
 a {
@@ -8887,7 +8919,7 @@ a {
   transition: 0.3s ease-out;
 }
 /* line 11, ../sass/components/_typography.scss */
-a:hover {
+a:not(.btn):hover {
   color: #993c8c;
 }
 
@@ -9122,46 +9154,89 @@ small {
 #content_table .table-sistema {
   min-width: 850px;
 }
-/* line 38, ../sass/components/_utilities.scss */
-#content_table .table-sistema tbody tr:nth-child(2n) {
-  background-color: rgba(153, 46, 138, 0.4);
+/* line 37, ../sass/components/_utilities.scss */
+#content_table .table-sistema tbody tr {
+  color: #000;
 }
 /* line 39, ../sass/components/_utilities.scss */
+#content_table .table-sistema tbody tr:nth-child(2n) {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+/* line 40, ../sass/components/_utilities.scss */
 #content_table .table-sistema tbody tr:nth-child(2n+1) {
-  background-color: rgba(153, 46, 138, 0.5);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+/* line 41, ../sass/components/_utilities.scss */
+#content_table .table-sistema tbody tr .tab-disabled {
+  opacity: 0.2;
 }
 @media only screen and (min-width: 993px) {
-  /* line 42, ../sass/components/_utilities.scss */
+  /* line 44, ../sass/components/_utilities.scss */
   #content_table .table-sistema tfoot {
     display: none;
   }
 }
-/* line 45, ../sass/components/_utilities.scss */
+/* line 47, ../sass/components/_utilities.scss */
 #content_table .table-sistema.table-stock {
   /* Ocultar thead en desktop */
 }
 @media only screen and (min-width: 993px) {
-  /* line 45, ../sass/components/_utilities.scss */
+  /* line 47, ../sass/components/_utilities.scss */
   #content_table .table-sistema.table-stock {
     margin-top: -62px;
   }
 }
-/* line 47, ../sass/components/_utilities.scss */
+/* line 49, ../sass/components/_utilities.scss */
 #content_table .table-sistema.table-stock .img-pinata {
   max-height: 40px;
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
 }
-/* line 54, ../sass/components/_utilities.scss */
+/* line 55, ../sass/components/_utilities.scss */
+#content_table .table-sistema.table-stock tr td .btn-primary {
+  line-height: 30px;
+  border-radius: 50%;
+}
+/* line 60, ../sass/components/_utilities.scss */
 #content_table .table-sistema.table-clientes {
   /* Ocultar thead en desktop */
 }
 @media only screen and (min-width: 993px) {
-  /* line 54, ../sass/components/_utilities.scss */
+  /* line 60, ../sass/components/_utilities.scss */
   #content_table .table-sistema.table-clientes {
     margin-top: -31px;
   }
+}
+
+/* Single pedido */
+/* line 67, ../sass/components/_utilities.scss */
+.single-content {
+  overflow: auto;
+}
+/* line 69, ../sass/components/_utilities.scss */
+.single-content .card-pedido,
+.single-content .card-cliente {
+  padding: 20px 30px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+/* line 76, ../sass/components/_utilities.scss */
+.single-content .card-pedido p,
+.single-content .card-cliente p {
+  font-size: 16px;
+}
+/* line 77, ../sass/components/_utilities.scss */
+.single-content .card-pedido.card-pedido,
+.single-content .card-cliente.card-pedido {
+  width: 600px;
+}
+/* line 78, ../sass/components/_utilities.scss */
+.single-content .card-pedido.card-cliente,
+.single-content .card-cliente.card-cliente {
+  width: 800px;
 }
 
 /* line 1, ../sass/components/_header.scss */

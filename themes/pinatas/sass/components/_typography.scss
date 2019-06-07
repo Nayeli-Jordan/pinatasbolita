@@ -8,7 +8,7 @@ a {
   // Gets rid of tap active state
   -webkit-tap-highlight-color: transparent;
   @include transition(.3s ease-out);
-  &:hover { color: $primary-color; }
+  &:not(.btn):hover { color: $primary-color; }
 }
 
 html{

@@ -3,7 +3,7 @@
 	include (TEMPLATEPATH . '/template/sistema/notice/notice-nuevo-pedido.php');
 	include (TEMPLATEPATH . '/template/sistema/notice/notice-nuevo-cliente.php');
 	if (have_posts()) : while (have_posts()) : the_post();?>
-		<section class="[ container ] text-shadow-gray color-light padding-bottom-100">
+		<section class="[ container ] color-light padding-bottom-100">
 			<div class="text-right margin-bottom-20">
 				<p id="nuevo-pedido" class="btn btn-primary margin-left-right-10 open-modal">Nuevo pedido</p>
 			</div>
@@ -26,7 +26,7 @@
 				        );
 				        $loop = new WP_Query( $args );
 				        if ( $loop->have_posts() ) { 
-				        	global $product; $count = 0; $disponibles = 0;
+				        	global $product; $count = 0; $ordenes = 0; $pinatas = 0; $disponibles = 0; $faltantes = 0;
 				            while ( $loop->have_posts() ) : $loop->the_post(); 
 								/* Obtener info del producto y guardarla en variables */
 				            	$post_id        = get_the_ID();
@@ -44,18 +44,32 @@
 								$pricePlata 	= $price - ($priceOnePercent * 10);
 								$priceOro 		= $price - ($priceOnePercent * 20);
 
+								/* Obtener ordener de la piñata */
+								include (TEMPLATEPATH . '/template/sistema/pedido/modal-pedidos.php');
+
+								/* Obtener faltante */
+								if ($noPiezas === 0) {
+									$faltan = 0;
+								} else {
+									$faltan = $noPiezas - $stock;
+								}
+
 								/* Agregar a totales tabla */
+								$ordenes		= $ordenes + $noPedidos;
+								$pinatas		= $pinatas + $noPiezas;
 								$disponibles	= $disponibles + $stock;
-								?>
+								$faltantes		= $faltantes + $faltan; ?>
 
 								<tr>
 									<td><img class="img-pinata" src="<?php echo $image[0]; ?>"><?php echo $productName; ?></td>
 									<td class="text-center">$<?php echo $price; ?></td>
 									<td class="text-center">$<?php echo $pricePlata; ?></td>
 									<td class="text-center">$<?php echo $priceOro; ?></td>
-									<td></td>
-									<td></td>
+									<td class="text-center <?php if ($noPedidos === 0) { echo "tab-disabled";} ?>"><p <?php if ($noPedidos > 0) { ?> id="pedidos_<?php echo $post_id; ?>" class="open-modal btn btn-primary" <?php } ?>><?php echo $noPedidos; ?></p>
+									</td>
+									<td class="text-center <?php if ($noPiezas === 0) { echo "tab-disabled";} ?>"><?php echo $noPiezas; ?></td>
 									<td class="text-center"><?php echo $stock ?></td>
+									<td class="text-center <?php if ($faltan === 0) { echo "tab-disabled";} ?>"><?php echo $faltan; ?></td>
 									<td class="text-center"></td>
 								</tr>
 
@@ -71,7 +85,7 @@
 				<?php include (TEMPLATEPATH . '/template/sistema/pedido/stock-pinatas-tfoot.php'); ?>		
 			</table>
 		</section>
-		<section class="[ container ] text-shadow-gray color-light padding-bottom-100">
+		<section class="[ container ] color-light padding-bottom-100">
 			<div class="text-right margin-bottom-20">
 				<p id="nuevo-cliente" class="btn btn-primary margin-left-right-10 open-modal">Nuevo cliente</p>
 			</div>
@@ -101,10 +115,12 @@
 								$correo   	= get_post_meta( $post_id, 'clientes_correo', true );
 								$cel   		= get_post_meta( $post_id, 'clientes_cel', true );
 								$tel   		= get_post_meta( $post_id, 'clientes_tel', true );
-								$direccion  = get_post_meta( $post_id, 'clientes_direccion', true ); ?>
+								$direccion  = get_post_meta( $post_id, 'clientes_direccion', true ); 
+
+								$linkCliente= get_permalink();?>
 
 								<tr>
-									<td><?php the_title(); ?></td>
+									<td><a href="<?php echo $linkCliente; ?>" class="color-dark text-underline-hover"><?php the_title(); ?></a></td>
 									<td><?php if ($nivel != '') { echo $nivel; } ?></td>
 									<td><?php 
 										if ($direccion != '') { echo $direccion . '</br>'; }

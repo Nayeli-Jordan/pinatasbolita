@@ -28,17 +28,11 @@ var $=jQuery.noConflict();
 
 			/* Si se guardo el cliente */
 			if(window.location.href.indexOf("#cliente_creado") > -1) {
-				$('html, body').animate({		
-					scrollTop: $('.table-clientes').offset().top - 100
-				}, 1000);
 				$('#notice-nuevo-cliente').show();
 			}
 
 			/* Si se guardo el pedido */
 			if(window.location.href.indexOf("#pedido_creado") > -1) {
-				$('html, body').animate({		
-					scrollTop: $('.table-stock').offset().top - 100
-				}, 1000);
 				$('#notice-nuevo-pedido').show();
 			}
 		});

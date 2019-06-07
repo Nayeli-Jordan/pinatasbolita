@@ -12,7 +12,7 @@
 				<select name="clientes_nivel" id="clientes_nivel" required  data-parsley-required-message="Campo obligatorio">
                     <option value="Normal">Normal</option>
                     <option value="Plata">Plata</option>
-                    <option value="oro">Oro</option>
+                    <option value="Oro">Oro</option>
                 </select>
 			</div>
 			<div class="col s12 m6 l4 input-field">
