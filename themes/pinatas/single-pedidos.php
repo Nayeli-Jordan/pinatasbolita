@@ -76,7 +76,10 @@
 ?>
 	<section id="single" class="container single-content">
 		<div class="card-pedido">
-			<p class="fz-20 margin-bottom-20 uppercase">Detalles del pedido</p>
+			<p class="fz-20 margin-bottom-20 margin-right-20 uppercase inline-block">Detalles del pedido</p>
+			<div class="inline-block float-right">
+				<p id="actualizar-pedido" class="open-modal text-underline color-primary inline-block margin-right-10">Editar pedido</p>|<p id="cerrar-pedido" class="open-modal text-underline color-primary inline-block margin-left-10">Cerrar pedido</p>
+			</div>
 			<table class="width-100p">
 				<tr>
 					<th class="width-30p text-left"><p class="color-primary">Modelo:</p></th>
@@ -103,8 +106,8 @@
 					<td><?php the_content(); ?></td>
 				</tr>
 				<tr>
-					<th class="text-left padding-top-30"><p class="color-primary">Cliente:</p></th>
-					<td class="padding-top-30">
+					<th class="text-left padding-top-50"><p class="color-primary">Cliente:</p></th>
+					<td class="padding-top-50">
 						<p class="margin-bottom-10"><?php echo $cliente; ?></p>
 						<p><?php echo $infoCliente; ?></p>
 						<p class="margin-top-20"><a href="<?php echo $linkCliente; ?>" class="enlace-primary">Ver pedidos cliente</a></p>

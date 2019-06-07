@@ -16,6 +16,8 @@
 	right:0;
 }
 
+.float-right { float: right; }
+
 // Position top, left, right, left -100% to 100%
 $i: -100;
 @while $i <= $size-percent {
