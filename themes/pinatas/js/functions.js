@@ -35,6 +35,14 @@ var $=jQuery.noConflict();
 			if(window.location.href.indexOf("#pedido_creado") > -1) {
 				$('#notice-nuevo-pedido').show();
 			}
+			/* Si se actualizo el pedido */
+			if(window.location.href.indexOf("#pedido_actualizado") > -1) {
+				$('#notice-pedido-actualizado').show();
+			}
+			/* Si se cerro el pedido */
+			if(window.location.href.indexOf("#pedido_cerrado") > -1) {
+				$('#notice-pedido-cerrado').show();
+			}
 		});
  
 		$(window).on('resize', function(){

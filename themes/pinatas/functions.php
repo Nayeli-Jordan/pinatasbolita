@@ -202,6 +202,7 @@ function display_pedidos_atributos( $pedidos ){
     $piezas   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas', true ) );
     $cliente  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_cliente', true ) );
     $entrega  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_entrega', true ) );
+    $estatus  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_estatus', true ) );
 ?>
     <table class="pb-custom-fields">
         <tr>
@@ -218,6 +219,15 @@ function display_pedidos_atributos( $pedidos ){
                 <input type="date" id="pedidos_entrega" name="pedidos_entrega" value="<?php echo $entrega; ?>">
             </th>
         </tr>
+        <tr>
+            <th>
+                <label for="pedidos_estatus">Estatus:</label>
+                <select name="pedidos_estatus" id="pedidos_estatus" required>
+                    <option value="Abierto" <?php selected($estatus, 'Abierto'); ?>>Abierto</option>
+                    <option value="Cerrado" <?php selected($estatus, 'Cerrado'); ?>>Cerrado</option>
+                </select><br>               
+            </th>
+        </tr>
     </table>
 <?php }
 
@@ -232,6 +242,9 @@ function pedidos_save_metas( $idpedidos, $pedidos ){
         }
         if ( isset( $_POST['pedidos_entrega'] ) ){
             update_post_meta( $idpedidos, 'pedidos_entrega', $_POST['pedidos_entrega'] );
+        }
+        if ( isset( $_POST['pedidos_estatus'] ) ){
+            update_post_meta( $idpedidos, 'pedidos_estatus', $_POST['pedidos_estatus'] );
         }
     }
 }
@@ -254,6 +267,24 @@ add_action ('template_redirect', 'redirect_pedido');
 function redirect_pedido() {
     if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitPedido'] ) ) {
         wp_redirect('stock-pinatas/#pedido_creado');
+    }
+}
+
+/* Editar pedido */
+add_action ('template_redirect', 'redirect_editpedido');
+function redirect_editpedido() {
+    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitEditPedido'] ) ) {
+        $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        wp_redirect($actual_link . '#pedido_actualizado');
+    }
+}
+
+/* Cerrar pedido */
+add_action ('template_redirect', 'redirect_closepedido');
+function redirect_closepedido() {
+    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitClosePedido'] ) ) {
+        $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        wp_redirect($actual_link . '#pedido_cerrado');
     }
 }
 
@@ -321,6 +352,7 @@ function set_custom_edit_pedidos_columns($columns) {
     $columns['pedidos_piezas']  = __( 'Piezas', 'pbolita' );
     $columns['pedidos_cliente'] = __( 'Cliente', 'pbolita' );
     $columns['pedidos_entrega'] = __( 'Fecha de entrega', 'pbolita' );
+    $columns['pedidos_estatus'] = __( 'Estatus', 'pbolita' );
 
     return $columns;
 }
@@ -350,6 +382,13 @@ function custom_pedidos_column( $column, $post_id ) {
             if( $entrega != "")
 
                 echo $entrega;
+            else
+                echo "-";
+            break;
+        case 'pedidos_estatus' :
+            $estatus  = get_post_meta( $post_id, 'pedidos_estatus', true );
+            if( $estatus != "")
+                echo $estatus;
             else
                 echo "-";
             break;

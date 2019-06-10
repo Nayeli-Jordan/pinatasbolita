@@ -1,8 +1,9 @@
 <?php $today = date("Y-m-d"); ?>
 <div id="modal-nuevo-pedido" class="modal modal-medium">
+	<div class="fondo-modal"></div>
 	<div class="modal-content">
 		<em class="icon-close close-modal"></em>
-		<p class="color-primary no-margin-top text-center fz-20 margin-bottom-20">Registrar nuevo pedido</p>
+		<p class="color-primary no-margin-top text-center fz-20 margin-bottom-20">Actualizar pedido</p>
 		<form id="pedido-form" name="pedido-form" action=""  method="post" class="validation row" data-parsley-pedido>
 			<div class="col s12 m6 input-field">
 				<label for="pedidos_modelo">Modelo*:</label>
@@ -92,4 +93,5 @@
 	update_post_meta($pedido_id,'pedidos_piezas',$pedido_piezas);
 	update_post_meta($pedido_id,'pedidos_cliente',$pedido_cliente);
 	update_post_meta($pedido_id,'pedidos_entrega',$pedido_entrega);
+	update_post_meta($pedido_id,'pedidos_estatus', 'Abierto');
 endif; ?>

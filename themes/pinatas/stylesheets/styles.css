@@ -9243,6 +9243,18 @@ small {
 .single-content .card-cliente.card-cliente {
   width: 800px;
 }
+/* line 80, ../sass/components/_utilities.scss */
+.single-content.single-pedido-cerrado {
+  color: gray;
+}
+/* line 82, ../sass/components/_utilities.scss */
+.single-content.single-pedido-cerrado #btns-modificar-pedido {
+  display: none;
+}
+/* line 83, ../sass/components/_utilities.scss */
+.single-content.single-pedido-cerrado .color-primary {
+  color: #945d8d;
+}
 
 /* line 1, ../sass/components/_header.scss */
 header {

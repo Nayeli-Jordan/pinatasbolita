@@ -7,8 +7,11 @@
 		$piezas   		= get_post_meta( $pedido_id, 'pedidos_piezas', true );
 		$cliente  		= get_post_meta( $pedido_id, 'pedidos_cliente', true );
 		$entrega  		= get_post_meta( $pedido_id, 'pedidos_entrega', true );
+		$estatus  		= get_post_meta( $pedido_id, 'pedidos_estatus', true );
+		$entregaOrg		= $entrega;
 
 		$productName 	= get_the_title( $pedido_id );
+		$pedidoContent 	= $post->post_content;
 
 		/* Obtener precios de la piñata del pedido */
 		$args = array(
@@ -73,12 +76,18 @@
 		/* Cambiar formato fecha */
 		setlocale(LC_ALL,"es_ES");
         $entrega = strftime("%d/%B/%Y", strtotime($entrega));  
+
+        /* Editar pedido */
+		include (TEMPLATEPATH . '/template/sistema/pedido/modal-editar-pedido.php');
+
+        /* Cerrar pedido */
+		include (TEMPLATEPATH . '/template/sistema/pedido/modal-cerrar-pedido.php');
 ?>
-	<section id="single" class="container single-content">
+	<section id="single" class="container single-content <?php if ($estatus === 'Cerrado') : echo 'single-pedido-cerrado'; endif; ?>">
 		<div class="card-pedido">
 			<p class="fz-20 margin-bottom-20 margin-right-20 uppercase inline-block">Detalles del pedido</p>
-			<div class="inline-block float-right">
-				<p id="actualizar-pedido" class="open-modal text-underline color-primary inline-block margin-right-10">Editar pedido</p>|<p id="cerrar-pedido" class="open-modal text-underline color-primary inline-block margin-left-10">Cerrar pedido</p>
+			<div id="btns-modificar-pedido" class="inline-block float-right">
+				<p id="editar-pedido" class="open-modal text-underline color-primary inline-block margin-right-10">Editar pedido</p>|<p id="cerrar-pedido" class="open-modal text-underline color-primary inline-block margin-left-10">Cerrar pedido</p>
 			</div>
 			<table class="width-100p">
 				<tr>
@@ -103,7 +112,7 @@
 				</tr>
 				<tr>
 					<th class="text-left"><p class="color-primary">Observaciones:</p></th>
-					<td><?php the_content(); ?></td>
+					<td><?php echo $pedidoContent; ?></td>
 				</tr>
 				<tr>
 					<th class="text-left padding-top-50"><p class="color-primary">Cliente:</p></th>

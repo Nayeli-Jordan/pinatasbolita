@@ -76,5 +76,10 @@
 		p { font-size: 16px; }
 		&.card-pedido  { width: 600px; }
 		&.card-cliente { width: 800px; }
-	}	
+	}
+	&.single-pedido-cerrado {
+		color: gray;
+		#btns-modificar-pedido { display: none; }
+		.color-primary { color: $primary-color-gray; }
+	}
 }
