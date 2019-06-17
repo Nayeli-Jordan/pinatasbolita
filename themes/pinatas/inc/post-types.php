@@ -101,4 +101,35 @@ add_action('init', function(){
 	);
 	register_post_type( 'pedidos', $args );	
 
+	// Materiales
+	$labels = array(
+		'name'          => 'Materiales',
+		'singular_name' => 'Materiales',
+		'add_new'       => 'Nuevo material',
+		'add_new_item'  => 'Nuevo material',
+		'edit_item'     => 'Editar material',
+		'new_item'      => 'Nuevo material',
+		'all_items'     => 'Todo',
+		'view_item'     => 'Ver material',
+		'search_items'  => 'Buscar material',
+		'not_found'     => 'No hay material.',
+		'menu_name'     => 'Materiales'
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'materiales' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => 6,
+		'supports'           => array( 'title', 'editor' ),
+	);
+	register_post_type( 'materiales', $args );	
+
 });

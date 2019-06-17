@@ -1,8 +1,8 @@
-<div id="modal-pedidos_<?php echo $productId; ?>" class="modal modal-pedidos">
+<div id="modal-pedidos_<?php echo $productId; ?>_cerrados" class="modal modal-pedidos">
 	<div class="exit-modal"></div>
 	<div class="modal-content">
 		<i class="icon-close close-modal"></i>
-		<p class="color-primary text-center margin-bottom-20 fz-20">Pedidos <span class="uppercase"><?php echo $productName; ?></span></p>
+		<p class="color-primary text-center margin-bottom-20 fz-20">Pedidos <span class="uppercase"><?php echo $productName; ?></span> cerrados</p>
 		<div class="row margin-bottom-10 hide-on-sm-and-down">
 			<div class="col s12 m4 color-primary"><p>Cliente</p></div>
 			<div class="col s12 m2 color-primary"><p>Piezas</p></div>
@@ -18,24 +18,24 @@
 			'meta_query'	=> array(
 				array(
 					'key'		=> 'pedidos_estatus',
-					'value'		=> 'Abierto',
+					'value'		=> 'Cerrado',
 					'compare'	=> '='
 				)
 			)
 		);
 		$loopPedido 	= new WP_Query( $argsPedido );
-		$noPedidos 		= 0;
-		$noPiezas 		= 0;
+		$noCerradas 	= 0;
+		//$noPiezasCerrada= 0;
 		if ( $loopPedido->have_posts() ) {
 		    while ( $loopPedido->have_posts() ) : $loopPedido->the_post();
-		    	$noPedidos ++;
+		    	$noCerradas ++;
 		    	$pedido_id  = get_the_ID();
 				$piezas   = get_post_meta( $pedido_id, 'pedidos_piezas', true );
 				$cliente  = get_post_meta( $pedido_id, 'pedidos_cliente', true );
 				$entrega  = get_post_meta( $pedido_id, 'pedidos_entrega', true ); 
 
 				/* Calcular total piezas de este modelo */
-				$noPiezas = $noPiezas + $piezas;
+				//$$noPiezasCerrada = $$noPiezasCerrada + $piezas;
 
 				/* Cambiar formato fecha */
 				setlocale(LC_ALL,"es_ES");

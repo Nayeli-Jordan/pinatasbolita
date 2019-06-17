@@ -66,6 +66,14 @@ function add_top_menu(){
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );*/
 
 
+/* Remover PRIVATE de título en post privado */
+function remove_private_prefix($title) {
+    $title = str_replace('Privado: ', '', $title);
+    return $title;
+}
+add_filter('the_title', 'remove_private_prefix');
+
+
 /**
 * Optimización
 */
@@ -191,7 +199,6 @@ function clientes_save_metas( $idclientes, $clientes ){
     }
 }
 
-
 /* Pedidos */
 add_action( 'add_meta_boxes', 'pedidos_custom_metabox' );
 function pedidos_custom_metabox(){
@@ -249,6 +256,42 @@ function pedidos_save_metas( $idpedidos, $pedidos ){
     }
 }
 
+/* Materiales */
+add_action( 'add_meta_boxes', 'materiales_custom_metabox' );
+function materiales_custom_metabox(){
+    add_meta_box( 'materiales_meta', 'Información material', 'display_materiales_atributos', 'materiales', 'advanced', 'default');
+}
+
+function display_materiales_atributos( $materiales ){
+    $cantidad      = esc_html( get_post_meta( $materiales->ID, 'materiales_cantidad', true ) );
+    $presentacion  = esc_html( get_post_meta( $materiales->ID, 'materiales_presentacion', true ) );
+?>
+    <table class="pb-custom-fields">
+        <tr>
+            <th>
+                <label for="materiales_cantidad">Cantidad:</label>
+                <input type="number" id="materiales_cantidad" name="materiales_cantidad" value="<?php echo $cantidad; ?>" required>
+            </th>
+            <th>
+                <label for="materiales_presentacion">Presentación:</label>
+                <input type="number" id="materiales_presentacion" name="materiales_presentacion" value="<?php echo $presentacion; ?>" placeholder="Pliego, kg., lt., etc." required>
+            </th>
+        </tr>
+    </table>
+<?php }
+
+add_action( 'save_post', 'materiales_save_metas', 10, 2 );
+function materiales_save_metas( $idmateriales, $materiales ){
+    if ( $materiales->post_type == 'materiales' ){
+        if ( isset( $_POST['materiales_cantidad'] ) ){
+            update_post_meta( $idmateriales, 'materiales_cantidad', $_POST['materiales_cantidad'] );
+        }
+        if ( isset( $_POST['materiales_presentacion'] ) ){
+            update_post_meta( $idmateriales, 'materiales_presentacion', $_POST['materiales_presentacion'] );
+        }
+    }
+}
+
 
 /**
 * Redirecciones
@@ -258,7 +301,16 @@ function pedidos_save_metas( $idpedidos, $pedidos ){
 add_action ('template_redirect', 'redirect_cliente');
 function redirect_cliente() {
     if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitCliente'] ) ) {
-        wp_redirect('stock-pinatas/#cliente_creado');
+        wp_redirect('#cliente_creado');
+    }
+}
+
+/* Editar pedido */
+add_action ('template_redirect', 'redirect_editcliente');
+function redirect_editcliente() {
+    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitEditCliente'] ) ) {
+        $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        wp_redirect($actual_link . '#cliente_actualizado');
     }
 }
 
@@ -266,7 +318,7 @@ function redirect_cliente() {
 add_action ('template_redirect', 'redirect_pedido');
 function redirect_pedido() {
     if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitPedido'] ) ) {
-        wp_redirect('stock-pinatas/#pedido_creado');
+        wp_redirect('#pedido_creado');
     }
 }
 
@@ -285,6 +337,32 @@ function redirect_closepedido() {
     if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitClosePedido'] ) ) {
         $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         wp_redirect($actual_link . '#pedido_cerrado');
+    }
+}
+
+
+/* Actualizar stock */
+add_action ('template_redirect', 'redirect_stock');
+function redirect_stock() {
+    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitStock'] ) ) {
+        $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        wp_redirect($actual_link . '#stock_actualizado');
+    }
+}
+
+/* Nuevo material */
+add_action ('template_redirect', 'redirect_material');
+function redirect_material() {
+    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitMaterial'] ) ) {
+        wp_redirect('#material_creado');
+    }
+}
+/* Editar material */
+add_action ('template_redirect', 'redirect_editmaterial');
+function redirect_editmaterial() {
+    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitEditMaterial'] ) ) {
+        $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        wp_redirect($actual_link . '#material_actualizado');
     }
 }
 

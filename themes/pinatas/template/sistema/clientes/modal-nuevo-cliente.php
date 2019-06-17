@@ -57,7 +57,7 @@
 	$post = array(
 		'post_title'	=> wp_strip_all_tags($cliente_nombre),
 		'post_content'	=> $cliente_observaciones,
-		'post_status'	=> 'publish',
+		'post_status'	=> 'private',
 		'post_type' 	=> 'clientes'
 	);
 

@@ -7,6 +7,6 @@
 		<td class="width-13p">No. Piñatas: <?php echo $pinatas; ?></td>
 		<td class="width-13p">Disponibles: <?php echo $disponibles; ?></td>
 		<td class="width-13p">Faltan: <?php echo $faltantes; ?></td>
-		<td class="width-10p">Cerradas:</td>
+		<td class="width-10p">Cerradas: <?php echo $cerradas; ?></td>
 	</tr>
 </tfoot>

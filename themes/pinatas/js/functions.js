@@ -30,6 +30,10 @@ var $=jQuery.noConflict();
 			if(window.location.href.indexOf("#cliente_creado") > -1) {
 				$('#notice-nuevo-cliente').show();
 			}
+			/* Si se actualizo el cliente */
+			if(window.location.href.indexOf("#cliente_actualizado") > -1) {
+				$('#notice-cliente-actualizado').show();
+			}
 
 			/* Si se guardo el pedido */
 			if(window.location.href.indexOf("#pedido_creado") > -1) {
@@ -42,6 +46,18 @@ var $=jQuery.noConflict();
 			/* Si se cerro el pedido */
 			if(window.location.href.indexOf("#pedido_cerrado") > -1) {
 				$('#notice-pedido-cerrado').show();
+			}
+			/* Si se actualiza el stock */
+			if(window.location.href.indexOf("#stock_actualizado") > -1) {
+				$('#notice-stock-actualizado').show();
+			}
+			/* Si se guardo el material */
+			if(window.location.href.indexOf("#material_creado") > -1) {
+				$('#notice-nuevo-material').show();
+			}
+			/* Si se actualizo el cliente */
+			if(window.location.href.indexOf("#material_actualizado") > -1) {
+				$('#notice-material-actualizado').show();
 			}
 		});
  

@@ -20,4 +20,7 @@ table {
 			p { font-size: 16px; }	
 		}
 	}
+	
+	.tab-disabled 			{ opacity: 0.1; }
+	.tab-disabled-strong 	{ opacity: 0.3; }
 }

@@ -3,7 +3,7 @@
 	<div class="fondo-modal"></div>
 	<div class="modal-content">
 		<em class="icon-close close-modal"></em>
-		<p class="color-primary no-margin-top text-center fz-20 margin-bottom-20">Registrar nuevo pedido</p>
+		<p class="color-primary no-margin-top text-center fz-20 margin-bottom-20">Editar pedido</p>
 		<form id="editpedido-form" name="editpedido-form" action=""  method="post" class="validation row" data-parsley-pedido>
 			<div class="col s12 m6 input-field">
 				<label for="pedidos_piezas">No. de piezas*:</label>

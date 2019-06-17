@@ -23,9 +23,10 @@
 	    if ( $loop->have_posts() ) { 
 	    	global $product; $count = 0; $disponibles = 0;
 	        while ( $loop->have_posts() ) : $loop->the_post();
-	        	$post_id        = get_the_ID();
-	        	$product 		= wc_get_product( $post_id );
+	        	$productId      = get_the_ID();
+	        	$product 		= wc_get_product( $productId );
 	        	$price 			= $product->get_regular_price();
+	        	$stock			= $product->get_stock_quantity();
 
 				if ($price === '') { $price = 0; } /* Sin precio */
 				$priceOnePercent= $price / 100;
@@ -75,14 +76,19 @@
 
 		/* Cambiar formato fecha */
 		setlocale(LC_ALL,"es_ES");
-        $entrega = strftime("%d/%B/%Y", strtotime($entrega));  
+        $entrega = strftime("%d/%B/%Y", strtotime($entrega)); 
 
-        /* Editar pedido */
-		include (TEMPLATEPATH . '/template/sistema/pedido/modal-editar-pedido.php');
 
-        /* Cerrar pedido */
-		include (TEMPLATEPATH . '/template/sistema/pedido/modal-cerrar-pedido.php');
-?>
+        if ($estatus === 'Abierto') :
+			/* Modals notice */
+			include (TEMPLATEPATH . '/template/sistema/notice/notice-pedido-actualizado.php');
+			include (TEMPLATEPATH . '/template/sistema/notice/notice-pedido-cerrado.php');
+	        /* Editar pedido */
+			include (TEMPLATEPATH . '/template/sistema/pedido/modal-editar-pedido.php');
+	        /* Cerrar pedido */
+			include (TEMPLATEPATH . '/template/sistema/pedido/modal-cerrar-pedido.php');
+		endif; ?>
+
 	<section id="single" class="container single-content <?php if ($estatus === 'Cerrado') : echo 'single-pedido-cerrado'; endif; ?>">
 		<div class="card-pedido">
 			<p class="fz-20 margin-bottom-20 margin-right-20 uppercase inline-block">Detalles del pedido</p>
