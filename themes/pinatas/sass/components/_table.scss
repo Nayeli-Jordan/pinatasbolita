@@ -9,16 +9,18 @@ table {
 		font-size: 12px;
 		text-align: center;
 		background-color: rgb(153, 46, 138);
-		&.tdInvisible {
-			color: transparent;
-			background-color: transparent;
-		}
 	}
 	tbody {
 		td {
 			padding: 3px;
 			p { font-size: 16px; }	
 		}
+	}
+	thead th, tfoot td, tbody td {
+		&.tdInvisible {
+			color: transparent;
+			background-color: transparent;
+		}		
 	}
 	
 	.tab-disabled 			{ opacity: 0.1; }

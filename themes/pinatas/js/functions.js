@@ -39,6 +39,10 @@ var $=jQuery.noConflict();
 			if(window.location.href.indexOf("#pedido_creado") > -1) {
 				$('#notice-nuevo-pedido').show();
 			}
+			/* Si se actualizo el cliente */
+			if(window.location.href.indexOf("#material_actualizado") > -1) {
+				$('#notice-material-actualizado').show();
+			}
 			/* Si se actualizo el pedido */
 			if(window.location.href.indexOf("#pedido_actualizado") > -1) {
 				$('#notice-pedido-actualizado').show();
@@ -55,9 +59,9 @@ var $=jQuery.noConflict();
 			if(window.location.href.indexOf("#material_creado") > -1) {
 				$('#notice-nuevo-material').show();
 			}
-			/* Si se actualizo el cliente */
-			if(window.location.href.indexOf("#material_actualizado") > -1) {
-				$('#notice-material-actualizado').show();
+			/* Si se envio el email de solicitud de material */
+			if(window.location.href.indexOf("#material_solicitado") > -1) {
+				$('#notice-material-solicitado').show();
 			}
 		});
  

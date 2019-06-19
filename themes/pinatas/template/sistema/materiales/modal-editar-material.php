@@ -1,11 +1,12 @@
 <div id="modal-editar-material" class="modal modal-medium">
+	<div class="fondo-modal"></div>
 	<div class="modal-content">
 		<em class="icon-close close-modal"></em>
 		<p class="color-primary no-margin-top text-center fz-20 margin-bottom-20">Editar <?php echo $materialName; ?></p>
 		<form id="editmaterial-form" name="editmaterial-form" action=""  method="post" class="validation row" data-parsley-material>
 			<div class="col s12 input-field">
 				<label for="materiales_cantidad">Cantidad:</label>
-    			<input type="text" name="materiales_cantidad" id="materiales_cantidad" value="<?php echo $cantidad ?>">
+    			<input type="number" min="0" name="materiales_cantidad" id="materiales_cantidad" value="<?php echo $cantidad ?>">
 			</div>
 			<div class="col s12 input-field">
 				<label for="materiales_presentacion">Presentación:</label>

@@ -1,4 +1,5 @@
 <div id="modal-editar-cliente" class="modal modal-medium">
+	<div class="fondo-modal"></div>
 	<div class="modal-content">
 		<em class="icon-close close-modal"></em>
 		<p class="color-primary no-margin-top text-center fz-20 margin-bottom-20">Editar cliente <?php echo $clienteName; ?></p>

@@ -13,6 +13,8 @@
 		/* Editar material */
 		include (TEMPLATEPATH . '/template/sistema/materiales/modal-editar-material.php');
 		include (TEMPLATEPATH . '/template/sistema/notice/notice-material-actualizado.php');
+		include (TEMPLATEPATH . '/template/sistema/materiales/modal-solicitar-material.php');
+		include (TEMPLATEPATH . '/template/sistema/notice/notice-material-solicitado.php');
 ?>
 	<section id="single" class="container single-content">
 		<div class="card-material">
@@ -22,14 +24,16 @@
 			</div>
 			<table class="width-100p text-left">
 				<tr>
-					<th class="color-primary width-30p">Cantidad</th>
-					<th class="color-primary width-30p">Presentación</th>
-					<th class="color-primary width-40p">Observaciones</th>
+					<th class="color-primary width-15p">Cantidad</th>
+					<th class="color-primary width-25p">Presentación</th>
+					<th class="color-primary width-45p">Observaciones</th>
+					<th class="color-primary width-15p">-</th>
 				</tr>
 				<tr>
 					<td><?php echo $cantidad; ?></td>
 					<td><?php echo $presentacion; ?></td>
 					<td><?php the_content(); ?></td>
+					<td><p id="solicitar-material" class="open-modal text-underline">Solicitar</p></td>
 				</tr>
 			</table>
 			<div class="row row-complete margin-top-30">

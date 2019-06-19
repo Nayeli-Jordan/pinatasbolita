@@ -64,7 +64,7 @@
     			<textarea name="pedidos_observaciones" id="pedidos_observaciones" placeholder="Otros detalles del pedido, la entrega, el pago, etc."></textarea>
 			</div>
 			<div class="col s12 input-field">
-				<label for="pedidos_alerta">¿Cuántos días antes se te notifica?: <small>(0 para desactivar notificación)</small></label>
+				<label for="pedidos_alerta">¿Cuántos días antes se te notifica?: <small class="color-gray">(0 para desactivar notificación)</small></label>
    				<input type="number" min="0" name="pedidos_alerta" id="pedidos_alerta" placeholder="0">
 			</div>
 			<div class="col s12 text-right margin-top">

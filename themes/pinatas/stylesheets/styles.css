@@ -8904,24 +8904,24 @@ table thead th, table tfoot td {
   text-align: center;
   background-color: #992e8a;
 }
-/* line 12, ../sass/components/_table.scss */
-table thead th.tdInvisible, table tfoot td.tdInvisible {
-  color: transparent;
-  background-color: transparent;
-}
-/* line 18, ../sass/components/_table.scss */
+/* line 14, ../sass/components/_table.scss */
 table tbody td {
   padding: 3px;
 }
-/* line 20, ../sass/components/_table.scss */
+/* line 16, ../sass/components/_table.scss */
 table tbody td p {
   font-size: 16px;
 }
-/* line 24, ../sass/components/_table.scss */
+/* line 20, ../sass/components/_table.scss */
+table thead th.tdInvisible, table tfoot td.tdInvisible, table tbody td.tdInvisible {
+  color: transparent;
+  background-color: transparent;
+}
+/* line 26, ../sass/components/_table.scss */
 table .tab-disabled {
   opacity: 0.1;
 }
-/* line 25, ../sass/components/_table.scss */
+/* line 27, ../sass/components/_table.scss */
 table .tab-disabled-strong {
   opacity: 0.3;
 }
@@ -9255,26 +9255,28 @@ small {
   font-size: 16px;
 }
 /* line 80, ../sass/components/_utilities.scss */
-.single-content .card-pedido.card-pedido,
+.single-content .card-pedido.card-pedido, .single-content .card-pedido.card-material,
 .single-content .card-cliente.card-pedido,
-.single-content .card-material.card-pedido {
+.single-content .card-cliente.card-material,
+.single-content .card-material.card-pedido,
+.single-content .card-material.card-material {
   width: 600px;
 }
-/* line 81, ../sass/components/_utilities.scss */
+/* line 82, ../sass/components/_utilities.scss */
 .single-content .card-pedido.card-cliente,
 .single-content .card-cliente.card-cliente,
 .single-content .card-material.card-cliente {
   width: 800px;
 }
-/* line 83, ../sass/components/_utilities.scss */
+/* line 84, ../sass/components/_utilities.scss */
 .single-content.single-pedido-cerrado {
   color: gray;
 }
-/* line 85, ../sass/components/_utilities.scss */
+/* line 86, ../sass/components/_utilities.scss */
 .single-content.single-pedido-cerrado #btns-modificar-pedido {
   display: none;
 }
-/* line 86, ../sass/components/_utilities.scss */
+/* line 87, ../sass/components/_utilities.scss */
 .single-content.single-pedido-cerrado .color-primary {
   color: #945d8d;
 }

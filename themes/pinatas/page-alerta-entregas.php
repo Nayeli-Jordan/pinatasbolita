@@ -1,13 +1,7 @@
 <?php get_header(); 
 	if (have_posts()) : while (have_posts()) : the_post();
-
-		$mailHeader 			= '<html style="font-family: Arial, sans-serif; font-size: 14px;"><body>';
-		$mailHeader 		   .= '<h1 style="display: block; margin-bottom: 20px; text-align: center;  font-size: 20px; font-weight: 700; color: #992e8a; text-transform: uppercase;">Piñatas Bolita</h1>';
-		$mailHeader 			.= '<p style="margin-bottom: 20px;">Se ha activado la alerta de las siguientes entregas:</p>';
-
-
-		$mailFooter 			= '<div style="text-align: center; margin-bottom: 10px; margin-top: 20px;"><p><small>Este email fue enviado desde el sitio de Piñatas Bolita.</small></p></div>';
-		$mailFooter 	        .= '</body></html>'; ?>
+		/* Cuerpo mensaje */
+		include (TEMPLATEPATH . '/template/sistema/mail-body.php'); ?>
 		<section class="[ container ] text-shadow-gray color-light">
 			<h2 class="text-center margin-bottom-20"><?php the_title(); ?></h2>
 			<div class="page-content">
@@ -59,6 +53,7 @@
 			 	/* Send email */
 				$to 		= "nayeli@queonda.com.mx";
 			    $subject 	= "Alerta de entregas PB";
+			    $mailHeader .= '<p style="margin-bottom: 20px;">Se ha activado la alerta de las siguientes entregas:</p>';
 			    wp_mail($to, $subject, $message);
 			} ?>
 			<div class="margin-top-30 text-right">

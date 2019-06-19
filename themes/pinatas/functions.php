@@ -302,7 +302,7 @@ function display_materiales_atributos( $materiales ){
         <tr>
             <th>
                 <label for="materiales_cantidad">Cantidad:</label>
-                <input type="number" id="materiales_cantidad" name="materiales_cantidad" value="<?php echo $cantidad; ?>" required>
+                <input type="number" min="0" id="materiales_cantidad" name="materiales_cantidad" value="<?php echo $cantidad; ?>" required>
             </th>
             <th>
                 <label for="materiales_presentacion">Presentación:</label>
@@ -395,6 +395,14 @@ function redirect_editmaterial() {
     if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitEditMaterial'] ) ) {
         $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         wp_redirect($actual_link . '#material_actualizado');
+    }
+}
+/* Solicitar material */
+add_action ('template_redirect', 'redirect_materialsolic');
+function redirect_materialsolic() {
+    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitMaterialSolic'] ) ) {
+        $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        wp_redirect($actual_link . '#material_solicitado');
     }
 }
 
