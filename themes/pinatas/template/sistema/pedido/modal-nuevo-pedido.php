@@ -3,7 +3,7 @@
 	<div class="fondo-modal"></div>
 	<div class="modal-content">
 		<em class="icon-close close-modal"></em>
-		<p class="color-primary no-margin-top text-center fz-20 margin-bottom-20">Actualizar pedido</p>
+		<p class="color-primary no-margin-top text-center fz-20 margin-bottom-20">Nuevo pedido</p>
 		<form id="pedido-form" name="pedido-form" action=""  method="post" class="validation row" data-parsley-pedido>
 			<div class="col s12 m6 input-field">
 				<label for="pedidos_modelo">Modelo*:</label>
@@ -44,7 +44,6 @@
                         'posts_per_page'    => -1,
 				        'orderby' 			=> 'title',
 				        'order' 			=> 'ASC',
-                        'post_status'       => 'publish'
 
                     ); 
                     $loopClientes = new WP_Query( $pbClientes );
@@ -63,7 +62,11 @@
 			<div class="col s12 input-field">
 				<label for="pedidos_observaciones">Observaciones:</label>
     			<textarea name="pedidos_observaciones" id="pedidos_observaciones" placeholder="Otros detalles del pedido, la entrega, el pago, etc."></textarea>
-			</div>	
+			</div>
+			<div class="col s12 input-field">
+				<label for="pedidos_alerta">¿Cuántos días antes se te notifica?: <small>(0 para desactivar notificación)</small></label>
+   				<input type="number" min="0" name="pedidos_alerta" id="pedidos_alerta" placeholder="0">
+			</div>
 			<div class="col s12 text-right margin-top">
 				<input type="submit" id="mb_submitPedido" name="mb_submitPedido" class="btn btn-primary inline-block" value="Guardar" />
 				<input type="hidden" name="send_submitPedido" value="post" />
@@ -79,6 +82,7 @@
     $pedido_cliente      	= $_POST['pedidos_cliente'];
     $pedido_entrega        	= $_POST['pedidos_entrega'];
     $pedido_observaciones 	= $_POST['pedidos_observaciones'];
+    $pedido_alerta 			= $_POST['pedidos_alerta'];
 
 	/* Crear post pedidos */
 	$post = array(
@@ -94,4 +98,5 @@
 	update_post_meta($pedido_id,'pedidos_cliente',$pedido_cliente);
 	update_post_meta($pedido_id,'pedidos_entrega',$pedido_entrega);
 	update_post_meta($pedido_id,'pedidos_estatus', 'Abierto');
+	update_post_meta($pedido_id,'pedidos_alerta',$pedido_alerta);
 endif; ?>

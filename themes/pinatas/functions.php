@@ -73,6 +73,30 @@ function remove_private_prefix($title) {
 }
 add_filter('the_title', 'remove_private_prefix');
 
+/**
+* Send mail by SMTP
+*/
+add_action( 'phpmailer_init', 'send_smtp_email' );
+function send_smtp_email( $phpmailer ) {
+    $phpmailer->isSMTP();
+    $phpmailer->Host       = SMTP_HOST;
+    $phpmailer->SMTPAuth   = SMTP_AUTH;
+    $phpmailer->Port       = SMTP_PORT;
+    $phpmailer->SMTPSecure = SMTP_SECURE;
+    $phpmailer->Username   = SMTP_USERNAME;
+    $phpmailer->Password   = SMTP_PASSWORD;
+    $phpmailer->From       = SMTP_FROM;
+    $phpmailer->FromName   = SMTP_FROMNAME;
+
+    $phpmailer->SMTPKeepAlive = true;
+}
+
+/* $message wp_mail in html (not text/plain) */
+function transforme_content_type(){
+    return "text/html";
+}
+add_filter( 'wp_mail_content_type','transforme_content_type' );
+
 
 /**
 * Optimización
@@ -210,6 +234,7 @@ function display_pedidos_atributos( $pedidos ){
     $cliente  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_cliente', true ) );
     $entrega  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_entrega', true ) );
     $estatus  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_estatus', true ) );
+    $alerta   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_alerta', true ) );
 ?>
     <table class="pb-custom-fields">
         <tr>
@@ -221,7 +246,7 @@ function display_pedidos_atributos( $pedidos ){
                 <label for="pedidos_cliente">Cliente:</label>
                 <input type="text" id="pedidos_cliente" name="pedidos_cliente" value="<?php echo $cliente; ?>">
             </th>
-            <th colspan="2">
+            <th>
                 <label for="pedidos_entrega">Fecha de entrega:</label>
                 <input type="date" id="pedidos_entrega" name="pedidos_entrega" value="<?php echo $entrega; ?>">
             </th>
@@ -233,6 +258,10 @@ function display_pedidos_atributos( $pedidos ){
                     <option value="Abierto" <?php selected($estatus, 'Abierto'); ?>>Abierto</option>
                     <option value="Cerrado" <?php selected($estatus, 'Cerrado'); ?>>Cerrado</option>
                 </select><br>               
+            </th>
+            <th>
+                <label for="pedidos_alerta">¿Cuántos días antes se te notifica?:</label>
+                <input type="number" id="pedidos_alerta" name="pedidos_alerta" value="<?php echo $alerta; ?>" placeholder="0">
             </th>
         </tr>
     </table>
@@ -252,6 +281,9 @@ function pedidos_save_metas( $idpedidos, $pedidos ){
         }
         if ( isset( $_POST['pedidos_estatus'] ) ){
             update_post_meta( $idpedidos, 'pedidos_estatus', $_POST['pedidos_estatus'] );
+        }
+        if ( isset( $_POST['pedidos_alerta'] ) ){
+            update_post_meta( $idpedidos, 'pedidos_alerta', $_POST['pedidos_alerta'] );
         }
     }
 }
@@ -325,7 +357,7 @@ function redirect_pedido() {
 /* Editar pedido */
 add_action ('template_redirect', 'redirect_editpedido');
 function redirect_editpedido() {
-    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitEditPedido'] ) ) {
+    if ( ('POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitEditPedido'] ) ) || ('POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitEditAlerta'] ) ) ) {
         $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         wp_redirect($actual_link . '#pedido_actualizado');
     }
@@ -431,6 +463,7 @@ function set_custom_edit_pedidos_columns($columns) {
     $columns['pedidos_cliente'] = __( 'Cliente', 'pbolita' );
     $columns['pedidos_entrega'] = __( 'Fecha de entrega', 'pbolita' );
     $columns['pedidos_estatus'] = __( 'Estatus', 'pbolita' );
+    $columns['pedidos_alerta']  = __( 'Alerta', 'pbolita' );
 
     return $columns;
 }
@@ -467,6 +500,16 @@ function custom_pedidos_column( $column, $post_id ) {
             $estatus  = get_post_meta( $post_id, 'pedidos_estatus', true );
             if( $estatus != "")
                 echo $estatus;
+            else
+                echo "-";
+            break;
+        case 'pedidos_alerta' :
+            $entregaOrg  = get_post_meta( $post_id, 'pedidos_entrega', true );
+            $alerta      = get_post_meta( $post_id, 'pedidos_alerta', true );
+            $alertActive = date("Y-m-d", strtotime($entregaOrg . '- ' . $alerta . ' days'));
+            $alertActive = strftime("%d/%B/%Y", strtotime($alertActive));
+            if( $alerta != "")
+                echo $alerta . ' días antes </br>' . $alertActive;
             else
                 echo "-";
             break;

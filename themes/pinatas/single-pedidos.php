@@ -8,6 +8,7 @@
 		$cliente  		= get_post_meta( $pedido_id, 'pedidos_cliente', true );
 		$entrega  		= get_post_meta( $pedido_id, 'pedidos_entrega', true );
 		$estatus  		= get_post_meta( $pedido_id, 'pedidos_estatus', true );
+		$alerta  		= get_post_meta( $pedido_id, 'pedidos_alerta', true );
 		$entregaOrg		= $entrega;
 
 		$productName 	= get_the_title( $pedido_id );
@@ -87,6 +88,7 @@
 			include (TEMPLATEPATH . '/template/sistema/pedido/modal-editar-pedido.php');
 	        /* Cerrar pedido */
 			include (TEMPLATEPATH . '/template/sistema/pedido/modal-cerrar-pedido.php');
+			include (TEMPLATEPATH . '/template/sistema/pedido/modal-editar-alerta.php');
 		endif; ?>
 
 	<section id="single" class="container single-content <?php if ($estatus === 'Cerrado') : echo 'single-pedido-cerrado'; endif; ?>">
@@ -98,35 +100,40 @@
 			<table class="width-100p">
 				<tr>
 					<th class="width-30p text-left"><p class="color-primary">Modelo:</p></th>
-					<td class="width-70p"><p><?php the_title(); ?></p></td>
+					<td colspan="2" class="width-70p"><p><?php the_title(); ?></p></td>
 				</tr>
 				<tr>
 					<th class="text-left padding-top-30"><p class="color-primary">Piezas:</p></th>
-					<td class=" padding-top-20"><p><?php echo $piezas; ?> unidades</p></td>
+					<td colspan="2" class=" padding-top-20"><p><?php echo $piezas; ?> unidades</p></td>
 				</tr>
 				<tr>
 					<th class="text-left"><p class="color-primary">Costo:</p></th>
-					<td><p>$<?php echo $price; ?> por piñata</p></td>
+					<td colspan="2"><p>$<?php echo $price; ?> por piñata</p></td>
 				</tr>
 				<tr>
 					<th class="text-left"><p class="color-primary">Total:</p></th>
-					<td><p>$<?php echo $piezas * $price; ?></p></td>
+					<td colspan="2"><p>$<?php echo $piezas * $price; ?></p></td>
 				</tr>
 				<tr>
 					<th class="text-left padding-top-30"><p class="color-primary">Fecha de entrega:</p></th>
-					<td class="padding-top-20"><p><?php echo $entrega; ?></p></td>
+					<td colspan="2" class="padding-top-20"><p><?php echo $entrega; ?></p></td>
 				</tr>
 				<tr>
 					<th class="text-left"><p class="color-primary">Observaciones:</p></th>
-					<td><?php echo $pedidoContent; ?></td>
+					<td colspan="2"><?php echo $pedidoContent; ?></td>
 				</tr>
 				<tr>
 					<th class="text-left padding-top-50"><p class="color-primary">Cliente:</p></th>
-					<td class="padding-top-50">
+					<td colspan="2" class="padding-top-50">
 						<p class="margin-bottom-10"><?php echo $cliente; ?></p>
 						<p><?php echo $infoCliente; ?></p>
 						<p class="margin-top-20"><a href="<?php echo $linkCliente; ?>" class="enlace-primary">Ver pedidos cliente</a></p>
 					</td>
+				</tr>
+				<tr>
+					<th class="text-left padding-top-50"><p class="color-primary">Alerta:</p></th>
+					<td class="padding-top-50"><?php echo $alerta; ?> días antes</td>
+					<td class="padding-top-50"><p id="editar-alerta" class="open-modal text-underline color-primary inline-block margin-right-10">Editar alerta</p></td>
 				</tr>
 			</table>
 			<div class="margin-top-30 text-right">

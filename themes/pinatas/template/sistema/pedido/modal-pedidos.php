@@ -45,7 +45,7 @@
 					<div class="col s12 m4"><p><?php echo $cliente; ?></p></div>
 					<div class="col s12 m2"><p><?php echo $piezas; ?> <span class="hide-on-med-and-up">piezas</span></p></div>
 					<div class="col s12 m4"><p><?php echo $entrega; ?></p></div>
-					<div class="col s12 m2"><p><a href="<?php echo get_permalink(); ?>" terget="_blank" class="color-primary">Ver</a></p></div>
+					<div class="col s12 m2"><p><a href="<?php echo get_permalink(); ?>" class="color-primary">Ver</a></p></div>
 				</div>
 
 		    <?php endwhile;
