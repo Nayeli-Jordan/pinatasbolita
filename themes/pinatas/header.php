@@ -61,7 +61,9 @@
 			/* Obtener categorías de producto */
 			include (TEMPLATEPATH . '/template/function-category.php');
 		endif; ?>
-
+		<?php if (is_user_logged_in() && (is_home() || is_product() || is_page('novedades') || is_page('aviso-de-privacidad'))): ?>
+			<a href="<?php echo SITEURL; ?>stock-pinatas" class="btn btn-primary btn-stock">Stock</a>
+		<?php endif ?>
 		<?php if (!is_home()) :  ?>
 			<header class="js-header relative">
 				<div class="bg-fondo-azul"></div>

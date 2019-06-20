@@ -132,3 +132,10 @@ input[type="submit"] {
 	-moz-transform: rotate(45deg); 
 	transform: rotate(45deg); 
 } 
+
+.btn-stock {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	z-index: 9999;
+}
