@@ -62,6 +62,10 @@
 		&.table-materiales {
 			@media #{$large-and-up} { margin-top: -31px } /* Ocultar thead en desktop */			
 		}
+		&.table-contabilidad {
+			min-width: 400px;
+			tfoot { display: table-footer-group; }
+		}
 	}	
 }
 

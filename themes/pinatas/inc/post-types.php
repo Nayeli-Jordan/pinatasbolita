@@ -65,7 +65,7 @@ add_action('init', function(){
 		'hierarchical'       => false,
 		'menu_position'      => 6,
 		'supports'           => array( 'title', 'editor' ),
-		'menu_icon' 		 => 'dashicons-admin-users'
+		'menu_icon' 		 => 'dashicons-groups'
 	);
 	register_post_type( 'clientes', $args );
 
@@ -97,7 +97,7 @@ add_action('init', function(){
 		'hierarchical'       => false,
 		'menu_position'      => 6,
 		'supports'           => array( 'title', 'editor' ),
-		'menu_icon' 		 => 'dashicons-admin-users'
+		'menu_icon' 		 => 'dashicons-clipboard'
 	);
 	register_post_type( 'pedidos', $args );	
 
@@ -129,7 +129,72 @@ add_action('init', function(){
 		'hierarchical'       => false,
 		'menu_position'      => 6,
 		'supports'           => array( 'title', 'editor' ),
+		'menu_icon' 		 => 'dashicons-art'
 	);
 	register_post_type( 'materiales', $args );	
+
+	// Contabilidad
+	$labels = array(
+		'name'          => 'Contabilidad',
+		'singular_name' => 'Contabilidad',
+		'add_new'       => 'Nueva cuenta',
+		'add_new_item'  => 'Nueva cuenta',
+		'edit_item'     => 'Editar cuenta',
+		'new_item'      => 'Nueva cuenta',
+		'all_items'     => 'Todo',
+		'view_item'     => 'Ver cuenta',
+		'search_items'  => 'Buscar cuenta',
+		'not_found'     => 'No hay cuenta.',
+		'menu_name'     => 'Contabilidad'
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'cuenta' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => 6,
+		'supports'           => array( 'title' ),
+		'menu_icon' 		 => 'dashicons-chart-area'
+	);
+	register_post_type( 'cuenta', $args );	
+
+	// Registro
+	$labels = array(
+		'name'          => 'Registro',
+		'singular_name' => 'Registro',
+		'add_new'       => 'Nuevo registro',
+		'add_new_item'  => 'Nuevo registro',
+		'edit_item'     => 'Editar registro',
+		'new_item'      => 'Nuevo registro',
+		'all_items'     => 'Registros',
+		'view_item'     => 'Ver registro',
+		'search_items'  => 'Buscar registro',
+		'not_found'     => 'No hay registro.',
+		'menu_name'     => 'Registro'
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'registro' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => 6,
+		'supports'           => array( 'title' ),
+		'menu_icon' 		 => 'dashicons-chart-area'
+	);
+	register_post_type( 'registro', $args );	
 
 });

@@ -150,6 +150,24 @@ remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 
 add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 30 );
 
+/**
+* Perfiles - Permisos
+*/
+//Hide item admin menu for certain user profile
+function pb_remove_menu_items() {
+    remove_menu_page('edit.php'); // Posts
+    remove_menu_page('edit-comments.php'); // Comments
+    //Editor (Esther y Verónica)
+    if( current_user_can( 'editor' ) ):
+        
+        remove_menu_page( 'edit.php?post_type=ae_perfil' );
+        remove_menu_page('edit.php?post_type=page'); // Pages  
+        remove_menu_page('tools.php'); // Tools
+
+    endif;
+}
+add_action( 'admin_menu', 'pb_remove_menu_items' );
+
 
 /**
 * CUSTOM FUNCTIONS
@@ -320,6 +338,106 @@ function materiales_save_metas( $idmateriales, $materiales ){
         }
         if ( isset( $_POST['materiales_presentacion'] ) ){
             update_post_meta( $idmateriales, 'materiales_presentacion', $_POST['materiales_presentacion'] );
+        }
+    }
+}
+
+
+/* Contabilidad - cuenta */
+add_action( 'add_meta_boxes', 'cuenta_custom_metabox' );
+function cuenta_custom_metabox(){
+    add_meta_box( 'cuenta_meta', 'Información cuenta', 'display_cuenta_atributos', 'cuenta', 'advanced', 'default');
+}
+
+function display_cuenta_atributos( $cuenta ){
+    $tipo       = esc_html( get_post_meta( $cuenta->ID, 'cuenta_tipo', true ) );
+    $cantidad   = esc_html( get_post_meta( $cuenta->ID, 'cuenta_cantidad', true ) );
+    $categoria  = esc_html( get_post_meta( $cuenta->ID, 'cuenta_categoria', true ) );
+?>
+    <table class="pb-custom-fields">
+        <tr>
+            <th>
+                <label for="cuenta_tipo">Tipo:</label>
+                <select name="cuenta_tipo" id="cuenta_tipo" required>
+                    <option value="Ingreso" <?php selected($tipo, 'Ingreso'); ?>>Ingreso</option>
+                    <option value="Egreso" <?php selected($tipo, 'Egreso'); ?>>Egreso</option>
+                </select><br>               
+            </th>
+            <th>
+                <label for="cuenta_cantidad">Cantidad:</label>
+                <input type="number" min="0" id="cuenta_cantidad" name="cuenta_cantidad" value="<?php echo $cantidad; ?>" required>
+            </th>
+            <th>
+                <label for="cuenta_categoria">Categoria:</label>
+                <select name="cuenta_categoria" id="cuenta_categoria" required>
+                    <option value="Piñatas" <?php selected($categoria, 'Piñatas'); ?>>Piñatas</option>
+                    <option value="Pago" <?php selected($categoria, 'Pago'); ?>>Pago</option>
+                    <option value="Materiales" <?php selected($categoria, 'Materiales'); ?>>Materiales</option>
+                    <option value="Servicios" <?php selected($categoria, 'Servicios'); ?>>Servicios</option>
+                    <option value="Salarios" <?php selected($categoria, 'Salarios'); ?>>Salarios</option>
+                    <option value="Viveres" <?php selected($categoria, 'Viveres'); ?>>Viveres</option>
+                    <option value="Otros" <?php selected($categoria, 'Otros'); ?>>Otros</option>
+                </select><br>               
+            </th>
+        </tr>
+    </table>
+<?php }
+
+add_action( 'save_post', 'cuenta_save_metas', 10, 2 );
+function cuenta_save_metas( $idcuenta, $cuenta ){
+    if ( $cuenta->post_type == 'cuenta' ){
+        if ( isset( $_POST['cuenta_tipo'] ) ){
+            update_post_meta( $idcuenta, 'cuenta_tipo', $_POST['cuenta_tipo'] );
+        }
+        if ( isset( $_POST['cuenta_cantidad'] ) ){
+            update_post_meta( $idcuenta, 'cuenta_cantidad', $_POST['cuenta_cantidad'] );
+        }
+        if ( isset( $_POST['cuenta_categoria'] ) ){
+            update_post_meta( $idcuenta, 'cuenta_categoria', $_POST['cuenta_categoria'] );
+        }
+    }
+}
+
+/* Contabilidad - registros */
+add_action( 'add_meta_boxes', 'registro_custom_metabox' );
+function registro_custom_metabox(){
+    add_meta_box( 'registro_meta', 'Información registro', 'display_registro_atributos', 'registro', 'advanced', 'default');
+}
+
+function display_registro_atributos( $registro ){
+    $egreso     = esc_html( get_post_meta( $registro->ID, 'registro_egreso', true ) );
+    $ingreso    = esc_html( get_post_meta( $registro->ID, 'registro_ingreso', true ) );
+    $total      = esc_html( get_post_meta( $registro->ID, 'registro_total', true ) );
+?>
+    <table class="pb-custom-fields">
+        <tr>
+            <th>
+                <label for="registro_egreso">Egreso:</label>
+                <input type="number" min="0" id="registro_egreso" name="registro_egreso" value="<?php echo $egreso; ?>" required>
+            </th>
+            <th>
+                <label for="registro_ingreso">Ingreso:</label>
+                <input type="number" min="0" id="registro_ingreso" name="registro_ingreso" value="<?php echo $ingreso; ?>" required>
+            </th>
+            <th>
+                <label for="registro_total">Total:</label>
+                <input type="number" id="registro_total" name="registro_total" value="<?php echo $total; ?>" required>
+            </th>
+        </tr>
+    </table>
+<?php }
+
+add_action( 'save_post', 'registro_save_metas', 10, 2 );
+function registro_save_metas( $idregistro, $registro ){
+    if ( $registro->post_type == 'registro' ){
+        if ( isset( $_POST['registro_egreso'] ) ){
+            update_post_meta( $idregistro, 'registro_egreso', $_POST['registro_egreso'] );
+        }
+        if ( isset( $_POST['registro_ingreso'] ) ){
+            update_post_meta( $idregistro, 'registro_ingreso', $_POST['registro_ingreso'] );
+        }
+        if ( isset( $_POST['registro_total'] ) ){
+            update_post_meta( $idregistro, 'registro_total', $_POST['registro_total'] );
         }
     }
 }
@@ -520,6 +638,48 @@ function custom_pedidos_column( $column, $post_id ) {
                 echo $alerta . ' días antes </br>' . $alertActive;
             else
                 echo "-";
+            break;
+    }
+}
+
+
+/* Contabilidad */
+add_filter( 'manage_cuenta_posts_columns', 'set_custom_edit_cuenta_columns' );
+function set_custom_edit_cuenta_columns($columns) {
+    $columns['cuenta_tipo']  = __( 'Tipo', 'pbolita' );
+    $columns['cuenta_cantidad'] = __( 'Cantidad', 'pbolita' );
+    $columns['cuenta_categoria'] = __( 'Categoría', 'pbolita' );
+    $columns['cuenta_fecha'] = __( 'Fecha', 'pbolita' );
+
+    return $columns;
+}
+
+add_action( 'manage_cuenta_posts_custom_column' , 'custom_cuenta_column', 10, 2 );
+function custom_cuenta_column( $column, $post_id ) {
+    switch ( $column ) {
+        case 'cuenta_tipo' :
+            $tipo  = get_post_meta( $post_id, 'cuenta_tipo', true );
+            if( $tipo != "")
+                echo $tipo;
+            else
+                echo "-";
+            break;
+        case 'cuenta_cantidad' :
+            $cantidad  = get_post_meta( $post_id, 'cuenta_cantidad', true );
+            if( $cantidad != "")
+                echo $cantidad;
+            else
+                echo "-";
+            break;
+        case 'cuenta_categoria' :
+            $categoria  = get_post_meta( $post_id, 'cuenta_categoria', true );
+            if( $categoria != "")
+                echo $categoria;
+            else
+                echo "-";
+            break;
+        case 'cuenta_fecha' :
+            echo get_the_date("d/m/Y");
             break;
     }
 }

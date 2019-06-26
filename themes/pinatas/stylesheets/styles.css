@@ -2468,7 +2468,12 @@ input[type="submit"].btn-primary:hover {
   color: #bebebe;
 }
 
-/* line 14, ../sass/components/_color.scss */
+/* line 9, ../sass/components/_color.scss */
+.color-alert {
+  color: #c30008;
+}
+
+/* line 15, ../sass/components/_color.scss */
 .bg-light {
   background-color: #fff;
 }
@@ -9240,13 +9245,21 @@ small {
     margin-top: -31px;
   }
 }
+/* line 65, ../sass/components/_utilities.scss */
+#content_table .table-sistema.table-contabilidad {
+  min-width: 400px;
+}
+/* line 67, ../sass/components/_utilities.scss */
+#content_table .table-sistema.table-contabilidad tfoot {
+  display: table-footer-group;
+}
 
 /* Single pedido */
-/* line 69, ../sass/components/_utilities.scss */
+/* line 73, ../sass/components/_utilities.scss */
 .single-content {
   overflow: auto;
 }
-/* line 71, ../sass/components/_utilities.scss */
+/* line 75, ../sass/components/_utilities.scss */
 .single-content .card-pedido,
 .single-content .card-cliente,
 .single-content .card-material {
@@ -9256,13 +9269,13 @@ small {
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
-/* line 79, ../sass/components/_utilities.scss */
+/* line 83, ../sass/components/_utilities.scss */
 .single-content .card-pedido p,
 .single-content .card-cliente p,
 .single-content .card-material p {
   font-size: 16px;
 }
-/* line 80, ../sass/components/_utilities.scss */
+/* line 84, ../sass/components/_utilities.scss */
 .single-content .card-pedido.card-pedido, .single-content .card-pedido.card-material,
 .single-content .card-cliente.card-pedido,
 .single-content .card-cliente.card-material,
@@ -9270,21 +9283,21 @@ small {
 .single-content .card-material.card-material {
   width: 600px;
 }
-/* line 82, ../sass/components/_utilities.scss */
+/* line 86, ../sass/components/_utilities.scss */
 .single-content .card-pedido.card-cliente,
 .single-content .card-cliente.card-cliente,
 .single-content .card-material.card-cliente {
   width: 800px;
 }
-/* line 84, ../sass/components/_utilities.scss */
+/* line 88, ../sass/components/_utilities.scss */
 .single-content.single-pedido-cerrado {
   color: gray;
 }
-/* line 86, ../sass/components/_utilities.scss */
+/* line 90, ../sass/components/_utilities.scss */
 .single-content.single-pedido-cerrado #btns-modificar-pedido {
   display: none;
 }
-/* line 87, ../sass/components/_utilities.scss */
+/* line 91, ../sass/components/_utilities.scss */
 .single-content.single-pedido-cerrado .color-primary {
   color: #945d8d;
 }
