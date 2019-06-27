@@ -63,6 +63,13 @@ var $=jQuery.noConflict();
 			if(window.location.href.indexOf("#material_solicitado") > -1) {
 				$('#notice-material-solicitado').show();
 			}
+			/* Si se envio la cuenta */
+			if(window.location.href.indexOf("#ingreso_creado") > -1) {
+				$('#notice-nuevo-ingreso').show();
+			}
+			if(window.location.href.indexOf("#egreso_creado") > -1) {
+				$('#notice-nuevo-egreso').show();
+			}
 		});
  
 		$(window).on('resize', function(){

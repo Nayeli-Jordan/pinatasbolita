@@ -405,19 +405,19 @@ function registro_custom_metabox(){
 }
 
 function display_registro_atributos( $registro ){
-    $egreso     = esc_html( get_post_meta( $registro->ID, 'registro_egreso', true ) );
     $ingreso    = esc_html( get_post_meta( $registro->ID, 'registro_ingreso', true ) );
+    $egreso     = esc_html( get_post_meta( $registro->ID, 'registro_egreso', true ) );
     $total      = esc_html( get_post_meta( $registro->ID, 'registro_total', true ) );
 ?>
     <table class="pb-custom-fields">
         <tr>
             <th>
-                <label for="registro_egreso">Egreso:</label>
-                <input type="number" min="0" id="registro_egreso" name="registro_egreso" value="<?php echo $egreso; ?>" required>
-            </th>
-            <th>
                 <label for="registro_ingreso">Ingreso:</label>
                 <input type="number" min="0" id="registro_ingreso" name="registro_ingreso" value="<?php echo $ingreso; ?>" required>
+            </th>
+            <th>
+                <label for="registro_egreso">Egreso:</label>
+                <input type="number" min="0" id="registro_egreso" name="registro_egreso" value="<?php echo $egreso; ?>" required>
             </th>
             <th>
                 <label for="registro_total">Total:</label>
@@ -430,11 +430,11 @@ function display_registro_atributos( $registro ){
 add_action( 'save_post', 'registro_save_metas', 10, 2 );
 function registro_save_metas( $idregistro, $registro ){
     if ( $registro->post_type == 'registro' ){
-        if ( isset( $_POST['registro_egreso'] ) ){
-            update_post_meta( $idregistro, 'registro_egreso', $_POST['registro_egreso'] );
-        }
         if ( isset( $_POST['registro_ingreso'] ) ){
             update_post_meta( $idregistro, 'registro_ingreso', $_POST['registro_ingreso'] );
+        }
+        if ( isset( $_POST['registro_egreso'] ) ){
+            update_post_meta( $idregistro, 'registro_egreso', $_POST['registro_egreso'] );
         }
         if ( isset( $_POST['registro_total'] ) ){
             update_post_meta( $idregistro, 'registro_total', $_POST['registro_total'] );
@@ -523,7 +523,20 @@ function redirect_materialsolic() {
         wp_redirect($actual_link . '#material_solicitado');
     }
 }
-
+/* Nuevo ingreso */
+add_action ('template_redirect', 'redirect_ingreso');
+function redirect_ingreso() {
+    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitIngreso'] ) ) {
+        wp_redirect('#ingreso_creado');
+    }
+}
+/* Nuevo egreso */
+add_action ('template_redirect', 'redirect_egreso');
+function redirect_egreso() {
+    if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitEgreso'] ) ) {
+        wp_redirect('#egreso_creado');
+    }
+}
 
 /*
 ** Columnas admin

@@ -1,6 +1,6 @@
 			<?php if (!is_home()) : ?>
 				<footer>
-					<?php if (!is_page('stock-pinatas') && !is_singular('pedidos') && !is_singular('clientes')) : ?>
+					<?php if (!is_page('stock-pinatas') && !is_singular('pedidos') && !is_singular('clientes') && !is_page('contabilidad')) : ?>
 						<div class="text-center">
 							<div class="btn btn-scroll btn-caracteristicas">Características</div>
 							<div class="btn btn-scroll btn-dcomprar">Dónde Comprar</div>
