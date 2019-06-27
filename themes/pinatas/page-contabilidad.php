@@ -1,9 +1,10 @@
 <?php get_header(); 
 	$today       	= date("d-m-Y");
+	
 	$current_date	= date("M Y");
 	$current_year 	= date('Y');
 	$current_month 	= date('m');
-	if (have_posts()) : while (have_posts()) : the_post(); 
+	if (have_posts()) : while (have_posts()) : the_post();
 		include (TEMPLATEPATH . '/template/sistema/contabilidad/modal-ingreso.php');
 		include (TEMPLATEPATH . '/template/sistema/contabilidad/modal-egreso.php');
 		include (TEMPLATEPATH . '/template/sistema/contabilidad/notice/notice-nuevo-ingreso.php');
@@ -124,8 +125,8 @@
 							<thead>
 								<tr>
 									<th class="width-30p">Periodo</th>
-									<th class="width-20p">Egresos</th>
 									<th class="width-20p">Ingresos</th>
+									<th class="width-20p">Egresos</th>
 									<th class="width-30p">Total</th>
 								</tr>
 							</thead>

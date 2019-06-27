@@ -192,7 +192,7 @@ add_action('init', function(){
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => 6,
-		'supports'           => array( 'title' ),
+		'supports'           => array( 'title', 'editor' ),
 		'menu_icon' 		 => 'dashicons-chart-area'
 	);
 	register_post_type( 'registro', $args );	
