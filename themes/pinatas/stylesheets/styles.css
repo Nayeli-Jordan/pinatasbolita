@@ -2689,8 +2689,14 @@ textarea {
   border-bottom: 1px solid #993c8c;
   outline: none;
 }
+/* line 18, ../sass/components/_forms.scss */
+input:not([type="submit"]).not-border,
+select.not-border,
+textarea.not-border {
+  border: 0px !important;
+}
 
-/* line 19, ../sass/components/_forms.scss */
+/* line 20, ../sass/components/_forms.scss */
 textarea {
   height: 50px;
   line-height: 22px;
@@ -2700,19 +2706,19 @@ textarea {
 /* input[type="submit"] {
     display: block;
 } */
-/* line 29, ../sass/components/_forms.scss */
+/* line 30, ../sass/components/_forms.scss */
 ::-webkit-inner-spin-button {
   display: none;
   -webkit-appearance: none;
 }
 
 /* Validación Parsley */
-/* line 35, ../sass/components/_forms.scss */
+/* line 36, ../sass/components/_forms.scss */
 .parsley-errors-list {
   padding: 0px !important;
   font-size: 12px;
 }
-/* line 38, ../sass/components/_forms.scss */
+/* line 39, ../sass/components/_forms.scss */
 .parsley-errors-list li {
   color: #c30008;
   list-style-type: none !important;

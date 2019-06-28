@@ -15,6 +15,7 @@ textarea {
 	border: 0px;
 	border-bottom: 1px solid $primary-color;
 	outline: none;
+	&.not-border { border: 0px!important; }
 }
 textarea {
 	height: 50px;

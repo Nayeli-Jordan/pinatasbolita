@@ -248,31 +248,52 @@ function pedidos_custom_metabox(){
 }
 
 function display_pedidos_atributos( $pedidos ){
-    $count = 1;                
-    while ( $count < 16) { 
-        $modelo      = 'modelo' . $count;
-        $piezas      = 'piezas' . $count;
-        ${$modelo}   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo' . $count, true ) ); 
-        ${$piezas}   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas' . $count, true ) ); 
-        $count++;
-    }
+    $args = array(
+        'post_type'         => 'product',
+        'posts_per_page'    => -1,
+        'orderby'           => 'title',
+        'order'             => 'ASC'
+    );
+    $loop = new WP_Query( $args );
+    if ( $loop->have_posts() ) {
+        while ( $loop->have_posts() ) : $loop->the_post();
+            $post_id        = get_the_ID();
+            $productName    = get_the_title( $post_id ); 
+
+            $modelo      = 'modelo' . $post_id;
+            $piezas      = 'piezas' . $post_id;
+            $precio      = 'precio' . $post_id;
+            $total          = 'total' . $post_id;
+            ${$modelo}   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo' . $post_id, true ) ); 
+            ${$piezas}   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas' . $post_id, true ) );
+            ${$precio}   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_precio' . $post_id, true ) );
+            ${$total}   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_total' . $post_id, true ) );
+
+        endwhile;
+    }  wp_reset_postdata();
+
     $cliente  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_cliente', true ) );
     $entrega  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_entrega', true ) );
     $estatus  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_estatus', true ) );
     $alerta   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_alerta', true ) );
+    $totalOrd = esc_html( get_post_meta( $pedidos->ID, 'pedidos_totalOrd', true ) );
 ?>
     <table class="pb-custom-fields">
         <tr>
-            <th>
+            <th colspan="2">
                 <label for="pedidos_cliente">Cliente:</label>
                 <input type="text" id="pedidos_cliente" name="pedidos_cliente" value="<?php echo $cliente; ?>">
             </th>
-            <th>
+            <th colspan="2">
                 <label for="pedidos_entrega">Fecha de entrega:</label>
                 <input type="date" id="pedidos_entrega" name="pedidos_entrega" value="<?php echo $entrega; ?>">
             </th>
         </tr>
         <tr>
+            <th>
+                <label for="pedidos_totalOrd">Total de orden:</label>
+                <input type="number" id="pedidos_totalOrd" name="pedidos_totalOrd" value="<?php echo $totalOrd; ?>" placeholder="0">
+            </th>
             <th>
                 <label for="pedidos_estatus">Estatus:</label>
                 <select name="pedidos_estatus" id="pedidos_estatus" required>
@@ -280,28 +301,47 @@ function display_pedidos_atributos( $pedidos ){
                     <option value="Cerrado" <?php selected($estatus, 'Cerrado'); ?>>Cerrado</option>
                 </select><br>               
             </th>
-            <th>
+            <th colspan="2">
                 <label for="pedidos_alerta">¿Cuántos días antes se te notifica?:</label>
                 <input type="number" id="pedidos_alerta" name="pedidos_alerta" value="<?php echo $alerta; ?>" placeholder="0">
             </th>
         </tr>
-        <?php $count = 1;                
-        while ( $count < 16) { 
-            $modelo = ${'modelo' . $count};
-            $piezas = ${'piezas' . $count}; ?>
-            <tr>
-                <th>
-                    <label for="pedidos_modelo<?php echo $count; ?>">Modelo <?php echo $count; ?>:</label>
-                    <input type="text" name="pedidos_modelo<?php echo $count; ?>" value="<?php echo $modelo; ?>" <?php if ($count === 1): echo "required"; endif; ?>>
-                </th>
-                <th>
-                    <label for="pedidos_piezas<?php echo $count; ?>">Piezas <?php echo $count; ?>:</label>
-                    <input type="number" name="pedidos_piezas<?php echo $count; ?>" value="<?php echo $piezas; ?>" <?php if ($count === 1): echo "required"; endif; ?>>
-                </th>
-            </tr>            
-            <?php $count++;
-        } ?>
+        <?php     
+        $args = array(
+            'post_type'         => 'product',
+            'posts_per_page'    => -1,
+            'orderby'           => 'title',
+            'order'             => 'ASC'
+        );
+        $loop = new WP_Query( $args );
+        if ( $loop->have_posts() ) {
+            while ( $loop->have_posts() ) : $loop->the_post();
+                $post_id        = get_the_ID();
+                $product        = wc_get_product( $post_id );
+                $productName    = get_the_title( $post_id );
+                $price          = $product->get_regular_price();
+                if ($price === '') { $price = 0; } /* Sin precio */
 
+                $modelo = ${'modelo' . $post_id};
+                $piezas = ${'piezas' . $post_id};
+                $total = ${'total' . $post_id}; ?>
+                <tr>
+                    <th>
+                        <input type="text" name="pedidos_modelo<?php echo $post_id; ?>" value="<?php echo $productName; ?>">
+                    </th>
+                    <th>
+                        <input type="number" min="0" name="pedidos_piezas<?php echo $post_id; ?>" value="<?php echo $piezas; ?>" placeholder="0">
+                    </th>
+                    <th>
+                        <input type="number" min="0" name="pedidos_precio<?php echo $post_id; ?>" value="<?php echo $price; ?>" placeholder="0">
+                    </th>
+                    <th>
+                        <input type="number" min="0" name="pedidos_total<?php echo $post_id; ?>" value="<?php echo $total; ?>" placeholder="0">
+                    </th>
+                </tr>  
+
+            <?php endwhile;
+        }  wp_reset_postdata(); ?>
     </table>
 <?php }
 
@@ -320,16 +360,36 @@ function pedidos_save_metas( $idpedidos, $pedidos ){
         if ( isset( $_POST['pedidos_alerta'] ) ){
             update_post_meta( $idpedidos, 'pedidos_alerta', $_POST['pedidos_alerta'] );
         }
-        $count = 1;
-        while ( $count < 33) {
-            if ( isset( $_POST['pedidos_piezas' . $count] ) ){
-                update_post_meta( $idpedidos, 'pedidos_piezas' . $count, $_POST['pedidos_piezas' . $count] );
-            }
-            if ( isset( $_POST['pedidos_modelo' . $count] ) ){
-                update_post_meta( $idpedidos, 'pedidos_modelo' . $count, $_POST['pedidos_modelo' . $count] );
-            }                      
-            $count++;
-        } 
+        if ( isset( $_POST['pedidos_totalOrd'] ) ){
+            update_post_meta( $idpedidos, 'pedidos_totalOrd', $_POST['pedidos_totalOrd'] );
+        }
+        $args = array(
+            'post_type'         => 'product',
+            'posts_per_page'    => -1,
+            'orderby'           => 'title',
+            'order'             => 'ASC'
+        );
+        $loop = new WP_Query( $args );
+        $i = 1;
+        if ( $loop->have_posts() ) {
+            while ( $loop->have_posts() ) : $loop->the_post();
+                $post_id        = get_the_ID();
+                $productName    = get_the_title( $post_id ); 
+
+                if ( isset( $_POST['pedidos_piezas' . $post_id] ) ){
+                    update_post_meta( $idpedidos, 'pedidos_piezas' . $post_id, $_POST['pedidos_piezas' . $post_id] );
+                }
+                if ( isset( $_POST['pedidos_modelo' . $post_id] ) ){
+                    update_post_meta( $idpedidos, 'pedidos_modelo' . $post_id, $_POST['pedidos_modelo' . $post_id] );
+                }
+                if ( isset( $_POST['pedidos_precio' . $post_id] ) ){
+                    update_post_meta( $idpedidos, 'pedidos_precio' . $post_id, $_POST['pedidos_precio' . $post_id] );
+                }
+                if ( isset( $_POST['pedidos_total' . $post_id] ) ){
+                    update_post_meta( $idpedidos, 'pedidos_total' . $post_id, $_POST['pedidos_total' . $post_id] );
+                }
+            endwhile;
+        }  wp_reset_postdata();
     }
 }
 
@@ -626,8 +686,6 @@ function custom_clientes_column( $column, $post_id ) {
 add_filter( 'manage_pedidos_posts_columns', 'set_custom_edit_pedidos_columns' );
 function set_custom_edit_pedidos_columns($columns) {
     $columns['pedidos_piezas']  = __( 'Piezas', 'pbolita' );
-    $columns['pedidos_cliente'] = __( 'Cliente', 'pbolita' );
-    $columns['pedidos_entrega'] = __( 'Fecha de entrega', 'pbolita' );
     $columns['pedidos_estatus'] = __( 'Estatus', 'pbolita' );
     $columns['pedidos_alerta']  = __( 'Alerta', 'pbolita' );
 
@@ -644,24 +702,6 @@ function custom_pedidos_column( $column, $post_id ) {
             else
                 echo "-";
             break;
-        case 'pedidos_cliente' :
-            $cliente  = get_post_meta( $post_id, 'pedidos_cliente', true );
-            if( $cliente != "")
-                echo $cliente;
-            else
-                echo "-";
-            break;
-        case 'pedidos_entrega' :
-            $entrega  = get_post_meta( $post_id, 'pedidos_entrega', true );
-            /* Fecha en español */
-            setlocale(LC_ALL,"es_ES");
-            $entrega = strftime("%d/%B/%Y", strtotime($entrega));            
-            if( $entrega != "")
-
-                echo $entrega;
-            else
-                echo "-";
-            break;
         case 'pedidos_estatus' :
             $estatus  = get_post_meta( $post_id, 'pedidos_estatus', true );
             if( $estatus != "")
@@ -673,6 +713,8 @@ function custom_pedidos_column( $column, $post_id ) {
             $entregaOrg  = get_post_meta( $post_id, 'pedidos_entrega', true );
             $alerta      = get_post_meta( $post_id, 'pedidos_alerta', true );
             $alertActive = date("Y-m-d", strtotime($entregaOrg . '- ' . $alerta . ' days'));
+            /* Fecha en español */
+            setlocale(LC_ALL,"es_ES");
             $alertActive = strftime("%d/%B/%Y", strtotime($alertActive));
             if( $alerta != "")
                 echo $alerta . ' días antes </br>' . $alertActive;
