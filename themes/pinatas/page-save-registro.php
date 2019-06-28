@@ -137,7 +137,7 @@
 				</tfoot>';
 			$mailBody .= '</table>';
 
-			$mailBody .= '<p>Estado del MES hasta el ' . $today . '</p>';
+			$mailBody .= '<p>Estado del MES hasta hoy ' . $today . '</p>';
 
 			$tCuenta = $tIngreso - $tEgreso;
 

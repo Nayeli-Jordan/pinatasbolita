@@ -248,7 +248,36 @@ function pedidos_custom_metabox(){
 }
 
 function display_pedidos_atributos( $pedidos ){
-    $piezas   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas', true ) );
+    $modelo1   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo1', true ) );
+    $modelo2   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo2', true ) );
+    $modelo3   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo3', true ) );
+    $modelo4   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo4', true ) );
+    $modelo5   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo5', true ) );
+    $modelo6   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo6', true ) );
+    $modelo7   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo7', true ) );
+    $modelo8   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo8', true ) );
+    $modelo9   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo9', true ) );
+    $modelo10   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo10', true ) );
+    $modelo11   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo11', true ) );
+    $modelo12   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo12', true ) );
+    $modelo13   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo13', true ) );
+    $modelo14   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo14', true ) );
+    $modelo15   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_modelo15', true ) );
+    $piezas1   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas1', true ) );
+    $piezas2   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas2', true ) );
+    $piezas3   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas3', true ) );
+    $piezas4   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas4', true ) );
+    $piezas5   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas5', true ) );
+    $piezas6   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas6', true ) );
+    $piezas7   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas7', true ) );
+    $piezas8   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas8', true ) );
+    $piezas9   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas9', true ) );
+    $piezas10   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas10', true ) );
+    $piezas11   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas11', true ) );
+    $piezas12   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas12', true ) );
+    $piezas13   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas13', true ) );
+    $piezas14   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas14', true ) );
+    $piezas15   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_piezas15', true ) );
     $cliente  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_cliente', true ) );
     $entrega  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_entrega', true ) );
     $estatus  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_estatus', true ) );
@@ -256,10 +285,6 @@ function display_pedidos_atributos( $pedidos ){
 ?>
     <table class="pb-custom-fields">
         <tr>
-            <th>
-                <label for="pedidos_piezas">Piezas:</label>
-                <input type="number" id="pedidos_piezas" name="pedidos_piezas" value="<?php echo $piezas; ?>">
-            </th>
             <th>
                 <label for="pedidos_cliente">Cliente:</label>
                 <input type="text" id="pedidos_cliente" name="pedidos_cliente" value="<?php echo $cliente; ?>">
@@ -282,15 +307,29 @@ function display_pedidos_atributos( $pedidos ){
                 <input type="number" id="pedidos_alerta" name="pedidos_alerta" value="<?php echo $alerta; ?>" placeholder="0">
             </th>
         </tr>
+        <?php $count = 1;                
+        while ( $count < 16) { 
+            $modelo = ${'modelo' . $count};
+            $piezas = ${'piezas' . $count}; ?>
+            <tr>
+                <th>
+                    <label for="pedidos_modelo<?php echo $count; ?>">Modelo <?php echo $count; ?>:</label>
+                    <input type="text" name="pedidos_modelo<?php echo $count; ?>" value="<?php echo $modelo; ?>" <?php if ($count === 1): echo "required"; endif; ?>>
+                </th>
+                <th>
+                    <label for="pedidos_piezas<?php echo $count; ?>">Piezas <?php echo $count; ?>:</label>
+                    <input type="number" name="pedidos_piezas<?php echo $count; ?>" value="<?php echo $piezas; ?>" <?php if ($count === 1): echo "required"; endif; ?>>
+                </th>
+            </tr>            
+            <?php $count++;
+        } ?>
+
     </table>
 <?php }
 
 add_action( 'save_post', 'pedidos_save_metas', 10, 2 );
 function pedidos_save_metas( $idpedidos, $pedidos ){
     if ( $pedidos->post_type == 'pedidos' ){
-        if ( isset( $_POST['pedidos_piezas'] ) ){
-            update_post_meta( $idpedidos, 'pedidos_piezas', $_POST['pedidos_piezas'] );
-        }
         if ( isset( $_POST['pedidos_cliente'] ) ){
             update_post_meta( $idpedidos, 'pedidos_cliente', $_POST['pedidos_cliente'] );
         }
@@ -303,6 +342,16 @@ function pedidos_save_metas( $idpedidos, $pedidos ){
         if ( isset( $_POST['pedidos_alerta'] ) ){
             update_post_meta( $idpedidos, 'pedidos_alerta', $_POST['pedidos_alerta'] );
         }
+        $count = 1;
+        while ( $count < 33) {
+            if ( isset( $_POST['pedidos_piezas' . $count] ) ){
+                update_post_meta( $idpedidos, 'pedidos_piezas' . $count, $_POST['pedidos_piezas' . $count] );
+            }
+            if ( isset( $_POST['pedidos_modelo' . $count] ) ){
+                update_post_meta( $idpedidos, 'pedidos_modelo' . $count, $_POST['pedidos_modelo' . $count] );
+            }                      
+            $count++;
+        } 
     }
 }
 

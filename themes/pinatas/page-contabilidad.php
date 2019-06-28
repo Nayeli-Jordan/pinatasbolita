@@ -1,6 +1,6 @@
 <?php get_header(); 
 	$today       	= date("d-m-Y");
-	
+
 	$current_date	= date("M Y");
 	$current_year 	= date('Y');
 	$current_month 	= date('m');
@@ -118,7 +118,7 @@
 					</div>						
 				</div>
 				<div class="col s12 margin-bottom-100">
-					<p class="color-primary text-center margin-bottom-10">Estado del MES hasta el <?php echo $today; ?></p>
+					<p class="color-primary text-center margin-bottom-10">Estado del MES hasta hoy <?php echo $today; ?></p>
 					<div id="content_table">
 						<?php  $tCuenta = $tIngreso - $tEgreso; ?>
 						<table class="table-sistema table-head_mobile table-contabilidad">
