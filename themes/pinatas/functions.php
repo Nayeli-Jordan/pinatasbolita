@@ -351,7 +351,7 @@ function display_pedidos_atributos( $pedidos ){
                 $total = ${'total' . $post_id}; ?>
                 <tr>
                     <th>
-                        <input type="text" name="pedidos_modelo<?php echo $post_id; ?>" value="<?php echo $productName; ?>">
+                        <input type="text" name="pedidos_modelo<?php echo $post_id; ?>" value="<?php echo $modelo; ?>" placeholder="<?php echo $productName; ?>">
                     </th>
                     <th>
                         <input type="number" min="0" name="pedidos_piezas<?php echo $post_id; ?>" value="<?php echo $piezas; ?>" placeholder="0">

@@ -59,8 +59,9 @@
         while ( $loop->have_posts() ) : $loop->the_post();	
     	$post_id        = get_the_ID();
 
-	    	//Modelo disabled, guardado desde functions.php
+	        $pedido_modelo      = 'pedido_modelo' . $post_id;
 	        $pedido_piezas      = 'pedido_piezas' . $post_id;
+		    ${$pedido_modelo}   = $_POST['pedidos_modelo' . $post_id];
 		    ${$pedido_piezas}   = $_POST['pedidos_piezas' . $post_id];
 
     	endwhile;
@@ -130,13 +131,15 @@
 			$price          = $product->get_regular_price();
 			if ($price === '') { $price = 0; } /* Sin precio */
 
+			$pedido_modelo 		= ${'pedido_modelo' . $post_id};
+
 			//Total
 			$pedido_piezas 		= ${'pedido_piezas' . $post_id};
 		    $pedido_total   	= $pedido_piezas * $price;
 		    $totalOrd			= $totalOrd + $pedido_total;
 		    $totalPzs			= $totalPzs + $pedido_piezas;
 
-			//Modelo disabled, guardado desde functions.php
+		    update_post_meta($pedido_id,'pedidos_modelo' . $post_id, $pedido_modelo);
 		    update_post_meta($pedido_id,'pedidos_piezas' . $post_id, $pedido_piezas);
 		    update_post_meta($pedido_id,'pedidos_total' . $post_id, $pedido_total);
 		    //Se guarda precio de otro modo sólo se imprime en el post pero no en front (como si no se guardara)

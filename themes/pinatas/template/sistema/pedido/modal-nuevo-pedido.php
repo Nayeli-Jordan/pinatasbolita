@@ -54,7 +54,7 @@
                		$productName 	= get_the_title( $post_id ); ?>
 					<div class="col s12 m6 l4 input-field no-padding-left no-padding-right">
 						<div class="col s8 no-padding-right">
-							<input type="text" min="1" class="not-border" name="pedidos_modelo<?php echo $post_id; ?>" id="pedidos_modelo<?php echo $post_id; ?>" value="<?php echo $productName; ?>" disabled>	
+							<input type="text" min="1" class="not-border" name="pedidos_modelo<?php echo $post_id; ?>" id="pedidos_modelo<?php echo $post_id; ?>" value="<?php echo $productName; ?>">	
 						</div>
 						<div class="col s4">
 			    			<input type="number" min="1" name="pedidos_piezas<?php echo $post_id; ?>" id="pedidos_piezas<?php echo $post_id; ?>" placeholder="0">	
@@ -83,8 +83,9 @@
         while ( $loop->have_posts() ) : $loop->the_post();	
     	$post_id        = get_the_ID();
 
-	    	//Modelo disabled, guardado desde functions.php
+	        $pedido_modelo      = 'pedido_modelo' . $post_id;
 	        $pedido_piezas      = 'pedido_piezas' . $post_id;
+		    ${$pedido_modelo}   = $_POST['pedidos_modelo' . $post_id];
 		    ${$pedido_piezas}   = $_POST['pedidos_piezas' . $post_id];
 
     	endwhile;
@@ -156,13 +157,15 @@
 			$price          = $product->get_regular_price();
 			if ($price === '') { $price = 0; } /* Sin precio */
 
+			$pedido_modelo 		= ${'pedido_modelo' . $post_id};
+
 			//Total
 			$pedido_piezas 		= ${'pedido_piezas' . $post_id};
 		    $pedido_total   	= $pedido_piezas * $price;
 		    $totalOrd			= $totalOrd + $pedido_total;
 		    $totalPzs			= $totalPzs + $pedido_piezas;
 
-			//Modelo disabled, guardado desde functions.php
+		    update_post_meta($pedido_id,'pedidos_modelo' . $post_id, $pedido_modelo);
 		    update_post_meta($pedido_id,'pedidos_piezas' . $post_id, $pedido_piezas);
 		    update_post_meta($pedido_id,'pedidos_total' . $post_id, $pedido_total);
 		    //Se guarda precio de otro modo sólo se imprime en el post pero no en front (como si no se guardara)
