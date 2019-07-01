@@ -180,5 +180,6 @@
 	update_post_meta($pedido_id,'pedidos_estatus', 'Abierto');
 	update_post_meta($pedido_id,'pedidos_alerta',$pedido_alerta);
 	update_post_meta($pedido_id,'pedidos_totalOrd',$totalOrd);
+	update_post_meta($pedido_id,'pedidos_totalFin',$totalOrd);
 	update_post_meta($pedido_id,'pedidos_totalPzs',$totalPzs);
 endif; ?>

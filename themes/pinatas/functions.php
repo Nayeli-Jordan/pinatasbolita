@@ -742,7 +742,7 @@ function custom_pedidos_column( $column, $post_id ) {
             $totalOrd  = get_post_meta( $post_id, 'pedidos_totalOrd', true );
             $totalFin  = get_post_meta( $post_id, 'pedidos_totalFin', true );
             if( $totalOrd != "")
-                echo $nivelCliente . '</br>' . $totalPzs . 'pzs.</br>$' . $totalOrd. '</br>A pagar: ' . $totalFin;
+                echo $nivelCliente . '</br>' . $totalPzs . 'pzs.</br>$' . $totalOrd. '</br>A pagar: $' . $totalFin;
             else
                 echo "-";
             break;

@@ -34,6 +34,7 @@
 		$estatus  		= get_post_meta( $pedido_id, 'pedidos_estatus', true );
 		$alerta  		= get_post_meta( $pedido_id, 'pedidos_alerta', true );
 		$totalOrd  		= get_post_meta( $pedido_id, 'pedidos_totalOrd', true );
+		$totalFin  		= get_post_meta( $pedido_id, 'pedidos_totalFin', true );
 		$totalPzs  		= get_post_meta( $pedido_id, 'pedidos_totalPzs', true );
 		$entregaOrg		= $entrega;
 
@@ -131,10 +132,29 @@
 				</tbody>
 				<tfoot>
 					<tr class="color-light">
-						<td class="width-25p">Total:</td>
+						<td class="width-25p tdInvisible"></td>
 						<td class="width-25p"><?php echo $totalPzs; ?></td>
+						<td class="width-25p">Total: </td>
+						<td class="width-25p"><?php echo $totalOrd; ?></td>
+					</tr>
+					<tr class="color-light">
+						<td colspan="2" class="width-50p tdInvisible"></td>
+						<td class="width-25p">Descuento: </td>
+						<td class="width-25p"><?php
+							if ($nivel === 'Normal') {
+								echo "0%";
+							} elseif ($nivel === 'Plata') {
+								echo "10%";
+							} elseif ($nivel === 'Oro') {
+								echo "20%";
+							}
+							
+						?></td>
+					</tr>
+					<tr class="color-light">
+						<td colspan="2" class="width-50p tdInvisible"></td>
 						<td class="width-25p">A pagar: </td>
-						<td colspan="3" class="width-25p"><?php echo $totalOrd; ?></td>
+						<td class="width-25p"><?php echo $totalFin; ?></td>
 					</tr>
 				</tfoot>
 			</table>
