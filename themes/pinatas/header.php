@@ -65,6 +65,8 @@
 			<a href="<?php echo SITEURL; ?>stock-pinatas" class="btn btn-primary btn-stock">Stock</a>
 		<?php endif ?>
 		<?php if (!is_home()) :  ?>
+			<?php /* Load modal */
+			include (TEMPLATEPATH . '/template/sistema/load.php'); ?>
 			<header class="js-header relative">
 				<div class="bg-fondo-azul"></div>
 				<img src="<?php echo THEMEPATH; ?>/images/paisaje.png" class="img-paisaje responsive-img">	
