@@ -9,14 +9,14 @@ define( 'SITEURL', get_site_url() . '/' );
 
 
 /*------------------------------------*\
-	#SNIPPETS
+    #SNIPPETS
 \*------------------------------------*/
 require_once( 'inc/post-types.php' );
 require_once( 'inc/pages.php' );
 /*require_once( 'inc/taxonomies.php' );*/
 
 /*------------------------------------*\
-	#GENERAL FUNCTIONS
+    #GENERAL FUNCTIONS
 \*------------------------------------*/
 
 /**
@@ -24,15 +24,15 @@ require_once( 'inc/pages.php' );
 **/
 add_action( 'wp_enqueue_scripts', function(){
  
-	wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.2.1.min.js', array(''), '2.1.1', true );
-	wp_enqueue_script( 'cycle_js', JSPATH.'jquery.cicle2.min.js', array(), '', true );
-	wp_enqueue_script( 'pb_functions', JSPATH.'functions.js', array(), '1.0', true );
+    wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.2.1.min.js', array(''), '2.1.1', true );
+    wp_enqueue_script( 'cycle_js', JSPATH.'jquery.cicle2.min.js', array(), '', true );
+    wp_enqueue_script( 'pb_functions', JSPATH.'functions.js', array(), '1.0', true );
  
-	wp_localize_script( 'pb_functions', 'siteUrl', SITEURL );
-	wp_localize_script( 'pb_functions', 'theme_path', THEMEPATH );
-	
-	// $is_home = is_front_page() ? "1" : "0";
-	// wp_localize_script( 'pb_functions', 'isHome', $is_home );
+    wp_localize_script( 'pb_functions', 'siteUrl', SITEURL );
+    wp_localize_script( 'pb_functions', 'theme_path', THEMEPATH );
+    
+    // $is_home = is_front_page() ? "1" : "0";
+    // wp_localize_script( 'pb_functions', 'isHome', $is_home );
  
 });
 
@@ -56,12 +56,12 @@ add_theme_support( 'post-thumbnails' );
 //Habilitar menú (aparece en personalizar)
 add_action('after_setup_theme', 'add_top_menu');
 function add_top_menu(){
-	register_nav_menu('top_menu',__('Top menu'));
+    register_nav_menu('top_menu',__('Top menu'));
 }
 
 //Delimitar número palabras excerpt
 /*function custom_excerpt_length( $length ) {
-	return 15;
+    return 15;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );*/
 
@@ -140,7 +140,7 @@ if(!is_admin()) {
 */
 add_action( 'after_setup_theme', 'woocommerce_support' );
 function woocommerce_support() {
-	add_theme_support( 'woocommerce' );
+    add_theme_support( 'woocommerce' );
 }
 
 //Hook orden
@@ -180,10 +180,10 @@ function clientes_custom_metabox(){
 }
 
 function display_clientes_atributos( $clientes ){
-    $nivel   	= esc_html( get_post_meta( $clientes->ID, 'clientes_nivel', true ) );
-    $correo   	= esc_html( get_post_meta( $clientes->ID, 'clientes_correo', true ) );
-    $cel   		= esc_html( get_post_meta( $clientes->ID, 'clientes_cel', true ) );
-    $tel   		= esc_html( get_post_meta( $clientes->ID, 'clientes_tel', true ) );
+    $nivel      = esc_html( get_post_meta( $clientes->ID, 'clientes_nivel', true ) );
+    $correo     = esc_html( get_post_meta( $clientes->ID, 'clientes_correo', true ) );
+    $cel        = esc_html( get_post_meta( $clientes->ID, 'clientes_cel', true ) );
+    $tel        = esc_html( get_post_meta( $clientes->ID, 'clientes_tel', true ) );
     $direccion  = esc_html( get_post_meta( $clientes->ID, 'clientes_direccion', true ) );
 ?>
     <table class="pb-custom-fields">
@@ -279,6 +279,7 @@ function display_pedidos_atributos( $pedidos ){
     $estatus  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_estatus', true ) );
     $alerta   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_alerta', true ) );
     $totalOrd = esc_html( get_post_meta( $pedidos->ID, 'pedidos_totalOrd', true ) );
+    $totalFin = esc_html( get_post_meta( $pedidos->ID, 'pedidos_totalFin', true ) );
     $totalPzs = esc_html( get_post_meta( $pedidos->ID, 'pedidos_totalPzs', true ) );
 ?>
     <table class="pb-custom-fields">
@@ -288,10 +289,14 @@ function display_pedidos_atributos( $pedidos ){
                 <input type="number" id="pedidos_totalOrd" name="pedidos_totalOrd" value="<?php echo $totalOrd; ?>" placeholder="0">
             </th>
             <th class="padding-bottom-30">
+                <label for="pedidos_totalFin">Total de orden:</label>
+                <input type="number" id="pedidos_totalFin" name="pedidos_totalFin" value="<?php echo $totalFin; ?>" placeholder="0">
+            </th>
+            <th class="padding-bottom-30">
                 <label for="pedidos_totalOrd">Total piezas:</label>
                 <input type="number" id="pedidos_totalPzs" name="pedidos_totalPzs" value="<?php echo $totalPzs; ?>" placeholder="0">
             </th>
-            <th class="padding-bottom-30" colspan="2">
+            <th class="padding-bottom-30">
                 <label for="pedidos_entrega">Fecha de entrega:</label>
                 <input type="date" id="pedidos_entrega" name="pedidos_entrega" value="<?php echo $entrega; ?>">
             </th>
@@ -392,6 +397,9 @@ function pedidos_save_metas( $idpedidos, $pedidos ){
         }
         if ( isset( $_POST['pedidos_totalOrd'] ) ){
             update_post_meta( $idpedidos, 'pedidos_totalOrd', $_POST['pedidos_totalOrd'] );
+        }
+        if ( isset( $_POST['pedidos_totalFin'] ) ){
+            update_post_meta( $idpedidos, 'pedidos_totalFin', $_POST['pedidos_totalFin'] );
         }
         if ( isset( $_POST['pedidos_totalPzs'] ) ){
             update_post_meta( $idpedidos, 'pedidos_totalPzs', $_POST['pedidos_totalPzs'] );
@@ -732,8 +740,9 @@ function custom_pedidos_column( $column, $post_id ) {
             $nivelCliente  = get_post_meta( $post_id, 'pedidos_nivelCliente', true );
             $totalPzs  = get_post_meta( $post_id, 'pedidos_totalPzs', true );
             $totalOrd  = get_post_meta( $post_id, 'pedidos_totalOrd', true );
+            $totalFin  = get_post_meta( $post_id, 'pedidos_totalFin', true );
             if( $totalOrd != "")
-                echo $nivelCliente . '</br>' . $totalPzs . 'pzs.</br>$' . $totalOrd;
+                echo $nivelCliente . '</br>' . $totalPzs . 'pzs.</br>$' . $totalOrd. '</br>A pagar: ' . $totalFin;
             else
                 echo "-";
             break;
