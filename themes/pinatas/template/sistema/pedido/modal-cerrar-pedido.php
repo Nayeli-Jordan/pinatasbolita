@@ -11,11 +11,35 @@
                     <option value="Cerrado">Sí, cerrar el pedido</option>
                 </select>
 			</div>
-			<div class="col s12 input-field margin-top-20">
-				<p class="color-primary">El stock actual de este modelo es de "<?php echo $stock ?>" piezas. ¿Deseas actualizarlo?</p>
-				<label for="actualizar_stock">Actualizar a:</label>
-				<input type="number" name="actualizar_stock" id="actualizar_stock" value="<?php echo $stock ?>" min="0">
-			</div>
+			<p class="color-primary text-center margin-top-bottom-20">¿Deseas actualizar el stock de estos modelos?</p>
+			<?php
+		    $args = array(
+		        'post_type'         => 'product',
+		        'posts_per_page'    => -1,
+		        'orderby'           => 'title',
+		        'order'             => 'ASC'
+		    );
+		    $loop = new WP_Query( $args );
+		    if ( $loop->have_posts() ) {
+		        while ( $loop->have_posts() ) : $loop->the_post();
+		            $post_id        = get_the_ID();
+		            $productName    = get_the_title( $post_id );
+		            $stock			= $product->get_stock_quantity();  
+
+		            $piezas      	= 'piezas' . $post_id;
+
+		            if (${$piezas} != '') { ?>
+
+			            <div class="col s12 m6 l4 input-field no-padding-left no-padding-right">
+							<div class="col s8 no-padding-right"><?php echo $productName; ?></div>
+							<div class="col s4">
+				    			<input type="number" name="actualizar_stock<?php echo $post_id; ?>" id="actualizar_stock<?php echo $post_id; ?>" value="<?php echo $stock ?>" min="0">
+							</div>
+						</div>	
+
+		            <?php } 
+		         endwhile;
+		    }  wp_reset_postdata(); ?>
 			<div class="col s12 text-right margin-top">
 				<input type="submit" id="mb_submitClosePedido" name="mb_submitClosePedido" class="btn btn-primary inline-block" value="Guardar" />
 				<input type="hidden" name="send_submitClosePedido" value="post" />
@@ -27,7 +51,6 @@
 <?php if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitClosePedido'] )):
 
     $pedido_estatus      	= 'Cerrado';
-    $newStock   		   	= $_POST['actualizar_stock'];
 
 	/* Actualizar post pedido */
 	$post = array(
@@ -37,6 +60,27 @@
 	update_post_meta($pedido_id,'pedidos_estatus',$pedido_estatus);
 
 	/*Actualizar stock */
-	update_post_meta($productId, '_stock', $newStock);
+    $args = array(
+        'post_type'         => 'product',
+        'posts_per_page'    => -1,
+        'orderby'           => 'title',
+        'order'             => 'ASC'
+    );
+    $loop = new WP_Query( $args );
+    if ( $loop->have_posts() ) {
+        while ( $loop->have_posts() ) : $loop->the_post();
+            $post_id        = get_the_ID();
+            $productName    = get_the_title( $post_id );
+            $stock			= $product->get_stock_quantity();  
+
+            $piezas      	= 'piezas' . $post_id;
+
+            if (${$piezas} != '') {
+
+				update_post_meta($post_id, '_stock', $_POST['actualizar_stock' . $post_id]);
+
+           	} 
+         endwhile;
+    }  wp_reset_postdata();	
 
 endif; ?>
