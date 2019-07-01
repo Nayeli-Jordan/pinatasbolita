@@ -4,39 +4,40 @@
 	
 	while ( have_posts() ) : the_post(); 
 		$pedido_id  	= get_the_ID();
-		$piezas   		= get_post_meta( $pedido_id, 'pedidos_piezas', true );
+
+	    $args = array(
+	        'post_type'         => 'product',
+	        'posts_per_page'    => -1,
+	        'orderby'           => 'title',
+	        'order'             => 'ASC'
+	    );
+	    $loop = new WP_Query( $args );
+	    if ( $loop->have_posts() ) {
+	        while ( $loop->have_posts() ) : $loop->the_post();
+	            $post_id        = get_the_ID();
+	            $productName    = get_the_title( $post_id ); 
+
+	            $modelo      = 'modelo' . $post_id;
+	            $piezas      = 'piezas' . $post_id;
+	            $precio      = 'precio' . $post_id;
+	            $total       = 'total' . $post_id;
+	            ${$modelo}   = get_post_meta( $pedido_id, 'pedidos_modelo' . $post_id, true ); 
+	            ${$piezas}   = get_post_meta( $pedido_id, 'pedidos_piezas' . $post_id, true );
+	            ${$precio}   = get_post_meta( $pedido_id, 'pedidos_precio' . $post_id, true );
+	            ${$total}   = get_post_meta( $pedido_id, 'pedidos_total' . $post_id, true );
+
+	        endwhile;
+	    }  wp_reset_postdata();
+
 		$cliente  		= get_post_meta( $pedido_id, 'pedidos_cliente', true );
 		$entrega  		= get_post_meta( $pedido_id, 'pedidos_entrega', true );
 		$estatus  		= get_post_meta( $pedido_id, 'pedidos_estatus', true );
 		$alerta  		= get_post_meta( $pedido_id, 'pedidos_alerta', true );
+		$totalOrd  		= get_post_meta( $pedido_id, 'pedidos_totalOrd', true );
+		$totalPzs  		= get_post_meta( $pedido_id, 'pedidos_totalPzs', true );
 		$entregaOrg		= $entrega;
 
-		$productName 	= get_the_title( $pedido_id );
 		$pedidoContent 	= $post->post_content;
-
-		/* Obtener precios de la piñata del pedido */
-		$args = array(
-	        'post_type' 		=> 'product',
-	        'posts_per_page' 	=> 1,
-			'title' 			=> $productName
-	    );
-	    $loop = new WP_Query( $args );
-	    if ( $loop->have_posts() ) { 
-	    	global $product; $count = 0; $disponibles = 0;
-	        while ( $loop->have_posts() ) : $loop->the_post();
-	        	$productId      = get_the_ID();
-	        	$product 		= wc_get_product( $productId );
-	        	$price 			= $product->get_regular_price();
-	        	$stock			= $product->get_stock_quantity();
-
-				if ($price === '') { $price = 0; } /* Sin precio */
-				$priceOnePercent= $price / 100;
-				$pricePlata 	= $price - ($priceOnePercent * 10);
-				$priceOro 		= $price - ($priceOnePercent * 20);
-
-			endwhile;
-		} wp_reset_postdata();
-
 
 		/* Obtener Info cliente */
         $args = array(
@@ -66,15 +67,6 @@
             endwhile;
 		} wp_reset_postdata();
 
-		/* Obtener precio final de la piñata según el nivel del cliente */
-		if ($nivel === 'Normal') {
-			$price = $price;
-		} elseif ($nivel === 'Plata') {
-			$price = $pricePlata;
-		} else {
-			$price = $priceOro;
-		}
-
 		/* Cambiar formato fecha */
 		setlocale(LC_ALL,"es_ES");
         $entrega = strftime("%d/%B/%Y", strtotime($entrega)); 
@@ -98,25 +90,58 @@
 				<p id="editar-pedido" class="open-modal text-underline color-primary inline-block margin-right-10">Editar pedido</p>|<p id="cerrar-pedido" class="open-modal text-underline color-primary inline-block margin-left-10">Cerrar pedido</p>
 			</div>
 			<table class="width-100p">
-				<tr>
-					<th class="width-30p text-left"><p class="color-primary">Modelo:</p></th>
-					<td colspan="2" class="width-70p"><p><?php the_title(); ?></p></td>
-				</tr>
-				<tr>
-					<th class="text-left padding-top-30"><p class="color-primary">Piezas:</p></th>
-					<td colspan="2" class=" padding-top-20"><p><?php echo $piezas; ?> unidades</p></td>
-				</tr>
-				<tr>
-					<th class="text-left"><p class="color-primary">Costo:</p></th>
-					<td colspan="2"><p>$<?php echo $price; ?> por piñata</p></td>
-				</tr>
-				<tr>
-					<th class="text-left"><p class="color-primary">Total:</p></th>
-					<td colspan="2"><p>$<?php echo $piezas * $price; ?></p></td>
-				</tr>
+				<thead>
+					<tr class="color-light">
+						<th class="width-25p"><p>Modelo</p></th>
+						<th class="width-25p"><p>Piezas</p></th>
+						<th class="width-25p"><p>Precio</p></th>
+						<th class="width-25p"><p>Total</p></th>
+					</tr>					
+				</thead>
+				<tbody><?php
+			    $args = array(
+			        'post_type'         => 'product',
+			        'posts_per_page'    => -1,
+			        'orderby'           => 'title',
+			        'order'             => 'ASC'
+			    );
+			    $loop = new WP_Query( $args );
+			    if ( $loop->have_posts() ) {
+			        while ( $loop->have_posts() ) : $loop->the_post();
+			            $post_id        = get_the_ID();
+			            $productName    = get_the_title( $post_id ); 
+
+			            $modelo      = 'modelo' . $post_id;
+			            $piezas      = 'piezas' . $post_id;
+			            $precio      = 'precio' . $post_id;
+			            $total       = 'total' . $post_id;  
+
+			            if (${$piezas} != '') { ?>
+
+				            <tr>
+								<td><p><?php echo $productName ?></p></th>
+								<td class="text-center"><p><?php echo ${$piezas}; ?></p></th>
+								<td class="text-center"><p><?php echo ${$precio}; ?></p></th>
+								<td class="text-center"><p><?php echo ${$total}; ?></p></th>
+							</tr>
+
+			            <?php } 
+			         endwhile;
+			    }  wp_reset_postdata(); ?>
+				</tbody>
+				<tfoot>
+					<tr class="color-light">
+						<td class="width-25p">Total:</td>
+						<td class="width-25p"><?php echo $totalPzs; ?></td>
+						<td class="width-25p">A pagar: </td>
+						<td colspan="3" class="width-25p"><?php echo $totalOrd; ?></td>
+					</tr>
+				</tfoot>
+			</table>
+			<table>
 				<tr>
 					<th class="text-left padding-top-30"><p class="color-primary">Fecha de entrega:</p></th>
-					<td colspan="2" class="padding-top-20"><p><?php echo $entrega; ?></p></td>
+					<td colspan="2" class="padding-top-30"><p><?php echo $entrega; ?></p></td>
 				</tr>
 				<tr>
 					<th class="text-left"><p class="color-primary">Observaciones:</p></th>

@@ -95,6 +95,34 @@
     $pedido_observaciones 	= $_POST['pedidos_observaciones'];
     $pedido_alerta 			= $_POST['pedidos_alerta'];
 
+    /* Obtener Info cliente */
+    $args = array(
+        'post_type' 		=> 'clientes',
+        'posts_per_page' 	=> 1,
+		'title' 			=> $pedido_cliente
+    );
+    $loop = new WP_Query( $args );
+    if ( $loop->have_posts() ) { 
+        while ( $loop->have_posts() ) : $loop->the_post();
+			$cliente_id = get_the_ID();
+			$nivel   	= get_post_meta( $cliente_id, 'clientes_nivel', true );
+			$correo   	= get_post_meta( $cliente_id, 'clientes_correo', true );
+			$cel   		= get_post_meta( $cliente_id, 'clientes_cel', true );
+			$tel   		= get_post_meta( $cliente_id, 'clientes_tel', true );
+			$direccion  = get_post_meta( $cliente_id, 'clientes_direccion', true ); 
+
+			//$linkCliente= get_permalink();
+
+			$pedido_infoCliente = '';
+			if ($nivel != '') { $pedido_infoCliente .= '• Nivel: ' . $nivel . '</br>'; }
+			if ($direccion != '') { $pedido_infoCliente .=  '• ' . $direccion . '</br>'; }
+			if ($correo != '') { $pedido_infoCliente .=  '• ' . $correo . '</br>'; }
+			if ($cel != '') { $pedido_infoCliente .=  '• ' . $cel . ' '; }
+			if ($tel != '') { $pedido_infoCliente .=  '• ' . $tel . '</br>'; }
+
+        endwhile;
+	} wp_reset_postdata();
+
 	/**
 	** Crear post pedidos 
 	**/
@@ -121,6 +149,7 @@
     );
     $loop = new WP_Query( $args );
     $totalOrd = 0;
+    $totalPzs = 0;
     if ( $loop->have_posts() ) {
         while ( $loop->have_posts() ) : $loop->the_post();	
     		$post_id        = get_the_ID();
@@ -129,21 +158,27 @@
 			$price          = $product->get_regular_price();
 			if ($price === '') { $price = 0; } /* Sin precio */
 
-			//Total -> Precio guardado desde functions.php pero se requiere calculo
+			//Total
 			$pedido_piezas 		= ${'pedido_piezas' . $post_id};
 		    $pedido_total   	= $pedido_piezas * $price;
 		    $totalOrd			= $totalOrd + $pedido_total;
+		    $totalPzs			= $totalPzs + $pedido_piezas;
 
 			//Modelo disabled, guardado desde functions.php
 		    update_post_meta($pedido_id,'pedidos_piezas' . $post_id, $pedido_piezas);
 		    update_post_meta($pedido_id,'pedidos_total' . $post_id, $pedido_total);
+		    //Se guarda precio de otro modo sólo se imprime en el post pero no en front (como si no se guardara)
+		    update_post_meta($pedido_id,'pedidos_precio' . $post_id, $price);
 
     	endwhile;
 	}  wp_reset_postdata();
 
 	update_post_meta($pedido_id,'pedidos_cliente',$pedido_cliente);
+	update_post_meta($pedido_id,'pedidos_nivelCliente',$nivel);
+	update_post_meta($pedido_id,'pedidos_infoCliente',$pedido_infoCliente);
 	update_post_meta($pedido_id,'pedidos_entrega',$pedido_entrega);
 	update_post_meta($pedido_id,'pedidos_estatus', 'Abierto');
 	update_post_meta($pedido_id,'pedidos_alerta',$pedido_alerta);
 	update_post_meta($pedido_id,'pedidos_totalOrd',$totalOrd);
+	update_post_meta($pedido_id,'pedidos_totalPzs',$totalPzs);
 endif; ?>

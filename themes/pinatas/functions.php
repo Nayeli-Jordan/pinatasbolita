@@ -272,36 +272,60 @@ function display_pedidos_atributos( $pedidos ){
         endwhile;
     }  wp_reset_postdata();
 
-    $cliente  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_cliente', true ) );
+    $cliente        = esc_html( get_post_meta( $pedidos->ID, 'pedidos_cliente', true ) );
+    $nivelCliente   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_nivelCliente', true ) );
+    $infoCliente    = esc_html( get_post_meta( $pedidos->ID, 'pedidos_infoCliente', true ) );
     $entrega  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_entrega', true ) );
     $estatus  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_estatus', true ) );
     $alerta   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_alerta', true ) );
     $totalOrd = esc_html( get_post_meta( $pedidos->ID, 'pedidos_totalOrd', true ) );
+    $totalPzs = esc_html( get_post_meta( $pedidos->ID, 'pedidos_totalPzs', true ) );
 ?>
     <table class="pb-custom-fields">
+        <tr>
+            <th class="padding-bottom-30">
+                <label for="pedidos_totalOrd">Total de orden:</label>
+                <input type="number" id="pedidos_totalOrd" name="pedidos_totalOrd" value="<?php echo $totalOrd; ?>" placeholder="0">
+            </th>
+            <th class="padding-bottom-30">
+                <label for="pedidos_totalOrd">Total piezas:</label>
+                <input type="number" id="pedidos_totalPzs" name="pedidos_totalPzs" value="<?php echo $totalPzs; ?>" placeholder="0">
+            </th>
+            <th class="padding-bottom-30" colspan="2">
+                <label for="pedidos_entrega">Fecha de entrega:</label>
+                <input type="date" id="pedidos_entrega" name="pedidos_entrega" value="<?php echo $entrega; ?>">
+            </th>
+        </tr>
         <tr>
             <th colspan="2">
                 <label for="pedidos_cliente">Cliente:</label>
                 <input type="text" id="pedidos_cliente" name="pedidos_cliente" value="<?php echo $cliente; ?>">
             </th>
             <th colspan="2">
-                <label for="pedidos_entrega">Fecha de entrega:</label>
-                <input type="date" id="pedidos_entrega" name="pedidos_entrega" value="<?php echo $entrega; ?>">
+                <label for="pedidos_nivelCliente">Nivel cliente:</label>
+                <select name="pedidos_nivelCliente" id="pedidos_nivelCliente" required>
+                    <option value=""></option>
+                    <option value="Normal" <?php selected($nivelCliente, 'Normal'); ?>>Normal</option>
+                    <option value="Plata" <?php selected($nivelCliente, 'Plata'); ?>>Plata</option>
+                    <option value="Oro" <?php selected($nivelCliente, 'Oro'); ?>>Oro</option>
+                </select><br>               
             </th>
         </tr>
         <tr>
-            <th>
-                <label for="pedidos_totalOrd">Total de orden:</label>
-                <input type="number" id="pedidos_totalOrd" name="pedidos_totalOrd" value="<?php echo $totalOrd; ?>" placeholder="0">
+            <th colspan="4" class="padding-bottom-30">
+                <label for="pedidos_infoCliente">Información cliente:</label>
+                <textarea type="text" id="pedidos_infoCliente" name="pedidos_infoCliente"><?php echo $infoCliente; ?></textarea>
             </th>
-            <th>
+        </tr>
+        <tr>
+            <th colspan="2" class="padding-bottom-30">
                 <label for="pedidos_estatus">Estatus:</label>
                 <select name="pedidos_estatus" id="pedidos_estatus" required>
                     <option value="Abierto" <?php selected($estatus, 'Abierto'); ?>>Abierto</option>
                     <option value="Cerrado" <?php selected($estatus, 'Cerrado'); ?>>Cerrado</option>
                 </select><br>               
             </th>
-            <th colspan="2">
+            <th colspan="2" class="padding-bottom-30">
                 <label for="pedidos_alerta">¿Cuántos días antes se te notifica?:</label>
                 <input type="number" id="pedidos_alerta" name="pedidos_alerta" value="<?php echo $alerta; ?>" placeholder="0">
             </th>
@@ -351,6 +375,12 @@ function pedidos_save_metas( $idpedidos, $pedidos ){
         if ( isset( $_POST['pedidos_cliente'] ) ){
             update_post_meta( $idpedidos, 'pedidos_cliente', $_POST['pedidos_cliente'] );
         }
+        if ( isset( $_POST['pedidos_nivelCliente'] ) ){
+            update_post_meta( $idpedidos, 'pedidos_nivelCliente', $_POST['pedidos_nivelCliente'] );
+        }
+        if ( isset( $_POST['pedidos_infoCliente'] ) ){
+            update_post_meta( $idpedidos, 'pedidos_infoCliente', $_POST['pedidos_infoCliente'] );
+        }
         if ( isset( $_POST['pedidos_entrega'] ) ){
             update_post_meta( $idpedidos, 'pedidos_entrega', $_POST['pedidos_entrega'] );
         }
@@ -362,6 +392,9 @@ function pedidos_save_metas( $idpedidos, $pedidos ){
         }
         if ( isset( $_POST['pedidos_totalOrd'] ) ){
             update_post_meta( $idpedidos, 'pedidos_totalOrd', $_POST['pedidos_totalOrd'] );
+        }
+        if ( isset( $_POST['pedidos_totalPzs'] ) ){
+            update_post_meta( $idpedidos, 'pedidos_totalPzs', $_POST['pedidos_totalPzs'] );
         }
         $args = array(
             'post_type'         => 'product',
@@ -685,7 +718,7 @@ function custom_clientes_column( $column, $post_id ) {
 /* Pedido */
 add_filter( 'manage_pedidos_posts_columns', 'set_custom_edit_pedidos_columns' );
 function set_custom_edit_pedidos_columns($columns) {
-    $columns['pedidos_piezas']  = __( 'Piezas', 'pbolita' );
+    $columns['pedidos_total']  = __( 'Total', 'pbolita' );
     $columns['pedidos_estatus'] = __( 'Estatus', 'pbolita' );
     $columns['pedidos_alerta']  = __( 'Alerta', 'pbolita' );
 
@@ -695,10 +728,12 @@ function set_custom_edit_pedidos_columns($columns) {
 add_action( 'manage_pedidos_posts_custom_column' , 'custom_pedidos_column', 10, 2 );
 function custom_pedidos_column( $column, $post_id ) {
     switch ( $column ) {
-        case 'pedidos_piezas' :
-            $piezas  = get_post_meta( $post_id, 'pedidos_piezas', true );
-            if( $piezas != "")
-                echo $piezas;
+        case 'pedidos_total' :
+            $nivelCliente  = get_post_meta( $post_id, 'pedidos_nivelCliente', true );
+            $totalPzs  = get_post_meta( $post_id, 'pedidos_totalPzs', true );
+            $totalOrd  = get_post_meta( $post_id, 'pedidos_totalOrd', true );
+            if( $totalOrd != "")
+                echo $nivelCliente . '</br>' . $totalPzs . 'pzs.</br>$' . $totalOrd;
             else
                 echo "-";
             break;
