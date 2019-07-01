@@ -109,9 +109,7 @@
 			$correo   	= get_post_meta( $cliente_id, 'clientes_correo', true );
 			$cel   		= get_post_meta( $cliente_id, 'clientes_cel', true );
 			$tel   		= get_post_meta( $cliente_id, 'clientes_tel', true );
-			$direccion  = get_post_meta( $cliente_id, 'clientes_direccion', true ); 
-
-			//$linkCliente= get_permalink();
+			$direccion  = get_post_meta( $cliente_id, 'clientes_direccion', true );
 
 			$pedido_infoCliente = '';
 			if ($nivel != '') { $pedido_infoCliente .= '• Nivel: ' . $nivel . '</br>'; }
@@ -180,6 +178,5 @@
 	update_post_meta($pedido_id,'pedidos_estatus', 'Abierto');
 	update_post_meta($pedido_id,'pedidos_alerta',$pedido_alerta);
 	update_post_meta($pedido_id,'pedidos_totalOrd',$totalOrd);
-	update_post_meta($pedido_id,'pedidos_totalFin',$totalOrd);
 	update_post_meta($pedido_id,'pedidos_totalPzs',$totalPzs);
 endif; ?>

@@ -42,7 +42,7 @@
 				    'post_type' 		=> 'pedidos',
 				    'posts_per_page' 	=> -1,    
 					'orderby' 			=> 'date',
-					'order' 			=> 'ASC',
+					'order' 			=> 'DESC',
 					'meta_query'	=> array(
 						array(
 							'key'		=> 'pedidos_cliente',
