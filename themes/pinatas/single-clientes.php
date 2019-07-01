@@ -29,11 +29,11 @@
 			if ($tel != '') { echo  '• ' . $tel . '</br>'; } ?></p>
 			<table class="width-100p text-left">
 				<tr>
-					<th class="color-primary width-20p">Pedido</th>
-					<th class="color-primary width-10p">Piezas</th>
-					<th class="color-primary width-10p">Precio</th>
-					<th class="color-primary width-10p">Total</th>
 					<th class="color-primary width-20p">Entrega</th>
+					<th class="color-primary width-10p">Piezas</th>
+					<th class="color-primary width-10p">Total</th>
+					<th class="color-primary width-10p">Dto.</th>
+					<th class="color-primary width-10p">Pago</th>
 					<th class="color-primary width-20p">Estatus</th>
 					<th class="color-primary width-10p">Detalles</th>
 				</tr>
@@ -59,10 +59,12 @@
 				    	$pedidos  ++;
 				    	$pedido_id  	= get_the_ID();
 				    	$productName 	= get_the_title( $pedido_id );
-						$piezas   = get_post_meta( $pedido_id, 'pedidos_piezas', true );
+
 						$cliente  = get_post_meta( $pedido_id, 'pedidos_cliente', true );
 						$entrega  = get_post_meta( $pedido_id, 'pedidos_entrega', true );
 						$estatus  = get_post_meta( $pedido_id, 'pedidos_estatus', true );
+						$totalOrd = get_post_meta( $pedido_id, 'pedidos_totalOrd', true );
+						$totalPzs = get_post_meta( $pedido_id, 'pedidos_totalPzs', true );
 
 					    $linkPedido	= get_permalink();
 
@@ -70,46 +72,22 @@
 						setlocale(LC_ALL,"es_ES");
 				        $entrega = strftime("%d/%B/%Y", strtotime($entrega));
 
-				        /* Obtener precios de la piñata del pedido */
-						$args = array(
-					        'post_type' 		=> 'product',
-					        'posts_per_page' 	=> 1,
-							'title' 			=> $productName
-					    );
-					    $loop = new WP_Query( $args );
-					    if ( $loop->have_posts() ) { 
-					    	global $product; $count = 0; $disponibles = 0;
-					        while ( $loop->have_posts() ) : $loop->the_post();
-					        	$post_id        = get_the_ID();
-					        	$product 		= wc_get_product( $post_id );
-					        	$price 			= $product->get_regular_price();
-
-								if ($price === '') { $price = 0; } /* Sin precio */
-								$priceOnePercent= $price / 100;
-								$pricePlata 	= $price - ($priceOnePercent * 10);
-								$priceOro 		= $price - ($priceOnePercent * 20);
-
-							endwhile;
-						} wp_reset_postdata(); 
-
-						/* Obtener precio final de la piñata según el nivel del cliente */
-						if ($nivel === 'Normal') {
-							$price = $price;
-						} elseif ($nivel === 'Plata') {
-							$price = $pricePlata;
-						} else {
-							$price = $priceOro;
-						}
-
 						/* Obtener pedidos pendientes */
 						if ($estatus === 'Abierto') { $pedidosAbiertos ++; } ?>
 						
 						<tr class="<?php if ($estatus === 'Cerrado') { echo "tab-disabled-strong";} ?>">
-							<td><?php echo $productName;; ?></td>
-							<td><?php echo $piezas; ?></td>
-							<td>$<?php echo $price; ?></td>
-							<td>$<?php echo $piezas * $price; ?></td>
 							<td><?php echo $entrega; ?></td>
+							<td><?php echo $totalPzs; ?></td>
+							<td><?php echo $totalOrd; ?></td>
+							<td><?php if ($nivel === 'Normal') {
+								$descuento = 0;
+							} else if ($nivel === 'Plata') {
+								$descuento = $totalOrd * 10;
+							} else if ($nivel === 'Oro') {
+								$descuento = $totalOrd * 20;
+							} echo $descuento; 
+							$totalFin = $totalOrd - $descuento; ?></td>
+							<td>$<?php echo $totalFin; ?></td>
 							<td><?php echo $estatus; ?></td>
 							<td><a href="<?php echo $linkPedido; ?>" terget="_blank" class="color-primary">Ver</a></td>
 						</tr>

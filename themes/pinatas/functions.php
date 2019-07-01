@@ -279,18 +279,13 @@ function display_pedidos_atributos( $pedidos ){
     $estatus  = esc_html( get_post_meta( $pedidos->ID, 'pedidos_estatus', true ) );
     $alerta   = esc_html( get_post_meta( $pedidos->ID, 'pedidos_alerta', true ) );
     $totalOrd = esc_html( get_post_meta( $pedidos->ID, 'pedidos_totalOrd', true ) );
-    $totalFin = esc_html( get_post_meta( $pedidos->ID, 'pedidos_totalFin', true ) );
     $totalPzs = esc_html( get_post_meta( $pedidos->ID, 'pedidos_totalPzs', true ) );
 ?>
     <table class="pb-custom-fields">
         <tr>
-            <th class="padding-bottom-30">
+            <th colspan="2" class="padding-bottom-30">
                 <label for="pedidos_totalOrd">Total de orden:</label>
                 <input type="number" id="pedidos_totalOrd" name="pedidos_totalOrd" value="<?php echo $totalOrd; ?>" placeholder="0">
-            </th>
-            <th class="padding-bottom-30">
-                <label for="pedidos_totalFin">Total de orden:</label>
-                <input type="number" id="pedidos_totalFin" name="pedidos_totalFin" value="<?php echo $totalFin; ?>" placeholder="0">
             </th>
             <th class="padding-bottom-30">
                 <label for="pedidos_totalOrd">Total piezas:</label>
@@ -397,9 +392,6 @@ function pedidos_save_metas( $idpedidos, $pedidos ){
         }
         if ( isset( $_POST['pedidos_totalOrd'] ) ){
             update_post_meta( $idpedidos, 'pedidos_totalOrd', $_POST['pedidos_totalOrd'] );
-        }
-        if ( isset( $_POST['pedidos_totalFin'] ) ){
-            update_post_meta( $idpedidos, 'pedidos_totalFin', $_POST['pedidos_totalFin'] );
         }
         if ( isset( $_POST['pedidos_totalPzs'] ) ){
             update_post_meta( $idpedidos, 'pedidos_totalPzs', $_POST['pedidos_totalPzs'] );
@@ -740,9 +732,8 @@ function custom_pedidos_column( $column, $post_id ) {
             $nivelCliente  = get_post_meta( $post_id, 'pedidos_nivelCliente', true );
             $totalPzs  = get_post_meta( $post_id, 'pedidos_totalPzs', true );
             $totalOrd  = get_post_meta( $post_id, 'pedidos_totalOrd', true );
-            $totalFin  = get_post_meta( $post_id, 'pedidos_totalFin', true );
             if( $totalOrd != "")
-                echo $nivelCliente . '</br>' . $totalPzs . 'pzs.</br>$' . $totalOrd. '</br>A pagar: $' . $totalFin;
+                echo $nivelCliente . '</br>' . $totalPzs . 'pzs.</br>$' . $totalOrd;
             else
                 echo "-";
             break;
