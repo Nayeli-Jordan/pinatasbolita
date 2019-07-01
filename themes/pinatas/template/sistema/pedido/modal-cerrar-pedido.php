@@ -31,7 +31,7 @@
 		            if (${$piezas} != '') { ?>
 
 			            <div class="col s12 m6 l4 input-field no-padding-left no-padding-right">
-							<div class="col s8 no-padding-right"><?php echo $productName; ?></div>
+							<div class="col s8 no-padding-right"><small><?php echo $productName; ?></small></div>
 							<div class="col s4">
 				    			<input type="number" name="actualizar_stock<?php echo $post_id; ?>" id="actualizar_stock<?php echo $post_id; ?>" value="<?php echo $stock ?>" min="0">
 							</div>

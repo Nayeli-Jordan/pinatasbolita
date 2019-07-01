@@ -2,24 +2,36 @@
 	<div class="exit-modal"></div>
 	<div class="modal-content">
 		<i class="icon-close close-modal"></i>
-		<p class="color-primary text-center margin-bottom-20 fz-20">Pedidos <span class="uppercase"><?php echo $productName; ?></span> cerrados</p>
+		<p class="color-primary text-center margin-bottom-20 fz-20">Pedidos con <span class="uppercase"><?php echo $productName; ?></span> cerrados</p>
 		<div class="row margin-bottom-10 hide-on-sm-and-down">
 			<div class="col s12 m4 color-primary"><p>Cliente</p></div>
 			<div class="col s12 m2 color-primary"><p>Piezas</p></div>
 			<div class="col s12 m4 color-primary"><p>Entrega</p></div>
 		</div>
 		<?php 
+		$modeloProduct = 'pedidos_modelo' . $productId;
+		$piezasProduct = 'pedidos_piezas' . $productId;
 		$argsPedido = array(
 		    'post_type' 		=> 'pedidos',
 		    'posts_per_page' 	=> -1,    
 			'orderby' 			=> 'date',
 			'order' 			=> 'ASC',
-			'title' 			=> $productName,
 			'meta_query'	=> array(
+				'relation' => 'AND', 
 				array(
 					'key'		=> 'pedidos_estatus',
 					'value'		=> 'Cerrado',
 					'compare'	=> '='
+				), 
+				array(
+					'key'		=> $modeloProduct,
+					'value'		=> $productName,
+					'compare'	=> '='
+				), 
+				array(
+					'key'		=> $piezasProduct,
+					'value'		=> 1,
+					'compare'	=> '>='
 				)
 			)
 		);
@@ -30,7 +42,7 @@
 		    while ( $loopPedido->have_posts() ) : $loopPedido->the_post();
 		    	$noCerradas ++;
 		    	$pedido_id  = get_the_ID();
-				$piezas   = get_post_meta( $pedido_id, 'pedidos_piezas', true );
+				$piezas   = get_post_meta( $pedido_id, $piezasProduct, true );
 				$cliente  = get_post_meta( $pedido_id, 'pedidos_cliente', true );
 				$entrega  = get_post_meta( $pedido_id, 'pedidos_entrega', true ); 
 
