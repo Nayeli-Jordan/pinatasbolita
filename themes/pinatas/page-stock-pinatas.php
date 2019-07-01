@@ -1,5 +1,6 @@
 <?php get_header(); 
 	/* Modals notice */
+	include (TEMPLATEPATH . '/template/sistema/load.php');
 	include (TEMPLATEPATH . '/template/sistema/notice/notice-nuevo-pedido.php');
 	include (TEMPLATEPATH . '/template/sistema/notice/notice-nuevo-cliente.php');
 	include (TEMPLATEPATH . '/template/sistema/notice/notice-stock-actualizado.php');

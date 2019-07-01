@@ -47,4 +47,8 @@
 		}
 	}
 	&.modal-pedidos p { font-size: 14px; }
+	&#modal-cargando { 
+		z-index: 9999999999; 
+		.fondo-modal { background-color: rgba(52, 52, 52, 0.52); }
+	}
 }

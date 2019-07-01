@@ -4577,6 +4577,14 @@ video.responsive-video {
 .modal.modal-pedidos p {
   font-size: 14px;
 }
+/* line 50, ../sass/components/_modal.scss */
+.modal#modal-cargando {
+  z-index: 9999999999;
+}
+/* line 52, ../sass/components/_modal.scss */
+.modal#modal-cargando .fondo-modal {
+  background-color: rgba(52, 52, 52, 0.52);
+}
 
 /* line 4, ../sass/components/_position.scss */
 .absolute {

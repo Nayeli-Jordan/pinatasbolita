@@ -1,6 +1,6 @@
 <?php $today = date("Y-m-d"); ?>
 <div id="modal-nuevo-pedido" class="modal modal-medium">
-	<div class="exit-modal"></div>
+	<div class="fondo-modal"></div>
 	<div class="modal-content">
 		<em class="icon-close close-modal"></em>
 		<p class="color-primary no-margin-top text-center fz-20 margin-bottom-20">Nuevo pedido</p>

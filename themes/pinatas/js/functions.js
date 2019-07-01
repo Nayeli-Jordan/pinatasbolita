@@ -166,6 +166,10 @@ var $=jQuery.noConflict();
 			$('.modal').hide();
 			$('body').removeClass('overflow-hide');
 		});
+		$(".modal form input[type='submit']").click(function() {
+			$('#modal-cargando').show();
+			$('body').addClass('overflow-hide');
+		});
 
 	});
 })(jQuery);
