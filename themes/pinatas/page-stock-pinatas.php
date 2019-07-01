@@ -64,8 +64,10 @@
 									$faltan = $noPiezas - $stock;
 								}
 
+								/* Evitar negativos */
+								if ($faltan < 0) { $faltan = 0; }
+
 								/* Agregar a totales tabla */
-								$ordenes		= $ordenes + $noPedidos;
 								$pinatas		= $pinatas + $noPiezas;
 								$disponibles	= $disponibles + $stock;
 								$faltantes		= $faltantes + $faltan;

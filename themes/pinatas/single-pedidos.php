@@ -71,6 +71,16 @@
 		setlocale(LC_ALL,"es_ES");
         $entrega = strftime("%d/%B/%Y", strtotime($entrega)); 
 
+        /* Calcular descuento y pago */
+        if ($nivel === 'Normal') {
+			$descuento = 0;
+		} else if ($nivel === 'Plata') {
+			$descuento = $totalOrd * .10;
+		} else if ($nivel === 'Oro') {
+			$descuento = $totalOrd * .20;
+		} 
+		$descuento = round($descuento);
+		$totalFin = $totalOrd - $descuento;	
 
         if ($estatus === 'Abierto') :
 			/* Modals notice */
@@ -139,16 +149,7 @@
 					<tr class="color-light">
 						<td colspan="2" class="width-50p tdInvisible"></td>
 						<td class="width-25p">Descuento: </td>
-						<td class="width-25p"><?php
-							if ($nivel === 'Normal') {
-								$descuento = 0;
-							} else if ($nivel === 'Plata') {
-								$descuento = $totalOrd * 10;
-							} else if ($nivel === 'Oro') {
-								$descuento = $totalOrd * 20;
-							} echo $descuento;
-							$totalFin = $totalOrd - $descuento;						
-						?></td>
+						<td class="width-25p"><?php echo $descuento; ?></td>
 					</tr>
 					<tr class="color-light">
 						<td colspan="2" class="width-50p tdInvisible"></td>

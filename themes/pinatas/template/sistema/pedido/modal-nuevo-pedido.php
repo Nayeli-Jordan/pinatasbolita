@@ -79,14 +79,20 @@
         'order' 			=> 'ASC'
     );
     $loop = new WP_Query( $args );
+    $totalOrd = 0;
+    $totalPzs = 0;
     if ( $loop->have_posts() ) {
         while ( $loop->have_posts() ) : $loop->the_post();	
-    	$post_id        = get_the_ID();
+    		$productId      = get_the_ID();
+    		/* Calcular total */
+			$product        = wc_get_product( $productId );
+			$price          = $product->get_regular_price();
+			if ($price === '') { $price = 0; } /* Sin precio */
 
-	        $pedido_modelo      = 'pedido_modelo' . $post_id;
-	        $pedido_piezas      = 'pedido_piezas' . $post_id;
-		    ${$pedido_modelo}   = $_POST['pedidos_modelo' . $post_id];
-		    ${$pedido_piezas}   = $_POST['pedidos_piezas' . $post_id];
+	        $pedido_modelo      = 'pedido_modelo' . $productId;
+	        $pedido_piezas      = 'pedido_piezas' . $productId;
+		    ${$pedido_modelo}   = $_POST['pedidos_modelo' . $productId];
+		    ${$pedido_piezas}   = $_POST['pedidos_piezas' . $productId];
 
     	endwhile;
 	}  wp_reset_postdata();
@@ -130,7 +136,7 @@
     setlocale(LC_ALL,"es_ES");
     $pedido_entregaEsp = strftime("%d/%B/%Y", strtotime($pedido_entrega)); 
 
-	$pedido_title	      	= $pedido_cliente . ' | ' . $pedido_entregaEsp;
+	$pedido_title	      	= $pedido_cliente . ' | ' . $pedido_entregaEsp . $pedido_infoCliente;
 	$post = array(
 		'post_title'	=> wp_strip_all_tags($pedido_title),
 		'post_content'	=> $pedido_observaciones,
@@ -139,6 +145,9 @@
 	);
 
 	$pedido_id = wp_insert_post($post);
+
+
+
 
     $args = array(
         'post_type' 		=> 'product',
@@ -151,28 +160,31 @@
     $totalPzs = 0;
     if ( $loop->have_posts() ) {
         while ( $loop->have_posts() ) : $loop->the_post();	
-    		$post_id        = get_the_ID();
+    		$productId        = get_the_ID();
 			/* Calcular total */
-			$product        = wc_get_product( $post_id );
+			$product        = wc_get_product( $productId );
 			$price          = $product->get_regular_price();
 			if ($price === '') { $price = 0; } /* Sin precio */
 
-			$pedido_modelo 		= ${'pedido_modelo' . $post_id};
+			$pedido_modelo 		= ${'pedido_modelo' . $productId};
 
 			//Total
-			$pedido_piezas 		= ${'pedido_piezas' . $post_id};
+			$pedido_piezas 		= ${'pedido_piezas' . $productId};
 		    $pedido_total   	= $pedido_piezas * $price;
 		    $totalOrd			= $totalOrd + $pedido_total;
 		    $totalPzs			= $totalPzs + $pedido_piezas;
 
-		    update_post_meta($pedido_id,'pedidos_modelo' . $post_id, $pedido_modelo);
-		    update_post_meta($pedido_id,'pedidos_piezas' . $post_id, $pedido_piezas);
-		    update_post_meta($pedido_id,'pedidos_total' . $post_id, $pedido_total);
-		    //Se guarda precio de otro modo sólo se imprime en el post pero no en front (como si no se guardara)
-		    update_post_meta($pedido_id,'pedidos_precio' . $post_id, $price);
+		    update_post_meta($pedido_id,'pedidos_modelo' . $productId, $pedido_modelo);
+		    update_post_meta($pedido_id,'pedidos_piezas' . $productId, $pedido_piezas);
+		    update_post_meta($pedido_id,'pedidos_total' . $productId, $pedido_total);
+		    update_post_meta($pedido_id,'pedidos_precio' . $productId, $price);
 
     	endwhile;
 	}  wp_reset_postdata();
+
+
+
+
 
 	update_post_meta($pedido_id,'pedidos_cliente',$pedido_cliente);
 	update_post_meta($pedido_id,'pedidos_nivelCliente',$nivel);

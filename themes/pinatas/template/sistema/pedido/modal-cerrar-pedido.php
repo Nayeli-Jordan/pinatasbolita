@@ -83,4 +83,22 @@
          endwhile;
     }  wp_reset_postdata();	
 
+    /* Crear ingreso */
+    $cuenta_concepto     	= 'Pedido cerrado - ' . $cliente;
+    $cuenta_cantidad      	= $totalFin;
+    $cuenta_categoria       = 'Pago';
+
+	/* Crear post clientes */
+	$post = array(
+		'post_title'	=> wp_strip_all_tags($cuenta_concepto),
+		'post_status'	=> 'private',
+		'post_type' 	=> 'cuenta'
+	);
+
+	$cuenta_id = wp_insert_post($post);
+
+	update_post_meta($cuenta_id,'cuenta_tipo', 'Ingreso');
+	update_post_meta($cuenta_id,'cuenta_cantidad',$cuenta_cantidad);
+	update_post_meta($cuenta_id,'cuenta_categoria',$cuenta_categoria);
+
 endif; ?>
