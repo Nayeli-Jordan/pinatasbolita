@@ -6,8 +6,8 @@
 		<p class="color-primary no-margin-top text-center fz-20 margin-bottom-20">Nuevo pedido</p>
 		<form id="pedido-form" name="pedido-form" action=""  method="post" class="validation row" data-parsley-pedido>
 			<div class="col s12 m6 input-field clearfix">
-				<label for="pedidos_cliente">Cliente*:</label>
-				<select name="pedidos_cliente" id="pedidos_cliente" required  data-parsley-required-message="Campo obligatorio">
+				<label for="pb_pedidos_cliente">Cliente*:</label>
+				<select name="pb_pedidos_cliente" id="pb_pedidos_cliente" required  data-parsley-required-message="Campo obligatorio">
     				<option value=""></option>
                     <?php 
                     $pbClientes = array(
@@ -27,16 +27,16 @@
                 </select>
 			</div>
 			<div class="col s12 m6 input-field">
-				<label for="pedidos_entrega">Fecha de entrega*:</label>
-   				<input type="date" min="<?php echo $today; ?>" name="pedidos_entrega" id="pedidos_entrega" required  data-parsley-required-message="Campo obligatorio">
+				<label for="pb_pedidos_entrega">Fecha de entrega*:</label>
+   				<input type="date" min="<?php echo $today; ?>" name="pb_pedidos_entrega" id="pb_pedidos_entrega" required  data-parsley-required-message="Campo obligatorio">
 			</div>
 			<div class="col s12 input-field">
-				<label for="pedidos_observaciones">Observaciones:</label>
-    			<textarea rows="2" name="pedidos_observaciones" id="pedidos_observaciones" placeholder="Otros detalles del pedido, la entrega, el pago, etc."></textarea>
+				<label for="pb_pedidos_observaciones">Observaciones:</label>
+    			<textarea rows="2" name="pb_pedidos_observaciones" id="pb_pedidos_observaciones" placeholder="Otros detalles del pedido, la entrega, el pago, etc."></textarea>
 			</div>
 			<div class="col s12 input-field margin-bottom-30">
-				<label for="pedidos_alerta">¿Cuántos días antes se te notifica?: <small class="color-gray">(0 para desactivar notificación)</small></label>
-   				<input type="number" min="0" name="pedidos_alerta" id="pedidos_alerta" placeholder="0">
+				<label for="pb_pedidos_alerta">¿Cuántos días antes se te notifica?: <small class="color-gray">(0 para desactivar notificación)</small></label>
+   				<input type="number" min="0" name="pb_pedidos_alerta" id="pb_pedidos_alerta" placeholder="0">
 			</div>
            	<?php /* Loop modelos y sus piezas */
 	        $args = array(
@@ -59,12 +59,11 @@
 
 					<div class="col s12 m6 l4 input-field no-padding-left no-padding-right">
 						<div class="col s8 no-padding-right relative">
-							<input type="text" min="1" class="not-border" name="pedidos_modelo<?php echo $productId; ?>" id="pedidos_modelo<?php echo $productId; ?>" value="<?php echo $productName; ?>">
-							<div class="block-input"></div>
+							<input type="text" min="1" class="not-border" name="pb_pedidos_modelo<?php echo $productId; ?>" id="pb_pedidos_modelo<?php echo $productId; ?>" value="<?php echo $productName; ?>"><div class="block-input"></div>
 						</div>
 						<div class="col s4">
-			    			<input type="number" min="1" name="pedidos_piezas<?php echo $productId; ?>" id="pedidos_piezas<?php echo $productId; ?>" placeholder="0">
-			    			<input type="number" min="0" name="pedidos_precio<?php echo $productId; ?>" id="pedidos_precio<?php echo $productId; ?>" value="<?php echo $price; ?>" class="input-hide">	
+			    			<input type="number" min="1" name="pb_pedidos_piezas<?php echo $productId; ?>" id="pb_pedidos_piezas<?php echo $productId; ?>" placeholder="0" class="number-pinatas">
+			    			<input type="number" min="0" name="pb_pedidos_precio<?php echo $productId; ?>" id="pb_pedidos_precio<?php echo $productId; ?>" value="<?php echo $price; ?>" class="input-hide">
 						</div>
 					</div>	
 	            <?php endwhile;
@@ -79,13 +78,13 @@
 </div>
 <?php if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitPedido'] )):
 
-	$pedido_cliente      	= $_POST['pedidos_cliente'];
-    $pedido_entrega        	= $_POST['pedidos_entrega'];
-    $pedido_observaciones 	= $_POST['pedidos_observaciones'];
-    $pedido_alerta 			= $_POST['pedidos_alerta'];
+	$pedido_cliente      	= $_POST['pb_pedidos_cliente'];
+    $pedido_entrega        	= $_POST['pb_pedidos_entrega'];
+    $pedido_observaciones 	= $_POST['pb_pedidos_observaciones'];
+    $pedido_alerta 			= $_POST['pb_pedidos_alerta'];
     $pedido_infoCliente 	= '';
     $totalOrd 				= 0;
-    $totalPzs 				= 0;    
+	$totalPzs 				= 0;
 
     /* Obtener Info cliente */
     $argsClient = array(
@@ -130,8 +129,32 @@
 	update_post_meta($pedido_id, 'pedidos_alerta', $pedido_alerta);
 
 
+	/* Productos */
+    $argsProduct = array(
+        'post_type' 		=> 'product',
+        'posts_per_page' 	=> 300,
+        'orderby' 			=> 'title',
+        'order' 			=> 'ASC'
+    );
+    $loopProduct = new WP_Query( $argsProduct );
+    if ( $loopProduct->have_posts() ) {
+        while ( $loopProduct->have_posts() ) : $loopProduct->the_post();	
+    		$productId      	= get_the_ID();
 
-	update_post_meta($pedido_id, 'pedidos_totalOrd', $totalOrd);
-	update_post_meta($pedido_id, 'pedidos_totalPzs', $totalPzs);
+		    if ($_POST['pb_pedidos_piezas' . $productId] >= 1) {
+			    $pedido_total 	= $_POST['pb_pedidos_piezas' . $productId] * $_POST['pb_pedidos_precio' . $productId];
+			    $totalOrd 		= $totalOrd + $pedido_total;
+			    $totalPzs 		= $totalPzs + $_POST['pb_pedidos_piezas' . $productId];
+
+			    update_post_meta($pedido_id, 'pedidos_modelo' . $productId, $_POST['pb_pedidos_modelo' . $productId]);
+			    update_post_meta($pedido_id, 'pedidos_piezas' . $productId, $_POST['pb_pedidos_piezas' . $productId]);
+			    update_post_meta($pedido_id, 'pedidos_precio' . $productId, $_POST['pb_pedidos_precio' . $productId]);		    	
+			    update_post_meta($pedido_id, 'pedidos_total' . $productId, $pedido_total);		    	
+		    }
+
+    	endwhile;
+		update_post_meta($pedido_id, 'pedidos_totalOrd', $totalOrd);
+		update_post_meta($pedido_id, 'pedidos_totalPzs', $totalPzs);    	
+	}  wp_reset_postdata();
 
 endif; ?>

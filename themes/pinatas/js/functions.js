@@ -171,6 +171,14 @@ var $=jQuery.noConflict();
 			$('body').addClass('overflow-hide');
 		});
 
+		/* Change input pedido */
+		/*$(".number-pinatas").change(function() {
+			var idPinata = $(this).parent().parent().attr('id');
+			var piezas = $('#' + idPinata + ' .number-pinatas').val();
+			var precio = $('#' + idPinata + ' .precio-pinatas').val();
+			var total = piezas * precio;
+			$('#' + idPinata + ' .total-pinatas').val(total);
+		});*/
 	});
 })(jQuery);
  
