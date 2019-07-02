@@ -41,3 +41,14 @@ textarea {
 		list-style-type: none!important;
 	}
 }
+
+.input-hide {
+	float: left;
+    width: 0px!important;
+    height: 0px!important;
+    border: 0px!important;
+    margin: 0px!important;
+}
+.block-input {
+	@extend .bg-absolute;
+}

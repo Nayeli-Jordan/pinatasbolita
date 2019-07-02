@@ -258,7 +258,6 @@ function display_pedidos_atributos( $pedidos ){
     if ( $loop->have_posts() ) {
         while ( $loop->have_posts() ) : $loop->the_post();
             $post_id        = get_the_ID();
-            $productName    = get_the_title( $post_id ); 
 
             $modelo      = 'modelo' . $post_id;
             $piezas      = 'piezas' . $post_id;
@@ -321,6 +320,7 @@ function display_pedidos_atributos( $pedidos ){
             <th colspan="2" class="padding-bottom-30">
                 <label for="pedidos_estatus">Estatus:</label>
                 <select name="pedidos_estatus" id="pedidos_estatus" required>
+                    <option value=""></option>
                     <option value="Abierto" <?php selected($estatus, 'Abierto'); ?>>Abierto</option>
                     <option value="Cerrado" <?php selected($estatus, 'Cerrado'); ?>>Cerrado</option>
                 </select><br>               
@@ -341,13 +341,11 @@ function display_pedidos_atributos( $pedidos ){
         if ( $loop->have_posts() ) {
             while ( $loop->have_posts() ) : $loop->the_post();
                 $post_id        = get_the_ID();
-                $product        = wc_get_product( $post_id );
                 $productName    = get_the_title( $post_id );
-                $price          = $product->get_regular_price();
-                if ($price === '') { $price = 0; } /* Sin precio */
 
                 $modelo = ${'modelo' . $post_id};
                 $piezas = ${'piezas' . $post_id};
+                $precio = ${'precio' . $post_id};
                 $total = ${'total' . $post_id}; ?>
                 <tr>
                     <th>
@@ -357,7 +355,7 @@ function display_pedidos_atributos( $pedidos ){
                         <input type="number" min="0" name="pedidos_piezas<?php echo $post_id; ?>" value="<?php echo $piezas; ?>" placeholder="0">
                     </th>
                     <th>
-                        <input type="number" min="0" name="pedidos_precio<?php echo $post_id; ?>" value="<?php echo $price; ?>" placeholder="0">
+                        <input type="number" min="0" name="pedidos_precio<?php echo $post_id; ?>" value="<?php echo $precio; ?>" placeholder="0">
                     </th>
                     <th>
                         <input type="number" min="0" name="pedidos_total<?php echo $post_id; ?>" value="<?php echo $total; ?>" placeholder="0">
@@ -720,7 +718,6 @@ add_filter( 'manage_pedidos_posts_columns', 'set_custom_edit_pedidos_columns' );
 function set_custom_edit_pedidos_columns($columns) {
     $columns['pedidos_total']  = __( 'Total', 'pbolita' );
     $columns['pedidos_estatus'] = __( 'Estatus', 'pbolita' );
-    $columns['pedidos_alerta']  = __( 'Alerta', 'pbolita' );
 
     return $columns;
 }
@@ -738,21 +735,15 @@ function custom_pedidos_column( $column, $post_id ) {
                 echo "-";
             break;
         case 'pedidos_estatus' :
-            $estatus  = get_post_meta( $post_id, 'pedidos_estatus', true );
-            if( $estatus != "")
-                echo $estatus;
-            else
-                echo "-";
-            break;
-        case 'pedidos_alerta' :
-            $entregaOrg  = get_post_meta( $post_id, 'pedidos_entrega', true );
-            $alerta      = get_post_meta( $post_id, 'pedidos_alerta', true );
-            $alertActive = date("Y-m-d", strtotime($entregaOrg . '- ' . $alerta . ' days'));
+            $estatus        = get_post_meta( $post_id, 'pedidos_estatus', true );
+            $alerta         = get_post_meta( $post_id, 'pedidos_alerta', true );
+            $entregaOrg     = get_post_meta( $post_id, 'pedidos_entrega', true );
+            $alertActive    = date("Y-m-d", strtotime($entregaOrg . '- ' . $alerta . ' days'));
             /* Fecha en español */
             setlocale(LC_ALL,"es_ES");
             $alertActive = strftime("%d/%B/%Y", strtotime($alertActive));
-            if( $alerta != "")
-                echo $alerta . ' días antes </br>' . $alertActive;
+            if( $estatus != "")
+                echo $estatus . '</br>Alerta: ' . $alerta . ' días antes </br>' . $alertActive;
             else
                 echo "-";
             break;

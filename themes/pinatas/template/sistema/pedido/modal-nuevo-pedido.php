@@ -41,7 +41,7 @@
            	<?php /* Loop modelos y sus piezas */
 	        $args = array(
 	            'post_type' 		=> 'product',
-	            'posts_per_page' 	=> -1,
+	            'posts_per_page' 	=> 350,
 	            'orderby' 			=> 'title',
 	            'order' 			=> 'ASC'
 	        );
@@ -49,15 +49,22 @@
 	        $i = 1;
 	        if ( $loop->have_posts() ) {
 	            while ( $loop->have_posts() ) : $loop->the_post();	
+		    		$productId      = get_the_ID();
+		    		$productName 	= get_the_title( $productId );
 
-	            	$post_id        = get_the_ID();
-               		$productName 	= get_the_title( $post_id ); ?>
+		    		/* Calcular total */
+					$product        = wc_get_product( $productId );
+					$price          = $product->get_regular_price();
+					if ($price === '') { $price = 0; } /* Sin precio */ ?>
+
 					<div class="col s12 m6 l4 input-field no-padding-left no-padding-right">
-						<div class="col s8 no-padding-right">
-							<input type="text" min="1" class="not-border" name="pedidos_modelo<?php echo $post_id; ?>" id="pedidos_modelo<?php echo $post_id; ?>" value="<?php echo $productName; ?>">	
+						<div class="col s8 no-padding-right relative">
+							<input type="text" min="1" class="not-border" name="pedidos_modelo<?php echo $productId; ?>" id="pedidos_modelo<?php echo $productId; ?>" value="<?php echo $productName; ?>">
+							<div class="block-input"></div>
 						</div>
 						<div class="col s4">
-			    			<input type="number" min="1" name="pedidos_piezas<?php echo $post_id; ?>" id="pedidos_piezas<?php echo $post_id; ?>" placeholder="0">	
+			    			<input type="number" min="1" name="pedidos_piezas<?php echo $productId; ?>" id="pedidos_piezas<?php echo $productId; ?>" placeholder="0">
+			    			<input type="number" min="0" name="pedidos_precio<?php echo $productId; ?>" id="pedidos_precio<?php echo $productId; ?>" value="<?php echo $price; ?>" class="input-hide">	
 						</div>
 					</div>	
 	            <?php endwhile;
@@ -72,58 +79,31 @@
 </div>
 <?php if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['send_submitPedido'] )):
 
-    $args = array(
-        'post_type' 		=> 'product',
-        'posts_per_page' 	=> -1,
-        'orderby' 			=> 'title',
-        'order' 			=> 'ASC'
-    );
-    $loop = new WP_Query( $args );
-    $totalOrd = 0;
-    $totalPzs = 0;
-    if ( $loop->have_posts() ) {
-        while ( $loop->have_posts() ) : $loop->the_post();	
-    		$productId      = get_the_ID();
-    		/* Calcular total */
-			$product        = wc_get_product( $productId );
-			$price          = $product->get_regular_price();
-			if ($price === '') { $price = 0; } /* Sin precio */
-
-	        $pedido_modelo      = 'pedido_modelo' . $productId;
-	        $pedido_piezas      = 'pedido_piezas' . $productId;
-		    ${$pedido_modelo}   = $_POST['pedidos_modelo' . $productId];
-		    ${$pedido_piezas}   = $_POST['pedidos_piezas' . $productId];
-
-    	endwhile;
-	}  wp_reset_postdata();
-
-    $pedido_cliente      	= $_POST['pedidos_cliente'];
+	$pedido_cliente      	= $_POST['pedidos_cliente'];
     $pedido_entrega        	= $_POST['pedidos_entrega'];
     $pedido_observaciones 	= $_POST['pedidos_observaciones'];
     $pedido_alerta 			= $_POST['pedidos_alerta'];
+    $pedido_infoCliente 	= '';
+    $totalOrd 				= 0;
+    $totalPzs 				= 0;    
 
     /* Obtener Info cliente */
-    $args = array(
+    $argsClient = array(
         'post_type' 		=> 'clientes',
         'posts_per_page' 	=> 1,
 		'title' 			=> $pedido_cliente
     );
-    $loop = new WP_Query( $args );
-    if ( $loop->have_posts() ) { 
-        while ( $loop->have_posts() ) : $loop->the_post();
+    $loopClient = new WP_Query( $argsClient );
+    if ( $loopClient->have_posts() ) { 
+        while ( $loopClient->have_posts() ) : $loopClient->the_post();
 			$cliente_id = get_the_ID();
 			$nivel   	= get_post_meta( $cliente_id, 'clientes_nivel', true );
 			$correo   	= get_post_meta( $cliente_id, 'clientes_correo', true );
 			$cel   		= get_post_meta( $cliente_id, 'clientes_cel', true );
 			$tel   		= get_post_meta( $cliente_id, 'clientes_tel', true );
 			$direccion  = get_post_meta( $cliente_id, 'clientes_direccion', true );
-
-			$pedido_infoCliente = '';
-			if ($nivel != '') { $pedido_infoCliente .= '• Nivel: ' . $nivel . '</br>'; }
-			if ($direccion != '') { $pedido_infoCliente .=  '• ' . $direccion . '</br>'; }
-			if ($correo != '') { $pedido_infoCliente .=  '• ' . $correo . '</br>'; }
-			if ($cel != '') { $pedido_infoCliente .=  '• ' . $cel . ' '; }
-			if ($tel != '') { $pedido_infoCliente .=  '• ' . $tel . '</br>'; }
+			
+			$pedido_infoCliente .= '• Nivel: ' . $nivel . '</br>• ' . $direccion . '</br>• ' . $correo . '</br>• ' . $cel . '</br>• ' . $tel;
 
         endwhile;
 	} wp_reset_postdata();
@@ -131,67 +111,27 @@
 	/**
 	** Crear post pedidos 
 	**/
-
-	/* Fecha en español */
-    setlocale(LC_ALL,"es_ES");
-    $pedido_entregaEsp = strftime("%d/%B/%Y", strtotime($pedido_entrega)); 
-
-	$pedido_title	      	= $pedido_cliente . ' | ' . $pedido_entregaEsp . $pedido_infoCliente;
-	$post = array(
+    $pedido_number  	= date("dmY");
+	$pedido_title 		= $pedido_cliente . ' | ' . $pedido_number;
+	$post_pedido = array(
 		'post_title'	=> wp_strip_all_tags($pedido_title),
 		'post_content'	=> $pedido_observaciones,
 		'post_status'	=> 'private',
 		'post_type' 	=> 'pedidos'
 	);
 
-	$pedido_id = wp_insert_post($post);
+	$pedido_id = wp_insert_post($post_pedido);
+
+	update_post_meta($pedido_id, 'pedidos_cliente', $pedido_cliente);
+	update_post_meta($pedido_id, 'pedidos_nivelCliente', $nivel);
+	update_post_meta($pedido_id, 'pedidos_infoCliente', $pedido_infoCliente);
+	update_post_meta($pedido_id, 'pedidos_entrega', $pedido_entrega);
+	update_post_meta($pedido_id, 'pedidos_estatus', 'Abierto');
+	update_post_meta($pedido_id, 'pedidos_alerta', $pedido_alerta);
 
 
 
+	update_post_meta($pedido_id, 'pedidos_totalOrd', $totalOrd);
+	update_post_meta($pedido_id, 'pedidos_totalPzs', $totalPzs);
 
-    $args = array(
-        'post_type' 		=> 'product',
-        'posts_per_page' 	=> -1,
-        'orderby' 			=> 'title',
-        'order' 			=> 'ASC'
-    );
-    $loop = new WP_Query( $args );
-    $totalOrd = 0;
-    $totalPzs = 0;
-    if ( $loop->have_posts() ) {
-        while ( $loop->have_posts() ) : $loop->the_post();	
-    		$productId        = get_the_ID();
-			/* Calcular total */
-			$product        = wc_get_product( $productId );
-			$price          = $product->get_regular_price();
-			if ($price === '') { $price = 0; } /* Sin precio */
-
-			$pedido_modelo 		= ${'pedido_modelo' . $productId};
-
-			//Total
-			$pedido_piezas 		= ${'pedido_piezas' . $productId};
-		    $pedido_total   	= $pedido_piezas * $price;
-		    $totalOrd			= $totalOrd + $pedido_total;
-		    $totalPzs			= $totalPzs + $pedido_piezas;
-
-		    update_post_meta($pedido_id,'pedidos_modelo' . $productId, $pedido_modelo);
-		    update_post_meta($pedido_id,'pedidos_piezas' . $productId, $pedido_piezas);
-		    update_post_meta($pedido_id,'pedidos_total' . $productId, $pedido_total);
-		    update_post_meta($pedido_id,'pedidos_precio' . $productId, $price);
-
-    	endwhile;
-	}  wp_reset_postdata();
-
-
-
-
-
-	update_post_meta($pedido_id,'pedidos_cliente',$pedido_cliente);
-	update_post_meta($pedido_id,'pedidos_nivelCliente',$nivel);
-	update_post_meta($pedido_id,'pedidos_infoCliente',$pedido_infoCliente);
-	update_post_meta($pedido_id,'pedidos_entrega',$pedido_entrega);
-	update_post_meta($pedido_id,'pedidos_estatus', 'Abierto');
-	update_post_meta($pedido_id,'pedidos_alerta',$pedido_alerta);
-	update_post_meta($pedido_id,'pedidos_totalOrd',$totalOrd);
-	update_post_meta($pedido_id,'pedidos_totalPzs',$totalPzs);
 endif; ?>

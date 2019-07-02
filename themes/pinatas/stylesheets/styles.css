@@ -2724,6 +2724,15 @@ textarea {
   list-style-type: none !important;
 }
 
+/* line 45, ../sass/components/_forms.scss */
+.input-hide {
+  float: left;
+  width: 0px !important;
+  height: 0px !important;
+  border: 0px !important;
+  margin: 0px !important;
+}
+
 /* line 4, ../sass/components/_global.scss */
 html {
   box-sizing: border-box;
@@ -4132,7 +4141,7 @@ video.responsive-video {
 }
 
 /* line 32, ../sass/components/_media.scss */
-.bg-absolute {
+.bg-absolute, .block-input {
   position: absolute;
   top: 0;
   bottom: 0;
