@@ -126,13 +126,13 @@
 			            $precio      = 'precio' . $post_id;
 			            $total       = 'total' . $post_id;  
 
-			            if (${$piezas} != '') { ?>
+			            if (${$piezas} >= 1) { ?>
 
 				            <tr>
 								<td><p><?php echo $productName ?></p></th>
 								<td class="text-center"><p><?php echo ${$piezas}; ?></p></th>
 								<td class="text-center"><p><?php echo ${$precio}; ?></p></th>
-								<td class="text-center"><p><?php echo ${$total}; ?></p></th>
+								<td class="text-center"><p><?php echo number_format(${$total}); ?></p></th>
 							</tr>
 
 			            <?php } 
@@ -144,18 +144,18 @@
 						<td class="width-25p tdInvisible"></td>
 						<td class="width-25p"><?php echo $totalPzs; ?></td>
 						<td class="width-25p">Total: </td>
-						<td class="width-25p"><?php echo $totalOrd; ?></td>
+						<td class="width-25p"><?php echo number_format($totalOrd); ?></td>
 					</tr>
 					<?php if ($nivelCliente != 'Normal') { ?>
 						<tr class="color-light">
 							<td colspan="2" class="width-50p tdInvisible"></td>
 							<td class="width-25p">Descuento: </td>
-							<td class="width-25p"><?php echo $descuento; ?></td>
+							<td class="width-25p"><?php echo number_format($descuento); ?></td>
 						</tr>
 						<tr class="color-light">
 							<td colspan="2" class="width-50p tdInvisible"></td>
 							<td class="width-25p">A pagar: </td>
-							<td class="width-25p">$<?php echo $totalFin; ?></td>
+							<td class="width-25p">$<?php echo number_format($totalFin); ?></td>
 						</tr>
 					<?php } ?>
 				</tfoot>

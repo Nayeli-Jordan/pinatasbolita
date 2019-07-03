@@ -30,10 +30,10 @@
                		$piezas      	= 'piezas' . $post_id; ?>
 					<div class="col s12 m6 l4 input-field no-padding-left no-padding-right">
 						<div class="col s8 no-padding-right">
-							<input type="text" min="1" class="not-border" name="pedidos_modelo<?php echo $post_id; ?>" id="pedidos_modelo<?php echo $post_id; ?>" value="<?php echo $productName; ?>" disabled>	
+							<input type="text" class="not-border" name="pedidos_modelo<?php echo $post_id; ?>" id="pedidos_modelo<?php echo $post_id; ?>" value="<?php echo $productName; ?>" disabled>	
 						</div>
 						<div class="col s4">
-			    			<input type="number" min="1" name="pedidos_piezas<?php echo $post_id; ?>" id="pedidos_piezas<?php echo $post_id; ?>" placeholder="0" value="<?php echo ${$piezas}; ?>">	
+			    			<input type="number" min="0" name="pedidos_piezas<?php echo $post_id; ?>" id="pedidos_piezas<?php echo $post_id; ?>" placeholder="0" value="<?php echo ${$piezas}; ?>">	
 						</div>
 					</div>	
 	            <?php endwhile;

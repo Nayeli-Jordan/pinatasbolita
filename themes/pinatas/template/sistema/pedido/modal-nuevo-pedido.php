@@ -59,10 +59,10 @@
 
 					<div class="col s12 m6 l4 input-field no-padding-left no-padding-right">
 						<div class="col s8 no-padding-right relative">
-							<input type="text" min="1" class="not-border" name="pb_pedidos_modelo<?php echo $productId; ?>" id="pb_pedidos_modelo<?php echo $productId; ?>" value="<?php echo $productName; ?>"><div class="block-input"></div>
+							<input type="text" class="not-border" name="pb_pedidos_modelo<?php echo $productId; ?>" id="pb_pedidos_modelo<?php echo $productId; ?>" value="<?php echo $productName; ?>"><div class="block-input"></div>
 						</div>
 						<div class="col s4">
-			    			<input type="number" min="1" name="pb_pedidos_piezas<?php echo $productId; ?>" id="pb_pedidos_piezas<?php echo $productId; ?>" placeholder="0" class="number-pinatas">
+			    			<input type="number" min="0" name="pb_pedidos_piezas<?php echo $productId; ?>" id="pb_pedidos_piezas<?php echo $productId; ?>" placeholder="0" class="number-pinatas">
 			    			<input type="number" min="0" name="pb_pedidos_precio<?php echo $productId; ?>" id="pb_pedidos_precio<?php echo $productId; ?>" value="<?php echo $price; ?>" class="input-hide">
 						</div>
 					</div>	

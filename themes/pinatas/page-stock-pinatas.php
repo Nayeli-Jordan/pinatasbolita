@@ -162,7 +162,7 @@
 
 								<tr>
 									<td><a href="<?php echo $linkCliente; ?>" class="color-dark text-underline-hover"><?php echo $clienteName; ?></a></td>
-									<td><?php if ($nivel != '') { echo $nivel; } ?></td>
+									<td class="text-center"><?php if ($nivel != '') { echo $nivel; } ?></td>
 									<td><?php 
 										if ($direccion != '') { echo $direccion . '</br>'; }
 										if ($correo != '') { echo '• ' . $correo . '</br>'; }
@@ -170,8 +170,8 @@
 										if ($tel != '') { echo '• ' . $tel . '</br>'; }
 									?></td>
 									<td><?php the_content(); ?></td>
-									<td><?php echo $pedidos; ?></td>
-									<td><?php echo $pedidosAbiertos; ?></td>
+									<td class="text-center"><?php echo $pedidos; ?></td>
+									<td class="text-center"><?php echo $pedidosAbiertos; ?></td>
 								</tr>
 
 				            <?php $clients++; $tpedidos = $tpedidos + $pedidos;
@@ -221,8 +221,8 @@
 
 								<tr>
 									<td><a href="<?php echo $linkMaterial; ?>" class="color-dark text-underline-hover"><?php echo $materialName; ?></a></td>
-									<td><?php if ($cantidad != '') { echo $cantidad; } ?></td>
-									<td><?php if ($presentacion != '') { echo $presentacion; } ?></td>
+									<td class="text-center"><?php if ($cantidad != '') { echo $cantidad; } ?></td>
+									<td class="text-center"><?php if ($presentacion != '') { echo $presentacion; } ?></td>
 									<td><?php the_content(); ?></td>
 								</tr>
 

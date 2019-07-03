@@ -17,8 +17,8 @@
     			<textarea name="materiales_observaciones" id="materiales_observaciones" placeholder="Otros detalles del material."><?php echo $materialContent; ?></textarea>
 			</div>	
 			<div class="col s12 input-field margin-top-30">
-				<label for="materiales_cantidad">¿Agregar egreso?</label>
-    			<input type="number" min="0" name="materiales_egreso" id="materiales_egreso">
+				<label for="materiales_cantidad">¿Agregar egreso? ($)</label>
+    			<input type="number" min="0" name="materiales_egreso" id="materiales_egreso" placeholder="100">
 			</div>
 			<div class="col s12 text-right margin-top">
 				<input type="submit" id="mb_submitEditMaterial" name="mb_submitEditMaterial" class="btn btn-primary inline-block" value="Guardar" />

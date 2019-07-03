@@ -16,13 +16,25 @@
 			if ( $loopPedido->have_posts() ) {
 			    while ( $loopPedido->have_posts() ) : $loopPedido->the_post();
 			    	$pedido_id  = get_the_ID();
-			    	$productName= get_the_title( $pedido_id );
-					$piezas   	= get_post_meta( $pedido_id, 'pedidos_piezas', true );
+			    	$postName= get_the_title( $pedido_id );
 					$cliente  	= get_post_meta( $pedido_id, 'pedidos_cliente', true );
+					$nivelCliente  	= get_post_meta( $pedido_id, 'pedidos_nivelCliente', true );
 					$entrega  	= get_post_meta( $pedido_id, 'pedidos_entrega', true );
-					$estatus  	= get_post_meta( $pedido_id, 'pedidos_estatus', true );
 					$alerta  	= get_post_meta( $pedido_id, 'pedidos_alerta', true );
+					$totalOrd  		= get_post_meta( $pedido_id, 'pedidos_totalOrd', true );
+					$totalPzs  		= get_post_meta( $pedido_id, 'pedidos_totalPzs', true );
 					$linkPedido = get_permalink();
+
+					/* Calcular descuento y pago */
+			        if ($nivelCliente === 'Normal') {
+						$descuento = 0;
+					} else if ($nivelCliente === 'Plata') {
+						$descuento = $totalOrd * .10;
+					} else if ($nivelCliente === 'Oro') {
+						$descuento = $totalOrd * .20;
+					} 
+					$descuento = round($descuento);
+					$totalFin = $totalOrd - $descuento;
  
 
 			        if ($alerta != '' || $alerta != 0) { 
@@ -35,10 +47,13 @@
 					        $entrega = strftime("%d/%B/%Y", strtotime($entrega));
 					
 							$mailBody .= '<div style="margin-bottom: 20px">
-								<p>Modelo: ' . $productName . '</p>
-								<p>Cliente: ' . $cliente . '</p>
-								<p>Piezas: ' . $piezas . '</p>
+								<p>Pedido: ' . $postName . '</p></br>
+								<p>Cliente: ' . $cliente . ' | Nivel: ' .  $nivelCliente . '</p>
 								<p>Entrega: ' . $entrega . '</p>
+								<p>Piezas: ' . $totalPzs . '</p></br>
+								<p>Total: $' . number_format($totalOrd) . '</p>
+								<p>Descuento : $' . number_format($descuento) . '</p>
+								<p>A pagar: $' . number_format($totalFin) . '</p>
 								<p><a href="' . $linkPedido . '"  class="color-primary">Ver</a></p>
 							</div>';
 
@@ -47,13 +62,14 @@
 				endwhile;
 			} wp_reset_postdata();
 
+		    $mailHeader .= '<p style="margin-bottom: 20px;">Se ha activado la alerta de las siguientes entregas:</p>';
 			$message = $mailHeader . $mailBody . $mailFooter;
 			if ($noAlerts > 0) {
 			 	echo $message;
 			 	/* Send email */
 				$to 		= "nayeli@queonda.com.mx";
 			    $subject 	= "Alerta de entregas PB";
-			    $mailHeader .= '<p style="margin-bottom: 20px;">Se ha activado la alerta de las siguientes entregas:</p>';
+
 			    wp_mail($to, $subject, $message);
 			} ?>
 			<div class="margin-top-30 text-right">

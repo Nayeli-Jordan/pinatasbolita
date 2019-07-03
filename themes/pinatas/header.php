@@ -61,7 +61,7 @@
 			/* Obtener categorías de producto */
 			include (TEMPLATEPATH . '/template/function-category.php');
 		endif; ?>
-		<?php if (is_user_logged_in() && (is_home() || is_product() || is_page(array ('novedades', 'aviso-de-privacidad', 'contabilidad')) )): ?>
+		<?php if (is_user_logged_in() && (is_home() || is_product() || is_page(array ('novedades', 'aviso-de-privacidad', 'contabilidad', 'stock-pinatas')) )): ?>
 			<a href="<?php echo SITEURL; ?>stock-pinatas" class="btn btn-primary btn-stock">Stock</a>
 			<?php $current_user = wp_get_current_user();
         	if ( 3 == $current_user->ID ) { ?>

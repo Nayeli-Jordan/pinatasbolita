@@ -51,7 +51,7 @@
 
 										<tr>
 											<td><?php echo $cuentaName; ?></td>
-											<td class="text-center">$<?php echo $cantidad; ?></td>
+											<td class="text-center">$<?php echo number_format($cantidad); ?></td>
 											<td><?php echo $categoria; ?></td>
 											<td class="text-center"><small><?php echo $cuentaDate; ?></small></td>
 										</tr>
@@ -104,7 +104,7 @@
 
 										<tr>
 											<td><?php echo $cuentaName; ?></td>
-											<td class="text-center">$<?php echo $cantidad; ?></td>
+											<td class="text-center">$<?php echo number_format($cantidad); ?></td>
 											<td><?php echo $categoria; ?></td>
 											<td class="text-center"><small><?php echo $cuentaDate; ?></small></td>
 										</tr>
@@ -133,9 +133,9 @@
 							<tbody>
 								<tr>
 									<td class="text-center"><?php echo $current_date; ?></td>
-									<td class="text-center">$<?php echo $tIngreso; ?></td>
-									<td class="text-center">$<?php echo $tEgreso; ?></td>
-									<td class="text-center <?php if ($tCuenta < 0) { echo 'color-alert'; } ?>">$<?php echo $tCuenta; ?></td>
+									<td class="text-center">$<?php echo number_format($tIngreso); ?></td>
+									<td class="text-center">$<?php echo number_format($tEgreso); ?></td>
+									<td class="text-center <?php if ($tCuenta < 0) { echo 'color-alert'; } ?>">$<?php echo number_format($tCuenta); ?></td>
 								</tr>
 							</tbody>
 						</table>				
@@ -174,9 +174,9 @@
 
 										<tr>
 											<td class="text-center"><?php echo $registroName; ?></td>
-											<td class="text-center">$<?php echo $ingreso; ?></td>
-											<td class="text-center">$<?php echo $egreso; ?></td>
-											<td class="text-center <?php if ($total < 0) { echo 'color-alert'; } ?>">$<?php echo $total; ?></td>
+											<td class="text-center">$<?php echo number_format($ingreso); ?></td>
+											<td class="text-center">$<?php echo number_format($egreso); ?></td>
+											<td class="text-center <?php if ($total < 0) { echo 'color-alert'; } ?>">$<?php echo number_format($total); ?></td>
 										</tr>
 
 						            <?php endwhile;
@@ -186,7 +186,7 @@
 								<tr>
 									<td colspan="2" class="width-50p tdInvisible">-</td>
 									<td class="width-20p">Total Registro:</td>
-									<td class="width-30p">$<?php echo $tRegistro; ?></td>
+									<td class="width-30p">$<?php echo  number_format($tRegistro); ?></td>
 								</tr>
 							</tfoot>
 						</table>				

@@ -6,7 +6,7 @@
 		<form id="editalerta-form" name="editalerta-form" action=""  method="post" class="validation row" data-parsley-alerta>
 			<div class="col s12 input-field">
 				<label for="pedidos_alerta">¿Cuántos días antes se te notifica?: <small class="color-gray">(0 para desactivar notificación)</small></label>
-    			<input type="number" min="1" name="pedidos_alerta" id="pedidos_alerta" value="<?php echo $alerta; ?>" required data-parsley-required-message="Campo obligatorio">
+    			<input type="number" min="0" name="pedidos_alerta" id="pedidos_alerta" value="<?php echo $alerta; ?>" required data-parsley-required-message="Campo obligatorio">
 			</div>
 			<div class="col s12 text-right margin-top">
 				<input type="submit" id="mb_submitEditAlerta" name="mb_submitEditAlerta" class="btn btn-primary inline-block" value="Guardar" />

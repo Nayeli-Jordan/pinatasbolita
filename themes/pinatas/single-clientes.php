@@ -78,7 +78,7 @@
 						<tr class="<?php if ($estatus === 'Cerrado') { echo "tab-disabled-strong";} ?>">
 							<td><?php echo $entrega; ?></td>
 							<td><?php echo $totalPzs; ?></td>
-							<td><?php echo $totalOrd; ?></td>
+							<td><?php echo number_format($totalOrd); ?></td>
 							<td><?php if ($nivel === 'Normal') {
 								$descuento = 0;
 							} else if ($nivel === 'Plata') {
@@ -87,7 +87,7 @@
 								$descuento = $totalOrd * 20;
 							} echo $descuento; 
 							$totalFin = $totalOrd - $descuento; ?></td>
-							<td>$<?php echo $totalFin; ?></td>
+							<td>$<?php echo  number_format($totalFin); ?></td>
 							<td><?php echo $estatus; ?></td>
 							<td><a href="<?php echo $linkPedido; ?>" terget="_blank" class="color-primary">Ver</a></td>
 						</tr>

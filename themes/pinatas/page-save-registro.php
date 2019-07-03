@@ -59,7 +59,7 @@
 
 						$mailBody .= '<tr>
 							<td>' . $cuentaName . '</td>
-							<td>$' . $cantidad . '</td>
+							<td>$' .  number_format($cantidad) . '</td>
 							<td>' . $categoria . '</td>
 							<td><small>' . $cuentaDate .'</small></td>
 						</tr>';
@@ -71,7 +71,7 @@
 				$mailBody .= '<tfoot>
 					<tr>
 						<td style="width: 40%">Total Ingresos:</td>
-						<td style="width: 20%">$' . $tIngreso . '</td>
+						<td style="width: 20%">$' .  number_format($tIngreso) . '</td>
 					</tr>
 				</tfoot>';
 			$mailBody .= '</table>';
@@ -120,7 +120,7 @@
 
 						$mailBody .= '<tr>
 							<td>' . $cuentaName . '</td>
-							<td>$' . $cantidad . '</td>
+							<td>$' .  number_format($cantidad) . '</td>
 							<td>' . $categoria . '</td>
 							<td><small>' . $cuentaDate .'</small></td>
 						</tr>';
@@ -132,7 +132,7 @@
 				$mailBody .= '<tfoot>
 					<tr>
 						<td style="width: 40%">Total Egresos:</td>
-						<td style="width: 20%">$' . $tEgreso . '</td>
+						<td style="width: 20%">$' .  number_format($tEgreso) . '</td>
 					</tr>
 				</tfoot>';
 			$mailBody .= '</table>';
@@ -152,10 +152,10 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>' .$current_date . '</td>
-						<td>$' .$tIngreso . '</td>
-						<td>$' .$tEgreso . '</td>
-						<td>$' .$tCuenta . '</td>
+						<td>' . $current_date . '</td>
+						<td>$' .  number_format($tIngreso) . '</td>
+						<td>$' .  number_format($tEgreso) . '</td>
+						<td>$' .  number_format($tCuenta) . '</td>
 					</tr>
 				</tbody>
 			</table>';			
