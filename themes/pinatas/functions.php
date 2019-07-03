@@ -158,11 +158,19 @@ function pb_remove_menu_items() {
     remove_menu_page('edit.php'); // Posts
     remove_menu_page('edit-comments.php'); // Comments
     //Editor (Esther y Verónica)
-    if( current_user_can( 'editor' ) ):
+    if( current_user_can( 'shop_manager' ) ):
         
-        remove_menu_page( 'edit.php?post_type=ae_perfil' );
-        remove_menu_page('edit.php?post_type=page'); // Pages  
+        remove_menu_page('edit.php?post_type=page'); // Pages 
+        remove_menu_page('upload.php'); 
         remove_menu_page('tools.php'); // Tools
+        remove_menu_page('themes.php'); // Tools
+
+        $current_user = wp_get_current_user();
+        if ( 3 != $current_user->ID ) :
+            remove_menu_page( 'users.php' );
+            remove_menu_page( 'edit.php?post_type=cuenta' );
+            remove_menu_page( 'edit.php?post_type=registro' );
+        endif;
 
     endif;
 }
@@ -742,8 +750,9 @@ function custom_pedidos_column( $column, $post_id ) {
             /* Fecha en español */
             setlocale(LC_ALL,"es_ES");
             $alertActive = strftime("%d/%B/%Y", strtotime($alertActive));
+            $entregaOrg = strftime("%d/%B/%Y", strtotime($entregaOrg));
             if( $estatus != "")
-                echo $estatus . '</br>Alerta: ' . $alerta . ' días antes </br>' . $alertActive;
+                echo $estatus . '</br>Alerta: ' . $alerta . ' días antes el ' . $alertActive . '</br>Entrega: ' . $entregaOrg;
             else
                 echo "-";
             break;

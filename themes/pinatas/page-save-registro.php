@@ -188,8 +188,7 @@
 
 			} else {
 				echo '<p class="margin-top: 30px;">No se ha guardado el registro, aún no es fin del mes</p>';
-			}
-			?>
+			} ?>
 		</section>
 	<?php endwhile; endif; 
 get_footer(); ?>

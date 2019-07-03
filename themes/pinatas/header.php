@@ -63,7 +63,11 @@
 		endif; ?>
 		<?php if (is_user_logged_in() && (is_home() || is_product() || is_page(array ('novedades', 'aviso-de-privacidad', 'contabilidad')) )): ?>
 			<a href="<?php echo SITEURL; ?>stock-pinatas" class="btn btn-primary btn-stock">Stock</a>
-		<?php endif ?>
+			<?php $current_user = wp_get_current_user();
+        	if ( 3 == $current_user->ID ) { ?>
+				<a href="<?php echo SITEURL; ?>contabilidad" class="btn btn-primary btn-contabilidad">Contabilidad</a>
+			<?php }
+		endif ?>
 		<?php if (!is_home()) :  ?>
 			<?php /* Load modal */
 			include (TEMPLATEPATH . '/template/sistema/load.php'); ?>

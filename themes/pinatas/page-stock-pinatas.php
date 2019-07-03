@@ -111,6 +111,9 @@
 					<?php include (TEMPLATEPATH . '/template/sistema/clientes/stock-clientes-thead.php'); ?>
 					<tbody>
 					<?php
+						$tpedidos = 0;
+						$tpedidosAbiertos = 0;
+			        	$clients = 0;
 				        $args = array(
 				            'post_type' 		=> 'clientes',
 				            'posts_per_page' 	=> -1,
@@ -119,7 +122,6 @@
 				        );
 				        $loop = new WP_Query( $args );
 				        if ( $loop->have_posts() ) { 
-				        	$clients = 0;
 				            while ( $loop->have_posts() ) : $loop->the_post();
 		   						$post_id 	= get_the_ID();
 		   						$clienteName= get_the_title( $post_id );
@@ -172,7 +174,8 @@
 									<td><?php echo $pedidosAbiertos; ?></td>
 								</tr>
 
-				            <?php $clients++; endwhile;
+				            <?php $clients++; $tpedidos = $tpedidos + $pedidos;
+							$tpedidosAbiertos = $tpedidosAbiertos + $pedidosAbiertos;  endwhile;
 						} wp_reset_postdata(); ?>
 					</tbody>					
 					<!-- Medium and down -->

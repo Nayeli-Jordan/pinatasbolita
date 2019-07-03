@@ -30,14 +30,25 @@
 	    }  wp_reset_postdata();
 
 		$cliente  		= get_post_meta( $pedido_id, 'pedidos_cliente', true );
+		$nivelCliente  	= get_post_meta( $pedido_id, 'pedidos_nivelCliente', true );
 		$entrega  		= get_post_meta( $pedido_id, 'pedidos_entrega', true );
 		$estatus  		= get_post_meta( $pedido_id, 'pedidos_estatus', true );
 		$alerta  		= get_post_meta( $pedido_id, 'pedidos_alerta', true );
 		$totalOrd  		= get_post_meta( $pedido_id, 'pedidos_totalOrd', true );
 		$totalPzs  		= get_post_meta( $pedido_id, 'pedidos_totalPzs', true );
 		$entregaOrg		= $entrega;
-
 		$pedidoContent 	= $post->post_content;
+
+		/* Calcular descuento y pago */
+        if ($nivelCliente === 'Normal') {
+			$descuento = 0;
+		} else if ($nivelCliente === 'Plata') {
+			$descuento = $totalOrd * .10;
+		} else if ($nivelCliente === 'Oro') {
+			$descuento = $totalOrd * .20;
+		} 
+		$descuento = round($descuento);
+		$totalFin = $totalOrd - $descuento;	
 
 		/* Obtener Info cliente */
         $args = array(
@@ -58,7 +69,7 @@
 				$linkCliente= get_permalink();
 
 				$infoCliente = '';
-				if ($nivel != '') { $infoCliente .= '• Nivel: ' . $nivel . '</br>'; }
+				$infoCliente .= 'Nivel: ' . $nivel . '</br>';
 				if ($direccion != '') { $infoCliente .=  '• ' . $direccion . '</br>'; }
 				if ($correo != '') { $infoCliente .=  '• ' . $correo . '</br>'; }
 				if ($cel != '') { $infoCliente .=  '• ' . $cel . ' '; }
@@ -69,18 +80,7 @@
 
 		/* Cambiar formato fecha */
 		setlocale(LC_ALL,"es_ES");
-        $entrega = strftime("%d/%B/%Y", strtotime($entrega)); 
-
-        /* Calcular descuento y pago */
-        if ($nivel === 'Normal') {
-			$descuento = 0;
-		} else if ($nivel === 'Plata') {
-			$descuento = $totalOrd * .10;
-		} else if ($nivel === 'Oro') {
-			$descuento = $totalOrd * .20;
-		} 
-		$descuento = round($descuento);
-		$totalFin = $totalOrd - $descuento;	
+        $entrega = strftime("%d/%B/%Y", strtotime($entrega));
 
         if ($estatus === 'Abierto') :
 			/* Modals notice */
@@ -146,16 +146,18 @@
 						<td class="width-25p">Total: </td>
 						<td class="width-25p"><?php echo $totalOrd; ?></td>
 					</tr>
-					<tr class="color-light">
-						<td colspan="2" class="width-50p tdInvisible"></td>
-						<td class="width-25p">Descuento: </td>
-						<td class="width-25p"><?php echo $descuento; ?></td>
-					</tr>
-					<tr class="color-light">
-						<td colspan="2" class="width-50p tdInvisible"></td>
-						<td class="width-25p">A pagar: </td>
-						<td class="width-25p">$<?php echo $totalFin; ?></td>
-					</tr>
+					<?php if ($nivelCliente != 'Normal') { ?>
+						<tr class="color-light">
+							<td colspan="2" class="width-50p tdInvisible"></td>
+							<td class="width-25p">Descuento: </td>
+							<td class="width-25p"><?php echo $descuento; ?></td>
+						</tr>
+						<tr class="color-light">
+							<td colspan="2" class="width-50p tdInvisible"></td>
+							<td class="width-25p">A pagar: </td>
+							<td class="width-25p">$<?php echo $totalFin; ?></td>
+						</tr>
+					<?php } ?>
 				</tfoot>
 			</table>
 			<table>

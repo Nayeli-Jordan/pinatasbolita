@@ -50,8 +50,10 @@ header {
 				padding-top: 90px;
 				padding-bottom: 10px;
 				&:not(:last-child) > a { border-right: 2px solid $light-color; }
-				&:nth-child(2) > a { padding-left: 0px; }
-				&:last-child > a { padding-right: 0px; }
+				@media #{$medium-and-up}{
+					&:nth-child(2) > a { padding-left: 0px; }
+					&:last-child > a { padding-right: 0px; }					
+				}
 				& > a {
 					display: inline-block;
 					line-height: 30px;

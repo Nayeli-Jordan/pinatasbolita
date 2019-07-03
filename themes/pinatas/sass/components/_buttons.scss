@@ -133,9 +133,14 @@ input[type="submit"] {
 	transform: rotate(45deg); 
 } 
 
-.btn-stock {
+.btn-stock,
+.btn-contabilidad {
 	position: absolute;
-	top: 30px;
+	top: 45px;
 	left: 30px;
 	z-index: 9999;
+}
+.btn-contabilidad {
+	left: inherit;
+	right: 30px;
 }

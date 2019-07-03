@@ -3,7 +3,7 @@
 	<div class="modal-content">
 		<em class="icon-close close-modal"></em>
 		<p class="color-primary no-margin-top text-center fz-20 margin-bottom-20">Cerrar pedido</p>
-		<p class="text-center margin-bottom-20">Cierra el pedido únicamente si ya se ha realizado la entrega y se ha pagado en su totalidad</p>
+		<p class="text-center margin-bottom-20">Cierra el pedido únicamente si ya se ha realizado la entrega y se ha pagado en su totalidad. Al cerrar la venta se agregará este ingreso al registro.</p>
 		<form id="closepedido-form" name="closepedido-form" action=""  method="post" class="validation row" data-parsley-pedido>
 			<div class="col s12 input-field">
 				<label for="pedidos_estatus">¿Cerrar el pedido?*:</label>
@@ -41,7 +41,7 @@
 		         endwhile;
 		    }  wp_reset_postdata(); ?>
 			<div class="col s12 text-right margin-top">
-				<input type="submit" id="mb_submitClosePedido" name="mb_submitClosePedido" class="btn btn-primary inline-block" value="Guardar" />
+				<input type="submit" id="mb_submitClosePedido" name="mb_submitClosePedido" class="btn btn-primary inline-block" value="Cerrar pedido" />
 				<input type="hidden" name="send_submitClosePedido" value="post" />
 				<?php wp_nonce_field( 'closepedido-form' ); ?>	
 			</div>

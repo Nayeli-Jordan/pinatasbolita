@@ -9,8 +9,8 @@
     			<input type="text" name="materiales_nombre" id="materiales_nombre" required  data-parsley-required-message="Campo obligatorio">
 			</div>
 			<div class="col s12 m6 input-field">
-				<label for="materiales_cantidad">Cantidad:</label>
-    			<input type="number" min="0" name="materiales_cantidad" id="materiales_cantidad">
+				<label for="materiales_cantidad">Cantidad*:</label>
+    			<input type="number" min="0" name="materiales_cantidad" id="materiales_cantidad" required  data-parsley-required-message="Campo obligatorio">
 			</div>
 			<div class="col s12 m12 input-field">
 				<label for="materiales_presentacion">Presentación:</label>
