@@ -91,104 +91,107 @@
 	        /* Cerrar pedido */
 			include (TEMPLATEPATH . '/template/sistema/pedido/modal-cerrar-pedido.php');
 			include (TEMPLATEPATH . '/template/sistema/pedido/modal-editar-alerta.php');
-		endif; ?>
+		endif; 
 
-	<section id="single" class="container single-content <?php if ($estatus === 'Cerrado') : echo 'single-pedido-cerrado'; endif; ?>">
-		<div class="card-pedido">
-			<p class="fz-20 margin-bottom-20 margin-right-20 uppercase inline-block">Detalles del pedido</p>
-			<div id="btns-modificar-pedido" class="inline-block float-right">
-				<p id="editar-pedido" class="open-modal text-underline color-primary inline-block margin-right-10">Editar pedido</p>|<p id="cerrar-pedido" class="open-modal text-underline color-primary inline-block margin-left-10">Cerrar pedido</p>
-			</div>
-			<table class="width-100p">
-				<thead>
-					<tr class="color-light">
-						<th class="width-25p"><p>Modelo</p></th>
-						<th class="width-25p"><p>Piezas</p></th>
-						<th class="width-25p"><p>Precio</p></th>
-						<th class="width-25p"><p>Total</p></th>
-					</tr>					
-				</thead>
-				<tbody><?php
-			    $args = array(
-			        'post_type'         => 'product',
-			        'posts_per_page'    => -1,
-			        'orderby'           => 'title',
-			        'order'             => 'ASC'
-			    );
-			    $loop = new WP_Query( $args );
-			    if ( $loop->have_posts() ) {
-			        while ( $loop->have_posts() ) : $loop->the_post();
-			            $post_id        = get_the_ID();
-			            $productName    = get_the_title( $post_id ); 
+		if (is_user_logged_in() ): ?>
+			<section id="single" class="container single-content <?php if ($estatus === 'Cerrado') : echo 'single-pedido-cerrado'; endif; ?>">
+				<div class="card-pedido">
+					<p class="fz-20 margin-bottom-20 margin-right-20 uppercase inline-block">Detalles del pedido</p>
+					<div id="btns-modificar-pedido" class="inline-block float-right">
+						<p id="editar-pedido" class="open-modal text-underline color-primary inline-block margin-right-10">Editar pedido</p>|<p id="cerrar-pedido" class="open-modal text-underline color-primary inline-block margin-left-10">Cerrar pedido</p>
+					</div>
+					<table class="width-100p">
+						<thead>
+							<tr class="color-light">
+								<th class="width-25p"><p>Modelo</p></th>
+								<th class="width-25p"><p>Piezas</p></th>
+								<th class="width-25p"><p>Precio</p></th>
+								<th class="width-25p"><p>Total</p></th>
+							</tr>					
+						</thead>
+						<tbody><?php
+					    $args = array(
+					        'post_type'         => 'product',
+					        'posts_per_page'    => -1,
+					        'orderby'           => 'title',
+					        'order'             => 'ASC'
+					    );
+					    $loop = new WP_Query( $args );
+					    if ( $loop->have_posts() ) {
+					        while ( $loop->have_posts() ) : $loop->the_post();
+					            $post_id        = get_the_ID();
+					            $productName    = get_the_title( $post_id ); 
 
-			            $modelo      = 'modelo' . $post_id;
-			            $piezas      = 'piezas' . $post_id;
-			            $precio      = 'precio' . $post_id;
-			            $total       = 'total' . $post_id;  
+					            $modelo      = 'modelo' . $post_id;
+					            $piezas      = 'piezas' . $post_id;
+					            $precio      = 'precio' . $post_id;
+					            $total       = 'total' . $post_id;  
 
-			            if (${$piezas} >= 1) { ?>
+					            if (${$piezas} >= 1) { ?>
 
-				            <tr>
-								<td><p><?php echo $productName ?></p></th>
-								<td class="text-center"><p><?php echo ${$piezas}; ?></p></th>
-								<td class="text-center"><p><?php echo ${$precio}; ?></p></th>
-								<td class="text-center"><p><?php echo number_format(${$total}); ?></p></th>
+						            <tr>
+										<td><p><?php echo $productName ?></p></th>
+										<td class="text-center"><p><?php echo ${$piezas}; ?></p></th>
+										<td class="text-center"><p><?php echo ${$precio}; ?></p></th>
+										<td class="text-center"><p><?php echo number_format(${$total}); ?></p></th>
+									</tr>
+
+					            <?php } 
+					         endwhile;
+					    }  wp_reset_postdata(); ?>
+						</tbody>
+						<tfoot>
+							<tr class="color-light">
+								<td class="width-25p tdInvisible"></td>
+								<td class="width-25p"><?php echo $totalPzs; ?></td>
+								<td class="width-25p">Total: </td>
+								<td class="width-25p"><?php echo number_format($totalOrd); ?></td>
 							</tr>
-
-			            <?php } 
-			         endwhile;
-			    }  wp_reset_postdata(); ?>
-				</tbody>
-				<tfoot>
-					<tr class="color-light">
-						<td class="width-25p tdInvisible"></td>
-						<td class="width-25p"><?php echo $totalPzs; ?></td>
-						<td class="width-25p">Total: </td>
-						<td class="width-25p"><?php echo number_format($totalOrd); ?></td>
-					</tr>
-					<?php if ($nivelCliente != 'Normal') { ?>
-						<tr class="color-light">
-							<td colspan="2" class="width-50p tdInvisible"></td>
-							<td class="width-25p">Descuento: </td>
-							<td class="width-25p"><?php echo number_format($descuento); ?></td>
+							<?php if ($nivelCliente != 'Normal') { ?>
+								<tr class="color-light">
+									<td colspan="2" class="width-50p tdInvisible"></td>
+									<td class="width-25p">Descuento: </td>
+									<td class="width-25p"><?php echo number_format($descuento); ?></td>
+								</tr>
+								<tr class="color-light">
+									<td colspan="2" class="width-50p tdInvisible"></td>
+									<td class="width-25p">A pagar: </td>
+									<td class="width-25p">$<?php echo number_format($totalFin); ?></td>
+								</tr>
+							<?php } ?>
+						</tfoot>
+					</table>
+					<table>
+						<tr>
+							<th class="text-left padding-top-30"><p class="color-primary">Fecha de entrega:</p></th>
+							<td colspan="2" class="padding-top-30"><p><?php echo $entrega; ?></p></td>
 						</tr>
-						<tr class="color-light">
-							<td colspan="2" class="width-50p tdInvisible"></td>
-							<td class="width-25p">A pagar: </td>
-							<td class="width-25p">$<?php echo number_format($totalFin); ?></td>
+						<tr>
+							<th class="text-left"><p class="color-primary">Observaciones:</p></th>
+							<td colspan="2"><?php echo $pedidoContent; ?></td>
 						</tr>
-					<?php } ?>
-				</tfoot>
-			</table>
-			<table>
-				<tr>
-					<th class="text-left padding-top-30"><p class="color-primary">Fecha de entrega:</p></th>
-					<td colspan="2" class="padding-top-30"><p><?php echo $entrega; ?></p></td>
-				</tr>
-				<tr>
-					<th class="text-left"><p class="color-primary">Observaciones:</p></th>
-					<td colspan="2"><?php echo $pedidoContent; ?></td>
-				</tr>
-				<tr>
-					<th class="text-left padding-top-50"><p class="color-primary">Cliente:</p></th>
-					<td colspan="2" class="padding-top-50">
-						<p class="margin-bottom-10"><?php echo $cliente; ?></p>
-						<p><?php echo $infoCliente; ?></p>
-						<p class="margin-top-20"><a href="<?php echo $linkCliente; ?>" class="enlace-primary">Ver pedidos cliente</a></p>
-					</td>
-				</tr>
-				<tr>
-					<th class="text-left padding-top-50"><p class="color-primary">Alerta:</p></th>
-					<td class="padding-top-50"><?php echo $alerta; ?> días antes</td>
-					<td class="padding-top-50"><p id="editar-alerta" class="open-modal text-underline color-primary inline-block margin-right-10">Editar alerta</p></td>
-				</tr>
-			</table>
-			<div class="margin-top-30 text-right">
-				<a href="<?php echo SITEURL; ?>stock-pinatas" class="btn btn-primary">Ir al stock</a>				
-			</div>
-		</div>
-	</section>
-<?php 
+						<tr>
+							<th class="text-left padding-top-50"><p class="color-primary">Cliente:</p></th>
+							<td colspan="2" class="padding-top-50">
+								<p class="margin-bottom-10"><?php echo $cliente; ?></p>
+								<p><?php echo $infoCliente; ?></p>
+								<p class="margin-top-20"><a href="<?php echo $linkCliente; ?>" class="enlace-primary">Ver pedidos cliente</a></p>
+							</td>
+						</tr>
+						<tr>
+							<th class="text-left padding-top-50"><p class="color-primary">Alerta:</p></th>
+							<td class="padding-top-50"><?php echo $alerta; ?> días antes</td>
+							<td class="padding-top-50"><p id="editar-alerta" class="open-modal text-underline color-primary inline-block margin-right-10">Editar alerta</p></td>
+						</tr>
+					</table>
+					<div class="margin-top-30 text-right">
+						<a href="<?php echo SITEURL; ?>stock-pinatas" class="btn btn-primary">Ir al stock</a>				
+					</div>
+				</div>
+			</section>
+		<?php else: 
+			include (TEMPLATEPATH . '/template/template-404.php');
+		endif;
 	endwhile; // end of the loop.
 	get_footer(); 
 ?>
