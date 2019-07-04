@@ -115,7 +115,7 @@
 	$post_pedido = array(
 		'post_title'	=> wp_strip_all_tags($pedido_title),
 		'post_content'	=> $pedido_observaciones,
-		'post_status'	=> 'private',
+		'post_status'	=> 'publish',
 		'post_type' 	=> 'pedidos'
 	);
 

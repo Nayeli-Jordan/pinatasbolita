@@ -58,7 +58,7 @@
 	if ($cuenta_cantidad != '') {
 		$post = array(
 			'post_title'	=> wp_strip_all_tags($material_nombre),
-			'post_status'	=> 'private',
+			'post_status'	=> 'publish',
 			'post_type' 	=> 'cuenta'
 		);
 

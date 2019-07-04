@@ -4,12 +4,20 @@
 	$current_date	= date("M Y");
 	$current_year 	= date('Y');
 	$current_month 	= date('m');
+
+	$current_user = wp_get_current_user();
+    if ( 3 == $current_user->ID || current_user_can('administrator')) { /* Manuel */
+    	$visibility = 'page-visible';
+    } else {
+    	$visibility = 'page-invisible';
+    }
+
 	if (have_posts()) : while (have_posts()) : the_post();
 		include (TEMPLATEPATH . '/template/sistema/contabilidad/modal-ingreso.php');
 		include (TEMPLATEPATH . '/template/sistema/contabilidad/modal-egreso.php');
 		include (TEMPLATEPATH . '/template/sistema/contabilidad/notice/notice-nuevo-ingreso.php');
 		include (TEMPLATEPATH . '/template/sistema/contabilidad/notice/notice-nuevo-egreso.php'); ?>
-		<section class="[ container ] color-light padding-bottom-100">
+		<section class="[ container ] color-light padding-bottom-100 <?php echo $visibility; ?>">
 			<div class="row">
 				<div class="col s12 l6 margin-bottom-30">
 					<div class="text-right margin-bottom-20">

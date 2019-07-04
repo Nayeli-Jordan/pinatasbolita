@@ -7,17 +7,17 @@ add_action('init', function(){
 
 	// Proveedores
 	$labels = array(
-		'name'          => 'Proveedor',
-		'singular_name' => 'Proveedor',
-		'add_new'       => 'Nuevo proveedor',
-		'add_new_item'  => 'Nuevo proveedor',
-		'edit_item'     => 'Editar proveedor',
-		'new_item'      => 'Nuevo proveedor',
+		'name'          => 'Distribuidor',
+		'singular_name' => 'Distribuidor',
+		'add_new'       => 'Nuevo distribuidor',
+		'add_new_item'  => 'Nuevo distribuidor',
+		'edit_item'     => 'Editar distribuidor',
+		'new_item'      => 'Nuevo distribuidor',
 		'all_items'     => 'Todo',
-		'view_item'     => 'Ver proveedor',
-		'search_items'  => 'Buscar proveedor',
-		'not_found'     => 'No hay proveedor.',
-		'menu_name'     => 'Proveedor'
+		'view_item'     => 'Ver distribuidor',
+		'search_items'  => 'Buscar distribuidor',
+		'not_found'     => 'No hay distribuidor.',
+		'menu_name'     => 'Distribuidor'
 	);
 
 	$args = array(

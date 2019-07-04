@@ -64,7 +64,7 @@
 		<?php if (is_user_logged_in() && (is_home() || is_product() || is_page(array ('novedades', 'aviso-de-privacidad', 'contabilidad', 'stock-pinatas')) )): ?>
 			<a href="<?php echo SITEURL; ?>stock-pinatas" class="btn btn-primary btn-stock">Stock</a>
 			<?php $current_user = wp_get_current_user();
-        	if ( 3 == $current_user->ID ) { ?>
+        	if ( 3 == $current_user->ID ) { /* Manuel */ ?>
 				<a href="<?php echo SITEURL; ?>contabilidad" class="btn btn-primary btn-contabilidad">Contabilidad</a>
 			<?php }
 		endif ?>

@@ -37,7 +37,7 @@
 	/* Crear post clientes */
 	$post = array(
 		'post_title'	=> wp_strip_all_tags($cuenta_concepto),
-		'post_status'	=> 'private',
+		'post_status'	=> 'publish',
 		'post_type' 	=> 'cuenta'
 	);
 

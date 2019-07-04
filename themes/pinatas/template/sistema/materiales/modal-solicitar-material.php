@@ -45,7 +45,7 @@
 
 	$message = $mailHeader . $mailBody . $mailFooter;
 	/* Send email */
-	$to 		= "nayeli@queonda.com.mx";
+	$to 		= "nayeli@queonda.com.mx, manuel@pinatasbolita.com";
     $subject 	= "Solicitud de material PB";
     wp_mail($to, $subject, $message);
 endif; ?>

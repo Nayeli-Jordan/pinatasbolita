@@ -67,7 +67,7 @@
 			if ($noAlerts > 0) {
 			 	echo $message;
 			 	/* Send email */
-				$to 		= "nayeli@queonda.com.mx";
+				$to 		= "nayeli@queonda.com.mx, manuel@pinatasbolita.com";
 			    $subject 	= "Alerta de entregas PB";
 
 			    wp_mail($to, $subject, $message);

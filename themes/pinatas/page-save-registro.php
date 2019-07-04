@@ -170,7 +170,7 @@
 				$post = array(
 				'post_title'	=> wp_strip_all_tags($current_date),
 				'post_content'	=> $mailBody,
-				'post_status'	=> 'private',
+				'post_status'	=> 'publish',
 				'post_type' 	=> 'registro'
 				);
 				$registro_id = wp_insert_post($post);
@@ -179,7 +179,7 @@
 				update_post_meta($registro_id,'registro_total',$tCuenta);
 
 			 	/* Send email */
-				$to 		= "nayeli@queonda.com.mx";
+				$to 		= "nayeli@queonda.com.mx, manuel@pinatasbolita.com";
 			    $subject 	= "Registro Mensual PB";
 
 			    $mailHeader .= '<p style="margin-bottom: 20px;">Registro Mensual | Ingresos - Egresos</p>';
